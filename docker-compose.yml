@@ -25,10 +25,10 @@ services:
 
   # PHP Service
   app:
-#    depends_on:
-#      - db
-#    links:
-#      - db:sotoya_mysql
+    depends_on:
+     - db
+    links:
+     - db:sotoya_mysql
     build:
       context: .
       dockerfile: Dockerfile
@@ -63,13 +63,10 @@ services:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - ./nginx/logs/:/var/logs/nginx/
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     networks:
       sotoya-network:
         aliases:
           - sotoya_nginx_network
-    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-
 
 #Docker Networks
 networks:
