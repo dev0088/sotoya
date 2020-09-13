@@ -1,0 +1,74 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css";
+
+html {
+    scroll-behavior: smooth;
+}
+
+#floatBT {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    cursor: pointer;
+    color: #8e96ff;
+    background-color: white;
+    border-radius: 9999px;
+    padding: 3px 5px 5px 5px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+}
+
+#floatBT:hover {
+    background-color: #F0F0F0;
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    bottom: 1px;
+    right: 1px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.icon-bar {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 22px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.facebook {
+    background: #4a66a0;
+    color: white;
+}
+
+.instagram {
+    background: #405de6;
+    color: white;
+}
+
+.youtube {
+    background: #c4302b;
+    color: white;
+}
+
+.whatsapp {
+    background: #79ba7e;
+    color: white;
+}
