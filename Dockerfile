@@ -53,5 +53,10 @@ RUN cd /var/www
 # Start up
 # RUN ./docker/startup.sh
 
+# Install node.js
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && apt-get install -y nodejs
+RUN npm install
+
 EXPOSE 9000
 CMD ["php-fpm"]
