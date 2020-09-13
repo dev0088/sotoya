@@ -68,7 +68,7 @@ services:
       sotoya-network:
         aliases:
           - sotoya_nginx_network
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 
 #Docker Networks
