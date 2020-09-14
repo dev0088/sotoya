@@ -775,8 +775,8 @@
         for(var i = 0 ; i < dimension_options.length ; i ++) {
 
             var changedName = $("#" + dimension_options[i]).val();
-
             dimensions[i] = changedName;
+            
             $("#" + dimension_options[i] + "_result").html(changedName);
 
             if(i === 0) {
