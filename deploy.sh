@@ -35,6 +35,9 @@ docker-compose exec app php artisan config:cache
 # Migrate database
 docker-compose exec app php artisan migrate
 
+# Install npm packages
+docker-compose exec app npm install
+
 # Renew certificates for this domain
 # docker-compose exec ooloraopenresty openssl req -new -newkey rsa:2048 \
 #  -days 3650 -nodes -x509 \
