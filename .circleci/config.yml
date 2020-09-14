@@ -1,0 +1,22 @@
+version: 2.0
+
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ef:be:79:65:ef:a1:af:7b:79:98:2d:48:f9:34:0f:65"
+      - run: 
+          name: Deploy Sotoya server
+          command: |
+            ssh -oStrictHostKeyChecking=no -v ${SSH_USER}@${SERVER_IP} "cd ${SERVER_SIDE_DIR} && git pull origin master && ./deploy.sh"
+workflows:
+  version: 2
+  deployment:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
