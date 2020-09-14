@@ -112,7 +112,8 @@
         </div>
     </div>
     
-    <div class="flex-none lg:flex">
+    <form class="flex-none lg:flex" method="post" action="/part_summary">
+        @csrf
         <div class="w-full lg:w-8/12 pr-0 lg:pr-5">
     
             <div id="transaction_process">
@@ -611,9 +612,9 @@
                 <a href="/part/@if(isset($selected_joinery)){{$selected_joinery}}@endif" class="w-1/2 mr-2 shadow-md bg-white cursor-pointer">
                         <p class="w-full text-lg py-4 text-center fontbold">Retour</p>
                     </a>
-                    <div id="follow_button" class="w-1/2 ml-2 shadow-md bg-white cursor-pointer">
+                    <button id="follow_button" type="button" class="w-1/2 ml-2 shadow-md bg-white cursor-pointer">
                         <p class="w-full text-lg bg-black text-white py-4 text-center fontbold">Suivant</p>
-                    </div>
+                    </button>
                 </div>
         
                 <div class="mt-4 pb-10 shadow-md bg-white">
@@ -622,12 +623,14 @@
                     <div class="flex justify-between items-center px-3 md:px-8" style="height:60px; background-color:#f7f7f7;">
                         <p class="text-lg fontbold">Prix :</p>
                         <p id="price" class="text-4xl fontbold">0€</p>
+                        <input id="price_submit" type="hidden" name="price_submit"/>
                     </div>
                     <div class="px-3 md:px-8">
                         <div id="joinery_result_wrapper" class="hidden">
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type de menuiserie :</p>
                                 <p id="joinery_result" class="fontbold py-2 pl-3">Fenêtre</p>
+                                <input id="joinery_submit" type="hidden" name="joinery_submit"/>
                             </div>
                         </div>
                         <div id="material_result_wrapper" class="hidden">
@@ -635,6 +638,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Matériau :</p>
                                 <p id="material_result" class="fontbold py-2 pl-3">Aluminium</p>
+                                <input id="material_submit" type="hidden" name="material_submit"/>
                             </div>
                         </div>
                         <div id="range_result_wrapper" class="hidden">
@@ -642,6 +646,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Gamme :</p>
                                 <p id="range_result" class="fontbold py-2 pl-3">Gamme 70</p>
+                                <input id="range_submit" type="hidden" name="range_submit"/>
                             </div>
                         </div>
                         <div id="opening_result_wrapper" class="hidden">
@@ -649,6 +654,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type d’ouverture :</p>
                                 <p id="opening_result" class="fontbold py-2 pl-3">Abattant</p>
+                                <input id="opening_submit" type="hidden" name="opening_submit"/>
                             </div>
                         </div>
                         <div id="leave_result_wrapper" class="hidden">
@@ -656,6 +662,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Nombre de vantaux :</p>
                                 <p id="leave_result" class="fontbold py-2 pl-3">1 vantail</p>
+                                <input id="leave_submit" type="hidden" name="leave_submit"/>
                             </div>
                         </div>
                         <div id="installation_result_wrapper" class="hidden">
@@ -663,6 +670,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type de pose :</p>
                                 <p id="installation_result" class="fontbold py-2 pl-3">Applique</p>
+                                <input id="installation_submit" type="hidden" name="installation_submit"/>
                             </div>
                         </div>
                         <div id="height_size_result_wrapper" class="hidden">
@@ -670,6 +678,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Hauteur totale :</p>
                                 <p id="height_size_result" class="fontbold py-2 pl-3">600</p>
+                                <input id="height_size_submit" type="hidden" name="height_size_submit"/>
                             </div>
                         </div>
                         <div id="width_size_result_wrapper" class="hidden">
@@ -677,6 +686,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Largeur totale :</p>
                                 <p id="width_size_result" class="fontbold py-2 pl-3">600</p>
+                                <input id="width_size_submit" type="hidden" name="width_size_submit"/>
                             </div>
                         </div>
                         <div id="insulation_size_result_wrapper" class="hidden">
@@ -684,6 +694,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Pour isolation de :</p>
                                 <p id="insulation_size_result" class="fontbold py-2 pl-3">120</p>
+                                <input id="insulation_size_submit" type="hidden" name="insulation_size_submit"/>
                             </div>
                         </div>
                         <div id="aeration_result_wrapper" class="hidden">
@@ -691,6 +702,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Aération :</p>
                                 <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
+                                <input id="aeration_submit" ctype="hidden" name="aeration_submit"/>
                             </div>
                         </div>
                         <div id="glazing_result_wrapper" class="hidden">
@@ -698,6 +710,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Vitrage :</p>
                                 <p id="glazing_result" class="fontbold py-2 pl-3">4/16/4 FE</p>
+                                <input id="glazing_submit" type="hidden" name="glazing_submit"/>
                             </div>
                         </div>
                         <div id="color_result_wrapper" class="hidden">
@@ -705,6 +718,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Couleur menuiserie :</p>
                                 <p id="color_result" class="fontbold py-2 pl-3">RAL 9016</p>
+                                <input id="color_submit" type="hidden" name="color_submit"/>
                             </div>
                         </div>
                         
@@ -716,7 +730,7 @@
             
         </div>
     
-    </div>
+    </form>
     
     <p id="joinery_selected" class="hidden">@if(isset($selected_joinery)) {{$selected_joinery}} @endif</p>
     
@@ -847,10 +861,15 @@
 
     $("#follow_button").click(function() {
 
+        console.log(step);
+
         if(step == 10) {
-            $("#transaction_process").hide();
-            $("#transaction_process_panel").hide();
-            $("#transaction_finish").show();
+            // $("#transaction_process").hide();
+            // $("#transaction_process_panel").hide();
+            // $("#transaction_finish").show();
+
+            $(this).attr("type", "submit");
+
         }
 
         if(next) {
@@ -887,6 +906,7 @@
         $("#" + options[changedIndex] + "_result_wrapper").show();
         $("#" + options[changedIndex] + "_result").html(changedName);
         $("#" + options[changedIndex] + "_result_finish").html(changedName);
+        $("#" + options[changedIndex] + "_submit").val(changedName);
 
         totalPriceCalculate();
 
@@ -913,6 +933,7 @@
         $("#" + dimension_options[changedIndex] + "_result_wrapper").show();
         $("#" + dimension_options[changedIndex] + "_result").html(changedName);
         $("#" + dimension_options[changedIndex] + "_result_finish").html(changedName);
+        $("#" + dimension_options[changedIndex] + "_submit").val(changedName);
 
         if(changedIndex === 0) {
             for(var i = 0 ; i < height_prices.length ; i ++) {

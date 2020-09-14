@@ -1,6 +1,9 @@
 <?php
 
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +27,6 @@ Route::get('/signout', function () {
     session()->flush();
     return redirect('/');
 });
-
 
 Route::get('/', function () {
 
@@ -492,6 +494,30 @@ Route::get('/part', function () {
     ];
 
     return view('particular', compact('field', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color'));
+});
+
+Route::post('/part_summary', function(Request $request) {
+
+    $options = ["joinery", "material", "range", "opening", "leave", "installation" ,"aeration", "glazing", "color"];
+    $dimension_options = ["height_size", "width_size", "insulation_size"];
+
+    $price = $request->post("price_submit");
+
+    $joinery = $request->post("joinery_submit");
+    $material = $request->post("material_submit");
+    $range = $request->post("range_submit");
+    $opening = $request->post("opening_submit");
+    $leave = $request->post("leave_submit");
+    $installation = $request->post("installation_submit");
+    $aeration = $request->post("aeration_submit");
+    $glazing = $request->post("glazing_submit");
+    $color = $request->post("color_submit");
+    $height_size = $request->post("height_size_submit");
+    $width_size = $request->post("width_size_submit");
+    $insulation_size = $request->post("insulation_size_submit");
+
+    return view('particular_summary', compact('price', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'aeration', 'glazing', 'color', 'height_size', 'width_size', 'insulation_size'));
+
 });
 
 Route::get('/pro', function () {
