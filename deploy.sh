@@ -17,7 +17,7 @@ else
     cp "$EXENVFILE" "$ENVFILE"
 fi
 
-sudo chmod 777 -Rf dbdata/
+# sudo chmod 777 -Rf dbdata/
 
 # Run dockers as daemon
 docker-compose up -d --build
@@ -34,6 +34,9 @@ docker-compose exec app php artisan config:cache
 
 # Migrate database
 docker-compose exec app php artisan migrate
+
+# Install npm packages
+docker-compose exec app npm install
 
 # Renew certificates for this domain
 # docker-compose exec ooloraopenresty openssl req -new -newkey rsa:2048 \
