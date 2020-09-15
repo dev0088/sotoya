@@ -56,6 +56,9 @@
     .maxwidth-680 {
         max-width:608px;
     }
+    .maxwidth-1441 {
+        max-width:1441px;
+    }
 
 </style>
 
@@ -63,19 +66,23 @@
 
 @section('content')
 
-<main id="main-content" class="bg-white pb-10 md:pb-30">
+<main id="main-content" class="bg-white pb-10 md:pb-30 maxwidth-1441 mx-auto">
 
     <div class="bg-whitegreen">
         <div class="flex-none xl:flex relative justify-start lg:justify-between">
             
             <div class="absolute inset-y-0 xl:relative pl-8 pr-4 xl:pl-35 pt-8 md:pt-12 lg:pt-16 xl:pt-105 transform translate-y-3/10 xl:transform-none">
-                <p class="leading-tight text-black xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 fontbold text-3xl sm:text-4xl md:text-44">
-                    Nous fournissons et fabriquons
-                    <br class="hidden"/>des menuiseries pour les
-                    <br class="hidden"/>professionnels
-                    <br class="hidden"/>et les particuliers
+                <p class="tracking-normal leading-tight text-black xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 fontbold text-3xl sm:text-4xl md:text-44">
+                    Nous fournissons et
+                    <br class=""/>fabriquons des menuiseries
+                    <br class=""/>pour les professionnels
+                    <br class=""/>et les particuliers
                 </p>
+                @if(Auth::user())
+                    <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white fontbold px-10 py-4 bg-green">Voir le configurateur</a>
+                @else
                 <button id="modal-trigger-button" class="text-white fontbold px-10 py-4 bg-green">Voir le configurateur</button>
+                @endif
             </div>
     
             <div class="flex-shrink-0 w-screen xl:w-max-content top-0 right-0">
@@ -109,26 +116,52 @@
         </div>
     </div>
     
-    <div class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
-        <div class="w-full grid grid-cols-1 lg:grid-cols-2 col-gap-4 row-gap-4 pt-6 mx-auto maxwidth-1310">
-            <div class="">
-                <p class="pt-4 pb-6 text-4xl fontbold">Qui sommes-nous ?</p>
-                <p class="text-xl leading-normal pb-5 fontbold">
+    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-30" style="">
+        <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto" style="">
+            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-6 xl:pr-4" style="">
+                <p class="pt-4 pb-8 lg:pb-4 xl:pb-8 text-4xl fontbold">Qui sommes-nous ?</p>
+                <p class="text-lg tracking-tight leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-3 xl:pb-6 fontbold">
                     Depuis 2016, Sotoya met son expérience et son savoir-faire unique au service des professionnels du bâtiment, promoteurs, artisans poseurs, et architectes. Spécialisée dans la menuiserie aluminium et PVC nous vous accompagnons de la conception de votre projet jusqu’à la pose. Notre bureau d’études est à votre disposition pour le conseil, la réalisation de votre projet.
                 </p>
-                <p class="text-xl leading-normal pb-5">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.
-                    Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-2 xl:pb-6" style="letter-spacing: -0.03em">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.<br/>
+                    Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.<br/><br/>
                 </p>
-                <p class="text-xl leading-normal pb-6">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-8 lg:pb-4 xl:pb-8" style="letter-spacing: -0.03em">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.<br/>
                         Sotoya vous donne la possibilité de commander en ligne vos produits sur mesure d’origine française dans des délais de fabrication moindres.
                 </p>
-                <p class="text-xl leading-normal text-right fontbold">
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed text-right fontbold">
                     Fondateur de Sotoya
                 </p>
             </div>
-            <div class="">
+            <div class="hidden lg:block relative lg:w-495 lg:py-15 lg:px-20px xl:w-608 xl:py-29 px-6 lg:h-690 xl:h-739" style="">
+
+                <img class="absolute left-0 top-0" src="{{asset('images/homeimage-01.png')}}"/>
+                <img class="absolute right-0 bottom-0" src="{{asset('images/homeimage-02.png')}}"/>
+
+                <div class="relative w-full h-full hidden xl:block">
+                    <img class="absolute top-0 left-0" src="{{asset('images/homeimage-1.png')}}"/>
+                    <img class="absolute top-0 right-0" src="{{asset('images/homeimage-2.png')}}"/>
+                    <img class="absolute bottom-0 left-0" src="{{asset('images/homeimage-3.png')}}"/>
+                    <img class="absolute bottom-0 right-0" src="{{asset('images/homeimage-4.png')}}"/>
+                </div>
+
+                <div class="xl:hidden w-full h-full grid grid-cols-2 lg:col-gap-10 xl:col-gap-0">
+                    <div class="relative">
+                        <img class="w-full absolute top-0" src="{{asset('images/homeimage-1.png')}}"/>
+                        <img class="w-full absolute bottom-0" src="{{asset('images/homeimage-2.png')}}"/>
+                    </div>
+                    <div class="relative">
+                        <img class="w-full absolute top-0" src="{{asset('images/homeimage-3.png')}}"/>
+                        <img class="w-full absolute bottom-0" src="{{asset('images/homeimage-4.png')}}"/>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="block lg:hidden">
                 <img class="w-full float-right maxwidth-608" src="{{ asset('images/images about@2x.png') }}"/>
             </div>
+
         </div>
     </div>
     

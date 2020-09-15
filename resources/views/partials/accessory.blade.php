@@ -3,6 +3,7 @@
     <i class="fa fa-arrow-up"></i>
 </button>
 {{-- logout button --}}
-<div class="icon-bar" style="z-index: 1000">
-    <a href="/signout" class="facebook"><i class="fa fa-sign-out-alt"></i></a>
-</div>
+<form class="icon-bar" style="z-index: 1000" method="post" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="facebook px-4 py-4"><i class="fa fa-sign-out-alt"></i></button>
+</form>

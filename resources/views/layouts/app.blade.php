@@ -9,6 +9,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="favicon/Favicon-sotoya-32x32.ico"/>
+
     @yield('title')
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -52,6 +54,12 @@
         }
         .fontbold {
             font-family: 'ManBold';
+        }
+
+        .invalid-feedback {
+            color:red;
+            padding-top:16px;
+            margin-bottom:16px;
         }
 
     </style>

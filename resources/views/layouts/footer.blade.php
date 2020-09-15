@@ -9,51 +9,51 @@
         </div>
         <div class="w-full md:w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-4 row-gap-10 px-10 lg:px-0">
             <div class="text-center md:text-left">
-                <p class="text-base pt-0 pb-6 fontbold text-black">NOS PRODUITS</p>
+                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">NOS PRODUITS</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    <p class="text-base">Fenêtres</p>
-                    <p class="text-base">Baie coulissante</p>
-                    <p class="text-base">Porte fenêtre</p>
-                    <p class="text-base">Porte entrée</p>
-                    <p class="text-base">Porte de service</p>
-                    <p class="text-base">Volet roulant</p>
-                    <p class="text-base">Garde corps</p>
-                    <p class="text-base">Véranda</p>
-                    <p class="text-base">Pergola</p>
-                    <p class="text-base">Accessoires</p>
+                    <p style="font-size:15px;">Fenêtres</p>
+                    <p style="font-size:15px;">Baie coulissante</p>
+                    <p style="font-size:15px;">Porte fenêtre</p>
+                    <p style="font-size:15px;">Porte entrée</p>
+                    <p style="font-size:15px;">Porte de service</p>
+                    <p style="font-size:15px;">Volet roulant</p>
+                    <p style="font-size:15px;">Garde corps</p>
+                    <p style="font-size:15px;">Véranda</p>
+                    <p style="font-size:15px;">Pergola</p>
+                    <p style="font-size:15px;">Accessoires</p>
                 </div>
             </div>
             <div class="text-center md:text-left">
-                <p class="text-base pt-0 pb-6 fontbold text-black">SOTOWEB</p>
+                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">SOTOWEB</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    <p class="text-base">Mon compte</p>
-                    <a href="/about" class="text-base">Qui sommes-nous ?</a>
-                    <p class="text-base">Partenaires</p>
-                    <p class="text-base">Label</p>
-                    <p class="text-base">Documentation</p>
-                    <a href="/faq" class="text-base">FAQ</a>
+                    <p style="font-size:15px;">Mon compte</p>
+                    <a href="/about" style="font-size:15px;">Qui sommes-nous ?</a>
+                    <p style="font-size:15px;">Partenaires</p>
+                    <p style="font-size:15px;">Label</p>
+                    <p style="font-size:15px;">Documentation</p>
+                    <a href="/faq" style="font-size:15px;">FAQ</a>
                 </div>
             </div>
             <div class="text-center md:text-left">
-                <p class="text-base pt-0 pb-6 fontbold text-black">INFORMATIONS</p>
+                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">INFORMATIONS</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    <a href="/contact" class="text-base">Contact</a>
-                    <a href="/cgv" class="text-base">CGV</a>
-                    <a href="/mentions" class="text-base">Mentions légales</a>
+                    <a href="/contact" style="font-size:15px;">Contact</a>
+                    <a href="/cgv" style="font-size:15px;">CGV</a>
+                    <a href="/mentions" style="font-size:15px;">Mentions légales</a>
                 </div>
             </div>
             <div class="text-center md:text-left md:col-start-1 md:col-span-2 md:grid-cols-2 lg:col-start-1 lg:col-span-2 xl:cols-start-4 xl:col-span-1 grid lg:grid-cols-2 xl:grid-cols-1 xl:col-gap-2 col-gap-4 row-gap-10">
                 <div>
-                    <p class="text-base pb-6 fontbold text-black">ADRESSE</p>
-                    <p class="leading-normal">
+                    <p class="pb-6 fontbold text-black" style="font-size:15px;">ADRESSE</p>
+                    <p class="leading-normal" style="font-size:15px;">
                         Centre d’Affaires ALTA ROCCA Bâtiment G — RDC<br/>
                         1120 Route départementale de Gémenos <br/>
                         13400 AUBAGNE
                     </p>
                 </div>
                 <div>
-                    <p class="text-base pb-6 fontbold text-black">POUR NOUS RENDRE VISITE</p>
-                    <p class="leading-normal">
+                    <p class="pb-6 fontbold text-black"  style="font-size:15px;">POUR NOUS RENDRE VISITE</p>
+                    <p class="leading-normal" style="font-size:15px;">
                         Du lundi au vendredi<br/>9h00 – 18h00
                     </p>
                 </div>
@@ -62,5 +62,5 @@
             
         </div>
     </div>
-    <p class="w-full text-white bg-black py-5 text-center">© 2020 Sotoweb. Tous les droits réservés.</p>
+    <p class="w-full text-white bg-black py-5 text-center" style="font-size:15px;">© 2020 Sotoweb. Tous les droits réservés.</p>
 </footer>
