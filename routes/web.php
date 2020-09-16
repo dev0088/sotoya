@@ -35,6 +35,10 @@ Route::get('/account_part_info', 'PartController@info')->name('account_part_info
 Route::get('/account_part_projects', 'PartController@projects')->name('account_part_projects');
 Route::get('/account_part_his', 'PartController@history')->name('account_part_his');
 Route::post('/modifyinfo_part', 'PartController@modifyinfo')->name('modifyinfo_part');
+Route::post('/record_order_part', 'PartController@recordorder')->name('record_order_part');
+Route::get('/order_part/{id}', 'PartController@order')->name('order_part');
+Route::get('/modify_order_part/{id}', 'PartController@modifyorder')->name('modify_order_part')->middleware('user');
+Route::post('/modify_order_part', 'PartController@updateorder')->name('update_order_part');
 
 
 Route::get('/pro', 'ProController@index')->name('pro');
@@ -43,6 +47,7 @@ Route::get('/account_pro_projects', 'ProController@projects')->name('account_pro
 Route::get('/account_pro_his', 'ProController@history')->name('account_pro_his');
 Route::get('/account_pro_info', 'ProController@info')->name('account_pro_info');
 Route::post('/modifyinfo_pro', 'ProController@modifyinfo')->name('modifyinfo_pro');
+Route::post('/record_order_pro', 'ProController@recordorder')->name('record_order_part');
 
 
 

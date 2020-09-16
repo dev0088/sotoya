@@ -18,6 +18,7 @@ class CreateJoinsTable extends Migration
             $table->string("name");
             $table->string("price");
             $table->string("image");
+            $table->string("default")->default("0");
             $table->timestamps();
         });
     }

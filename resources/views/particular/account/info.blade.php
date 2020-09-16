@@ -14,7 +14,7 @@
         cursor: pointer;
     }
     .check-item > label {
-        cursor: pointer;
+        cursor: no-drop;
     }
     .check-item.active > label > div > svg.checked {
         display: block;
@@ -119,7 +119,7 @@
                 <p class="text-xl pb-3 fontbold">Mot de passe*</p>
     
                 <div class="input-group">
-                    <input id="password" name="password" type="password" class="form-control bg-input" placeholder="Mot de passe" value="@if(isset($user["password"])){{$user["password"]}}@endif"/>
+                    <input id="password" name="password" type="password" class="form-control bg-input" placeholder="Mot de passe" value="" disabled/>
                     <div class="form-control-after" class="cursor-pointer">
                         <svg id="eye_fill" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
                             <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
@@ -146,7 +146,6 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="pro" name="mode" value="1" @if(isset($user["mode"]) && $user["field"] == 1) checked @endif />
                             Professionnel
                         </label>
                     </div>
@@ -162,7 +161,6 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="part" name="mode" value="0" @if(isset($user["mode"]) && $user["mode"] == 0) checked @endif />
                             Particulier
                         </label>
                     </div>
@@ -243,9 +241,6 @@
     $("#email").keyup(function() {
         validateForm();
     });
-    $("#password").keyup(function() {
-        validateForm();
-    });
     $("#address").keyup(function() {
         validateForm();
     });
@@ -281,7 +276,7 @@
 
         }
 
-        if(valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#password").val().length != 0&& $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
+        if(valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
             console.log("Yes");
             if(!submit.hasClass("active")) {
                 submit.addClass("active");

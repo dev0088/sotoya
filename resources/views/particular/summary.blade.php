@@ -118,11 +118,12 @@
     <div class="flex-none lg:flex maxwidth-1441 mx-auto px-8 md:px-35">
         <div class="w-full xl:w-9/12 pr-0 lg:pr-5">
     
-            <div id="transaction_finish" class="">
+            <form id="transaction_finish" class="" method="post" action="{{ route('record_order_part') }}">
+                @csrf
     
                 <div class="grid grid-cols-1 lg:grid-cols-3 mb-4 mx-auto maxwidth-820">
                     <a href="/" class="py-4 mb-4 lg:mb-0 lg:mr-3 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <a href="/account_part_projects" class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
+                    <button type="submit" class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                     <a class="py-4 mb-4 lg:mb-0 lg:ml-3 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
                 </div>
         
@@ -130,63 +131,103 @@
                     <p class="text-2xl fontbold py-8 text-center">Récapitulatif de votre configuration</p>
         
                     <div class="flex justify-between items-center px-3 md:px-8 h-15 bg-whitepink">
-                        <p class="text-lg fontbold">Prix :</p>
-                        <p id="price_finish" class="text-4xl fontbold">160€</p>
+                        @if(isset($price))
+                            <p class="text-lg fontbold">Prix :</p>
+                            <p id="price_finish" class="text-4xl fontbold">{{$price}}</p>
+                            <input type="hidden" name="price" value="{{$price}}"/>
+                        @endif
                     </div>
         
                     <div class="grid grid-row-1 lg:grid-cols-2 col-gap-12 row-gap-0 pt-4 px-3 md:px-8">
                         <div>
-                        <p class="text-base py-4">Type de menuiserie :<span id="joinery_result_finish" class="fontbold pl-3">@if(isset($joinery)){{$joinery}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($joinery))
+                                <p class="text-base py-4">Type de menuiserie :<span id="joinery_result_finish" class="fontbold pl-3">{{$joinery["name"]}}</span></p>
+                                <input type="hidden" name="joinery" value="{{$joinery['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
+                        </div>
+                        
+                        <div>
+                            @if(isset($height_size))
+                                <p class="text-base py-4">Largeur totale :<span id="height_size_result_finish" class="fontbold pl-3">{{$height_size["value"]}}</span></p>
+                                <input type="hidden" name="height_size" value="{{$height_size['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Largeur totale :<span id="height_size_result_finish" class="fontbold pl-3">@if(isset($height_size)){{$height_size}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($material))
+                                <p class="text-base py-4">Matériau :<span id="material_result_finish" class="fontbold pl-3">{{$material["name"]}}</span></p>
+                                <input type="hidden" name="material" value="{{$material['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Matériau :<span id="material_result_finish" class="fontbold pl-3">@if(isset($material)){{$material}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($insulation_size))
+                                <p class="text-base py-4">Pour isolation de :<span id="insulation_size_result_finish" class="fontbold pl-3">{{$insulation_size["value"]}}</span></p>
+                                <input type="hidden" name="insulation_size" value="{{$insulation_size['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Pour isolation de :<span id="insulation_size_result_finish" class="fontbold pl-3">@if(isset($insulation_size)){{$insulation_size}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($range))
+                                <p class="text-base py-4">Gamme :<span id="range_result_finish" class="fontbold pl-3">{{$range["name"]}}</span></p>
+                                <input type="hidden" name="range" value="{{$range['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Gamme :<span id="range_result_finish" class="fontbold pl-3">@if(isset($range)){{$range}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($aeration))
+                                <p class="text-base py-4">Aération :<span id="aeration_result_finish" class="fontbold pl-3">{{$aeration["name"]}}</span></p>
+                                <input type="hidden" name="aeration" value="{{$aeration['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Aération :<span id="aeration_result_finish" class="fontbold pl-3">@if(isset($aeration)){{$aeration}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($opening))
+                                <p class="text-base py-4">Type d’ouverture :<span id="opening_result_finish" class="fontbold pl-3">{{$opening["name"]}}</span></p>
+                                <input type="hidden" name="opening" value="{{$opening['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Type d’ouverture :<span id="opening_result_finish" class="fontbold pl-3">@if(isset($opening)){{$opening}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($leave))
+                                <p class="text-base py-4">Nombre de vantaux :<span id="leave_result_finish" class="fontbold pl-3">{{$leave["name"]}}</span></p>
+                                <input type="hidden" name="leave" value="{{$leave['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Nombre de vantaux :<span id="leave_result_finish" class="fontbold pl-3">@if(isset($leave)){{$leave}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($glazing))
+                                <p class="text-base py-4">Vitrage :<span id="glazing_result_finish" class="fontbold pl-3">{{$glazing["name"]}}</span></p>
+                                <input type="hidden" name="glazing" value="{{$glazing['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Vitrage :<span id="glazing_result_finish" class="fontbold pl-3">@if(isset($glazing)){{$glazing}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($installation))
+                                <p class="text-base py-4">Type de pose :<span id="installation_result_finish" class="fontbold pl-3">{{$installation["name"]}}</span></p>
+                                <input type="hidden" name="installation" value="{{$installation['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Type de pose :<span id="installation_result_finish" class="fontbold pl-3">@if(isset($installation)){{$installation}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($color))
+                                <p class="text-base py-4">Couleur menuiserie :<span id="color_result_finish" class="fontbold pl-3">{{$color["name"]}}</span></p>
+                                <input type="hidden" name="color" value="{{$color['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                         <div>
-                            <p class="text-base py-4">Couleur menuiserie :<span id="color_result_finish" class="fontbold pl-3">@if(isset($color)){{$color}}@endif</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Hauteur totale :<span id="width_size_result_finish" class="fontbold pl-3">@if(isset($width_size)){{$width_size}}@endif</span></p>
-                            <hr class="w-full"/>
+                            @if(isset($width_size))
+                                <p class="text-base py-4">Hauteur totale :<span id="width_size_result_finish" class="fontbold pl-3">{{$width_size["value"]}}</span></p>
+                                <input type="hidden" name="width_size" value="{{$width_size['id']}}"/>
+                                <hr class="w-full"/>
+                            @endif
                         </div>
                     </div>
         
                 </div>
-            </div>
+            </form>
             
         </div>
     

@@ -17,6 +17,8 @@ class CreateColorsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("value");
+            $table->string("price");
+            $table->string("default")->default("0");
             $table->timestamps();
         });
     }

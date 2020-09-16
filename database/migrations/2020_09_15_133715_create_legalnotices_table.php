@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTotalwidthsTable extends Migration
+class CreateLegalnoticesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTotalwidthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('totalwidths', function (Blueprint $table) {
+        Schema::create('legalnotices', function (Blueprint $table) {
             $table->id();
-            $table->string("value");
-            $table->string("price");
-            $table->string("default")->default("0");
+            $table->string("title");
+            $table->string("detail");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTotalwidthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('totalwidths');
+        Schema::dropIfExists('legalnotices');
     }
 }

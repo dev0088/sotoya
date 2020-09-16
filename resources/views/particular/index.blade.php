@@ -143,7 +143,7 @@
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
                                     {{-- <div class="relative rounded-md mx-auto text-center type-select @if($item == $joinery_selected) active @endif " style="max-width:210px;"> --}}
-                                    <div class="relative rounded-md mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['name'])) active @endif" style="max-width:210px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['name'])) active @endif" style="max-width:210px;">
                                         <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
                                         <div class="w-full absolute bottom-0 rounded-b-md">
                                             <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
@@ -177,9 +177,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($material) && count($material) > 0)
                                 @foreach($material as $key => $item)
-                                    <div class="relative rounded-md px-3 mx-auto type-select maxwidth-210 check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 mx-auto type-select maxwidth-210 check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -209,9 +209,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($range) && count($range) > 0)
                                 @foreach($range as $key => $item)
-                                    <div class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -242,9 +242,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($opening) && count($opening) > 0)
                                 @foreach($opening as $key => $item)
-                                    <div class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -275,9 +275,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($leave) && count($leave) > 0)
                                 @foreach($leave as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -307,9 +307,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($installation) && count($installation) > 0)
                                 @foreach($installation as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -353,16 +353,16 @@
                                     </div>
                                 </button>
                                 <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Hauteur totale</p>
                                     @if(isset($height) && count($height) > 0)
                                         @foreach($height as $key => $item)
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
                                 @if(isset($height) && count($height) > 0)
                                     @foreach($height as $key => $item)
-                                        <p id="{{$item["name"]}}" class="height_price hidden">{{$item["price"]}}</p>
+                                        <p id="{{$item["value"]}}" class="height_price hidden">{{$item["price"]}}</p>
                                     @endforeach
                                 @endif
                             </div>
@@ -380,16 +380,16 @@
                                     </div>
                                 </button>
                                 <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Largeur totale</p>
                                     @if(isset($width) && count($width) > 0)
                                         @foreach($width as $key => $item)
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
                                 @if(isset($width) && count($width) > 0)
                                     @foreach($width as $key => $item)
-                                        <p id="{{$item["name"]}}" class="width_price hidden">{{$item["price"]}}</p>
+                                        <p id="{{$item["value"]}}" class="width_price hidden">{{$item["price"]}}</p>
                                     @endforeach
                                 @endif
                             </div>
@@ -425,17 +425,17 @@
                                     </div>
                                 </button>
                                 <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($insulation) && count($insulation) > 0)
                                         @foreach($insulation as $key => $item)  
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
 
                                 @if(isset($insulation) && count($insulation) > 0)
                                     @foreach($insulation as $key => $item)
-                                        <p id="{{$item["name"]}}" class="insulation_price hidden">{{$item["price"]}}</p>
+                                        <p id="{{$item["value"]}}" class="insulation_price hidden">{{$item["price"]}}</p>
                                     @endforeach
                                 @endif
                             </div>
@@ -459,9 +459,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($aeration) && count($aeration) > 0)
                                 @foreach($aeration as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue</p>
+                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -492,9 +492,9 @@
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)
                                 @foreach($glazing as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 mx-auto type-select maxwidth-335" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 mx-auto type-select maxwidth-335" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tighter leading-normal" style="font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        <p class="text-center tracking-tighter leading-normal" style="font-size: 13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -526,7 +526,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-10 row-gap-10">
                             @if(isset($color) && count($color) > 0)
                                 @foreach($color as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item" style="background-color: {{$item['color']}};">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item" style="background-color: {{$item['value']}};">
                                         <div class="w-full absolute bottom-0">
                                             <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-sm">{{$item['name']}}</p>
                                         </div>
@@ -713,7 +713,7 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Aération :</p>
                                 <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
-                                <input id="aeration_submit" ctype="hidden" name="aeration_submit"/>
+                                <input id="aeration_submit" type="hidden" name="aeration_submit"/>
                             </div>
                         </div>
                         <div id="glazing_result_wrapper" class="hidden">
@@ -917,7 +917,7 @@
         $("#" + options[changedIndex] + "_result_wrapper").show();
         $("#" + options[changedIndex] + "_result").html(changedName);
         $("#" + options[changedIndex] + "_result_finish").html(changedName);
-        $("#" + options[changedIndex] + "_submit").val(changedName);
+        $("#" + options[changedIndex] + "_submit").val($(this).attr("id"));
 
         totalPriceCalculate();
 
@@ -955,6 +955,7 @@
 
         $("#price").html(total + "€");
         $("#price_finish").html(total + "€");
+        $("#price_submit").val(total + "€");
 
     }
 
@@ -976,11 +977,8 @@
     }
 
     $(function() {
-        validateForm();
 
-        $("#height_size").prop("selectedIndex", 0);
-        $("#width_size").prop("selectedIndex", 0);
-        $("#insulation_size").prop("selectedIndex", 0);
+        validateForm();
 
     })
 
@@ -1023,27 +1021,6 @@
         }
     }
 
-    $("select").change(function() {
-
-        $(this).siblings("div").find("svg.up-icon").hide();
-        $(this).siblings("div").find("svg.down-icon").show();
-
-    });
-
-    $("select").focus(function() {
-
-        $(this).siblings("div").find("svg.up-icon").show();
-        $(this).siblings("div").find("svg.down-icon").hide();
-
-    });
-
-    $("select").blur(function() {
-
-        $(this).siblings("div").find("svg.up-icon").hide();
-        $(this).siblings("div").find("svg.down-icon").show();
-
-    });
-
     $(".select-button").click(function(event) {
 
         event.stopPropagation();
@@ -1083,7 +1060,7 @@
         $("#" + dimension_options[changedIndex] + "_result_wrapper").show();
         $("#" + dimension_options[changedIndex] + "_result").html(changedName);
         $("#" + dimension_options[changedIndex] + "_result_finish").html(changedName);
-        $("#" + dimension_options[changedIndex] + "_submit").val(changedName);
+        $("#" + dimension_options[changedIndex] + "_submit").val($(this).attr("id"));
 
         if(changedIndex === 0) {
             for(var i = 0 ; i < height_prices.length ; i ++) {

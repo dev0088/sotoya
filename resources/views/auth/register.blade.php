@@ -113,7 +113,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -126,13 +126,13 @@
         </div>
     </div>
     
-    <form class="w-full bg-white px-4 md:px-15 py-4 md:py-10 mx-auto shadow-md maxwidth-976" method="post" action="{{ route('register') }}">
+    <form class="w-full bg-white px-4 md:px-8 py-4 md:pb-8 mx-auto shadow-md maxwidth-976" style="padding-top:50px;" method="post" action="{{ route('register') }}">
         @csrf
-        <p class="text-4xl text-center pb-10 fontbold">S’inscrire</p>
+        <p class="text-4xl text-center pb-12 fontbold">S’inscrire</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-20">
             <div class="">
-                <p class="text-xl pb-5 fontbold">Civilité*</p>
-                <div class="flex pb-8 relative">
+                <p class="text-lg fontbold" style="padding-bottom:22px;">Civilité*</p>
+                <div class="flex relative" style="padding-bottom:37px;">
                     <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -166,8 +166,8 @@
                         </label>
                     </div>
                 </div>
-                <p class="text-xl pb-3 fontbold">Prénom*</p>
-            <input id="firstname" name="firstname" type="text" class="w-full p-4 mb-6 bg-input" value="{{ old('firstname') }}" placeholder="Prénom" required/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Prénom*</p>
+                <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('firstname') }}" placeholder="Prénom" required/>
                 @error('firstname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -175,8 +175,8 @@
                         </span>
                     </div>
                 @enderror
-                <p class="text-xl pb-3 fontbold">Nom*</p>
-                <input id="lastname" name="lastname" type="text" class="w-full p-4 mb-6 bg-input" value="{{ old('lastname') }}" placeholder="Nom" required/>
+                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">Nom*</p>
+                <input id="lastname" name="lastname" type="text" class="w-full p-4 mb-6 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('lastname') }}" placeholder="Nom" required/>
                 @error('lastname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -184,8 +184,8 @@
                         </span>
                     </div>
                 @enderror
-                <p class="text-xl pb-3 fontbold">E-mail*</p>
-                <input id="email" name="email" type="text" class="w-full p-4 mb-6 bg-input" value="{{ old('email') }}" placeholder="E-mail" required/>
+                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">E-mail*</p>
+                <input id="email" name="email" type="text" class="w-full p-4 mb-6 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('email') }}" placeholder="E-mail" required/>
                 @error('email')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -193,10 +193,10 @@
                         </span>
                     </div>
                 @enderror
-                <p class="text-xl pb-3 fontbold">Mot de passe*</p>
+                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">Mot de passe*</p>
     
                 <div class="input-group">
-                    <input id="password" name="password" type="password" class="form-control bg-input" placeholder="Mot de passe" required/>
+                    <input id="password" name="password" type="password" class="form-control bg-input" style="height:52px;" placeholder="Mot de passe" required/>
                     <div class="form-control-after cursor-pointer">
                         <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
                             <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
@@ -216,8 +216,8 @@
     
             </div>
             <div class="">
-                <p class="text-xl pb-5 fontbold">Je suis un*</p>
-                <div class="flex pb-8">
+                <p class="text-lg fontbold" style="padding-bottom:22px;">Je suis un*</p>
+                <div class="flex" style="padding-bottom:37px;">
                     <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -251,8 +251,8 @@
                         </label>
                     </div>
                 </div>
-                <p class="text-xl pt-0 pb-3 fontbold">Si professionnel, nom de la société</p>
-                <input type="text" id="company" name="company" class="w-full p-4 mb-6 bg-input" value="{{ old('company') }}" placeholder="Nom de la société"/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Si professionnel, nom de la société</p>
+                <input type="text" id="company" name="company" class="w-full p-4 mb-6 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('company') }}" placeholder="Nom de la société"/>
                 @error('company')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -260,8 +260,8 @@
                         </span>
                     </div>
                 @enderror
-                <p class="text-xl pt-0 pb-3 fontbold">Adresse*</p>
-                <input id="address" name="address" type="text" class="w-full p-4 mb-6 bg-input" value="{{ old('address') }}" placeholder="Adresse" required/>
+                <p class="text-lg pt-0 pb-3 fontbold">Adresse*</p>
+                <input id="address" name="address" type="text" class="w-full p-4 mb-6 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('address') }}" placeholder="Adresse" required/>
                 @error('address')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -271,8 +271,8 @@
                 @enderror
                 <div class="w-full flex-none md:flex">
                     <div class="w-full md:w-5/12">
-                        <p class="text-xl pt-0 pb-3 fontbold">Code Postal*</p>
-                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-6 bg-input" value="{{ old('postcode') }}" placeholder="Code Postal" required/>
+                        <p class="text-lg fontbold" style="padding-bottom:13px;">Code Postal*</p>
+                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-6 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('postcode') }}" placeholder="Code Postal" required/>
                     </div>
                     @error('postcode')
                         <div class="py-3">
@@ -282,8 +282,8 @@
                         </div>
                     @enderror
                     <div class="w-full md:w-7/12 md:pl-6 mb-6 md:mb-0">
-                        <p class="text-xl pt-0 pb-3 fontbold">Ville*</p>
-                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input" value="{{ old('city') }}" placeholder="Ville" required/>
+                        <p class="text-lg fontbold" style="padding-bottom:13px;">Ville*</p>
+                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input" style="height:52px;margin-bottom:29px;" value="{{ old('city') }}" placeholder="Ville" required/>
                     </div>
                     @error('city')
                         <div class="py-3">
@@ -293,8 +293,8 @@
                         </div>
                     @enderror
                 </div>
-                <p class="text-xl pt-0 pb-3 fontbold">Numéro de téléphone</p>
-                <input type="text" name="telephone" class="w-full p-4 bg-input" value="{{ old('telephone') }}" placeholder="Téléphone"/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Numéro de téléphone</p>
+                <input type="text" name="telephone" class="w-full p-4 bg-input mb-9" style="height:52px;" value="{{ old('telephone') }}" placeholder="Téléphone"/>
                 @error('telephone')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -307,7 +307,7 @@
     
         </div>
     
-        <p class="text-base py-8">*Champ obligatoire</p>
+        <p class="text-base pb-8">*Champ obligatoire</p>
 
         <label class="container flex text-base items-center leading-normal cursor-pointer">J’accepte les conditions générales de vente de Sotoya
             <input id="agreecheck" type="checkbox">

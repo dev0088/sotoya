@@ -50,27 +50,31 @@
                     @foreach($history as $key => $item)
                         <div class="border border-heavygray rounded-md pt-8 pb-7">
                             <p class="text-2xl fontbold text-center pb-4">Commandé le {{$item["date"]}}</p>
-                            <p class="text-lg fontbold text-center pb-6 @if($item["state"] == 0) text-green @endif">{{$item["statelabel"]}}</p>
+                            <p class="text-lg fontbold text-center pb-6 @if($item["state_deliver"] == 0) text-green @endif">@if($item["state_deliver"] == 0) En cours de livraison @else Livré @endif</p>
                 
                             <div class="flex relative justify-between items-center h-15 bg-whitepink">
                                 <p class="text-lg fontbold absolute left-3 md:left-8">Prix TTC :</p>
-                                <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
+                                <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
                             </div>
                             <div class="px-3 md:px-8">
-                                <p class="text-base py-4 leading-normal">Type de menuiserie :<span class="fontbold mr-4">{{$item["joinery"]}}</span></p>
+                                <p class="text-base py-4 leading-normal">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Matériau :<span class="fontbold mr-4">{{$item["material"]}}</span></p>
+                                <p class="text-base py-4 leading-normal">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Gamme :<span class="fontbold mr-4">{{$item["range"]}}</span></p>
+                                <p class="text-base py-4 leading-normal">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Type d’ouverture :<span class="fontbold mr-4">{{$item["opening"]}}</span></p>
+                                <p class="text-base py-4 leading-normal">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Nombre de vantaux :<span class="fontbold mr-4">{{$item["leave"]}}</span></p>
+                                <p class="text-base py-4 leading-normal">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
                             </div>
                         </div>
                     @endforeach
                 @endif
             </div>
+
+            @if(count($history) == 0)
+                <p class="fontbold capitalize text-center text-2xl py-10">pas d'histoire</p>
+            @endif
         </div>
 
     </div>

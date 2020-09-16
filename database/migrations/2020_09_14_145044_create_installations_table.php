@@ -18,6 +18,7 @@ class CreateInstallationsTable extends Migration
             $table->string("name");
             $table->string("price");
             $table->string("description");
+            $table->string("default")->default("0");
             $table->timestamps();
         });
     }

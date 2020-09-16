@@ -42,36 +42,52 @@
     </div>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-gap-4 row-gap-4 mx-auto w-full maxwidth-1280">
-        @if(isset($products) && count($products) > 0)
-            @foreach($products as $key => $item)
+        @if(isset($projects) && count($projects) > 0)
+            @foreach($projects as $key => $item)
                 <div class="relative bg-white shadow-md">
                     <svg class="absolute right-6 top-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.001 19.998">
                         <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                     </svg>
                     <p class="text-2xl fontbold text-center pt-8">Enregistrement</p><br/>
-                    <p class="text-2xl fontbold text-center pb-6">du {{$item["date"]}}</p>
+                    {{-- <p class="text-2xl fontbold text-center pb-6">du {{$item["created_at"]}}</p> --}}
+                    <p class="text-2xl fontbold text-center pb-6">du <span class="capitalize">
+                        <?php
+                        setlocale(LC_TIME, 'French');
+                        echo $item->created_at->formatLocalized('%d %B %Y');?></span>
+                     </p>
                     <div class="flex justify-between items-center h-15 bg-whitepink">
                         <p class="text-lg fontbold absolute left-3 md:left-8">Prix :</p>
-                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
+                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
                     </div>
                     <div class="px-3 pb-3 md:px-8 md:pb-8">
-                        <p class="text-base py-4">Type de menuiserie :<span class="fontbold mr-4">{{$item["joinery"]}}</span></p>
+                        <p class="text-base py-4">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Matériau :<span class="fontbold mr-4">{{$item["material"]}}</span></p>
+                        <p class="text-base py-4">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Gamme :<span class="fontbold mr-4">{{$item["range"]}}</span></p>
+                        <p class="text-base py-4">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Type d’ouverture :<span class="fontbold mr-4">{{$item["opening"]}}</span></p>
+                        <p class="text-base py-4">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Nombre de vantaux :<span class="fontbold mr-4">{{$item["leave"]}}</span></p>
+                        <p class="text-base py-4">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
+
+                        <a href="/modify_order_part/{{$item['id']}}">
+                            <button class="w-full mt-6 text-lg text-white fontbold py-4 bg-darkgray">Modifier</button>
+                        </a>
             
-                        <button class="w-full mt-6 text-lg text-white fontbold py-4 bg-darkgray">Modifier</button>
-                        <button class="w-full mt-4 text-lg text-white fontbold py-4 bg-green">Commander</button>
+                        <a href="/order_part/{{$item['id']}}">
+                            <button class="w-full mt-4 text-lg text-white fontbold py-4 bg-green">Commander</button>
+                        </a>
+                        
                     </div>
                 </div>
             @endforeach
+        
         @endif
     </div>
+
+    @if(count($projects) == 0)
+        <p class="fontbold capitalize text-center text-2xl py-10">pas de projet</p>
+    @endif
 
 </main>
 
