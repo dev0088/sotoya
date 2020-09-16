@@ -17,7 +17,7 @@ else
     cp "$EXENVFILE" "$ENVFILE"
 fi
 
-# sudo chmod 777 -Rf dbdata/
+sudo chmod 777 -Rf dbdata/
 
 # Run dockers as daemon
 docker-compose up -d --build
