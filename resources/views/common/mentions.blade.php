@@ -16,8 +16,8 @@
 <main id="main-content">
 
     <div class="px-8 md:px-35 bg-grey-1">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
-            <div class="mb-4 md:mb-0 flex items-center">
+        <div class="flex-none md:flex items-center">
+            <div class="mb-4 md:mb-0 flex items-center" style="padding-top:39px; padding-bottom:26px;">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
@@ -28,7 +28,7 @@
             <span class="text-base fontbold">Mentions légales</span>
         </div>
     
-        <p class="text-4xl fontbold pt-4 md:pt-9 pb-8 md:pb-15">Mentions légales</p>
+        <p class="text-4xl fontbold pt-4 md:pt-10 pb-8 md:pb-15">Mentions légales</p>
     </div>
     
     <div class="bg-white px-8 md:px-35 pb-10 md:pb-30">

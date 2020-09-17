@@ -47,23 +47,23 @@ class DatabaseSeeder extends Seeder
 
         $materials = 
         [
-            ["id"=>1, "name"=>"Aluminium", "price"=>"10", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"1"], 
-            ["id"=>2, "name"=>"PVC", "price"=>"10", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"0"]
+            ["id"=>1, "name"=>"Aluminium", "price"=>"100", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"1"], 
+            ["id"=>2, "name"=>"PVC", "price"=>"200", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"0"]
         ];
 
         $ranges = 
         [
-            ["id"=>1, "name"=>"Gamme 70", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"1"], 
-            ["id"=>2, "name"=>"Gamme 50" ,"price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>'0']
+            ["id"=>1, "name"=>"Gamme 70", "price"=>"100", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>"1"], 
+            ["id"=>2, "name"=>"Gamme 50" ,"price"=>"200", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "default"=>'0']
         ];
 
         $openings = 
         [
-            ["id"=>1, "name"=>"Fixe", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"10", "default"=>"1"], 
+            ["id"=>1, "name"=>"Fixe", "price"=>"100", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"10", "default"=>"1"], 
             ["id"=>2, "name"=>"Abattant", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"20", "default"=>"0"], 
-            ["id"=>3, "name"=>"Ouvrant française", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"30", "default"=>"0"], 
-            ["id"=>4, "name"=>"Ouvrant anglaise", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"40", "default"=>"0"], 
-            ["id"=>5, "name"=>"Oscillo-battant", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"50", "default"=>"0"]
+            ["id"=>3, "name"=>"Ouvrant française", "price"=>"200", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"30", "default"=>"0"], 
+            ["id"=>4, "name"=>"Ouvrant anglaise", "price"=>"300", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"40", "default"=>"0"], 
+            ["id"=>5, "name"=>"Oscillo-battant", "price"=>"400", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"50", "default"=>"0"]
         ];
 
         $leaves = 
@@ -73,9 +73,9 @@ class DatabaseSeeder extends Seeder
 
         $installations = 
         [
-            ["id"=>1, "name"=>"Applique", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"100", "default"=>"1"], 
-            ["id"=>2, "name"=>"Tunnel", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"200", "default"=>"0"], 
-            ["id"=>3, "name"=>"Rénovation", "price"=>"220", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"300", "default"=>"0"]
+            ["id"=>1, "name"=>"Applique", "price"=>"100", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"100", "default"=>"1"], 
+            ["id"=>2, "name"=>"Tunnel", "price"=>"200", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"200", "default"=>"0"], 
+            ["id"=>3, "name"=>"Rénovation", "price"=>"300", "description"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue", "price"=>"300", "default"=>"0"]
         ];
 
         $heights = 

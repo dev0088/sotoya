@@ -16,7 +16,7 @@
 <main id="main-content">
     
     <div class="px-8 md:px-35 bg-grey-1">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -28,25 +28,25 @@
             <span class="text-base fontbold leading-normal">Conditions générales de ventes Sotoya Constructions (CGV)</span>
         </div>
     
-        <p class="text-4xl fontbold pt-4 md:pt-9 pb-8 md:pb-15 text-center md:text-left">Conditions générales de ventes<br/>Sotoya Constructions (CGV)</p>
+        <p class="text-4xl fontbold pt-4 md:pt-10 pb-8 md:pb-15 text-center md:text-left">Conditions générales de ventes<br/>Sotoya Constructions (CGV)</p>
     </div>
     
     <div class="bg-white pt-4 md:pt-8 pb-4 md:pb-15 px-8 md:px-35">
 
-        <p class="text-lg fontbold leading-loose">Société par actions simplifiée unipersonnelle au capital de 10 000€ <br/>
+        <p class="text-lg fontbold" style="line-height: 1.59">Société par actions simplifiée unipersonnelle au capital de 10 000€ <br/>
             - 822 746 517 R.C.S. MARSEILLE<br/>
             - SIRET 822 746 517 00017 <br/>
             – APE 4399C <br/>
             - N° DE TVA INTRA CE : FR 67 822746517
         </p>
     
-        <p class="text-2xl fontbold pt-8 pb-4">PREMILAIRES</p>
-        <p class="text-lg leading-loose">@if(isset($premilaries)) {{$premilaries}} @endif</p>
+        <p class="text-2xl fontbold pt-10 pb-4">PREMILAIRES</p>
+        <p class="text-lg leading-snug">@if(isset($premilaries)) {{$premilaries}} @endif</p>
     
         @if(isset($articles) && count($articles) > 0)
             @foreach($articles as $key => $item)
-                <p class="text-2xl fontbold pt-8 pb-4">ARTICLE {{$key + 1}} : {{$item["title"]}}</p>
-                <p class="text-lg leading-loose">{{$item["detail"]}}</p>
+                <p class="text-2xl fontbold pt-10 pb-4">ARTICLE {{$key + 1}} : {{$item["title"]}}</p>
+                <p class="text-lg tracking-normal leading-loose" style="line-height: 1.59">{{$item["detail"]}}</p>
             @endforeach
         @endif
     

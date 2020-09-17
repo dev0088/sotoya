@@ -121,7 +121,7 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_pro" class="text-base fontbold">Mon compte @if(Auth::user()->mode == 1)professionnel @else particulier @endif </a>
+                <a href="@if(Auth::user()->mode == 1){{ route('account_pro_projects') }}@else{{ route('account_part_projects') }}@endif" class="text-base fontbold">Mon compte @if(Auth::user()->mode == 1)professionnel @else particulier @endif </a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -132,7 +132,7 @@
         </div>
     </div>
     
-    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="{{ route('update_order_part') }}">
+    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="@if(Auth::user()->mode == 1){{ route('update_order_part') }}@else{{ route('update_order_pro') }}@endif">
         @csrf
 
         <input type="hidden" name="order_id" value="{{$order['id']}}"/>
@@ -144,7 +144,7 @@
                 {{-- <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 md:mr-1 md:ml-1 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a> --}}
                 {{-- <a class="py-4 mb-4 md:mb-0 md:ml-3 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a> --}}
 
-                <a href="{{ route('account_part_projects') }}" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Arrière</a>
+                <a href="@if(Auth::user()->mode == 1){{ route('account_pro_projects') }}@else{{ route('account_part_projects') }}@endif" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Arrière</a>
                 <button type="submit" class="py-4 mb-4 md:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">enregistrer</button>
 
             </div>
@@ -441,7 +441,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                         @if(isset($aeration) && count($aeration) > 0)
                             @foreach($aeration as $key => $item)
-                                <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 maxwidth-210 mx-auto type-select @if($item['id'] == $order["insulation_id"]) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 maxwidth-210 mx-auto type-select @if($item['id'] == $order["aeration_id"]) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                     <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                     <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                     <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">

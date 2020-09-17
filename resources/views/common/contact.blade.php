@@ -26,7 +26,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -40,20 +40,20 @@
     </div>
     
     <div class="w-full mx-auto maxwidth-676">
-        <p class="text-4xl fontbold pt-4 md:pt-9 pb-8 md:pb-15">Contactez-nous</p>
-        <div class="p-4 md:p-8 bg-white shadow-md">
+        <p class="text-4xl fontbold pt-4 md:pt-10 pb-8 md:pb-15">Contactez-nous</p>
+        <div class="p-4 md:p-8 bg-white shadow-md" style="padding-top:37px;">
             <p class="text-lg fontbold pb-3">Sujet</p>
-            <input id="subject" type="text" class="w-full appearance-none text-base p-4 bg-input" placeholder="Sujet de votre demande" required/>
-            <p class="text-lg fontbold pt-6 pb-3">E-mail</p>
-            <input id="email" type="email" class="w-full appearance-none text-base p-4 bg-input" placeholder="Adresse e-mail" required/>
-            <p class="text-lg fontbold pt-6 pb-3">Message</p>
-            <textarea id="comment" class="w-full appearance-none text-base p-4 bg-input h-40" placeholder="Comment peut-on vous aider ?" required></textarea>
+            <input id="subject" type="text" class="w-full appearance-none text-base px-4 bg-input" style="height:52px; padding-top:19px; padding-bottom:18px;" placeholder="Sujet de votre demande" required/>
+            <p class="text-lg fontbold pt-7 pb-3">E-mail</p>
+            <input id="email" type="email" class="w-full appearance-none text-base px-4 bg-input" style="height:52px; padding-top:19px; padding-bottom:18px;" placeholder="Adresse e-mail" required/>
+            <p class="text-lg fontbold pt-7 pb-3">Message</p>
+            <textarea id="comment" class="w-full appearance-none text-base p-4 bg-input" style="height:156px;" placeholder="Comment peut-on vous aider ?" required></textarea>
     
-            <p id="beforetext" class="text-base py-8">Veuillez remplir tous les champs du formulaire</p>
-            <p id="aftertext" class="hidden text-base pt-8 pb-20">Merci pour votre message, nous y répondrons dans les plus brefs délais.</p>
+            <p id="beforetext" class="text-base pt-9" style="padding-bottom:34px;">Veuillez remplir tous les champs du formulaire</p>
+            <p id="aftertext" class="hidden text-base pt-9 pb-20">Merci pour votre message, nous y répondrons dans les plus brefs délais.</p>
 
             <div class="w-full text-center md:text-left">
-                <button class="px-20 py-4 text-white fontbold bg-lightlightgray email-send">Envoyer</button>
+                <button class="px-20 py-4 text-white text-lg fontbold bg-lightlightgray email-send" style="height:52px; padding-top:19px; padding-bottom:15px;">Envoyer</button>
             </div>
         </div>
     </div>

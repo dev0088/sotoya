@@ -7,14 +7,6 @@
 @section('styles')
 <style>
  
-    option {
-        background-color: white;
-        border-radius: 10px;
-        padding: 16px;
-    }
-    select:focus {
-        border:2px solid #18A75A;
-    }
     .type-select {
         border:2px solid #e1e1e1;
         cursor: pointer;
@@ -102,7 +94,7 @@
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30 ">
 
     <div class="px-8 md:px-35">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
             <span>
@@ -127,8 +119,8 @@
                     <a class="py-4 mb-4 lg:mb-0 lg:ml-3 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
                 </div>
         
-                <div class="w-full bg-white mx-auto shadow-md relative items-center mt-4 pb-14 maxwidth-820">
-                    <p class="text-2xl fontbold py-8 text-center">Récapitulatif de votre configuration</p>
+                <div class="w-full bg-white mx-auto shadow-md relative items-center mt-4 pb-10 maxwidth-820">
+                    <p class="text-2xl fontbold py-10 text-center">Récapitulatif de votre configuration</p>
         
                     <div class="flex justify-between items-center px-3 md:px-8 h-15 bg-whitepink">
                         @if(isset($price))
@@ -141,7 +133,7 @@
                     <div class="grid grid-row-1 lg:grid-cols-2 col-gap-12 row-gap-0 pt-4 px-3 md:px-8">
                         <div>
                             @if(isset($joinery))
-                                <p class="text-base py-4">Type de menuiserie :<span id="joinery_result_finish" class="fontbold pl-3">{{$joinery["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Type de menuiserie :<span id="joinery_result_finish" class="fontbold pl-3">{{$joinery["name"]}}</span></p>
                                 <input type="hidden" name="joinery" value="{{$joinery['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
@@ -149,77 +141,77 @@
                         
                         <div>
                             @if(isset($height_size))
-                                <p class="text-base py-4">Largeur totale :<span id="height_size_result_finish" class="fontbold pl-3">{{$height_size["value"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Largeur totale :<span id="height_size_result_finish" class="fontbold pl-3">{{$height_size["value"]}}</span></p>
                                 <input type="hidden" name="height_size" value="{{$height_size['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($material))
-                                <p class="text-base py-4">Matériau :<span id="material_result_finish" class="fontbold pl-3">{{$material["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Matériau :<span id="material_result_finish" class="fontbold pl-3">{{$material["name"]}}</span></p>
                                 <input type="hidden" name="material" value="{{$material['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($insulation_size))
-                                <p class="text-base py-4">Pour isolation de :<span id="insulation_size_result_finish" class="fontbold pl-3">{{$insulation_size["value"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Pour isolation de :<span id="insulation_size_result_finish" class="fontbold pl-3">{{$insulation_size["value"]}}</span></p>
                                 <input type="hidden" name="insulation_size" value="{{$insulation_size['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($range))
-                                <p class="text-base py-4">Gamme :<span id="range_result_finish" class="fontbold pl-3">{{$range["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Gamme :<span id="range_result_finish" class="fontbold pl-3">{{$range["name"]}}</span></p>
                                 <input type="hidden" name="range" value="{{$range['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($aeration))
-                                <p class="text-base py-4">Aération :<span id="aeration_result_finish" class="fontbold pl-3">{{$aeration["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Aération :<span id="aeration_result_finish" class="fontbold pl-3">{{$aeration["name"]}}</span></p>
                                 <input type="hidden" name="aeration" value="{{$aeration['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($opening))
-                                <p class="text-base py-4">Type d’ouverture :<span id="opening_result_finish" class="fontbold pl-3">{{$opening["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Type d’ouverture :<span id="opening_result_finish" class="fontbold pl-3">{{$opening["name"]}}</span></p>
                                 <input type="hidden" name="opening" value="{{$opening['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($leave))
-                                <p class="text-base py-4">Nombre de vantaux :<span id="leave_result_finish" class="fontbold pl-3">{{$leave["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Nombre de vantaux :<span id="leave_result_finish" class="fontbold pl-3">{{$leave["name"]}}</span></p>
                                 <input type="hidden" name="leave" value="{{$leave['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($glazing))
-                                <p class="text-base py-4">Vitrage :<span id="glazing_result_finish" class="fontbold pl-3">{{$glazing["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Vitrage :<span id="glazing_result_finish" class="fontbold pl-3">{{$glazing["name"]}}</span></p>
                                 <input type="hidden" name="glazing" value="{{$glazing['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($installation))
-                                <p class="text-base py-4">Type de pose :<span id="installation_result_finish" class="fontbold pl-3">{{$installation["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Type de pose :<span id="installation_result_finish" class="fontbold pl-3">{{$installation["name"]}}</span></p>
                                 <input type="hidden" name="installation" value="{{$installation['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($color))
-                                <p class="text-base py-4">Couleur menuiserie :<span id="color_result_finish" class="fontbold pl-3">{{$color["name"]}}</span></p>
+                                <p class="text-base" style="padding-top:21px; padding-bottom:18px;">Couleur menuiserie :<span id="color_result_finish" class="fontbold pl-3">{{$color["name"]}}</span></p>
                                 <input type="hidden" name="color" value="{{$color['id']}}"/>
                                 <hr class="w-full"/>
                             @endif
                         </div>
                         <div>
                             @if(isset($width_size))
-                                <p class="text-base py-4">Hauteur totale :<span id="width_size_result_finish" class="fontbold pl-3">{{$width_size["value"]}}</span></p>
+                                <p class="text-base py-4" style="padding-top:21px; padding-bottom:18px;">Hauteur totale :<span id="width_size_result_finish" class="fontbold pl-3">{{$width_size["value"]}}</span></p>
                                 <input type="hidden" name="width_size" value="{{$width_size['id']}}"/>
                                 <hr class="w-full"/>
                             @endif

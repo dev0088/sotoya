@@ -72,16 +72,16 @@
         <div class="flex-none xl:flex relative justify-start lg:justify-between">
             
             <div class="absolute inset-y-0 xl:relative pl-8 pr-4 xl:pl-35 pt-8 md:pt-12 lg:pt-16 xl:pt-105 transform translate-y-3/10 xl:transform-none">
-                <p class="tracking-normal leading-tight text-black xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 fontbold text-3xl sm:text-4xl md:text-44">
+                <p class="tracking-normal leading-none text-black xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 xl:mb-6 fontbold text-3xl sm:text-4xl md:text-44">
                     Nous fournissons et
-                    <br class=""/>fabriquons des menuiseries
-                    <br class=""/>pour les professionnels
-                    <br class=""/>et les particuliers
+                    <br class="hidden xl:block"/>fabriquons des menuiseries
+                    <br class="hidden xl:block"/>pour les professionnels
+                    <br class="hidden xl:block"/>et les particuliers
                 </p>
                 @if(Auth::user())
-                    <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white fontbold px-10 py-4 bg-green">Voir le configurateur</a>
+                    <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white text-lg fontbold px-10 bg-green" style="height:52px; padding-top:19px; padding-bottom:15px;">Voir le configurateur</a>
                 @else
-                <button id="modal-trigger-button" class="text-white fontbold px-10 py-4 bg-green">Voir le configurateur</button>
+                <button id="modal-trigger-button" class="text-white text-lg fontbold px-10 bg-green" style="height:52px; padding-top:19px; padding-bottom:15px;">Voir le configurateur</button>
                 @endif
             </div>
     
@@ -91,14 +91,14 @@
         </div>
     </div>
     
-    <div class="w-full px-8 md:px-20">
-        <div class="w-full relative bg-white py-8 md:py-15 shadow-md mx-auto maxwidth-1280 top-4 md:top-minus80">
+    <div class="w-full px-8 md:px-20 relative" style="">
+        <div class="w-full relative bg-white py-8 md:pt-70 md:pb-15 shadow-md mx-auto maxwidth-1280 top-4 md:top-minus80" style="z-index: 20">
             <p class="text-4xl pb-6 text-center fontbold">Le configurateur</p>
         
-            <p class="w-8/10 text-lg text-left md:text-center leading-loose mb-15 mx-auto">
+            <p class="w-8/10 text-lg px-6 text-left md:text-center leading-relaxed mb-15 mx-auto">
                 Chez Sotoya Constructions, nous développons des partenariats avec de nombreuses entreprises 
-                <br/>leaders sur leur marché. Ces collaborations renforcent notre expertise dans le domaine de la
-                <br/> menuiserie. Le configurateur vous guidera dans vos recherches.
+                <br class="hidden md:block"/>leaders sur leur marché. Ces collaborations renforcent notre expertise dans le domaine de la
+                <br class="hidden md:block"/> menuiserie. Le configurateur vous guidera dans vos recherches.
             </p>
         
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-12 row-gap-8 md:row-gap-15 col-gap-4 md:col-gap-10">
@@ -114,9 +114,10 @@
             
             </div>
         </div>
+        <div class="w-full absolute bottom-0 left-0 bg-whitegreen py-0 md:py-20" style="z-index: 10"></div>
     </div>
     
-    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-30" style="">
+    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24" style="padding-top:23px;">
         <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto" style="">
             <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-6 xl:pr-4" style="">
                 <p class="pt-4 pb-8 lg:pb-4 xl:pb-8 text-4xl fontbold">Qui sommes-nous ?</p>
@@ -158,22 +159,22 @@
 
             </div>
 
-            <div class="block lg:hidden">
-                <img class="w-full float-right maxwidth-608" src="{{ asset('images/images about@2x.png') }}"/>
+            <div class="block lg:hidden bg-whitegreen">
+                <img class="w-full float-right maxwidth-608 pb-24" src="{{ asset('images/images about@2x.png') }}"/>
             </div>
 
         </div>
     </div>
     
-    <div class="bg-white" class="py-8 md:py-30">
-        <p class="text-4xl text-center pb-6 fontbold">Nos partenaires</p>
-        <p class="w-full text-xl leading-normal px-8 mx-auto maxwidth-760">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
+    <div class="bg-white" class="py-30">
+        <p class="text-4xl text-center pt-30 pb-6 fontbold">Nos partenaires</p>
+        <p class="w-full text-lg tracking-tight text-center leading-normal mx-auto maxwidth-760">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
         <img class="mx-auto mt-8 md:mt-15" src="{{ asset('images/partenaire 2 sapa@2x.png') }}"/>
     </div>
     
     <div id="voir-modal" class="modal mx-auto z-50">
     
-        <div class="modal-content relative p-8 md:p-15">
+        <div class="modal-content relative px-8 py-8 md:px-15 md:pt-70 md:pb-15">
     
             <span class="absolute top-4 md:top-8 right-4 md:right-8 text-4xl close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="19.998" viewBox="0 0 20.001 19.998">

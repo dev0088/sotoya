@@ -131,14 +131,7 @@ class PartController extends Controller
     public function projects() 
     {
 
-        // $projects = 
-        // [
-        //     ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-        //     ["date"=>"16 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>90, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-        //     ["date"=>"12 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>240, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"]
-        // ];
-
-        $projects = Order::where('state_order', "0")->get();
+        $projects = Order::where('state_order', "0")->where('user_id', Auth::id())->get();
 
         return view('particular.account.projects', compact('projects'));
         
@@ -147,14 +140,7 @@ class PartController extends Controller
     public function history()
     {
 
-        // $history = 
-        // [
-        //     ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-        //     ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-        //     ["date"=>"9 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"]
-        // ];
-
-        $history = Order::where('state_order', "1")->get();
+        $history = Order::where('state_order', "1")->where('user_id', Auth::id())->get();
 
         return view('particular.account.history', compact('history'));
 
@@ -208,8 +194,6 @@ class PartController extends Controller
 
     public function recordorder(Request $request) 
     {
-
-        //Record Order Here
 
         $joinery_id = $request->post("joinery");
         $material_id = $request->post("material");
@@ -376,6 +360,17 @@ class PartController extends Controller
         $update = Order::where('id', $request->order_id)->update($data);
 
         return redirect("/account_part_projects");
+
+    }
+
+    public function deleteorder($id)
+    {
+
+        $delete = Order::find($id)->delete();
+
+        if($delete) {
+            return redirect("/account_part_projects");
+        }
 
     }
 

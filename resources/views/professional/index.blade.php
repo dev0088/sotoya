@@ -111,7 +111,7 @@
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30 ">
 
     <div class="px-8 md:px-20">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -124,7 +124,8 @@
         </div>
     </div>
 
-    <form method="post" action="">
+    <form method="post" action="{{ route('record_order_pro') }}">
+        @csrf
 
         <div class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto">
     
@@ -138,14 +139,14 @@
         
                 <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="flex bg-white mx-auto relative items-center select-item">
-                        <p class="text-lg fontbold py-4 mx-auto">Type de menuiserie</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Type de menuiserie</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-55 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
                                     {{-- <div class="relative rounded-md mx-auto text-center type-select @if($item == $joinery_selected) active @endif " style="max-width:210px;"> --}}
-                                    <div class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if($item['default'] == 1) active @endif">
+                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if($item['default'] == 1) active @endif">
                                     <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
                                         <div class="w-full absolute bottom-0 rounded-b-md">
                                             <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
@@ -165,13 +166,13 @@
                
                 <div id="material" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="flex bg-white mx-auto relative items-center select-item">
-                        <p class="text-lg fontbold py-4 mx-auto">Matériau</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Matériau</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($material) && count($material) > 0)
                                 @foreach($material as $key => $item)
-                                    <div class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size: 13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -189,13 +190,13 @@
         
                 <div id="range" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Gamme</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Gamme</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($range) && count($range) > 0)
                                 @foreach($range as $key => $item)
-                                    <div class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -214,13 +215,13 @@
         
                 <div id="opening" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Type d’ouverture</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Type d’ouverture</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($opening) && count($opening) > 0)
                                 @foreach($opening as $key => $item)
-                                    <div class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -239,13 +240,13 @@
         
                 <div id="leave" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Nombre de vantaux</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Nombre de vantaux</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($leave) && count($leave) > 0)
                                 @foreach($leave as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -263,13 +264,13 @@
         
                 <div id="installation" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Type de pose</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Type de pose</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($installation) && count($installation) > 0)
                                 @foreach($installation as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto ax-width-120 type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto ax-width-120 type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -289,9 +290,9 @@
         
                 <div id="dimension" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Dimensions</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Dimensions</p>
                     </div>
-                    <div class="bg-white pt-4 px-r md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-r md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 px-4 pb-4 mb-4">
     
                             <div class="h-12">
@@ -302,6 +303,15 @@
                                             @foreach($height as $key => $item)
                                                 @if($item["default"] == 1)
                                                     {{$item["value"]}}
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </span>
+                                    <span id="height_size_default" class="hidden">
+                                        @if(isset($height) && count($height) > 0)
+                                            @foreach($height as $key => $item)
+                                                @if($item["default"] == 1)
+                                                    {{$item["id"]}}
                                                 @endif
                                             @endforeach
                                         @endif
@@ -319,7 +329,7 @@
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($height) && count($height) > 0)
                                         @foreach($height as $key => $item)
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -341,6 +351,15 @@
                                             @endforeach
                                         @endif
                                     </span>
+                                    <span id="width_size_default" class="hidden">
+                                        @if(isset($width) && count($width) > 0)
+                                            @foreach($width as $key => $item)
+                                                @if($item["default"] == 1)
+                                                    {{$item["id"]}}
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </span>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                         <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
                                             <path d="M16.518,26.539a.921.921,0,0,0,.685-.3l7.924-8.108a.912.912,0,0,0,.276-.654.926.926,0,0,0-.941-.941.99.99,0,0,0-.665.266l-7.28,7.444L9.238,16.8a.971.971,0,0,0-.665-.266.926.926,0,0,0-.941.941.954.954,0,0,0,.276.665l7.924,8.1A.937.937,0,0,0,16.518,26.539Z" transform="translate(-7.633 -16.539)" fill="#3b3b3a"/>
@@ -354,7 +373,7 @@
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($width) && count($width) > 0)
                                         @foreach($width as $key => $item)
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -371,9 +390,9 @@
         
                 <div id="insulation" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Pour isolation de</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Pour isolation de</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white pt-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
     
                             <div class="h-12">
@@ -384,6 +403,15 @@
                                             @foreach($insulation as $key => $item)
                                                 @if($item["default"] == 1)
                                                     {{$item["value"]}}
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </span>
+                                    <span id="insulation_size_default" class="hidden">
+                                        @if(isset($insulation) && count($insulation) > 0)
+                                            @foreach($insulation as $key => $item)
+                                                @if($item["default"] == 1)
+                                                    {{$item["id"]}}
                                                 @endif
                                             @endforeach
                                         @endif
@@ -401,7 +429,7 @@
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($insulation) && count($insulation) > 0)
                                         @foreach($insulation as $key => $item)  
-                                            <p class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -419,13 +447,13 @@
         
                 <div id="aeration" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Aération</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Aération</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($aeration) && count($aeration) > 0)
                                 @foreach($aeration as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 maxwidth-210 mx-auto type-select @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 maxwidth-210 mx-auto type-select @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -443,14 +471,14 @@
         
                 <div id="glazing" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Vitrage</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Vitrage</p>
                     </div>
                     {{-- <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part"> --}}
-                    <div class="bg-white pt-4 px-4 md:px-8 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-8 pb-4 md:pb-14 toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)
                                 @foreach($glazing as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-335 @if($item['default'] == 1) active @endif check-item" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-335 @if($item['default'] == 1) active @endif check-item" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -468,13 +496,13 @@
         
                 <div id="color" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <p class="text-lg fontbold py-4 mx-auto">Couleur menuiserie</p>
+                        <p class="text-2xl fontbold py-10 mx-auto">Couleur menuiserie</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-10 row-gap-10">
                             @if(isset($color) && count($color) > 0)
                                 @foreach($color as $key => $item)
-                                    <div class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item @if($item['default'] == 1) active @endif" style="background-color: {{$item['value']}};">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item @if($item['default'] == 1) active @endif" style="background-color: {{$item['value']}};">
                                         <div class="w-full absolute bottom-0">
                                             <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-sm">{{$item['name']}}</p>
                                         </div>
@@ -494,95 +522,108 @@
             </div>
             <div class="w-full lg:w-4/12 pl-0 pt-6 lg:pt-0">
                 <div class="mx-auto maxwidth-418">
-                    <div class="pb-10 shadow-md bg-white">
-                        <p class="text-2xl pt-8 pb-7 fontbold text-center">Votre configurateur</p>
+                    <div class="pb-6 shadow-md bg-white">
+                        <p class="text-2xl pt-10 fontbold text-center" style="padding-bottom: 27px;">Votre configurateur</p>
                         
                         <div class="flex justify-between items-center px-3 md:px-8 h-15 bg-whitepink">
                             <p class="text-lg fontbold">Prix :</p>
                             <p id="price" class="text-4xl fontbold">0€</p>
+                            <input id="price_submit" type="hidden" name="price_submit"/>
                         </div>
                         <div class="px-3 md:px-8">
                             <div id="joinery_result_wrapper">
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Type de menuiserie :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type de menuiserie :</p>
                                     <p id="joinery_result" class="fontbold py-2 pl-3">Fenêtre</p>
+                                    <input id="joinery_submit" type="hidden" name="joinery_submit"/>
                                 </div>
                             </div>
                             <div id="material_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Matériau :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Matériau :</p>
                                     <p id="material_result" class="fontbold py-2 pl-3">Aluminium</p>
+                                    <input id="material_submit" type="hidden" name="material_submit"/>
                                 </div>
                             </div>
                             <div id="range_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Gamme :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Gamme :</p>
                                     <p id="range_result" class="fontbold py-2 pl-3">Gamme 70</p>
+                                    <input id="range_submit" type="hidden" name="range_submit"/>
                                 </div>
                             </div>
                             <div id="opening_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Type d’ouverture :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type d’ouverture :</p>
                                     <p id="opening_result" class="fontbold py-2 pl-3">Abattant</p>
+                                    <input id="opening_submit" type="hidden" name="opening_submit"/>
                                 </div>
                             </div>
                             <div id="leave_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Nombre de vantaux :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Nombre de vantaux :</p>
                                     <p id="leave_result" class="fontbold py-2 pl-3">1 vantail</p>
+                                    <input id="leave_submit" type="hidden" name="leave_submit"/>
                                 </div>
                             </div>
                             <div id="installation_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Type de pose :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type de pose :</p>
                                     <p id="installation_result" class="fontbold py-2 pl-3">Applique</p>
+                                    <input id="installation_submit" type="hidden" name="installation_submit"/>
                                 </div>
                             </div>
                             <div id="height_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Hauteur totale :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Hauteur totale :</p>
                                     <p id="height_size_result" class="fontbold py-2 pl-3">600</p>
+                                    <input id="height_size_submit" type="hidden" name="height_size_submit"/>
                                 </div>
                             </div>
                             <div id="width_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Largeur totale :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Largeur totale :</p>
                                     <p id="width_size_result" class="fontbold py-2 pl-3">600</p>
+                                    <input id="width_size_submit" type="hidden" name="width_size_submit"/>
                                 </div>
                             </div>
                             <div id="insulation_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Pour isolation de :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Pour isolation de :</p>
                                     <p id="insulation_size_result" class="fontbold py-2 pl-3">120</p>
+                                    <input id="insulation_size_submit" type="hidden" name="insulation_size_submit"/>
                                 </div>
                             </div>
                             <div id="aeration_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Aération :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Aération :</p>
                                     <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
+                                    <input id="aeration_submit" type="hidden" name="aeration_submit"/>
                                 </div>
                             </div>
                             <div id="glazing_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Vitrage :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Vitrage :</p>
                                     <p id="glazing_result" class="fontbold py-2 pl-3">4/16/4 FE</p>
+                                    <input id="glazing_submit" type="hidden" name="glazing_submit"/>
                                 </div>
                             </div>
                             <div id="color_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base py-4">Couleur menuiserie :</p>
+                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Couleur menuiserie :</p>
                                     <p id="color_result" class="fontbold py-2 pl-3">RAL 9016</p>
+                                    <input id="color_submit" type="hidden" name="color_submit"/>
                                 </div>
                             </div>
                             
@@ -606,15 +647,16 @@
                     </svg>              
                 </span>
         
-                <p class="text-4xl pb-2 text-black fontbold text-center">Enregistrer mon projet</p>
+                <p class="text-4xl text-black fontbold text-center" style="padding-top:10px;">Enregistrer mon projet</p>
         
                 <div>
-                    <p class="text-lg fontbold pt-8 pb-3">Sélectionner le projet</p>
-                    <div class="h-12">
+                    <p class="text-lg fontbold pt-12 pb-3">Sélectionner le projet</p>
+                    <div class="" style="height: 52px;">
                         <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
                             <span id="select-project">
                                 projet
                             </span>
+                            <input id="select-project-submit" type="hidden" name="select_project_submit"/> 
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                 <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
                                     <path d="M16.518,26.539a.921.921,0,0,0,.685-.3l7.924-8.108a.912.912,0,0,0,.276-.654.926.926,0,0,0-.941-.941.99.99,0,0,0-.665.266l-7.28,7.444L9.238,16.8a.971.971,0,0,0-.665-.266.926.926,0,0,0-.941.941.954.954,0,0,0,.276.665l7.924,8.1A.937.937,0,0,0,16.518,26.539Z" transform="translate(-7.633 -16.539)" fill="#3b3b3a"/>
@@ -624,25 +666,23 @@
                                 </svg>
                             </div>
                         </button>
-                        <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                            <p id="project-disabled" class="bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">projet</p>
+                        <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
+                            <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">projet</p>
                             @if(isset($projects) && count($projects) > 0)
                                 @foreach($projects as $key => $item)  
-                                    <p class="project-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
+                                    <p id="{{$item['id']}}" class="project-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
                                 @endforeach
                             @endif
                         </div>
                     </div>
             
-                    <p class="text-lg fontbold pt-8 pb-3">Ou créer un nouveau projet</p>
+                    <p class="text-lg fontbold pb-3" style="padding-top:37px;">Ou créer un nouveau projet</p>
             
-                    <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base" placeholder="Nom du projet"/>    
+                    <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base" name="new_project_submit" placeholder="Nom du projet"/>    
                     
                 </div>
                 <div class="w-full text-center md:text-left">
-                    <a href="/account_pro_projects">
-                        <button class="px-16 py-4 mt-8 font-bold text-white enregister-button">Enregister</button>
-                    </a>
+                    <button type="button" class="px-16 py-4 mt-8 font-bold text-white enregister-button">Enregister</button>
                 </div>
         
             </div>
@@ -713,6 +753,7 @@
         console.log(price);
   
         $("#" + options[changedIndex] + "_result").html(changedName);
+        $("#" + options[changedIndex] + "_submit").val($(this).attr("id"));
 
         totalPriceCalculate();
 
@@ -759,11 +800,13 @@
 
                 var changedName = $("#" + options[i]).find("div.active").find("p").first().html();
                 var changedPrice = $("#" + options[i]).find("div.active").find("p").last().html();
+                var changedId = $("#" + options[i]).find("div.active").attr("id");
 
                 selected[i] = changedName;
                 price[i] = changedPrice;
 
                 $("#" + options[i] + "_result").html(changedName);
+                $("#" + options[i] + "_submit").val(changedId);
 
             }
 
@@ -775,6 +818,7 @@
             dimensions[i] = changedName;
             
             $("#" + dimension_options[i] + "_result").html(changedName);
+            $("#" + dimension_options[i] + "_submit").val($("#" + dimension_options[i] + "_default").html());
 
             if(i === 0) {
             for(var j = 0 ; j < height_prices.length ; j ++) {
@@ -810,21 +854,15 @@
 
     var selectProject = false;
 
-    $("#select-project").change(function() {
-        console.log("yes");
-
-        selectProject = true;
-        $("#new-project").val(null);
-
-        validateForm();
-    });
-
     $("#new-project").keyup(function() {
         validateForm();
     });
 
     $("#new-project").focus(function() {
+
         $("#select-project").html($("#project-disabled").html());
+        $("#select-project-submit").val("");
+        
     });
 
     function validateForm() {
@@ -837,12 +875,14 @@
             console.log("Yes");
             if(!button.hasClass("active")) {
                 button.addClass("active");
+                button.attr("type", "submit");
             }
 
         } else {
             console.log("No");
             if(button.hasClass("active")) {
                 button.removeClass("active");
+                button.attr("type", "button");
             }
         }
     }
@@ -850,7 +890,6 @@
     $(".select-button").click(function(event) {
 
         event.stopPropagation();
-        
 
         $(this).next().toggle();
         if($(this).next().css("display") == "none") {
@@ -869,7 +908,14 @@
         $(this).parent().prev().find("svg.down-icon").show();
         $(this).parent().prev().find("span").html($(this).html());
 
+        $("#select-project-submit").val($(this).attr("id"));
+
         $("#new-project").val("");
+
+        selectProject = true;
+
+        validateForm();
+        
     });
 
 
@@ -904,7 +950,7 @@
         $("#" + dimension_options[changedIndex] + "_result_wrapper").show();
         $("#" + dimension_options[changedIndex] + "_result").html(changedName);
         $("#" + dimension_options[changedIndex] + "_result_finish").html(changedName);
-        $("#" + dimension_options[changedIndex] + "_submit").val(changedName);
+        $("#" + dimension_options[changedIndex] + "_submit").val($(this).attr("id"));
 
         if(changedIndex === 0) {
             for(var i = 0 ; i < height_prices.length ; i ++) {

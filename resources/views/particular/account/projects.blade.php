@@ -20,7 +20,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -45,9 +45,11 @@
         @if(isset($projects) && count($projects) > 0)
             @foreach($projects as $key => $item)
                 <div class="relative bg-white shadow-md">
-                    <svg class="absolute right-6 top-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.001 19.998">
-                        <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
-                    </svg>
+                    <a href="/delete_order_part/{{$item['id']}}" class="absolute right-6 top-6 cursor-pointer">
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.001 19.998">
+                            <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
+                        </svg>
+                    </a>
                     <p class="text-2xl fontbold text-center pt-8">Enregistrement</p><br/>
                     {{-- <p class="text-2xl fontbold text-center pb-6">du {{$item["created_at"]}}</p> --}}
                     <p class="text-2xl fontbold text-center pb-6">du <span class="capitalize">
@@ -86,7 +88,7 @@
     </div>
 
     @if(count($projects) == 0)
-        <p class="fontbold capitalize text-center text-2xl py-10">pas de projet</p>
+        <p class="fontbold capitalize text-center text-2xl py-20 items-center" style="height:592px;">pas de projet</p>
     @endif
 
 </main>

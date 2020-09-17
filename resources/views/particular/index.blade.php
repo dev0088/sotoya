@@ -7,14 +7,6 @@
 @section('styles')
 <style>
  
-    option {
-        background-color: white;
-        border-radius: 10px;
-        padding: 16px;
-    }
-    select:focus {
-        border:2px solid #18A75A;
-    }
     .type-select {
         border:2px solid #e1e1e1;
         cursor: pointer;
@@ -31,48 +23,6 @@
 
     .select-item {
         cursor: pointer;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        position: fixed;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-     .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        /* padding: 10px; */
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 770px;
-
-    }
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .enregister-button {
-        background-color: #b0b0af;
-    }
-    .enregister-button.active {
-        background-color: #18A75A;
     }
 
     .maxwidth-820 {
@@ -107,7 +57,7 @@
 <main id="main-content" class="bg-whitegreen  pb-10 md:pb-30">
 
     <div class="px-8 md:px-20">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
             <span>
@@ -136,9 +86,9 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Type de menuiserie</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type de menuiserie</p>
                     </div>
-                    <div style="" class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part hidden">
+                    <div style="" class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part hidden">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
@@ -171,7 +121,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Matériau</p>
+                        <p class="text-2xl fontbold py-4 mx-auto step-title">Matériau</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -203,7 +153,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Gamme</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Gamme</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -236,7 +186,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Type d’ouverture</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type d’ouverture</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -269,7 +219,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Nombre de vantaux</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Nombre de vantaux</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -301,7 +251,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Type de pose</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type de pose</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -335,7 +285,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Dimensions</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Dimensions</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
@@ -407,7 +357,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Pour isolation de</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Pour isolation de</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
@@ -453,7 +403,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Aération</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Aération</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -485,7 +435,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Vitrage</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Vitrage</p>
                     </div>
                     {{-- <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part"> --}}
                     <div class="bg-white pt-4 px-4 md:px-8 pb-4 md:pb-14 hidden toggle-part">
@@ -519,7 +469,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-lg fontbold py-4 mx-auto">Couleur menuiserie</p>
+                        <p class="text-2xl fontbold py-10 mx-auto step-title">Couleur menuiserie</p>
                     </div>
         
                     <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
@@ -544,83 +494,13 @@
                 </div>
     
             </div>
-    
-            <div id="transaction_finish" class="hidden">
-    
-                <div class="grid grid-cols-1 md:grid-cols-3 mb-4 mx-auto maxwidth-820">
-                    <a href="/" class="py-4 mb-4 md:mb-0 md:mr-3 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 md:mr-1 md:ml-1 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
-                    <a class="py-4 mb-4 md:mb-0 md:ml-3 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
-                </div>
-        
-                <div class="w-full bg-white mx-auto shadow-md relative items-center mt-4 pb-14 maxwidth-820">
-                    <p class="text-2xl fontbold py-8 text-center">Récapitulatif de votre configuration</p>
-        
-                    <div class="flex justify-between items-center px-3 md:px-8 h-15 bg-whitepink">
-                        <p class="text-lg fontbold">Prix :</p>
-                        <p id="price_finish" class="text-4xl fontbold">160€</p>
-                    </div>
-        
-                    <div class="grid grid-row-1 lg:grid-cols-2 col-gap-12 row-gap-0 pt-4 px-3 md:px-8">
-                        <div>
-                            <p class="text-base py-4">Type de menuiserie :<span id="joinery_result_finish" class="fontbold pl-3">Fenêtre</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Largeur totale :<span id="height_size_result_finish" class="fontbold pl-3">600</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Matériau :<span id="material_result_finish" class="fontbold pl-3">Aluminium</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Pour isolation de :<span id="insulation_size_result_finish" class="fontbold pl-3">120</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Gamme :<span id="range_result_finish" class="fontbold pl-3">Gamme 70</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Aération :<span id="aeration_result_finish" class="fontbold pl-3">15 M3/H</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Type d’ouverture :<span id="opening_result_finish" class="fontbold pl-3">Abattant</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Nombre de vantaux :<span id="leave_result_finish" class="fontbold pl-3">1 vantail</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Vitrage :<span id="glazing_result_finish" class="fontbold pl-3">4/16/4 FE</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Type de pose :<span id="installation_result_finish" class="fontbold pl-3">Applique</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Couleur menuiserie :<span id="color_result_finish" class="fontbold pl-3">RAL 9016</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                        <div>
-                            <p class="text-base py-4">Hauteur totale :<span id="width_size_result_finish" class="fontbold pl-3">600</span></p>
-                            <hr class="w-full"/>
-                        </div>
-                    </div>
-        
-                </div>
-            </div>
             
         </div>
     
         <div id="transaction_process_panel" class="w-full lg:w-4/12 pl-0 pt-6 lg:pt-0">
             <div class="mx-auto" style="max-width:418px;">
                 <div class="flex">
-                <a href="/part/@if(isset($selected_joinery)){{$selected_joinery}}@endif" class="w-1/2 mr-2 shadow-md bg-white cursor-pointer">
+                    <a href="/part/@if(isset($selected_joinery)){{$selected_joinery}}@endif" class="w-1/2 mr-2 shadow-md bg-white cursor-pointer">
                         <p class="w-full text-lg py-4 text-center fontbold">Retour</p>
                     </a>
                     <button id="follow_button" type="button" class="w-1/2 ml-2 shadow-md bg-white cursor-pointer">
@@ -629,7 +509,7 @@
                 </div>
         
                 <div class="mt-4 pb-10 shadow-md bg-white">
-                    <p class="text-2xl pt-8 pb-7 fontbold text-center">Votre configurateur</p>
+                    <p class="text-2xl pt-10 fontbold text-center" style="padding-bottom:27px;">Votre configurateur</p>
                     
                     <div class="flex justify-between items-center px-3 md:px-8" style="height:60px; background-color:#f7f7f7;">
                         <p class="text-lg fontbold">Prix :</p>
@@ -744,55 +624,6 @@
     </form>
     
     <p id="joinery_selected" class="hidden">@if(isset($selected_joinery)) {{$selected_joinery}} @endif</p>
-    
-    <div id="enregister-modal" class="modal mx-auto z-50">
-    
-        <div class="modal-content relative p-8 md:p-15">
-    
-            <span class="absolute top-4 md:top-8 right-4 md:right-8 text-4xl close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="19.998" viewBox="0 0 20.001 19.998">
-                    <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
-                </svg>              
-            </span>
-    
-            <p class="text-4xl pb-2 text-black fontbold text-center">Enregistrer mon projet</p>
-    
-            <div>
-                <p class="text-lg fontbold pt-8 pb-3">Sélectionner le projet</p>
-    
-                <div class="flex relative">
-                    <select id="select-project" class="block appearance-none w-full bg-white border border-gray-300 rounded-md p-4">
-                        <option class="select-item" disabled selected>projet</option>
-                        <option class="select-item">600</option>
-                        <option class="select-item">700</option>
-                        <option class="select-item">800</option>
-                        <option class="select-item">900</option>
-                        <option class="select-item">1000</option>
-                        <option class="select-item">1100</option>
-                        <option class="select-item">1200</option>
-                        <option class="select-item">1300</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                        </svg>
-                    </div>
-                </div>
-        
-                <p class="text-lg fontbold pt-8 pb-3">Ou créer un nouveau projet</p>
-        
-                <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base" placeholder="Nom du projet"/>    
-                
-            </div>
-            <div class="w-full text-center md:text-left">
-                <a href="/account_pro_projects">
-                    <button class="px-16 py-4 mt-8 font-bold text-white enregister-button">Enregister</button>
-                </a>
-            </div>
-    
-        </div>
-    
-    </div>
 
 </main>
 
@@ -831,7 +662,7 @@
             $(this).find("svg.plus-icon").show();
             $(this).find("svg.minus-icon").hide();
         }
-    })
+    });
 
     $(function() {
 
@@ -875,9 +706,6 @@
         console.log(step);
 
         if(step == 10) {
-            // $("#transaction_process").hide();
-            // $("#transaction_process_panel").hide();
-            // $("#transaction_finish").show();
 
             $(this).attr("type", "submit");
 
@@ -931,12 +759,19 @@
     function toggle() {
 
         $(".toggle-part").each(function() {
+
             if($(this).parent().attr("id") === options[step]) {
                 $(this).show(500);
                 $(this).prev().find("div").hide();
+
+                $(this).prev().find("p.step-title.py-4").removeClass("py-4").addClass("py-10").removeClass("text-lg").addClass("text-2xl");
+
             } else {
                 $(this).hide(1000);
                 $(this).prev().find("div").show();
+
+                $(this).prev().find("p.step-title.py-10").removeClass("py-10").addClass("py-4").removeClass("text-2xl").addClass("text-lg");
+
             }
         });
 
@@ -957,23 +792,6 @@
         $("#price_finish").html(total + "€");
         $("#price_submit").val(total + "€");
 
-    }
-
-    /////Modal Trigger///////
-    var modal = document.getElementById("enregister-modal");
-    var btn = document.getElementById("modal-trigger-button");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
     }
 
     $(function() {

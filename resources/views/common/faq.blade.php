@@ -20,7 +20,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -33,7 +33,7 @@
         </div>
     </div>
     
-    <p class="text-4xl fontbold pt-4 md:pt-9 pb-8 md:pb-15">Foire aux questions (FAQ)</p>
+    <p class="text-4xl fontbold pt-4 md:pt-10 pb-8 md:pb-15">Foire aux questions (FAQ)</p>
     
     <div class="w-full grid grid-cols-1 row-gap-4 maxwidth-960">
         @if(isset($faqs) && count($faqs) > 0)

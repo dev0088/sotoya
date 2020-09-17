@@ -23,7 +23,7 @@
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30">
 
     <div class="px-8 md:px-35">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
