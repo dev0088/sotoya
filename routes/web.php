@@ -43,6 +43,7 @@ Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delet
 
 
 Route::get('/pro', 'ProController@index')->name('pro');
+Route::get('/pro/{id}', 'ProController@index')->name('pro')->middleware('project');
 Route::get('/account_pro', 'ProController@account')->name('account_pro');
 Route::get('/account_pro_projects', 'ProController@projects')->name('account_pro_projects');
 Route::get('/account_pro_his', 'ProController@history')->name('account_pro_his');
@@ -55,6 +56,8 @@ Route::get('/modify_order_pro/{id}', 'ProController@modifyorder')->name('modify_
 Route::post('/modify_order_pro', 'ProController@updateorder')->name('update_order_pro');
 Route::get('/delete_order_pro/{id}', 'ProController@deleteorder')->name('delete_order_pro')->middleware('order');
 Route::post('/create_project_pro', 'ProController@createproject')->name('create_project_pro');
+Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all')->middleware('project');
+Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
 
 
 

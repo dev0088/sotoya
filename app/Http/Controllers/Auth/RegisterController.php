@@ -74,18 +74,40 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'gender' => $data['gender'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'mode' => $data['mode'],
-            'company' => $data['company'],
-            'address' => $data['address'],
-            'postcode' => $data['postcode'],
-            'city' => $data['city'],
-            'telephone' => $data['telephone'],
-        ]);
+        if($data["mode"] == 1) {
+
+            $company = ($data["company"]) ? $data["company"] : "sans nom";
+
+            return User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'gender' => $data['gender'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'mode' => $data['mode'],
+                'company' => $company,
+                'address' => $data['address'],
+                'postcode' => $data['postcode'],
+                'city' => $data['city'],
+                'telephone' => $data['telephone'],
+            ]);
+
+        } else {
+
+            return User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'gender' => $data['gender'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'mode' => $data['mode'],
+                'address' => $data['address'],
+                'postcode' => $data['postcode'],
+                'city' => $data['city'],
+                'telephone' => $data['telephone'],
+            ]);
+
+        }
+        
     }
 }

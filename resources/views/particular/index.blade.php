@@ -678,6 +678,7 @@
 
             $("#joinery_result_wrapper").show();
             $("#joinery_result").html($("#joinery").find("div.active").find("p").first().html());
+            $("#joinery_submit").val($("#joinery").find("div.active").attr("id"));
             $("#material").show();
 
         } else {
@@ -915,9 +916,11 @@
 
     $(window).click(function() {
 
-        console.log($(".select-button").each(function() {
+        $(".select-button").each(function() {
             $(this).next().hide();
-        }));
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
+        });
 
     });
 

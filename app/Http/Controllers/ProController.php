@@ -30,10 +30,10 @@ class ProController extends Controller
         $this->middleware('pro');
     }
 
-    public function index()
+    public function index($id = null)
     {
 
-        $projects = Project::all();
+        $projects = Project::where('user_id', Auth::id())->get();
 
         $joinery = Join::all();
         $material = Material::all();
@@ -48,8 +48,16 @@ class ProController extends Controller
         $glazing = Glazing::all();
         $color = Color::all();
 
+        if($id) {
 
-        return view('professional.index', compact('joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color', 'projects'));
+            return view('professional.index', compact('id', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color', 'projects'));
+
+        } else {
+
+            return view('professional.index', compact('joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color', 'projects'));
+
+        }
+
     }
 
     public function account() 
@@ -68,9 +76,9 @@ class ProController extends Controller
 
             if(count($projects) > 0) {
 
-                $id = Project::first()->id;
+                $id = Project::where('user_id', Auth::id())->first()->id;
 
-                $orders = Project::first()->orders()->get();
+                $orders = Project::where('user_id', Auth::id())->first()->orders()->get();
 
                 return view('professional.account.projects', compact('projects', 'id', 'orders'));
 
@@ -82,7 +90,7 @@ class ProController extends Controller
 
         } else {
 
-            $orders = Project::where('id', $id)->first()->orders()->get();
+            $orders = Project::where('id', $id)->first()->orders()->where('state_order', "0")->get();
 
             return view('professional.account.projects', compact('projects', 'id', 'orders'));
 
@@ -151,7 +159,7 @@ class ProController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            'company' => $request->company,
+            'company' => ($request->company) ? $request->company : "sans nom",
             'address' => $request->address,
             'postcode' => $request->postcode,
             'city' => $request->city,
@@ -381,7 +389,24 @@ class ProController extends Controller
 
         return redirect()->route("account_pro_projects_id", $project->id);
 
+    }
 
+    public function ordereverything($id)
+    {
+
+        $orders = Order::where('project_id', $id)->get();
+
+        foreach($orders as $key => $order) {
+
+            $data = ([
+                'state_order' => "1"
+            ]);
+    
+            $update = $order->update($data);
+
+        }
+
+        return redirect()->route("account_pro_projects_id", $id);
 
     }
 

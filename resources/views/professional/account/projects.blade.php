@@ -84,13 +84,13 @@
         </div>
     </div>
     
-    <div class="w-full pt-4 md:pt-10 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
-        <p class="text-4xl fontbold text-center pb-11">Mes projets enregistrés</p>
+    <div class="w-full pt-4 md:pt-50 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
+        <p class="text-4xl fontbold text-center pb-12 leading-none">Mes projets enregistrés</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-10">
             <div>
                 <p class="text-lg fontbold pb-3">Sélectionner le projet</p>
 
-                <div class="h-12">
+                <div style="height:52px;">
                     <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
                         <span id="select-project">
                             @if(isset($id))
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <form method="post" action="{{ route('create_project_pro') }}">
+            <form method="post" action="{{ route('create_project_pro') }}" style="height:52px;">
                 @csrf
                 <p class="text-lg fontbold pb-3">Créer un nouveau projet</p>
                 <div class="flex-none md:flex relative text-center md:text-left items-center">
@@ -141,8 +141,8 @@
         @if(isset($projects))
             <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
                 <div class="grid grid-cols-1">
-                    <div class="py-6 border-b border-underline flex items-center">
-                        <p class="text-lg leading-normal">Nom du projet :</p>
+                    <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
+                        <p class="text-lg leading-none">Nom du projet :</p>
                         <p id="project_name_display" class="fontbold pl-4">
                             @if(isset($id))
                                 @if(isset($projects) && count($projects) > 0)
@@ -153,42 +153,45 @@
                             @endif
                         </p>
                     </div>
-                    <div class="py-6 border-b border-underline flex items-center">
-                        <p class="text-lg leading-normal">Nom du client :</p>
+                    <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
+                        <p class="text-lg leading-none">Nom du client :</p>
                         <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->company}}@endif</p>
                     </div>
                     
                 </div>
                 <div class="grid grid-cols-1">
-                    <div class="py-6 border-b border-underline flex justify-between">
-                        <p class="text-lg">Total du projet :</p>
+                    <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
+                        <p class="text-lg leading-none">Total du projet :</p>
                         <p class="text-lg fontbold">502,40 € HT</p>
                     </div>
-                    <div class="py-6 border-b border-underline flex justify-between">
-                        <p class="text-lg">Total avec TVA (20%) :</p>
+                    <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
+                        <p class="text-lg leading-none">Total avec TVA (20%) :</p>
                         <p class="text-lg fontbold">602,88 € TTC</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-4 md:mt-9 w-full items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:col-gap-4 xl:col-gap-0 md:row-gap-4 col-gap-0 row-gap-4">
+            <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:col-gap-4 xl:col-gap-0 md:row-gap-4 col-gap-0 row-gap-4">
                 <div class="xl:pr-3">
-                    <button class="w-full text-lg py-4 fontbold text-white bg-green tracking-tighter">Tout commander</button>
+                    <a href="/order_all/@if(isset($id)){{$id}}@endif">
+                        <button class="w-full text-lg fontbold text-white bg-green tracking-tighter" style="padding-top:19px; padding-bottom:15px;">Tout commander</button>
+                    </a>
                 </div>
                 <div class="xl:pl-1 xl:pr-2">
-                    <button class="w-full text-lg py-4 fontbold text-white bg-darkgray tracking-tighter">Ajouter un nouveau produit</button>
+                    <a href="/pro/{{$id}}">
+                        <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Ajouter un nouveau produit</button>
+                    </a>
                 </div>
                 <div class="xl:pl-2 xl:pr-1">
-                    <button class="w-full text-lg py-4 fontbold text-white bg-darkgray tracking-tighter">Télécharger un devis</button>
+                    <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
                 </div>
                 <div class="xl:pl-3">
-                    <button id="delete-trigger-button" class="w-full text-lg py-4 fontbold text-white bg-darkgray tracking-tighter">Supprimer le dossier</button>
+                    <button id="delete-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
                 </div>
             </div>
         @else
             <p class="fontbold capitalize text-center text-2xl py-20" style="height:239px;">Pas de Projet</p>
         @endif
         
-    
     </div>
     
     <div class="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-gap-4 row-gap-4 mx-auto maxwidth-1280">
@@ -197,38 +200,37 @@
             @foreach($orders as $key => $item)
                 <div class="relative bg-white shadow-md">
                     <a href="/delete_order_pro/{{$item['id']}}" class="absolute right-6 top-6 cursor-pointer">
-                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.001 19.998">
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
                     </a>
-                    <p class="text-2xl fontbold text-center pt-8">Enregistrement</p><br/>
-                    {{-- <p class="text-2xl fontbold text-center pb-6">du {{$item["created_at"]}}</p> --}}
-                    <p class="text-2xl fontbold text-center pb-6">du <span class="capitalize">
-                        <?php
-                        setlocale(LC_TIME, 'French');
-                        echo $item->created_at->formatLocalized('%d %B %Y');?></span>
-                     </p>
+                    <p class="text-2xl fontbold text-center pt-10 pb-6 leading-tight">Enregistrement<br/>
+                        du <span class="capitalize">
+                            <?php
+                            setlocale(LC_TIME, 'French');
+                            echo $item->created_at->formatLocalized('%d %B %Y');?></span>
+                    </p>
                     <div class="flex justify-between items-center h-15 bg-whitepink">
                         <p class="text-lg fontbold absolute left-3 md:left-8">Prix :</p>
                         <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
                     </div>
                     <div class="px-3 pb-3 md:px-8 md:pb-8">
-                        <p class="text-base py-4">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
+                        <p class="text-base pb-4" style="padding-top:21px;">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:21px;">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:21px;">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:21px;">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base py-4">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:21px;">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
 
                         <a href="/modify_order_pro/{{$item['id']}}">
-                            <button class="w-full mt-6 text-lg text-white fontbold py-4 bg-darkgray">Modifier</button>
+                            <button class="w-full mt-6 text-lg text-white fontbold bg-darkgray" style="height:52px;padding-top:19px; padding-bottom:15px;">Modifier</button>
                         </a>
             
                         <a href="/order_pro/{{$item['id']}}">
-                            <button class="w-full mt-4 text-lg text-white fontbold py-4 bg-green">Commander</button>
+                            <button class="w-full mt-4 text-lg text-white fontbold bg-green" style="height:52px;padding-top:19px; padding-bottom:15px;">Commander</button>
                         </a>
                         
                     </div>
@@ -321,6 +323,8 @@
         $(".select-button").each(function() {
 
             $(this).next().hide();
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
 
         });
     });

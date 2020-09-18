@@ -124,17 +124,31 @@
         </div>
     </div>
 
-    <form method="post" action="{{ route('record_order_pro') }}">
+    <form method="post" action="@if(isset($id)){{ route('add_product_pro') }}@else{{ route('record_order_pro') }}@endif">
         @csrf
+
+        @if(isset($id))
+            <input type="hidden" name="select_project_submit" value="{{$id}}"/>
+        @endif
 
         <div class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto">
     
             <div class="w-full lg:w-8/12 pr-0 lg:pr-5">
         
-                <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
-                    <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
-                    <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
+                <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820 items-center">
+                    <a href="/">
+                        <button class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
+                    </a>
+                        {{-- <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a> --}}
+                    @if(isset($id))
+                        <button type="submit" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
+                    @else
+                        <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
+                    @endif
+                    <a>
+                        <button class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</button>
+                    </a>
+                        {{-- <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a> --}}
                 </div>
         
                 <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
@@ -656,7 +670,9 @@
                             <span id="select-project">
                                 projet
                             </span>
-                            <input id="select-project-submit" type="hidden" name="select_project_submit"/> 
+                            
+                            <input id="select-project-submit" type="hidden" @if(!isset($id))name="select_project_submit"@endif/>
+
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                 <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
                                     <path d="M16.518,26.539a.921.921,0,0,0,.685-.3l7.924-8.108a.912.912,0,0,0,.276-.654.926.926,0,0,0-.941-.941.99.99,0,0,0-.665.266l-7.28,7.444L9.238,16.8a.971.971,0,0,0-.665-.266.926.926,0,0,0-.941.941.954.954,0,0,0,.276.665l7.924,8.1A.937.937,0,0,0,16.518,26.539Z" transform="translate(-7.633 -16.539)" fill="#3b3b3a"/>
@@ -727,6 +743,10 @@
             insulation_prices.push([$(this).attr("id"), $(this).html()]);
         });
 
+        console.log(height_prices);
+        console.log(width_prices);
+        console.log(insulation_prices);
+
         init();
 
     });
@@ -773,6 +793,9 @@
         $("#price").html(total + "€");
         $("#price_finish").html(total + "€");
 
+        console.log(price);
+        console.log(dimension_price);
+
     }
 
     /////Modal Trigger///////
@@ -815,28 +838,30 @@
         for(var i = 0 ; i < dimension_options.length ; i ++) {
 
             var changedName = $("#" + dimension_options[i]).html();
+            var changedId = $("#" + dimension_options[i] + "_default").html();
+
             dimensions[i] = changedName;
             
             $("#" + dimension_options[i] + "_result").html(changedName);
-            $("#" + dimension_options[i] + "_submit").val($("#" + dimension_options[i] + "_default").html());
+            $("#" + dimension_options[i] + "_submit").val(changedId);
 
-            if(i === 0) {
-            for(var j = 0 ; j < height_prices.length ; j ++) {
-                if(height_prices[j][0] == changedName) {
-                    dimension_price[0] = height_prices[j][1];
+            if(i == 0) {
+                for(var j = 0 ; j < height_prices.length ; j ++) {
+                    if(height_prices[j][0].trim() == changedName.trim()) {
+                        dimension_price[0] = height_prices[j][1];
+                    }
                 }
             }
-            }
-            if(i === 1) {
+            if(i == 1) {
                 for(var j = 0 ; j < width_prices.length ; j ++) {
-                    if(width_prices[j][0] == changedName) {
+                    if(width_prices[j][0].trim() == changedName.trim()) {
                         dimension_price[1] = width_prices[j][1];
                     }
                 }
             }
-            if(i === 2) {
+            if(i == 2) {
                 for(var j = 0 ; j < insulation_prices.length ; j ++) {
-                    if(insulation_prices[j][0] == changedName) {
+                    if(insulation_prices[j][0].trim() == changedName.trim()) {
                         dimension_price[2] = insulation_prices[j][1];
                     }
                 }
@@ -922,7 +947,9 @@
     $(window).click(function() {
 
         $(".select-button").each(function() {
-        $(this).next().hide();
+            $(this).next().hide();
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
         });
     });
 

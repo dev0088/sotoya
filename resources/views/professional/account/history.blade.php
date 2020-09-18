@@ -18,7 +18,7 @@
 @section('content')
 
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30">
-    <div class="px-8 md:px-35">
+    <div class="px-8 md:px-20">
         <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
@@ -40,16 +40,16 @@
         </div>
     </div>
 
-    <div class="w-full px-8 lg:px-15 xxl:px-35">
-        <div class="w-full pt-4 md:pt-10 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
-            <p class="text-4xl fontbold text-center pb-11">Mon historique de commande</p>
+    <div class="w-full px-8 lg:px-15 xxl:px-20">
+        <div class="w-full pt-4 md:pt-50 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
+            <p class="text-4xl fontbold text-center pb-50">Mon historique de commande</p>
             <p class="text-2xl fontbold mx-auto mb-8">Mois en cours</p>
         
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-gap-4 row-gap-4">
                 @if(isset($currenthistory) && count($currenthistory) > 0)
                     @foreach($currenthistory as $key => $item)
-                        <div class="border border-heavygray rounded-md pt-8 pb-7">
-                            <p class="text-2xl fontbold text-center pb-4">Commandé le {{$item["date"]}}</p>
+                        <div class="border border-heavygray rounded-md pt-10 pb-4">
+                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le {{$item["date"]}}</p>
                             <p class="text-lg fontbold text-center pb-6 @if($item["state"] == 0) text-green @endif">{{$item["statelabel"]}}</p>
                 
                             <div class="flex relative justify-between items-center bg-whitepink h-15">
@@ -57,15 +57,15 @@
                                 <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
                             </div>
                             <div class="px-3 md:px-8">
-                                <p class="text-base py-4 leading-normal">Type de menuiserie :<span class="fontbold mr-4">{{$item["joinery"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type de menuiserie :<span class="fontbold mr-4">{{$item["joinery"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Matériau :<span class="fontbold mr-4">{{$item["material"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Matériau :<span class="fontbold mr-4">{{$item["material"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Gamme :<span class="fontbold mr-4">{{$item["range"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Gamme :<span class="fontbold mr-4">{{$item["range"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Type d’ouverture :<span class="fontbold mr-4">{{$item["opening"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type d’ouverture :<span class="fontbold mr-4">{{$item["opening"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Nombre de vantaux :<span class="fontbold mr-4">{{$item["leave"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Nombre de vantaux :<span class="fontbold mr-4">{{$item["leave"]}}</span></p>
                             </div>
                         </div>
                     @endforeach
@@ -81,8 +81,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-gap-4 row-gap-4">
                     @if(isset($item) && count($item) > 0)
                         @foreach($item as $keyword => $element)
-                            <div class="border border-heavygray rounded-md pt-8 pb-7">
-                                <p class="text-2xl fontbold text-center pb-4">Commandé le {{$element["date"]}}</p>
+                            <div class="border border-heavygray rounded-md pt-10 pb-4">
+                                <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le {{$element["date"]}}</p>
                                 <p class="text-lg fontbold text-center pb-6 @if($element["state"] == 0) text-green @endif">{{$element["statelabel"]}}</p>
                     
                                 <div class="flex relative justify-between items-center bg-whitepink h-15">
@@ -90,15 +90,15 @@
                                     <p class="text-4xl fontbold absolute right-3 md:right-8">{{$element["price"]}}€</p>
                                 </div>
                                 <div class="px-3 md:px-8">
-                                    <p class="text-base py-4">Type de menuiserie :<span class="fontbold mr-4">{{$element["joinery"]}}</span></p>
+                                    <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type de menuiserie :<span class="fontbold mr-4">{{$element["joinery"]}}</span></p>
                                     <hr class="w-full bg-border">
-                                    <p class="text-base py-4">Matériau :<span class="fontbold mr-4">{{$element["material"]}}</span></p>
+                                    <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Matériau :<span class="fontbold mr-4">{{$element["material"]}}</span></p>
                                     <hr class="w-full bg-border">
-                                    <p class="text-base py-4">Gamme :<span class="fontbold mr-4">{{$element["range"]}}</span></p>
+                                    <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Gamme :<span class="fontbold mr-4">{{$element["range"]}}</span></p>
                                     <hr class="w-full bg-border">
-                                    <p class="text-base py-4">Type d’ouverture :<span class="fontbold mr-4">{{$element["opening"]}}</span></p>
+                                    <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type d’ouverture :<span class="fontbold mr-4">{{$element["opening"]}}</span></p>
                                     <hr class="w-full bg-border">
-                                    <p class="text-base py-4">Nombre de vantaux :<span class="fontbold mr-4">{{$element["leave"]}}</span></p>
+                                    <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Nombre de vantaux :<span class="fontbold mr-4">{{$element["leave"]}}</span></p>
                                 </div>
                             </div>
                         @endforeach

@@ -132,7 +132,7 @@
         </div>
     </div>
     
-    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="@if(Auth::user()->mode == 1){{ route('update_order_part') }}@else{{ route('update_order_pro') }}@endif">
+    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="@if(Auth::user()->mode == 1){{ route('update_order_pro') }}@else{{ route('update_order_part') }}@endif">
         @csrf
 
         <input type="hidden" name="order_id" value="{{$order['id']}}"/>
@@ -739,21 +739,21 @@
 
             if(i === 0) {
             for(var j = 0 ; j < height_prices.length ; j ++) {
-                if(height_prices[j][0] == changedName) {
+                if(height_prices[j][0].trim() == changedName.trim()) {
                     dimension_price[0] = height_prices[j][1];
                 }
             }
             }
             if(i === 1) {
                 for(var j = 0 ; j < width_prices.length ; j ++) {
-                    if(width_prices[j][0] == changedName) {
+                    if(width_prices[j][0].trim() == changedName.trim()) {
                         dimension_price[1] = width_prices[j][1];
                     }
                 }
             }
             if(i === 2) {
                 for(var j = 0 ; j < insulation_prices.length ; j ++) {
-                    if(insulation_prices[j][0] == changedName) {
+                    if(insulation_prices[j][0].trim() == changedName.trim()) {
                         dimension_price[2] = insulation_prices[j][1];
                     }
                 }
@@ -794,7 +794,9 @@
     $(window).click(function() {
 
         $(".select-button").each(function() {
-        $(this).next().hide();
+            $(this).next().hide();
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
         });
     });
 
@@ -826,21 +828,21 @@
 
         if(changedIndex === 0) {
             for(var i = 0 ; i < height_prices.length ; i ++) {
-                if(height_prices[i][0] == changedName) {
+                if(height_prices[i][0].trim() == changedName.trim()) {
                     dimension_price[changedIndex] = height_prices[i][1];
                 }
             }
         }
         if(changedIndex === 1) {
             for(var i = 0 ; i < width_prices.length ; i ++) {
-                if(width_prices[i][0] == changedName) {
+                if(width_prices[i][0].trim() == changedName.trim()) {
                     dimension_price[changedIndex] = width_prices[i][1];
                 }
             }
         }
         if(changedIndex === 2) {
             for(var i = 0 ; i < insulation_prices.length ; i ++) {
-                if(insulation_prices[i][0] == changedName) {
+                if(insulation_prices[i][0].trim() == changedName.trim()) {
                     dimension_price[changedIndex] = insulation_prices[i][1];
                 }
             }

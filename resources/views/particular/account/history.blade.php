@@ -19,7 +19,7 @@
 
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30">
 
-    <div class="px-8 md:px-35">
+    <div class="px-8 md:px-20">
         <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
@@ -41,15 +41,15 @@
         </div>
     </div>
 
-    <div class="w-full px-8 lg:px-15 xxl:px-35">
+    <div class="w-full px-8 lg:px-15 xxl:px-20">
         <div class="w-full pt-4 md:pt-10 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
             <p class="text-4xl fontbold text-center pb-11">Mon historique de commande</p>
         
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-gap-4 row-gap-4">
                 @if(isset($history) && count($history) > 0)
                     @foreach($history as $key => $item)
-                        <div class="border border-heavygray rounded-md pt-8 pb-7">
-                            <p class="text-2xl fontbold text-center pb-4">Commandé le {{$item["date"]}}</p>
+                        <div class="border border-heavygray rounded-md pt-10 pb-4">
+                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le {{$item["date"]}}</p>
                             <p class="text-lg fontbold text-center pb-6 @if($item["state_deliver"] == 0) text-green @endif">@if($item["state_deliver"] == 0) En cours de livraison @else Livré @endif</p>
                 
                             <div class="flex relative justify-between items-center h-15 bg-whitepink">
@@ -57,15 +57,15 @@
                                 <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
                             </div>
                             <div class="px-3 md:px-8">
-                                <p class="text-base py-4 leading-normal">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base py-4 leading-normal">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
+                                <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
                             </div>
                         </div>
                     @endforeach

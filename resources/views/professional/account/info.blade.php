@@ -71,17 +71,17 @@
         </div>
     </div>
     
-    <form class="w-full px-4 md:px-15 py-4 md:py-10 mb-4 shadow-md bg-white mx-auto maxwidth-1032" method="post" action="{{ route('modifyinfo_pro') }}">
+    <form class="w-full px-4 md:px-15 pt-4 pb-4 md:pt-50 md:pb-10 mb-4 shadow-md bg-white mx-auto maxwidth-1032" method="post" action="{{ route('modifyinfo_pro') }}">
         @csrf
 
         <input type="hidden" name="id" value="@if(isset($user["id"])){{$user["id"]}}@endif"/>
 
-        <p class="text-4xl fontbold text-center pb-11">Mes informations personnelles</p>
+        <p class="text-4xl fontbold text-center pb-12 leading-normal md:leading-none">Mes informations personnelles</p>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-20">
             <div class="">
-                <p class="text-xl pb-7 fontbold">Civilité*</p>
-                <div class="flex pb-8">
+                <p class="text-lg fontbold" style="padding-bottom:22px;">Civilité*</p>
+                <div class="flex pb-9">
                     <div class="check-item mr-4 md:mr-9 @if(isset($user["gender"]) && $user["gender"] == 1) active @endif">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -115,16 +115,16 @@
                         </label>
                     </div>
                 </div>
-                <p class="text-xl pb-3 fontbold">Prénom*</p>
-                <input id="firstname" name="firstname" type="text" class="w-full p-4 mb-6 bg-input" placeholder="Prénom" value="@if(isset($user["firstname"])){{$user["firstname"]}}@endif" required/>
-                <p class="text-xl pb-3 fontbold">Nom*</p>
-                <input id="lastname" name="lastname" type="text pb-9" class="w-full p-4 mb-6 bg-input" placeholder="Nom" value="@if(isset($user["lastname"])){{$user["lastname"]}}@endif" required/>
-                <p class="text-xl pb-3 fontbold">E-mail*</p>
-                <input id="email" name="email" type="text pb-9" class="w-full p-4 mb-6 bg-input" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required/>
-                <p class="text-xl pb-3 fontbold">Mot de passe*</p>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Prénom*</p>
+                <input id="firstname" name="firstname" type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Prénom" value="@if(isset($user["firstname"])){{$user["firstname"]}}@endif" required/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Nom*</p>
+                <input id="lastname" name="lastname" type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Nom" value="@if(isset($user["lastname"])){{$user["lastname"]}}@endif" required/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">E-mail*</p>
+                <input id="email" name="email" type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Mot de passe*</p>
     
                 <div class="input-group">
-                    <input id="password" name="password" type="password" class="form-control bg-input" placeholder="Mot de passe" value="" disabled/>
+                    <input id="password" name="password" type="password" class="form-control px-4 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Mot de passe" value="" disabled/>
                     <div class="form-control-after" class="cursor-pointer">
                         <svg id="eye_fill" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
                             <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
@@ -137,8 +137,8 @@
     
             </div>
             <div class="">
-                <p class="text-xl pb-7 fontbold">Je suis un*</p>
-                <div class="flex pb-8">
+                <p class="text-lg fontbold" style="padding-bottom:22px;">Je suis un*</p>
+                <div class="flex pb-9">
                     <div class="check-item mr-4 md:mr-9 @if(isset($user["mode"]) && $user["mode"] == 1) active @endif">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -170,29 +170,29 @@
                         </label>
                     </div>
                 </div>
-                <p class="text-xl pb-3 fontbold">Si professionnel, nom de la société</p>
-                <input type="text" class="w-full p-4 mb-6 bg-input" placeholder="Nom de la société" value="@if(isset($user["company"])){{$user["company"]}}@endif"/>
-                <p class="text-xl pb-3 fontbold">Adresse*</p>
-                <input id="address" name="address" type="text" class="w-full p-4 mb-6 bg-input" placeholder="Adresse" value="@if(isset($user["address"])){{$user["address"]}}@endif" required/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Si professionnel, nom de la société</p>
+                <input type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Nom de la société" value="@if(isset($user["company"])){{$user["company"]}}@endif"/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Adresse*</p>
+                <input id="address" name="address" type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Adresse" value="@if(isset($user["address"])){{$user["address"]}}@endif" required/>
                 <div class="w-full flex-none md:flex">
                     <div class="w-full md:w-5/12">
-                        <p class="text-xl pt-0 pb-3 fontbold">Code Postal*</p>
-                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-6 bg-input" placeholder="Code Postal" value="@if(isset($user["postcode"])){{$user["postcode"]}}@endif" required/>
+                        <p class="text-lg fontbold" style="padding-bottom:13px;">Code Postal*</p>
+                        <input id="postcode" name="postcode" type="text" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Code Postal" value="@if(isset($user["postcode"])){{$user["postcode"]}}@endif" required/>
                     </div>
                     <div class="w-full md:w-7/12 md:pl-6 mb-6 md:mb-0">
-                        <p class="text-xl pt-0 pb-3 fontbold">Ville*</p>
-                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input" placeholder="Ville" value="@if(isset($user["city"])){{$user["city"]}}@endif" required/>
+                        <p class="text-lg fontbold" style="padding-bottom:13px;">Ville*</p>
+                        <input id="city" name="city" type="text pb-9" class="w-full px-4 mb-7 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Ville" value="@if(isset($user["city"])){{$user["city"]}}@endif" required/>
                     </div>
                 </div>
-                <p class="text-xl pt-0 pb-3 fontbold">Numéro de téléphone</p>
-                <input type="text" name="telephone" class="w-full p-4 bg-input" placeholder="Téléphone" value="@if(isset($user["telephone"])){{$user["telephone"]}}@endif"/>
+                <p class="text-lg fontbold" style="padding-bottom:13px;">Numéro de téléphone</p>
+                <input type="text" name="telephone" class="w-full px-4 bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Téléphone" value="@if(isset($user["telephone"])){{$user["telephone"]}}@endif"/>
               
             </div>
         </div>
     
-        <p class="text-base py-8">*Champ obligatoire</p>
+        <p class="text-base pt-9" style="padding-bottom:34px;">*Champ obligatoire</p>
         <div class="w-full text-center lg:text-left">
-            <button id="submit" type="submit" class="text-lg fontbold text-white px-16 py-4 register-submit-button">Enregister</button>
+            <button id="submit" type="submit" class="text-lg fontbold text-white px-16 register-submit-button" style="padding-top:19px; padding-bottom:15px; height:52px;">Enregister</button>
         </div>
     </form>
 
