@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/mentions', 'HomeController@mentions')->name('mentions');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/cgv', 'HomeController@cgv')->name('cgv');
-Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/contact', 'HomeController@contact')->name('contact')->middleware('auth');
 Route::get('/about', 'HomeController@about')->name('about');
 
 
@@ -58,6 +58,8 @@ Route::get('/delete_order_pro/{id}', 'ProController@deleteorder')->name('delete_
 Route::post('/create_project_pro', 'ProController@createproject')->name('create_project_pro');
 Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all')->middleware('project');
 Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
+Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
+
 
 
 

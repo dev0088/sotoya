@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('About Us')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')
@@ -35,26 +35,6 @@
             <span class="text-base fontbold">Qui sommes-nous ?</span>
         </div>
     </div>
-    
-    {{-- <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-4 row-gap-4 pt-6 mx-auto maxwidth-1310">
-        <div class="">
-            <p class="pt-4 pb-6 text-4xl fontbold">Qui sommes-nous ?</p>
-            <p class="text-xl leading-normal pb-5 fontbold">Depuis 2016, Sotoya met son expérience et son savoir-faire unique au service des professionnels du bâtiment, promoteurs, artisans poseurs, et architectes. Spécialisée dans la menuiserie aluminium et PVC nous vous accompagnons de la conception de votre projet jusqu’à la pose. Notre bureau d’études est à votre disposition pour le conseil, la réalisation de votre projet.
-            </p>
-            <p class="text-xl leading-normal pb-5">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.
-                Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.
-            </p>
-            <p class="text-xl leading-normal pb-6">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.
-                    Sotoya vous donne la possibilité de commander en ligne vos produits sur mesure d’origine française dans des délais de fabrication moindres.
-            </p>
-            <p class="text-xl leading-normal text-right fontbold">
-                Fondateur de Sotoya
-            </p>
-        </div>
-        <div class="text-center">
-            <img class="w-full float-left maxwidth-608" src="{{ asset('images/images about@2x.png') }}"/>
-        </div>
-    </div> --}}
 
     <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-30" style="">
         <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto" style="">

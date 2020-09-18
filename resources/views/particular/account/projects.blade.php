@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Account|Particular|Projects')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')

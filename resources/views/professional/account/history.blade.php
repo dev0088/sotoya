@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Account|Pro|History')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')
@@ -49,12 +49,20 @@
                 @if(isset($currenthistory) && count($currenthistory) > 0)
                     @foreach($currenthistory as $key => $item)
                         <div class="border border-heavygray rounded-md pt-10 pb-4">
-                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le {{$item["date"]}}</p>
-                            <p class="text-lg fontbold text-center pb-6 @if($item["state"] == 0) text-green @endif">{{$item["statelabel"]}}</p>
+                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le <span class="capitalize">
+                                <?php
+                                setlocale(LC_TIME, 'French');
+                                echo $item->created_at->formatLocalized('%d %b %Y');?></span>
+                            </p>
+                            @if($item["state"] == 0)
+                                <p class="text-lg fontbold text-center pb-6 text-green">En cours de livraison</p>
+                            @else
+                                <p class="text-lg fontbold text-center pb-6">Livré</p>
+                            @endif
                 
                             <div class="flex relative justify-between items-center bg-whitepink h-15">
                                 <p class="text-lg fontbold absolute left-3 md:left-8">Prix TTC :</p>
-                                <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
+                                <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
                             </div>
                             <div class="px-3 md:px-8">
                                 <p class="text-base leading-none" style="padding-top:20px; padding-bottom:18px;">Type de menuiserie :<span class="fontbold mr-4">{{$item["joinery"]}}</span></p>
@@ -111,9 +119,6 @@
     @endif
 
     </div>
-
-    
-   
 
 </main>
 

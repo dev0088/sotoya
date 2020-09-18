@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Home')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Pro')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')
@@ -137,16 +137,15 @@
         
                 <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820 items-center">
                     <a href="/">
-                        <button class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
+                        <button type="button" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
                     </a>
                         {{-- <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a> --}}
                     @if(isset($id))
                         <button type="submit" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
-                    @else
-                        <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
                     @endif
+                        <a id="modal-trigger-button" class="@if(isset($id))hidden @endif py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a>
                     <a>
-                        <button class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</button>
+                        <button type="button" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</button>
                     </a>
                         {{-- <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a> --}}
                 </div>

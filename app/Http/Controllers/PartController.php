@@ -73,8 +73,6 @@ class PartController extends Controller
         $options = ["joinery", "material", "range", "opening", "leave", "installation" ,"aeration", "glazing", "color"];
         $dimension_options = ["height_size", "width_size", "insulation_size"];
 
-        // $price = $request->post("price_submit");
-
         $joinery_id = $request->post("joinery_submit");
         $material_id = $request->post("material_submit");
         $range_id = $request->post("range_submit");
@@ -131,7 +129,10 @@ class PartController extends Controller
     public function projects() 
     {
 
-        $projects = Order::where('state_order', "0")->where('user_id', Auth::id())->get();
+        $projects = Order::where('state_order', "0")
+                        ->where('user_id', Auth::id())
+                        ->orderBy('created_at', 'DESC')
+                        ->get();
 
         return view('particular.account.projects', compact('projects'));
         
@@ -140,7 +141,10 @@ class PartController extends Controller
     public function history()
     {
 
-        $history = Order::where('state_order', "1")->where('user_id', Auth::id())->get();
+        $history = Order::where('state_order', "1")
+                        ->where('user_id', Auth::id())
+                        ->orderBy('updated_at', 'DESC')
+                        ->get();
 
         return view('particular.account.history', compact('history'));
 
@@ -163,7 +167,6 @@ class PartController extends Controller
                 'firstname' => 'required|string',
                 'lastname' => 'required|string',
                 'email' => 'required|string',
-                // 'company' => 'string',
                 'address' => 'required|string',
                 'postcode' => 'required|string',
                 'city' => 'required|string',
@@ -175,7 +178,6 @@ class PartController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            'company' => $request->company,
             'address' => $request->address,
             'postcode' => $request->postcode,
             'city' => $request->city,

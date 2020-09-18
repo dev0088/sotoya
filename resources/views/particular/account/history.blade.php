@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Account|Particular|History')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')
@@ -49,7 +49,11 @@
                 @if(isset($history) && count($history) > 0)
                     @foreach($history as $key => $item)
                         <div class="border border-heavygray rounded-md pt-10 pb-4">
-                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le {{$item["date"]}}</p>
+                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px;">Commandé le <span class="capitalize">
+                                <?php
+                                setlocale(LC_TIME, 'French');
+                                echo $item->created_at->formatLocalized('%d %b %Y');?></span>
+                            </p>
                             <p class="text-lg fontbold text-center pb-6 @if($item["state_deliver"] == 0) text-green @endif">@if($item["state_deliver"] == 0) En cours de livraison @else Livré @endif</p>
                 
                             <div class="flex relative justify-between items-center h-15 bg-whitepink">

@@ -18,6 +18,7 @@ use App\Model\Base\TotalWidth;
 use App\Model\Order;
 use App\Model\Project;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -78,7 +79,12 @@ class ProController extends Controller
 
                 $id = Project::where('user_id', Auth::id())->first()->id;
 
-                $orders = Project::where('user_id', Auth::id())->first()->orders()->get();
+                $orders = Project::where('user_id', Auth::id())
+                                ->first()
+                                ->orders()
+                                ->where('state_order', "0")
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
 
                 return view('professional.account.projects', compact('projects', 'id', 'orders'));
 
@@ -90,7 +96,12 @@ class ProController extends Controller
 
         } else {
 
-            $orders = Project::where('id', $id)->first()->orders()->where('state_order', "0")->get();
+            $orders = Project::where('id', $id)
+                            ->first()
+                            ->orders()
+                            ->where('state_order', "0")
+                            ->orderBy('created_at', 'DESC')
+                            ->get();
 
             return view('professional.account.projects', compact('projects', 'id', 'orders'));
 
@@ -100,32 +111,33 @@ class ProController extends Controller
 
     public function history()
     {
+        $currentyear = date('Y');
+        $currentmonth = date('m');
 
-        $currenthistory = 
-        [
-            ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            ["date"=>"9 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"]
-        ];
-    
-        $otherhistory = 
-        [
-            "Mai 2020"=>[
-                ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-                ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-                ["date"=>"9 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-                ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-                ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"]
-            ],
-            // "Juin 2020"=>[
-            //     ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            //     ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            //     ["date"=>"9 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            //     ["date"=>"19 juin 2020", "state"=>0, "statelabel"=>"En cours de livraison", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"],
-            //     ["date"=>"14 juin 2020", "state"=>1, "statelabel"=>"Livré", "price"=>110, "joinery"=>"Fenêtre", "material"=>"Aluminium", "range"=>"Gamme 70", "opening"=>"Abattant", "leave"=>"1 vantail"]
-            // ]
-        ];
-    
+        $currenthistory = Order::where('state_order', 1)
+                            ->where('user_id', Auth::id())
+                            ->whereYear('updated_at', '=', $currentyear)
+                            ->whereMonth('updated_at', '=', $currentmonth)
+                            ->orderBy('updated_at', 'DESC')
+                            ->get();
+
+        setlocale(LC_TIME, 'French');
+
+        $otherhistory = Order::where(function ($query) {
+
+                            $currentyear = date('Y');
+                            $currentmonth = date('m');
+
+                            $query->whereMonth('updated_at', '!=', $currentmonth)
+                            ->orWhereYear('updated_at', '!=', $currentyear);
+
+                            })
+                            ->orderBy('updated_at', 'DESC')
+                            ->get()
+                            ->groupBy(function ($val) {
+                                return Carbon::parse($val->created_at)->formatLocalized('%B %Y');
+                            });
+  
         return view('professional.account.history', compact('currenthistory', 'otherhistory'));
     }
 
@@ -408,6 +420,19 @@ class ProController extends Controller
 
         return redirect()->route("account_pro_projects_id", $id);
 
+    }
+
+    public function order($id)
+    {
+        $data = ([
+            'state_order' => "1"
+        ]);
+
+        $update = Order::where('id', $id)->update($data);
+
+        $project_id = Order::find($id)->project_id;
+
+        return redirect()->route('account_pro_projects_id', $project_id);
     }
 
 }

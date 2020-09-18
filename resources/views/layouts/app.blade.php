@@ -14,7 +14,6 @@
     @yield('title')
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset('css/font_size.css')}}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
     <style>
