@@ -16,7 +16,7 @@
 <main id="main-content">
     
     <div class="px-8 md:px-35 bg-grey-1">
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -27,8 +27,7 @@
             </div>
             <span class="text-base fontbold leading-normal">Conditions générales de ventes Sotoya Constructions (CGV)</span>
         </div>
-    
-        <p class="text-4xl fontbold pt-4 md:pt-10 pb-8 md:pb-15 text-center md:text-left">Conditions générales de ventes<br/>Sotoya Constructions (CGV)</p>
+        <p class="text-4xl fontbold pb-8 md:pt-10 md:pb-15 text-center md:text-left" style="line-height: 1.38;">Conditions générales de ventes<br/>Sotoya Constructions (CGV)</p>
     </div>
     
     <div class="bg-white pt-4 md:pt-8 pb-4 md:pb-15 px-8 md:px-35">

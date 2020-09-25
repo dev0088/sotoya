@@ -111,7 +111,7 @@
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30 ">
 
     <div class="px-8 md:px-35">
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -141,12 +141,8 @@
     
             <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                 <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                {{-- <a id="modal-trigger-button" class="py-4 mb-4 md:mb-0 md:mr-1 md:ml-1 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</a> --}}
-                {{-- <a class="py-4 mb-4 md:mb-0 md:ml-3 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a> --}}
-
                 <a href="@if(Auth::user()->mode == 1){{ route('account_pro_projects') }}@else{{ route('account_part_projects') }}@endif" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Arrière</a>
                 <button type="submit" class="py-4 mb-4 md:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">enregistrer</button>
-
             </div>
     
             <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
@@ -157,7 +153,6 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                         @if(isset($joinery) && count($joinery) > 0)
                             @foreach($joinery as $key => $item)
-                                {{-- <div class="relative rounded-md mx-auto text-center type-select @if($item == $joinery_selected) active @endif " style="max-width:210px;"> --}}
                                 <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if($item['id'] == $order["join_id"]) active @endif">
                                 <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
                                     <div class="w-full absolute bottom-0 rounded-b-md">
@@ -461,7 +456,6 @@
                 <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                     <p class="text-lg fontbold py-4 mx-auto">Vitrage</p>
                 </div>
-                {{-- <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part"> --}}
                 <div class="bg-white pt-4 px-4 md:px-8 pb-4 md:pb-14 toggle-part">
                     <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                         @if(isset($glazing) && count($glazing) > 0)

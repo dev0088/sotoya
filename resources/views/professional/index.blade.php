@@ -111,7 +111,7 @@
 <main id="main-content" class="bg-whitegreen pb-10 md:pb-30 ">
 
     <div class="px-8 md:px-20">
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -139,7 +139,6 @@
                     <a href="/">
                         <button type="button" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
                     </a>
-                        {{-- <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a> --}}
                     @if(isset($id))
                         <button type="submit" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                     @endif
@@ -147,7 +146,6 @@
                     <a>
                         <button type="button" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</button>
                     </a>
-                        {{-- <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a> --}}
                 </div>
         
                 <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
@@ -158,8 +156,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
-                                    {{-- <div class="relative rounded-md mx-auto text-center type-select @if($item == $joinery_selected) active @endif " style="max-width:210px;"> --}}
-                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if($item['default'] == 1) active @endif">
+                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if(isset($selected_joinery)) @if($selected_joinery == $item['id']) active @endif @else @if($item['default'] == 1) active @endif @endif">
                                     <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
                                         <div class="w-full absolute bottom-0 rounded-b-md">
                                             <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
@@ -486,7 +483,6 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Vitrage</p>
                     </div>
-                    {{-- <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part"> --}}
                     <div class="bg-white px-4 md:px-8 pb-4 md:pb-14 toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)
@@ -664,8 +660,8 @@
         
                 <div>
                     <p class="text-lg fontbold pt-12 pb-3">Sélectionner le projet</p>
-                    <div class="" style="height: 52px;">
-                        <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                    <div class="h-input">
+                        <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left h-input">
                             <span id="select-project">
                                 projet
                             </span>
@@ -682,7 +678,7 @@
                             </div>
                         </button>
                         <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
-                            <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">projet</p>
+                            <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Projet</p>
                             @if(isset($projects) && count($projects) > 0)
                                 @foreach($projects as $key => $item)  
                                     <p id="{{$item['id']}}" class="project-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
@@ -693,11 +689,11 @@
             
                     <p class="text-lg fontbold pb-3" style="padding-top:37px;">Ou créer un nouveau projet</p>
             
-                    <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base" name="new_project_submit" placeholder="Nom du projet"/>    
+                    <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base h-input" name="new_project_submit" placeholder="Nom du projet"/>    
                     
                 </div>
                 <div class="w-full text-center md:text-left">
-                    <button type="button" class="px-16 py-4 mt-8 font-bold text-white enregister-button">Enregister</button>
+                    <button type="button" class="px-16 py-4 mt-8 font-bold text-white enregister-button h-input">Enregister</button>
                 </div>
         
             </div>

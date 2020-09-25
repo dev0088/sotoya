@@ -19,7 +19,7 @@ class OrderMiddleware
     {
         if(Order::find($request->id)->user_id != Auth::id()) {
             return redirect("/");
-        } 
+        }
         return $next($request);
     }
 }

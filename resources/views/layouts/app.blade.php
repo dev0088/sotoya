@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8mb4">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,6 +16,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=ManRegular:wght@200;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=ManBold:wght@800&display=swap" rel="stylesheet"> --}}
+
     <style>
 
         nav {
@@ -45,8 +48,16 @@
         }
         @font-face {
             font-family: 'ManBold';
-            src: url("../fonts/manrope/manrope-bold.ttf");
+            src: url("../fonts/manrope/manrope-extrabold.ttf");
         }
+        /* @font-face {
+            font-family: 'ManRegular';
+            src: url("../fonts/latin-extended/manrope-regular.otf");
+        }
+        @font-face {
+            font-family: 'ManBold';
+            src: url("../fonts/latin-extended/manrope-extrabold.otf");
+        } */
         main {
             font-family: 'ManRegular';
             color:black;
@@ -61,7 +72,42 @@
             margin-bottom:16px;
         }
 
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            /* padding: 10px; */
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 570px;
+        }
+        #close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #close:hover,
+        #close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
     </style>
+
 
     @yield('styles')
 
@@ -93,6 +139,26 @@
             $(this).find("svg").toggleClass("hidden");
 
         });
+
+        var selectmodal = document.getElementById("select-modal");
+        var selectbtn = document.getElementById("modal-select-button");
+        var selectbtn_mobile = document.getElementById("modal-select-button-mobile");
+        var selectspan = document.getElementById("close");
+
+        selectbtn.onclick = function() {
+            selectmodal.style.display = "block";
+        }
+        selectbtn_mobile.onclick = function() {
+            selectmodal.style.display = "block";
+        }
+        selectspan.onclick = function() {
+            selectmodal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == selectmodal) {
+                selectmodal.style.display = "none";
+            }
+        }
 
     </script>
 </body>

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('homepage')->middleware('auth');
 Route::get('/mentions', 'HomeController@mentions')->name('mentions');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/cgv', 'HomeController@cgv')->name('cgv');
@@ -44,6 +45,7 @@ Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delet
 
 Route::get('/pro', 'ProController@index')->name('pro');
 Route::get('/pro/{id}', 'ProController@index')->name('pro')->middleware('project');
+Route::get('/pro_joinery/{id}', 'ProController@joinery')->name('pro_joinery');
 Route::get('/account_pro', 'ProController@account')->name('account_pro');
 Route::get('/account_pro_projects', 'ProController@projects')->name('account_pro_projects');
 Route::get('/account_pro_his', 'ProController@history')->name('account_pro_his');
@@ -59,6 +61,9 @@ Route::post('/create_project_pro', 'ProController@createproject')->name('create_
 Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all')->middleware('project');
 Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
 Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
+
+Route::post('/mailsend', 'HomeController@email')->middleware('auth');
+
 
 
 

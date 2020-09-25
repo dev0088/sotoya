@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Validator;
 
 class PartController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,7 +31,6 @@ class PartController extends Controller
     
     public function index()
     {
-
         $joinery = Join::all();
         $material = Material::all();
         $range = Range::all();
@@ -47,8 +47,8 @@ class PartController extends Controller
         return view('particular.index', compact('joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color'));
     }
     
-    public function joinery($joinery) {
-
+    public function joinery($joinery) 
+    {
         $selected_joinery = $joinery;
 
         $joinery = Join::all();
@@ -65,11 +65,10 @@ class PartController extends Controller
         $color = Color::all();
 
         return view('particular.index', compact('selected_joinery', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color'));
-
     }
     
-    public function summary(Request $request) {
-
+    public function summary(Request $request) 
+    {
         $options = ["joinery", "material", "range", "opening", "leave", "installation" ,"aeration", "glazing", "color"];
         $dimension_options = ["height_size", "width_size", "insulation_size"];
 
@@ -116,18 +115,16 @@ class PartController extends Controller
         $price = $price."€";
 
         return view('particular.summary', compact('price', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'aeration', 'glazing', 'color', 'height_size', 'width_size', 'insulation_size'));
-
     }
 
     public function account() 
     {
-
         return view('particular.account.index');
-
     }
     
     public function projects() 
     {
+        setlocale(LC_ALL, 'French');
 
         $projects = Order::where('state_order', "0")
                         ->where('user_id', Auth::id())
@@ -135,24 +132,22 @@ class PartController extends Controller
                         ->get();
 
         return view('particular.account.projects', compact('projects'));
-        
     }
 
     public function history()
     {
-
+        setlocale(LC_ALL, 'French');
+        
         $history = Order::where('state_order', "1")
                         ->where('user_id', Auth::id())
                         ->orderBy('updated_at', 'DESC')
                         ->get();
 
         return view('particular.account.history', compact('history'));
-
     }
 
     public function info()
     {
-
         $user = User::find(Auth::id());
 
         return view('particular.account.info', compact('user'));
@@ -160,7 +155,6 @@ class PartController extends Controller
 
     public function modifyinfo(Request $request)
     {
-
         $validator = Validator::make($request->all(),
             [
                 'gender' => 'required|string',
@@ -191,12 +185,10 @@ class PartController extends Controller
         $updated = User::where('id', $request->id)->update($data);
 
         return redirect("/account_part");
-
     }
 
     public function recordorder(Request $request) 
     {
-
         $joinery_id = $request->post("joinery");
         $material_id = $request->post("material");
         $range_id = $request->post("range");
@@ -254,9 +246,6 @@ class PartController extends Controller
             $width_size["price"] + 
             $insulation_size["price"];
 
-        $price = $price."€";
-
-
         $order->price = $price;
 
         $order->save();
@@ -266,7 +255,6 @@ class PartController extends Controller
 
     public function order($id)
     {
-
         $data = ([
             'state_order' => "1"
         ]);
@@ -274,12 +262,10 @@ class PartController extends Controller
         $update = Order::where('id', $id)->update($data);
 
         return redirect("/account_part_projects");
-
     }
 
     public function modifyorder($id)
     {
-
         $joinery = Join::all();
         $material = Material::all();
         $range = Range::all();
@@ -300,7 +286,6 @@ class PartController extends Controller
 
     public function updateorder(Request $request)
     {
-
         $joinery_id = $request->post("joinery_submit");
         $material_id = $request->post("material_submit");
         $range_id = $request->post("range_submit");
@@ -362,18 +347,15 @@ class PartController extends Controller
         $update = Order::where('id', $request->order_id)->update($data);
 
         return redirect("/account_part_projects");
-
     }
 
     public function deleteorder($id)
     {
-
         $delete = Order::find($id)->delete();
 
         if($delete) {
             return redirect("/account_part_projects");
         }
-
     }
 
 

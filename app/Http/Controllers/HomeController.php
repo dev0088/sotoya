@@ -29,7 +29,9 @@ class HomeController extends Controller
     {
         $joinery = Join::all();
 
-        return view('home', compact('joinery'));
+        $joinery_footer = Join::orderBy('created_at', 'DESC')->take(10)->get();
+
+        return view('home', compact('joinery', 'joinery_footer'));
     }
 
     public function mentions()
@@ -39,14 +41,12 @@ class HomeController extends Controller
 
     public function faq()
     {
-
         $faqs = Faq::all();
 
         return view('common.faq', compact('faqs'));
     }
     public function cgv()
     {
-
         $premilaries = "Le client est censé avoir accepté sans réserve les présentes conditions générales de vente dès la signature pour validation sur le devis.";
         $articles = Cgv::all();
 
@@ -61,5 +61,19 @@ class HomeController extends Controller
     public function about()
     {
         return view('common.about');
+    }
+
+    public function email(Request $request) {
+
+        $to = 'contact@gmail.com';
+        $from = $request->input('email');
+        $subject = $request->input('subject');
+        $message = $request->input('message');
+        $headers = 'From: '.$from . "\r\n" .
+        'Reply-To: '.$from . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+
     }
 }

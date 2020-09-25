@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -33,7 +34,6 @@ class ProController extends Controller
 
     public function index($id = null)
     {
-
         $projects = Project::where('user_id', Auth::id())->get();
 
         $joinery = Join::all();
@@ -58,18 +58,38 @@ class ProController extends Controller
             return view('professional.index', compact('joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color', 'projects'));
 
         }
+    }
 
+    public function joinery($id)
+    {
+        $selected_joinery = $id;
+
+        $projects = Project::where('user_id', Auth::id())->get();
+
+        $joinery = Join::all();
+        $material = Material::all();
+        $range = Range::all();
+        $opening = Opening::all();
+        $leave = Leave::all();
+        $installation = Installation::all();
+        $height = TotalHeight::all();
+        $width = TotalWidth::all();
+        $insulation = Insulation::all();
+        $aeration = Aeration::all();
+        $glazing = Glazing::all();
+        $color = Color::all();
+
+        return view('professional.index', compact('selected_joinery', 'joinery', 'material', 'range', 'opening', 'leave', 'installation', 'height', 'width', 'insulation', 'aeration', 'glazing', 'color', 'projects'));
     }
 
     public function account() 
     {
-
         return view('professional.account.index');
-    
     }
 
     public function projects($id = null)
     {
+        setlocale(LC_ALL, 'French');
 
         $projects = Project::where('user_id', Auth::id())->get();
 
@@ -86,11 +106,22 @@ class ProController extends Controller
                                 ->orderBy('created_at', 'DESC')
                                 ->get();
 
-                return view('professional.account.projects', compact('projects', 'id', 'orders'));
+                $total_ht = 0;
+
+                foreach($orders as $key => $order) {
+                    $total_ht += $order["price"];
+                }
+
+                $total_tva = $total_ht * 1.2;
+
+                return view('professional.account.projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
 
             } else {
 
-                return view('professional.account.projects');
+                $total_ht = 0;
+                $total_tva = 0;
+
+                return view('professional.account.projects', compact('total_ht', 'total_tva'));
 
             }
 
@@ -103,10 +134,17 @@ class ProController extends Controller
                             ->orderBy('created_at', 'DESC')
                             ->get();
 
-            return view('professional.account.projects', compact('projects', 'id', 'orders'));
+            $total_ht = 0;
+
+            foreach($orders as $key => $order) {
+                $total_ht += $order["price"];
+            }
+
+            $total_tva = $total_ht * 1.2;
+
+            return view('professional.account.projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
 
         }
-
     }
 
     public function history()
@@ -121,7 +159,7 @@ class ProController extends Controller
                             ->orderBy('updated_at', 'DESC')
                             ->get();
 
-        setlocale(LC_TIME, 'French');
+        setlocale(LC_ALL, 'French');
 
         $otherhistory = Order::where(function ($query) {
 
@@ -135,7 +173,7 @@ class ProController extends Controller
                             ->orderBy('updated_at', 'DESC')
                             ->get()
                             ->groupBy(function ($val) {
-                                return Carbon::parse($val->created_at)->formatLocalized('%B %Y');
+                                return ucfirst(utf8_encode(strftime('%B %Y', strtotime($val->created_at))));
                             });
   
         return view('professional.account.history', compact('currenthistory', 'otherhistory'));
@@ -143,16 +181,12 @@ class ProController extends Controller
 
     public function info()
     {
-
         $user = User::find(Auth::id());
-
         return view('professional.account.info', compact('user'));
     }
 
     public function modifyinfo(Request $request)
     {
-
-        
         $validator = Validator::make($request->all(),
             [
                 'gender' => 'required|string',
@@ -185,12 +219,10 @@ class ProController extends Controller
         $updated = User::where('id', $request->id)->update($data);
 
         return redirect("/account_pro");
-
     }
 
     public function recordorder(Request $request)
     {
-
         $joinery_id = $request->post("joinery_submit");
         $material_id = $request->post("material_submit");
         $range_id = $request->post("range_submit");
@@ -268,15 +300,11 @@ class ProController extends Controller
             $width_size["price"] + 
             $insulation_size["price"];
 
-        $price = $price."€";
-
-
         $order->price = $price;
 
         $order->save();
 
         return redirect()->route("account_pro_projects_id", Order::find($order->id)->project_id);
-
     }
 
     public function deleteproject($id)
@@ -286,7 +314,6 @@ class ProController extends Controller
         if($delete) {
             return redirect("/account_pro_projects");
         }
-
     }
     public function modifyorder($id) 
     {
@@ -310,7 +337,6 @@ class ProController extends Controller
 
     public function updateorder(Request $request)
     {
-
         $joinery_id = $request->post("joinery_submit");
         $material_id = $request->post("material_submit");
         $range_id = $request->post("range_submit");
@@ -351,8 +377,6 @@ class ProController extends Controller
             $width_size["price"] + 
             $insulation_size["price"];
 
-        $price = $price."€";
-
         $data = ([
             'join_id' => $joinery_id,
             'material_id' => $material_id,
@@ -372,7 +396,6 @@ class ProController extends Controller
         $update = Order::where('id', $request->order_id)->update($data);
 
         return redirect()->route("account_pro_projects_id", Order::find($request->order_id)->project_id);
-
     }
 
     public function deleteorder($id)
@@ -384,12 +407,10 @@ class ProController extends Controller
         if($delete) {
             return redirect()->route("account_pro_projects_id", $project_id);
         }
-
     }
 
     public function createproject(Request $request)
     {
-
         $new_project_name = $request->post("new_project_name");
 
         $project = new Project();
@@ -400,12 +421,10 @@ class ProController extends Controller
         $project->save();
 
         return redirect()->route("account_pro_projects_id", $project->id);
-
     }
 
     public function ordereverything($id)
     {
-
         $orders = Order::where('project_id', $id)->get();
 
         foreach($orders as $key => $order) {
@@ -419,7 +438,6 @@ class ProController extends Controller
         }
 
         return redirect()->route("account_pro_projects_id", $id);
-
     }
 
     public function order($id)

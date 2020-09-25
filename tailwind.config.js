@@ -26,6 +26,7 @@ module.exports = {
                 'yellow': '#FABD02',
                 'green': '#18A75A;',
                 'black': '#020000',
+                'darkgray': '#3b3b3b'
             },
 
             backgroundColor: {
@@ -42,7 +43,6 @@ module.exports = {
                 'lightgray': '#AFAFAE',
                 'border': '#cecece',
                 'lightlightgray': '#b0b0af'
-
             },
 
             borderColor: {
@@ -65,8 +65,9 @@ module.exports = {
                 '29': '29px',
                 '70': '70px',
                 '55': '55px',
-                '50': '50px'
-
+                '50': '50px',
+                '39': '39px',
+                '26': '26px'
             },
             fontSize: {
                 '44': '44px',
@@ -85,20 +86,16 @@ module.exports = {
                 '474': '474px',
                 '600': '600px',
                 '1232': '1232px'
-
-
             },
             height: {
                 '739': '739px',
                 '690': '670px',
-                '1252': '1252px'
+                '1252': '1252px',
+                'input': '52px'
             },
             screens: {
-                'xxl': '1400px'
+                'xxl': '1420px'
             }
-            // paddingX: {
-            //     'px-140': '140px'
-            // }
         },
     },
     variants: {},

@@ -27,15 +27,15 @@
         
         <div id="nav-content" class="hidden md:flex" style="">
 
-            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/pro"@endif class="py-1 mr-9 text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)  border-b-2 border-black @endif" style="font-size:15px;">Professionnel</a>
-            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/part"@endif class="py-1 mr-14 text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)  border-b-2 border-black @endif" style="font-size:15px;">Particulier</a>
+            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-9 text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-black @endif" style="font-size:15px;">Professionnel</a>
+            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-14 text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0) border-b-2 border-black @endif" style="font-size:15px;">Particulier</a>
 
-            <a>
+            <a class="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17.368" height="20" viewBox="0 0 17.368 20" style="margin-right:32px;">
                     <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
                 </svg>
             </a>
-            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif>
+            <a @if(!Auth::user()) id="modal-select-button" @endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif class="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20" class="" style="">
                 <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
                 </svg>
@@ -45,20 +45,58 @@
     </div>
 
     <div id="nav-content-mobile" class="grid grid-cols-2 md:none col-gap-2 row-gap-8 px-2 py-4 md:hidden" style="display:none;">
-        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/pro"@endif class="text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-black @endif  mx-auto px-2 py-2" style="font-size:15px;">Professionnel</a>
-        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/part"@endif class="text-black mx-auto fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)  border-b-2 border-black @endif px-2 py-2" style="font-size:15px;">Particulier</a>
+        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-black @endif  mx-auto px-2 py-2" style="font-size:15px;">Professionnel</a>
+        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="text-black mx-auto fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)  border-b-2 border-black @endif px-2 py-2" style="font-size:15px;">Particulier</a>
 
-        <a class="mx-auto" class="px-2 py-2">
+        <a class="mx-auto cursor-pointer" class="px-2 py-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="17.368" height="20" viewBox="0 0 17.368 20" style="">
                 <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
             </svg>
         </a>
-        <a class="mx-auto" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif class="px-2 py-2">
+        <a @if(!Auth::user()) id="modal-select-button-mobile" @endif class="mx-auto px-2 py-2 cursor-pointer" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20" class="" style="">
             <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
             </svg>
         </a>
 
+    </div>
+
+    <div id="select-modal" class="modal mx-auto z-50">
+    
+        <div class="modal-content relative px-8 py-8 md:px-15 md:pt-70 md:pb-15">
+    
+            <span id="close" class="absolute top-4 md:top-8 right-4 md:right-8 text-4xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="19.998" viewBox="0 0 20.001 19.998">
+                    <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
+                </svg>              
+            </span>
+    
+            <p class="text-4xl text-black fontbold text-center">Je suis un :</p>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 col-gap-5 row-gap-4 pt-4 md:pt-10">
+                <a href="/home" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
+                    <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="74.757" height="80" viewBox="0 0 74.757 80">
+                        <g id="Groupe_70" data-name="Groupe 70" transform="translate(-4.969 -0.929)">
+                          <path id="Tracé_1395" data-name="Tracé 1395" d="M6.852,80.929h64.6a8.076,8.076,0,0,0,6.155-2.36,8.539,8.539,0,0,0,2.117-5.933V34.243a1.884,1.884,0,0,0-1.883-1.883H62.679V19.841A1.884,1.884,0,0,0,60.8,17.958h-3.53V15.822c.417-2.79-.692-8.41-7.526-11.715V2.812a1.883,1.883,0,0,0-3.766,0V5.33a1.884,1.884,0,0,0,1.174,1.744c7.142,2.9,6.414,8.06,6.383,8.257a1.927,1.927,0,0,0-.031.337v4.91a1.715,1.715,0,0,0,0,.192v2.85a2.037,2.037,0,0,1-1.459-1.95V17.876a1.927,1.927,0,0,0-1.933-1.883,1.883,1.883,0,0,0-1.883,1.878l-.017,8.2a.771.771,0,0,1-.77.771.885.885,0,0,1-.795-.588,1.883,1.883,0,0,0-3.766,0v.009l0,1.415a.76.76,0,0,1-.7.353,1.111,1.111,0,0,1-.665-.334V26.414a1.883,1.883,0,0,0-3.766,0,.683.683,0,1,1-1.365,0v-.638a1.883,1.883,0,0,0-3.763-.1c0,.018,0,.036,0,.054a2.359,2.359,0,0,1-.682.081.682.682,0,0,1-.682-.682q0-.046,0-.092l-.127-2.6V12.023a4.969,4.969,0,0,1,2.019-4.01A1.884,1.884,0,0,0,33.9,6.506V2.812a1.883,1.883,0,0,0-3.766,0V5.629a8.683,8.683,0,0,0-2.774,6.393v5.937H23.892a1.884,1.884,0,0,0-1.883,1.883V32.361H6.852a1.884,1.884,0,0,0-1.883,1.883v44.8A1.882,1.882,0,0,0,6.852,80.929Zm36.806-44.8V47.245H41.031V36.126ZM39.111,60.454V51.01h6.468v9.444Zm1.92,3.765h2.627V77.164H41.031ZM75.959,72.8a4.937,4.937,0,0,1-1.1,3.191,4.5,4.5,0,0,1-3.412,1.175H47.424V63.96a3.177,3.177,0,0,0,1.921-2.913V58.054H67.79a11.154,11.154,0,0,0,8.166-3.3V72.682Q75.955,72.74,75.959,72.8Zm0-28.5c0,4.831-2.146,9.995-8.166,9.995H49.344V50.416A3.178,3.178,0,0,0,47.423,47.5V36.126H75.954v8.168ZM25.777,21.724h1.584v.765q0,.046,0,.092l.127,2.605a4.452,4.452,0,0,0,4.447,4.394,6.058,6.058,0,0,0,1.78-.244,4.441,4.441,0,0,0,5.258,1.1,4.554,4.554,0,0,0,6.683-.2,4.516,4.516,0,0,0,6.214-3.2,5.776,5.776,0,0,0,2.209.436h1.3a1.9,1.9,0,0,0,1.895-1.756,1.782,1.782,0,0,0-.013-.374V21.724h1.647V32.36H25.777ZM8.734,36.126H37.265V47.5a3.178,3.178,0,0,0-1.921,2.913v3.872H16.839c-5.976,0-8.1-5.123-8.1-9.916V36.126Zm8.1,21.928H35.345v2.993a3.177,3.177,0,0,0,1.921,2.913v13.2H8.734V54.793A11.1,11.1,0,0,0,16.839,58.054Z" transform="translate(0 0)" fill="#0c2417"/>
+                          <path id="Tracé_1396" data-name="Tracé 1396" d="M15.843,79.835h16.6a1.886,1.886,0,0,0,0-3.772H17.729V69.012a1.886,1.886,0,1,0-3.772,0v8.937A1.886,1.886,0,0,0,15.843,79.835Z" transform="translate(-0.893 -6.705)"/>
+                        </g>
+                    </svg>
+                    <p class="text-lg text-black text-center fontbold pt-4 md:pt-6 pb-4 md:pb-7">Professionnel</p>
+                </a>
+                <a href="/home" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
+                    <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="78.685" height="80" viewBox="0 0 78.685 80">
+                        <g id="Groupe_72" data-name="Groupe 72" transform="translate(-1.068)">
+                          <path id="Tracé_1391" data-name="Tracé 1391" d="M83.865,7.763c-.229-.477-1.1-2.543.05-4.14A2.076,2.076,0,0,0,83.789.837c-1.845-1.8-6.235,1.14-8.037,2.489-3.293,2.465-13.365,11.553-6.1,25.691l-.05,44.191a6.832,6.832,0,0,0,6.821,6.825h.005a6.837,6.837,0,0,0,6.828-6.811L83.3,38.438c0-.016,0-.029,0-.045s0-.031,0-.045l.009-9C86.9,25.489,91,16.816,83.865,7.763ZM73.342,30.425l6.278.007-.007,6.119-6.278-.005ZM72.39,12.652a20.153,20.153,0,0,1,7.263-7.527A9.219,9.219,0,0,0,80.7,9.667a1.759,1.759,0,0,0,.166.247c6.475,8.079,1.469,14.942-.2,16.839l-8.037-.009C70.218,21.713,70.134,16.978,72.39,12.652Zm4.043,63.7a3.144,3.144,0,0,1-3.14-3.139l.038-32.986,6.28.005-.036,32.986A3.149,3.149,0,0,1,76.432,76.352Z" transform="translate(-8.033 -0.032)" fill="#0c2417"/>
+                          <path id="Tracé_1392" data-name="Tracé 1392" d="M24.521,64.98V18.513a1.835,1.835,0,0,0-.922-1.585L14.56,1.211A1.845,1.845,0,0,0,12.975.286a1.912,1.912,0,0,0-1.6.9l-9.3,15.695a1.834,1.834,0,0,0-1,1.629v52a9.52,9.52,0,0,0,9.53,9.514l4.392,0h0a9.523,9.523,0,0,0,9.53-9.516V65a.075.075,0,0,0,0-.009S24.521,64.984,24.521,64.98ZM4.755,20.353h16.08v42.8l-16.08,0ZM12.939,5.781,19.2,16.673H6.482Zm6.185,68.864a5.816,5.816,0,0,1-4.132,1.709l-4.393,0a5.835,5.835,0,0,1-5.842-5.832V66.836l16.08-.005v3.689A5.8,5.8,0,0,1,19.124,74.645Z" transform="translate(0 -0.034)" fill="#0c2417"/>
+                          <path id="Tracé_1393" data-name="Tracé 1393" d="M14.137,32.919a1.844,1.844,0,0,0-1.844,1.844V58.837a1.844,1.844,0,1,0,3.687,0V34.763A1.845,1.845,0,0,0,14.137,32.919Z" transform="translate(-1.342 -4.015)" fill="#0c2417"/>
+                          <path id="Tracé_1394" data-name="Tracé 1394" d="M57.58,0H37.018a1.843,1.843,0,0,0-1.844,1.84v75.95a1.843,1.843,0,0,0,1.844,1.84H57.58a1.843,1.843,0,0,0,1.844-1.84V1.84A1.843,1.843,0,0,0,57.58,0ZM55.736,75.95H38.86V70.5h8.714a1.84,1.84,0,1,0,0-3.681H38.86v-4.58h4.976a1.84,1.84,0,1,0,0-3.681H38.86v-4.58h8.714a1.84,1.84,0,1,0,0-3.681H38.86v-4.58h4.976a1.84,1.84,0,1,0,0-3.681H38.86V37.457h8.714a1.84,1.84,0,1,0,0-3.681H38.86V29.195h4.976a1.84,1.84,0,1,0,0-3.681H38.86V20.936h8.714a1.84,1.84,0,1,0,0-3.681H38.86V12.674h4.976a1.84,1.84,0,1,0,0-3.681H38.86V3.676H55.736Z" transform="translate(-4.155)" fill="#0c2417"/>
+                        </g>
+                    </svg>  
+                    <p class="text-lg text-black text-center fontbold pt-4 md:pt-6 pb-4 md:pb-7">Particulier</p>
+                </a>
+            </div>
+        </div>
+    
     </div>
         
 </nav>

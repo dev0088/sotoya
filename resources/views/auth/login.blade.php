@@ -26,7 +26,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -43,7 +43,7 @@
         @csrf
         <p class="text-4xl text-center pb-12 fontbold">Se connecter</p>
         <p class="text-lg fontbold" style="padding-bottom:13px;">E-mail*</p>
-        <input id="email" type="email" name="email" class="w-full px-4 focus:outline-none bg-input text-base" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="E-mail" required/>
+        <input id="email" type="email" name="email" class="w-full px-4 focus:outline-none bg-input text-base h-input" style="padding-top:19px; padding-bottom:18px;" placeholder="E-mail" required/>
         @error('email')
             <div class="py-3">
                 <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
         @enderror
         <p class="text-lg fontbold" style="padding-top:29px; padding-bottom:13px;">Mot de passe*</p>
         <div class="input-group m-0 p-0">
-            <input id="password" type="password" name="password" class="form-control bg-input" style="padding-top:19px; padding-bottom:18px; height:52px;" placeholder="Mot de passe" required/>
+            <input id="password" type="password" name="password" class="form-control bg-input h-input" style="padding-top:19px; padding-bottom:18px;" placeholder="Mot de passe" required/>
             <div class="form-control-after cursor-pointer">
                 <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
                     <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
@@ -77,7 +77,6 @@
                 </a>
             </div>
         @endif
-        {{-- <p class="text-base py-8 text-green cursor-pointer">Mot de passe oublié ?</p> --}}
         <div class="w-full text-center md:text-left">
             <button type="submit" class="px-15 py-4 text-white connection-submit-button fontbold">Se connecter</button> 
         </div>

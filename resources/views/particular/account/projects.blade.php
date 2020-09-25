@@ -20,7 +20,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-20 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -50,33 +50,34 @@
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
                     </a>
-                    <p class="text-2xl fontbold text-center pt-10 pb-6 leading-tight">Enregistrement<br/>
-                        du <span class="capitalize">
-                            <?php
-                            setlocale(LC_TIME, 'French');
-                            echo $item->created_at->formatLocalized('%d %B %Y');?></span>
+                    <p class="text-2xl fontbold text-center pt-10 pb-4">Enregistrement</p>
+                    <p class="text-2xl fontbold text-center pb-6">
+                        du 
+                        <span class="capitalize">
+                            <?php echo ucfirst(utf8_encode(strftime('%d %B %Y', strtotime($item->created_at))));?>
+                        </span>
                     </p>
                     <div class="flex justify-between items-center h-15 bg-whitepink">
                         <p class="text-lg fontbold absolute left-3 md:left-8">Prix :</p>
-                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
+                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
                     </div>
                     <div class="px-3 pb-3 md:px-8 md:pb-8">
-                        <p class="text-base pb-4" style="padding-top:21px;">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
+                        <p class="text-base pb-4" style="padding-top:22px;">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base pb-4" style="padding-top:21px;">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:22px;">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base pb-4" style="padding-top:21px;">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:22px;">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base pb-4" style="padding-top:21px;">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:22px;">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                         <hr class="w-full bg-border">
-                        <p class="text-base pb-4" style="padding-top:21px;">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
+                        <p class="text-base pb-4" style="padding-top:22px;">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
 
                         <a href="/modify_order_part/{{$item['id']}}">
-                            <button class="w-full mt-6 text-lg text-white fontbold bg-darkgray" style="height:52px;padding-top:19px; padding-bottom:15px;">Modifier</button>
+                            <button class="w-full mt-6 text-lg text-white fontbold bg-darkgray h-input" style="padding-top:19px; padding-bottom:15px;">Modifier</button>
                         </a>
             
                         <a href="/order_part/{{$item['id']}}">
-                            <button class="w-full mt-4 text-lg text-white fontbold bg-green" style="height:52px;padding-top:19px; padding-bottom:15px;">Commander</button>
+                            <button class="w-full mt-4 text-lg text-white fontbold bg-green h-input" style="padding-top:19px; padding-bottom:15px;">Commander</button>
                         </a>
                         
                     </div>
@@ -87,7 +88,9 @@
     </div>
 
     @if(count($projects) == 0)
-        <p class="fontbold capitalize text-center text-2xl py-20 items-center" style="height:592px;">pas de projet</p>
+        <div class="flex items-center" style="height:628px;">
+            <p class="mx-auto fontbold capitalize text-center text-2xl items-center">pas de projet</p>
+        </div>
     @endif
 
 </main>
