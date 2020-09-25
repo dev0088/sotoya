@@ -49,7 +49,7 @@
                 @if(isset($history) && count($history) > 0)
                     @foreach($history as $key => $item)
                         <div class="border border-heavygray rounded-md pt-10 pb-4">
-                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px; padding-left:12px; padding-right:12px;">Commandé le 
+                            <p class="text-2xl fontbold text-center tracking-tight" style="padding-bottom:18px; padding-left:12px; padding-right:12px;">Commandé le 
                                 <span class="capitalize">
                                     <?php echo ucfirst(utf8_encode(strftime('%d %b %Y', strtotime($item->created_at))));?>
                                 </span>

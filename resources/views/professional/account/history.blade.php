@@ -49,7 +49,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 col-gap-4 row-gap-4">
                     @foreach($currenthistory as $key => $item)
                         <div class="border border-heavygray rounded-md pt-10 pb-4">
-                            <p class="text-2xl fontbold text-center" style="padding-bottom:18px; padding-left:12px; padding-right:12px;">Commandé le 
+                            <p class="text-2xl fontbold text-center tracking-tight" style="padding-bottom:18px; padding-left:12px; padding-right:12px;">Commandé le 
                                 <span class="capitalize">
                                     <?php echo ucfirst(utf8_encode(strftime('%d %b %Y', strtotime($item->updated_at))));?>
                                 </span>
