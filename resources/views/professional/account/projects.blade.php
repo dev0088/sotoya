@@ -63,7 +63,7 @@
 <main id="main-content" class="bg-whitegreen w-full px-8 pb-10 md:px-20 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -90,8 +90,8 @@
             <div>
                 <p class="text-lg fontbold pb-3">Sélectionner le projet</p>
 
-                <div style="height:52px;">
-                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                <div class="h-12">
+                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left h-input">
                         <span id="select-project">
                             @if(isset($id))
                                 @if(isset($projects) && count($projects) > 0)
@@ -125,12 +125,12 @@
                     </div>
                 </div>
             </div>
-            <form method="post" action="{{ route('create_project_pro') }}" style="height:52px;">
+            <form method="post" action="{{ route('create_project_pro') }}" class="h-input">
                 @csrf
                 <p class="text-lg fontbold pb-3">Créer un nouveau projet</p>
                 <div class="flex-none md:flex relative text-center md:text-left items-center">
-                    <input id="new_project_name" type="text" name="new_project_name" class="w-full appearance-none pl-4 py-4 mt-0 mb-4 md:mb-0 text-base" placeholder="Nom du projet"/>
-                    <button type="submit" class="px-16 py-5 text-lg fontbold text-white enregister-button mt-0 md:absolute right-0">Enregistrer</button>
+                    <input id="new_project_name" type="text" name="new_project_name" class="w-full appearance-none pl-4 py-4 mt-0 mb-4 md:mb-0 text-base bg-input h-input" placeholder="Nom du projet"/>
+                    <button type="submit" class="px-16 py-5 text-lg fontbold text-white enregister-button mt-0 md:absolute right-0 h-input">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -162,34 +162,36 @@
                 <div class="grid grid-cols-1">
                     <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
                         <p class="text-lg leading-none">Total du projet :</p>
-                        <p class="text-lg fontbold">502,40 € HT</p>
+                        <p class="text-lg fontbold">@if(isset($total_ht))<?php echo number_format($total_ht, 0, '.', ',') ?> € HT @endif</p>
                     </div>
                     <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
                         <p class="text-lg leading-none">Total avec TVA (20%) :</p>
-                        <p class="text-lg fontbold">602,88 € TTC</p>
+                    <p class="text-lg fontbold">@if(isset($total_tva))<?php echo number_format($total_tva, 0, '.', ',') ?> € TTC @endif</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:col-gap-4 xl:col-gap-0 md:row-gap-4 col-gap-0 row-gap-4">
-                <div class="xl:pr-3">
+            <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-4 lg:col-gap-4 xxl:col-gap-0 lg:row-gap-4 col-gap-0 row-gap-4">
+                <div class="xxl:pr-3">
                     <a href="/order_all/@if(isset($id)){{$id}}@endif">
-                        <button class="w-full text-lg fontbold text-white bg-green tracking-tighter" style="padding-top:19px; padding-bottom:15px;">Tout commander</button>
+                        <button class="w-full text-lg fontbold text-white bg-green tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Tout commander</button>
                     </a>
                 </div>
-                <div class="xl:pl-1 xl:pr-2">
+                <div class="xxl:pl-1 xxl:pr-2">
                     <a href="/pro/{{$id}}">
-                        <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Ajouter un nouveau produit</button>
+                        <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Ajouter un nouveau produit</button>
                     </a>
                 </div>
-                <div class="xl:pl-2 xl:pr-1">
-                    <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
+                <div class="xxl:pl-2 xxl:pr-1">
+                    <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
                 </div>
-                <div class="xl:pl-3">
-                    <button id="delete-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter" style="height:52px; padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
+                <div class="xxl:pl-3">
+                    <button id="delete-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
                 </div>
             </div>
         @else
-            <p class="fontbold capitalize text-center text-2xl py-20" style="height:239px;">Pas de Projet</p>
+            <div class="flex items-center" style="height:334px;">
+                <p class="mx-auto  fontbold capitalize text-center text-2xl">Pas de Projet</p>
+            </div>
         @endif
         
     </div>
@@ -204,15 +206,16 @@
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
                     </a>
-                    <p class="text-2xl fontbold text-center pt-10 pb-6 leading-tight">Enregistrement<br/>
-                        du <span class="capitalize">
-                            <?php
-                            setlocale(LC_TIME, 'French');
-                            echo $item->created_at->formatLocalized('%d %B %Y');?></span>
+                    <p class="text-2xl fontbold text-center pt-10 pb-4">Enregistrement</p>
+                    <p class="text-2xl fontbold text-center pb-6">
+                        du 
+                        <span class="capitalize">
+                            <?php echo ucfirst(utf8_encode(strftime('%d %B %Y', strtotime($item->created_at)))); ?>
+                        </span>
                     </p>
                     <div class="flex justify-between items-center h-15 bg-whitepink">
                         <p class="text-lg fontbold absolute left-3 md:left-8">Prix :</p>
-                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}</p>
+                        <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
                     </div>
                     <div class="px-3 pb-3 md:px-8 md:pb-8">
                         <p class="text-base pb-4" style="padding-top:21px;">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
@@ -226,11 +229,11 @@
                         <p class="text-base pb-4" style="padding-top:21px;">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
 
                         <a href="/modify_order_pro/{{$item['id']}}">
-                            <button class="w-full mt-6 text-lg text-white fontbold bg-darkgray" style="height:52px;padding-top:19px; padding-bottom:15px;">Modifier</button>
+                            <button class="w-full mt-6 text-lg text-white fontbold bg-darkgray h-input" style="padding-top:19px; padding-bottom:15px;">Modifier</button>
                         </a>
             
                         <a href="/order_pro/{{$item['id']}}">
-                            <button class="w-full mt-4 text-lg text-white fontbold bg-green" style="height:52px;padding-top:19px; padding-bottom:15px;">Commander</button>
+                            <button class="w-full mt-4 text-lg text-white fontbold bg-green h-input" style="padding-top:19px; padding-bottom:15px;">Commander</button>
                         </a>
                         
                     </div>
@@ -256,8 +259,8 @@
             <p class="text-lg text-center pt-8">Vous ne pourrez pas le récupérer.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 col-gap-4 pt-4 md:pt-10">
-                <button id="modal_close_button" class="w-full bg-darkgray text-white text-center" style="padding-top:19px; padding-bottom:15px">Annuler</button>
-                <a href="/delete_project_pro/@if(isset($id)){{$id}}@endif" class="w-full bg-green text-white text-center" style="padding-top:19px; padding-bottom:15px">Supprimer</a>
+                <button id="modal_close_button" class="w-full bg-darkgray text-white text-center h-input" style="padding-top:19px; padding-bottom:15px">Annuler</button>
+                <a href="/delete_project_pro/@if(isset($id)){{$id}}@endif" class="w-full bg-green text-white text-center h-input" style="padding-top:19px; padding-bottom:15px">Supprimer</a>
             </div>
     
         </div>

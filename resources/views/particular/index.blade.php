@@ -57,7 +57,7 @@
 <main id="main-content" class="bg-whitegreen  pb-10 md:pb-30">
 
     <div class="px-8 md:px-20">
-        <div class="flex-none md:flex items-center" style="padding-top:39px; padding-bottom:26px;">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
             <span>
@@ -92,8 +92,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
-                                    {{-- <div class="relative rounded-md mx-auto text-center type-select @if($item == $joinery_selected) active @endif " style="max-width:210px;"> --}}
-                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['name'])) active @endif" style="max-width:210px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['id'])) active @endif" style="max-width:210px;">
                                         <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
                                         <div class="w-full absolute bottom-0 rounded-b-md">
                                             <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
@@ -437,7 +436,6 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Vitrage</p>
                     </div>
-                    {{-- <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part"> --}}
                     <div class="bg-white pt-4 px-4 md:px-8 pb-4 md:pb-14 hidden toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)

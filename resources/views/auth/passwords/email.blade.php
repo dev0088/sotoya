@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>{{__('Reset Password')}}</title>
+<title>{{__('Sotoya')}}</title>
 @endsection
 
 @section('styles')
@@ -26,7 +26,7 @@
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex pt-9 pb-6 items-center">
+        <div class="flex-none md:flex items-center pt-39 pb-26">
             <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
@@ -43,7 +43,7 @@
         @csrf
         <p class="text-4xl text-center pb-10 fontbold">Réinitialiser le mot de passe</p>
         <p class="text-xl pt-0 pb-3 fontbold">E-mail*</p>
-        <input id="email" type="email" name="email" class="w-full p-4 focus:outline-none bg-input" placeholder="E-mail" value="{{ old('email') }}" required autofocus/>
+        <input id="email" type="email" name="email" class="w-full p-4 focus:outline-none bg-input h-input" placeholder="E-mail" value="{{ old('email') }}" required autofocus/>
         @error('email')
             <div class="py-3">
                 <span class="invalid-feedback" role="alert">

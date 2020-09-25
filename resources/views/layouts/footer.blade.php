@@ -11,6 +11,11 @@
             <div class="text-center md:text-left">
                 <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">NOS PRODUITS</p>
                 <div class="grid grid-cols-1 row-gap-4">
+                    {{-- @if(isset($joinery_footer) && count($joinery_footer))
+                        @foreach($joinery_footer as $key => $joinery)
+                            <p style="font-size:15px;">{{$joinery["name"]}}</p>
+                        @endforeach
+                    @endif --}}
                     <p style="font-size:15px;">Fenêtres</p>
                     <p style="font-size:15px;">Baie coulissante</p>
                     <p style="font-size:15px;">Porte fenêtre</p>

@@ -71,17 +71,17 @@
     <div class="bg-whitegreen">
         <div class="flex-none xl:flex relative justify-start lg:justify-between">
             
-            <div class="absolute inset-y-0 xl:relative pl-8 pr-4 xl:pl-35 pt-8 md:pt-12 lg:pt-16 xl:pt-105 transform translate-y-3/10 xl:transform-none">
-                <p class="tracking-normal leading-none text-black xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 xl:mb-6 fontbold text-3xl sm:text-4xl md:text-44">
+            <div class="absolute inset-y-0 xl:relative pl-8 pr-4 xl:pl-20 xxl:pl-35 pt-8 md:pt-12 lg:pt-16 xl:pt-105 transform translate-y-3/10 xl:transform-none">
+                <p class="tracking-normal leading-none xl:leading-snug pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-8 xl:mb-0 fontbold text-3xl sm:text-4xl md:text-44" style="color: #0C2417;">
                     Nous fournissons et
                     <br class="hidden xl:block"/>fabriquons des menuiseries
                     <br class="hidden xl:block"/>pour les professionnels
                     <br class="hidden xl:block"/>et les particuliers
                 </p>
                 @if(Auth::user())
-                    <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white text-lg fontbold px-10 bg-green" style="height:52px; padding-top:19px; padding-bottom:15px;">Voir le configurateur</a>
+                    <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white text-lg fontbold px-10 bg-green h-input inline-block" style="padding-top:19px; padding-bottom:15px;">Voir le configurateur</a>
                 @else
-                <button id="modal-trigger-button" class="text-white text-lg fontbold px-10 bg-green" style="height:52px; padding-top:19px; padding-bottom:15px;">Voir le configurateur</button>
+                <button id="modal-trigger-button" class="text-white text-lg fontbold px-10 bg-green h-input inline-block" style="padding-top:19px; padding-bottom:15px;">Voir le configurateur</button>
                 @endif
             </div>
     
@@ -95,7 +95,7 @@
         <div class="w-full relative bg-white py-8 md:pt-70 md:pb-15 shadow-md mx-auto maxwidth-1280 top-4 md:top-minus80" style="z-index: 20">
             <p class="text-4xl pb-6 text-center fontbold">Le configurateur</p>
         
-            <p class="w-8/10 text-lg px-6 text-left md:text-center leading-relaxed mb-15 mx-auto">
+            <p class="w-8/10 text-lg px-6 text-left md:text-center leading-relaxed mb-15 mx-auto text-darkgray">
                 Chez Sotoya Constructions, nous développons des partenariats avec de nombreuses entreprises 
                 <br class="hidden md:block"/>leaders sur leur marché. Ces collaborations renforcent notre expertise dans le domaine de la
                 <br class="hidden md:block"/> menuiserie. Le configurateur vous guidera dans vos recherches.
@@ -107,7 +107,11 @@
                         <div class="mx-auto">
                         <img class="w-full maxwidth-260" src="{{ asset('images') }}/{{$item['image']}}"/>
                             <p class="text-lg pt-4 pb-2 fontbold">{{$item['name']}}</p>
-                            <a href="/part/{{$item['name']}}" class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                            @if(Auth::user())
+                                <a @if(Auth::user()->mode == 0)href="/part/{{$item['id']}}"@else href="/pro_joinery/{{$item['id']}}"@endif  class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                            @else
+                                <a href="/part/{{$item['id']}}" class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                            @endif
                         </div>
                     @endforeach
                 @endif
@@ -119,15 +123,15 @@
     
     <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24" style="padding-top:23px;">
         <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto" style="">
-            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-6 xl:pr-4" style="">
+            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-2 xl:pr-4" style="">
                 <p class="pt-4 pb-8 lg:pb-4 xl:pb-8 text-4xl fontbold">Qui sommes-nous ?</p>
                 <p class="text-lg tracking-tight leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-3 xl:pb-6 fontbold">
                     Depuis 2016, Sotoya met son expérience et son savoir-faire unique au service des professionnels du bâtiment, promoteurs, artisans poseurs, et architectes. Spécialisée dans la menuiserie aluminium et PVC nous vous accompagnons de la conception de votre projet jusqu’à la pose. Notre bureau d’études est à votre disposition pour le conseil, la réalisation de votre projet.
                 </p>
-                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-2 xl:pb-6" style="letter-spacing: -0.03em">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.<br/>
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-2 xl:pb-6 text-darkgray" style="letter-spacing: -0.03em">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.<br/>
                     Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.<br/><br/>
                 </p>
-                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-8 lg:pb-4 xl:pb-8" style="letter-spacing: -0.03em">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.<br/>
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-8 lg:pb-4 xl:pb-8 text-darkgray" style="letter-spacing: -0.03em">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.<br/>
                         Sotoya vous donne la possibilité de commander en ligne vos produits sur mesure d’origine française dans des délais de fabrication moindres.
                 </p>
                 <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed text-right fontbold">
@@ -168,7 +172,7 @@
     
     <div class="bg-white" class="py-30">
         <p class="text-4xl text-center pt-30 pb-6 fontbold">Nos partenaires</p>
-        <p class="w-full text-lg tracking-tight text-center leading-normal mx-auto maxwidth-760">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
+        <p class="w-full text-lg tracking-tight text-center leading-normal mx-auto maxwidth-760 text-darkgray">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
         <img class="mx-auto mt-8 md:mt-15" src="{{ asset('images/partenaire 2 sapa@2x.png') }}"/>
     </div>
     
@@ -185,7 +189,7 @@
             <p class="text-4xl text-black fontbold text-center">Je suis un :</p>
     
             <div class="grid grid-cols-1 md:grid-cols-2 col-gap-5 row-gap-4 pt-4 md:pt-10">
-                <a href="/pro" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
+                <a href="/home" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
                     <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="74.757" height="80" viewBox="0 0 74.757 80">
                         <g id="Groupe_70" data-name="Groupe 70" transform="translate(-4.969 -0.929)">
                           <path id="Tracé_1395" data-name="Tracé 1395" d="M6.852,80.929h64.6a8.076,8.076,0,0,0,6.155-2.36,8.539,8.539,0,0,0,2.117-5.933V34.243a1.884,1.884,0,0,0-1.883-1.883H62.679V19.841A1.884,1.884,0,0,0,60.8,17.958h-3.53V15.822c.417-2.79-.692-8.41-7.526-11.715V2.812a1.883,1.883,0,0,0-3.766,0V5.33a1.884,1.884,0,0,0,1.174,1.744c7.142,2.9,6.414,8.06,6.383,8.257a1.927,1.927,0,0,0-.031.337v4.91a1.715,1.715,0,0,0,0,.192v2.85a2.037,2.037,0,0,1-1.459-1.95V17.876a1.927,1.927,0,0,0-1.933-1.883,1.883,1.883,0,0,0-1.883,1.878l-.017,8.2a.771.771,0,0,1-.77.771.885.885,0,0,1-.795-.588,1.883,1.883,0,0,0-3.766,0v.009l0,1.415a.76.76,0,0,1-.7.353,1.111,1.111,0,0,1-.665-.334V26.414a1.883,1.883,0,0,0-3.766,0,.683.683,0,1,1-1.365,0v-.638a1.883,1.883,0,0,0-3.763-.1c0,.018,0,.036,0,.054a2.359,2.359,0,0,1-.682.081.682.682,0,0,1-.682-.682q0-.046,0-.092l-.127-2.6V12.023a4.969,4.969,0,0,1,2.019-4.01A1.884,1.884,0,0,0,33.9,6.506V2.812a1.883,1.883,0,0,0-3.766,0V5.629a8.683,8.683,0,0,0-2.774,6.393v5.937H23.892a1.884,1.884,0,0,0-1.883,1.883V32.361H6.852a1.884,1.884,0,0,0-1.883,1.883v44.8A1.882,1.882,0,0,0,6.852,80.929Zm36.806-44.8V47.245H41.031V36.126ZM39.111,60.454V51.01h6.468v9.444Zm1.92,3.765h2.627V77.164H41.031ZM75.959,72.8a4.937,4.937,0,0,1-1.1,3.191,4.5,4.5,0,0,1-3.412,1.175H47.424V63.96a3.177,3.177,0,0,0,1.921-2.913V58.054H67.79a11.154,11.154,0,0,0,8.166-3.3V72.682Q75.955,72.74,75.959,72.8Zm0-28.5c0,4.831-2.146,9.995-8.166,9.995H49.344V50.416A3.178,3.178,0,0,0,47.423,47.5V36.126H75.954v8.168ZM25.777,21.724h1.584v.765q0,.046,0,.092l.127,2.605a4.452,4.452,0,0,0,4.447,4.394,6.058,6.058,0,0,0,1.78-.244,4.441,4.441,0,0,0,5.258,1.1,4.554,4.554,0,0,0,6.683-.2,4.516,4.516,0,0,0,6.214-3.2,5.776,5.776,0,0,0,2.209.436h1.3a1.9,1.9,0,0,0,1.895-1.756,1.782,1.782,0,0,0-.013-.374V21.724h1.647V32.36H25.777ZM8.734,36.126H37.265V47.5a3.178,3.178,0,0,0-1.921,2.913v3.872H16.839c-5.976,0-8.1-5.123-8.1-9.916V36.126Zm8.1,21.928H35.345v2.993a3.177,3.177,0,0,0,1.921,2.913v13.2H8.734V54.793A11.1,11.1,0,0,0,16.839,58.054Z" transform="translate(0 0)" fill="#0c2417"/>
@@ -194,7 +198,7 @@
                     </svg>
                     <p class="text-lg text-black text-center fontbold pt-4 md:pt-6 pb-4 md:pb-7">Professionnel</p>
                 </a>
-                <a href="/part" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
+                <a href="/home" class="pt-4 md:pt-9 cursor-pointer border border-lightergray rounded-lg">
                     <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="78.685" height="80" viewBox="0 0 78.685 80">
                         <g id="Groupe_72" data-name="Groupe 72" transform="translate(-1.068)">
                           <path id="Tracé_1391" data-name="Tracé 1391" d="M83.865,7.763c-.229-.477-1.1-2.543.05-4.14A2.076,2.076,0,0,0,83.789.837c-1.845-1.8-6.235,1.14-8.037,2.489-3.293,2.465-13.365,11.553-6.1,25.691l-.05,44.191a6.832,6.832,0,0,0,6.821,6.825h.005a6.837,6.837,0,0,0,6.828-6.811L83.3,38.438c0-.016,0-.029,0-.045s0-.031,0-.045l.009-9C86.9,25.489,91,16.816,83.865,7.763ZM73.342,30.425l6.278.007-.007,6.119-6.278-.005ZM72.39,12.652a20.153,20.153,0,0,1,7.263-7.527A9.219,9.219,0,0,0,80.7,9.667a1.759,1.759,0,0,0,.166.247c6.475,8.079,1.469,14.942-.2,16.839l-8.037-.009C70.218,21.713,70.134,16.978,72.39,12.652Zm4.043,63.7a3.144,3.144,0,0,1-3.14-3.139l.038-32.986,6.28.005-.036,32.986A3.149,3.149,0,0,1,76.432,76.352Z" transform="translate(-8.033 -0.032)" fill="#0c2417"/>

@@ -17,7 +17,7 @@
 
     <div class="px-8 md:px-35 bg-grey-1">
         <div class="flex-none md:flex items-center">
-            <div class="mb-4 md:mb-0 flex items-center" style="padding-top:39px; padding-bottom:26px;">
+            <div class="mb-4 md:mb-0 flex items-center pt-39 pb-26">
                 <a href="/" class="text-base fontbold">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
