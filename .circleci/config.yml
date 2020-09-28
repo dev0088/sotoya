@@ -7,7 +7,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "ef:be:79:65:ef:a1:af:7b:79:98:2d:48:f9:34:0f:65"
+            - "a6:b5:5b:07:89:02:48:a0:f7:94:03:67:66:bb:99:58"
       - run: 
           name: Deploy Sotoya server
           command: |
