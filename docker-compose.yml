@@ -2,7 +2,7 @@ version: '3.5'
 services:
   # MySQL Service
   db:
-    image: mysql:8
+    image: mysql:5.7.31
     container_name: sotoya_mysql
     hostname: sotoya_mysql
     restart: always
@@ -16,15 +16,16 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: sotoya_db
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      MYSQL_DATABASE: sotoya
+      MYSQL_ROOT_HOST: '%'
+#      SERVICE_TAGS: dev
+#      SERVICE_NAME: mysql
     command: 
       - '--character-set-server=utf8mb4'
       - '--collation-server=utf8mb4_general_ci'
     volumes:
       - ./dbdata:/var/lib/mysql
-      - ./sql:/root/sql
+      - ./sql_file:/root/sql
       - ./mysql/my.cnf:/etc/mysql/my.cnf
 
   # PHP Service
