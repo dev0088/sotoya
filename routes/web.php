@@ -61,6 +61,7 @@ Route::post('/create_project_pro', 'ProController@createproject')->name('create_
 Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all')->middleware('project');
 Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
 Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
+Route::post('/quote', 'ProController@downloadQuote')->name('quote');
 
 Route::post('/mailsend', 'HomeController@email')->middleware('auth');
 

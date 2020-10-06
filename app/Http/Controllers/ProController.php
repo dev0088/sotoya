@@ -22,6 +22,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use PDF;
+use Barryvdh\DomPDF\PDF as DomPDF;
 
 class ProController extends Controller
 {
@@ -451,6 +453,81 @@ class ProController extends Controller
         $project_id = Order::find($id)->project_id;
 
         return redirect()->route('account_pro_projects_id', $project_id);
+    }
+
+    public function downloadQuote(Request $request)
+    {
+        $id = $request->project_id;
+
+        set_time_limit(6000);
+
+    	$name = Project::find($id)->name;
+    	$date = Project::find($id)->updated_at;
+    	$client = Auth::user()->company;
+    	$address = Auth::user()->address;
+        $orders_original = Project::where('user_id', Auth::id())
+                                ->where('id', $id)
+                                ->first()
+                                ->orders()
+                                ->where('state_order', "0")
+                                ->orderBy('created_at', 'DESC')
+                                ->get();
+
+        $total_ht = 0;
+
+        foreach($orders_original as $key => $item) {
+            $item["quantity"] = 1;
+            $item["sum"] = $item["price"];
+        }
+
+        foreach($orders_original as $key => $item) {
+            $total_ht += $item["price"];
+        }
+
+        $total_tva = $total_ht * 1.2;
+
+        $tva = $total_tva - $total_ht;
+
+        for($x = 0 ; $x < count($orders_original) ; $x ++) {
+            for($y = $x + 1 ; $y < count($orders_original) ; $y ++) {
+                if($orders_original[$x]["price"] == $orders_original[$y]["price"]) {
+                    if( 
+                        $orders_original[$x]["join_id"] == $orders_original[$y]["join_id"] &&
+                        $orders_original[$x]["material_id"] == $orders_original[$y]["material_id"] &&
+                        $orders_original[$x]["range_id"] == $orders_original[$y]["range_id"] &&
+                        $orders_original[$x]["opening_id"] == $orders_original[$y]["opening_id"] &&
+                        $orders_original[$x]["leave_id"] == $orders_original[$y]["leave_id"] &&
+                        $orders_original[$x]["installation_id"] == $orders_original[$y]["installation_id"] &&
+                        $orders_original[$x]["totalheight_id"] == $orders_original[$y]["totalheight_id"] &&
+                        $orders_original[$x]["totalwidth_id"] == $orders_original[$y]["totalwidth_id"] &&
+                        $orders_original[$x]["insulation_id"] == $orders_original[$y]["insulation_id"] &&
+                        $orders_original[$x]["aeration_id"] == $orders_original[$y]["aeration_id"] &&
+                        $orders_original[$x]["color_id"] == $orders_original[$y]["color_id"]
+                        ) {
+                            $orders_original[$x]["quantity"] += 1;
+                            $orders_original[$x]["sum"] += $orders_original[$x]["price"];
+                            unset($orders_original[$y]);
+                        }
+                    
+                }
+            }
+        }
+    	
+    	$data = 
+    	[
+    		'name' => $name,
+    		'date' => $date,
+			'client' => $client,
+			'address' => $address,
+			'orders' => $orders_original,
+			'total_ht' => $total_ht,
+			'total_tva' => $total_tva,
+			'tva' => $tva,
+        ];
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('report', $data);
+  
+        return $pdf->download('Report-'.$name.'.pdf');
     }
 
 }

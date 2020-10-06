@@ -141,8 +141,8 @@
     
             <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                 <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                <a href="@if(Auth::user()->mode == 1){{ route('account_pro_projects') }}@else{{ route('account_part_projects') }}@endif" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Arrière</a>
-                <button type="submit" class="py-4 mb-4 md:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">enregistrer</button>
+                <button type="submit" class="py-4 mb-4 md:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">Mise à jour</button>
+                <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
             </div>
     
             <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">

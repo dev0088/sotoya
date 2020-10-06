@@ -633,6 +633,7 @@
 
     var step = 0;
     var next = false;
+    var submit = false;
 
     var selected;
 
@@ -702,9 +703,9 @@
 
     $("#follow_button").click(function() {
 
-        console.log(step);
+        console.log(next);
 
-        if(step == 10) {
+        if(submit) {
 
             $(this).attr("type", "submit");
 
@@ -715,6 +716,9 @@
             step ++;
             next = false;
         }
+
+        console.log(next);
+        console.log(step);
 
         toggle();
 
@@ -739,7 +743,7 @@
         selected[changedIndex] = changedName;
         price[changedIndex] = changedPrice;
 
-        console.log(price);
+        console.log(changedIndex);
 
         $("#" + options[changedIndex] + "_result_wrapper").show();
         $("#" + options[changedIndex] + "_result").html(changedName);
@@ -747,6 +751,10 @@
         $("#" + options[changedIndex] + "_submit").val($(this).attr("id"));
 
         totalPriceCalculate();
+
+        if(changedIndex == 10) {
+            submit = true;
+        }
 
         if(changedIndex === step) {
             next = true;
@@ -903,7 +911,7 @@
 
         totalPriceCalculate();
 
-        console.log(dimension_price);
+        console.log(changedIndex);
 
         if((dimensions[0] !== "" && dimensions[1] !== "") || dimensions[2] !== "") {
             next = true;

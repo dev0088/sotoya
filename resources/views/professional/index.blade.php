@@ -663,7 +663,7 @@
                     <div class="h-input">
                         <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left h-input">
                             <span id="select-project">
-                                projet
+                                {{-- projet --}}
                             </span>
                             
                             <input id="select-project-submit" type="hidden" @if(!isset($id))name="select_project_submit"@endif/>
@@ -678,7 +678,7 @@
                             </div>
                         </button>
                         <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
-                            <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Projet</p>
+                            {{-- <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Projet</p> --}}
                             @if(isset($projects) && count($projects) > 0)
                                 @foreach($projects as $key => $item)  
                                     <p id="{{$item['id']}}" class="project-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
@@ -880,8 +880,11 @@
 
     $("#new-project").focus(function() {
 
-        $("#select-project").html($("#project-disabled").html());
+        $("#select-project").html("");
         $("#select-project-submit").val("");
+        selectProject = false;
+
+        validateForm();
         
     });
 

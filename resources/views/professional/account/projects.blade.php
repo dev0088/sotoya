@@ -130,7 +130,7 @@
                 <p class="text-lg fontbold pb-3">Créer un nouveau projet</p>
                 <div class="flex-none md:flex relative text-center md:text-left items-center">
                     <input id="new_project_name" type="text" name="new_project_name" class="w-full appearance-none pl-4 py-4 mt-0 mb-4 md:mb-0 text-base bg-input h-input" placeholder="Nom du projet"/>
-                    <button type="submit" class="px-16 py-5 text-lg fontbold text-white enregister-button mt-0 md:absolute right-0 h-input">Enregistrer</button>
+                    <button type="button" class="px-16 py-5 text-lg fontbold text-white enregister-button mt-0 md:absolute right-0 h-input">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -157,7 +157,6 @@
                         <p class="text-lg leading-none">Nom du client :</p>
                         <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->company}}@endif</p>
                     </div>
-                    
                 </div>
                 <div class="grid grid-cols-1">
                     <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
@@ -166,8 +165,14 @@
                     </div>
                     <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
                         <p class="text-lg leading-none">Total avec TVA (20%) :</p>
-                    <p class="text-lg fontbold">@if(isset($total_tva))<?php echo number_format($total_tva, 0, '.', ',') ?> € TTC @endif</p>
+                        <p class="text-lg fontbold">@if(isset($total_tva))<?php echo number_format($total_tva, 0, '.', ',') ?> € TTC @endif</p>
                     </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
+                <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
+                    <p class="text-lg leading-none">Adresse du client :</p>
+                    <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->address}}@endif</p>
                 </div>
             </div>
             <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-4 lg:col-gap-4 xxl:col-gap-0 lg:row-gap-4 col-gap-0 row-gap-4">
@@ -181,9 +186,11 @@
                         <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Ajouter un nouveau produit</button>
                     </a>
                 </div>
-                <div class="xxl:pl-2 xxl:pr-1">
-                    <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
-                </div>
+                <form class="xxl:pl-2 xxl:pr-1" action="/quote" method="post">
+                    @csrf
+                    <input type="hidden" name="project_id" value="@if(isset($id)){{$id}}@endif" />
+                    <button @if(isset($id))type="submit"@else type="button"@endif class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
+                </form>
                 <div class="xxl:pl-3">
                     <button id="delete-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
                 </div>
@@ -335,8 +342,10 @@
     $("#new_project_name").keyup(function() {
         if($(this).val().length != 0) {
             $(this).next().addClass("active");
+            $(this).next().attr("type", "submit");
         } else {
             $(this).next().removeClass("active");
+            $(this).next().attr("type", "button");
         }
     })
 
