@@ -35,10 +35,10 @@ services:
     build:
       context: '.'
       args:
-        uid: 1001
+        uid: 1000
     container_name: app
     ports:
-      - 8000:80
+      - 80:80
     environment:
       - APACHE_RUN_USER=#1000
       - APACHE_RUN_GROUP=#1000
@@ -47,22 +47,22 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
 
 # Nginx Service
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    depends_on:
-      - app
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
-      - ./nginx/logs/:/var/logs/nginx/
-    networks:
-      sotoya-network:
-        aliases:
-          - sotoya_nginx_network
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   depends_on:
+  #     - app
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ./nginx/logs/:/var/logs/nginx/
+  #   networks:
+  #     sotoya-network:
+  #       aliases:
+  #         - sotoya_nginx_network
 
 #Docker Networks
 networks:
