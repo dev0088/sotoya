@@ -18,6 +18,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sotoya
       MYSQL_ROOT_HOST: '%'
+#      SERVICE_TAGS: dev
+#      SERVICE_NAME: mysql
     command: 
       - '--character-set-server=utf8mb4'
       - '--collation-server=utf8mb4_general_ci'
@@ -33,39 +35,43 @@ services:
     links:
      - db:sotoya_mysql
     build:
-      context: '.'
-      args:
-        uid: 1000
-    container_name: app
-    ports:
-      - 80:80
+      context: .
+      dockerfile: Dockerfile
+    container_name: sotoya
+    hostname: sotoya_app
+    restart: unless-stopped
+    tty: true
     environment:
-      - APACHE_RUN_USER=#1000
-      - APACHE_RUN_GROUP=#1000
-    volumes:
-      - .:/var/www/html
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      SERVICE_NAME: sotoya
+      SERVICE_TAGS: dev
+    working_dir: /var/www
     networks:
       sotoya-network:
         aliases:
           - sotoya_app_network
+    ports:
+      - "9000:9000"
+    volumes:
+       - ./:/var/www
+       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
 # Nginx Service
-  # nginx:
-  #   image: nginx:alpine
-  #   container_name: nginx
-  #   depends_on:
-  #     - app
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - ./:/var/www
-  #     - ./nginx/conf.d/:/etc/nginx/conf.d/
-  #     - ./nginx/logs/:/var/logs/nginx/
-  #   networks:
-  #     sotoya-network:
-  #       aliases:
-  #         - sotoya_nginx_network
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/logs/:/var/logs/nginx/
+    networks:
+      sotoya-network:
+        aliases:
+          - sotoya_nginx_network
 
 #Docker Networks
 networks:
