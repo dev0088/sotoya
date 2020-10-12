@@ -60,7 +60,7 @@
         } */
         main {
             font-family: 'ManRegular';
-            color:black;
+            color:#020000;
         }
         .fontbold {
             font-family: 'ManBold';
@@ -155,8 +155,12 @@
             selectmodal.style.display = "none";
         }
         window.onclick = function(event) {
-            if (event.target == selectmodal) {
+            
+            var modal = document.getElementById("voir-modal");
+            
+            if (event.target == selectmodal || event.target == modal) {
                 selectmodal.style.display = "none";
+                modal.style.display = "none";
             }
         }
 

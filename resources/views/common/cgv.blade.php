@@ -16,16 +16,16 @@
 <main id="main-content">
     
     <div class="px-8 md:px-35 bg-grey-1">
-        <div class="flex-none md:flex items-center pt-39 pb-26">
+        <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base fontbold leading-normal">Conditions générales de ventes Sotoya Constructions (CGV)</span>
+            <span class="text-base text-dark fontbold leading-normal">Conditions générales de ventes Sotoya Constructions (CGV)</span>
         </div>
         <p class="text-4xl fontbold pb-8 md:pt-10 md:pb-15 text-center md:text-left" style="line-height: 1.38;">Conditions générales de ventes<br/>Sotoya Constructions (CGV)</p>
     </div>

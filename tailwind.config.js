@@ -26,7 +26,8 @@ module.exports = {
                 'yellow': '#FABD02',
                 'green': '#18A75A;',
                 'black': '#020000',
-                'darkgray': '#3b3b3b'
+                'darkgray': '#3b3b3a',
+                'dark': '#121212',
             },
 
             backgroundColor: {
@@ -48,14 +49,17 @@ module.exports = {
             borderColor: {
                 'grey': '#888888',
                 'underline': '#cecece',
-                'green': '#18A75A;',
+                'green': '#18A75A',
                 'lightergray': '#c3c3c3',
                 'heavygray': '#e1e1e1',
+                'lightgray': '#3B3B3A26',
+                'dark': '#121212'
             },
             spacing: {
                 '27': '108px',
                 '30': '120px',
                 '35': '140px',
+                '35px': '35px',
                 '562': '562px',
                 '105': '105px',
                 'minus80': '-80px',
@@ -67,7 +71,9 @@ module.exports = {
                 '55': '55px',
                 '50': '50px',
                 '39': '39px',
-                '26': '26px'
+                '26': '26px',
+                'minus149': '-149px',
+                'minus268': '-268px'
             },
             fontSize: {
                 '44': '44px',

@@ -54,19 +54,19 @@
 
 @section('content')
 
-<main id="main-content" class="bg-whitegreen  pb-10 md:pb-30">
+<main id="main-content" class="bg-whitegreen  pb-10 md:pb-20">
 
-    <div class="px-8 md:px-20">
-        <div class="flex-none md:flex items-center pt-39 pb-26">
+    <div class="px-8 md:px-35">
+        <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base fontbold">Accueil</a>
-            <span>
-                <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
-                    <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
-                </svg>
-            </span>
+                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <span>
+                    <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
+                        <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
+                    </svg>
+                </span>
             </div>
-            <span class="text-base fontbold">Configurateur particulier</span>
+            <span class="text-base text-dark fontbold">Configurateur particulier</span>
         </div>
     </div>
     
@@ -128,7 +128,7 @@
                                 @foreach($material as $key => $item)
                                     <div id="{{$item['id']}}" class="relative rounded-md px-3 mx-auto type-select maxwidth-210 check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -160,7 +160,7 @@
                                 @foreach($range as $key => $item)
                                     <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -193,7 +193,7 @@
                                 @foreach($opening as $key => $item)
                                     <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -226,7 +226,7 @@
                                 @foreach($leave as $key => $item)
                                     <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -258,7 +258,7 @@
                                 @foreach($installation as $key => $item)
                                     <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -410,7 +410,7 @@
                                 @foreach($aeration as $key => $item)
                                     <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tight leading-normal" style="font-size:13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -442,7 +442,7 @@
                                 @foreach($glazing as $key => $item)
                                     <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 mx-auto type-select maxwidth-335" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
-                                        <p class="text-center tracking-tighter leading-normal" style="font-size: 13px;">{{$item["description"]}}</p>
+                                        <p class="text-center tracking-tighter leading-normal text-darkgray" style="font-size: 13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
                                                 <path id="checkmark" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)" fill="#fff"/>
@@ -502,7 +502,7 @@
                         <p class="w-full text-lg py-4 text-center fontbold">Retour</p>
                     </a>
                     <button id="follow_button" type="button" class="w-1/2 ml-2 shadow-md bg-white cursor-pointer">
-                        <p class="w-full text-lg bg-black text-white py-4 text-center fontbold">Suivant</p>
+                        <p class="w-full text-lg bg-darkgray text-white py-4 text-center fontbold">Suivant</p>
                     </button>
                 </div>
         

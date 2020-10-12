@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('postcode');
             $table->string('city');
             $table->string('telephone')->nullable();
+            $table->string('profession_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

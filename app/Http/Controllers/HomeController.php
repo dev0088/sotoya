@@ -65,15 +65,17 @@ class HomeController extends Controller
 
     public function email(Request $request) {
 
-        $to = 'contact@gmail.com';
-        $from = $request->input('email');
-        $subject = $request->input('subject');
-        $message = $request->input('message');
-        $headers = 'From: '.$from . "\r\n" .
-        'Reply-To: '.$from . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+        // $to = 'contact@gmail.com';
+        // $from = $request->input('email');
+        // $subject = $request->input('subject');
+        // $message = $request->input('message');
+        // $headers = 'From: '.$from . "\r\n" .
+        // 'Reply-To: '.$from . "\r\n" .
+        // 'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        // mail($to, $subject, $message, $headers);
+
+        return view('common.contact_summary');
 
     }
 }

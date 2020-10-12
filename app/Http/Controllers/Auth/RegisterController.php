@@ -62,7 +62,8 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'postcode' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'telephone' => ['max:255']
+            'telephone' => ['max:255'],
+            'profession_id' => ['max:255']
         ]);
     }
 
@@ -90,6 +91,7 @@ class RegisterController extends Controller
                 'postcode' => $data['postcode'],
                 'city' => $data['city'],
                 'telephone' => $data['telephone'],
+                'profession_id' => $data['profession'],
             ]);
 
         } else {
@@ -105,6 +107,7 @@ class RegisterController extends Controller
                 'postcode' => $data['postcode'],
                 'city' => $data['city'],
                 'telephone' => $data['telephone'],
+                'profession_id' => $data['profession'],
             ]);
 
         }

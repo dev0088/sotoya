@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             'mode' => "1",
             'address' => "address",
             'postcode' => "500-500000",
-            'city' => "city"
+            'city' => "city",
+            "profession_id" => "3"
         ]);
 
         //Base Data
@@ -217,6 +218,18 @@ class DatabaseSeeder extends Seeder
 
         DB::table('faqs')->insert($faqs);
         DB::table('cgvs')->insert($cgvs);
+
+        $professions = 
+        [
+            ["id"=> 1, "name"=>"Architecte"],
+            ["id"=> 2, "name"=>"Maitre d’œuvre"],
+            ["id"=> 3, "name"=>"Bureau d’études"],
+            ["id"=> 4, "name"=>"Gros œuvre"],
+            ["id"=> 5, "name"=>"QSE"],
+
+        ];
+
+        DB::table('professions')->insert($professions);
 
     }
 }

@@ -455,6 +455,95 @@ class ProController extends Controller
         return redirect()->route('account_pro_projects_id', $project_id);
     }
 
+    public function payiteminsert(Request $request)
+    {
+
+        $joinery_id = $request->post("joinery_submit_pay");
+        $material_id = $request->post("material_submit_pay");
+        $range_id = $request->post("range_submit_pay");
+        $opening_id = $request->post("opening_submit_pay");
+        $leave_id = $request->post("leave_submit_pay");
+        $installation_id = $request->post("installation_submit_pay");
+        $aeration_id = $request->post("aeration_submit_pay");
+        $glazing_id = $request->post("glazing_submit_pay");
+        $color_id = $request->post("color_submit_pay");
+        $height_size_id = $request->post("height_size_submit_pay");
+        $width_size_id = $request->post("width_size_submit_pay");
+        $insulation_size_id = $request->post("insulation_size_submit_pay");
+
+        $joinery = Join::find($joinery_id);
+        $material = Material::find($material_id);
+        $range = Range::find($range_id);
+        $opening = Opening::find($opening_id);
+        $leave = Leave::find($leave_id);
+        $installation = Installation::find($installation_id);
+        $aeration = Aeration::find($aeration_id);
+        $glazing = Glazing::find($glazing_id);
+        $color = Color::find($color_id);
+        $height_size = TotalHeight::find($height_size_id);
+        $width_size = TotalWidth::find($width_size_id);
+        $insulation_size = Insulation::find($insulation_size_id);
+
+        $order = new Order();
+
+        $order->user_id = Auth::id();
+        $order->join_id = $joinery_id;
+        $order->totalheight_id = $height_size_id;
+        $order->material_id = $material_id;
+        $order->insulation_id = $insulation_size_id;
+        $order->range_id = $range_id;
+        $order->aeration_id = $aeration_id;
+        $order->opening_id = $opening_id;
+        $order->leave_id = $leave_id;
+        $order->glazing_id = $glazing_id;
+        $order->installation_id = $installation_id;
+        $order->color_id = $color_id;
+        $order->totalwidth_id = $width_size_id;
+        $order->mode = Auth::user()->mode;
+            
+
+        $price = 
+            $joinery["price"] + 
+            $material["price"] + 
+            $range["price"] + 
+            $opening["price"] + 
+            $leave["price"] + 
+            $installation["price"] +
+            $aeration["price"] +
+            $glazing["price"] + 
+            $color["price"] + 
+            $height_size["price"] + 
+            $width_size["price"] + 
+            $insulation_size["price"];
+
+        $order->price = $price;
+
+        $order->state_order = 1;
+
+        $order->save();
+
+        return view('payment.index');
+    }
+
+    public function pay(Request $request)
+    {
+        $address_state = $request->address_state;
+
+        $firstname_delivery = $request->firstname_delivery;
+        $lastname_delivery = $request->lastname_delivery;
+        $address_delivery = $request->address_delivery;
+        $postcode_delivery = $request->postcode_delivery;
+        $city_delivery = $request->city_delivery;
+
+        $firstname_billing = $request->firstname_billing;
+        $lastname_billing = $request->lastname_billing;
+        $address_billing = $request->address_billing;
+        $postcode_billing = $request->postcode_billing;
+        $city_billing = $request->city_billing;
+
+        return view('payment.summary');
+    }
+
     public function downloadQuote(Request $request)
     {
         $id = $request->project_id;

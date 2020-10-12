@@ -63,9 +63,9 @@
 <main id="main-content" class="bg-whitegreen w-full px-8 pb-10 md:px-20 md:pb-30">
 
     <div>
-        <div class="flex-none md:flex items-center pt-39 pb-26">
+        <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -73,14 +73,14 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_pro" class="text-base fontbold">Mon compte professionnel</a>
+                <a href="/account_pro" class="text-base text-darkgray fontbold">Mon compte professionnel</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base fontbold">Mes  projets enregistrés</span>
+            <span class="text-base text-dark fontbold">Mes  projets enregistrés</span>
         </div>
     </div>
     
@@ -139,8 +139,8 @@
     
     <div class="w-full pt-4 md:pt-9 pb-4 md:pb-15 px-4 md:px-15 mb-4 shadow-md bg-white mx-auto maxwidth-1280">
         @if(isset($projects))
-            <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
-                <div class="grid grid-cols-1">
+            {{-- <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0"> --}}
+                <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
                     <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
                         <p class="text-lg leading-none">Nom du projet :</p>
                         <p id="project_name_display" class="fontbold pl-4">
@@ -158,7 +158,13 @@
                         <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->company}}@endif</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1">
+                <div class="">
+                    <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
+                        <p class="text-lg leading-none">Adresse du client :</p>
+                        <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->address}}@endif</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
                     <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
                         <p class="text-lg leading-none">Total du projet :</p>
                         <p class="text-lg fontbold">@if(isset($total_ht))<?php echo number_format($total_ht, 0, '.', ',') ?> € HT @endif</p>
@@ -168,13 +174,8 @@
                         <p class="text-lg fontbold">@if(isset($total_tva))<?php echo number_format($total_tva, 0, '.', ',') ?> € TTC @endif</p>
                     </div>
                 </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
-                <div class="border-b border-underline flex items-center" style="padding-top:28px; padding-bottom:25px;">
-                    <p class="text-lg leading-none">Adresse du client :</p>
-                    <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->address}}@endif</p>
-                </div>
-            </div>
+            {{-- </div> --}}
+            
             <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-4 lg:col-gap-4 xxl:col-gap-0 lg:row-gap-4 col-gap-0 row-gap-4">
                 <div class="xxl:pr-3">
                     <a href="/order_all/@if(isset($id)){{$id}}@endif">

@@ -40,7 +40,9 @@ Route::post('/record_order_part', 'PartController@recordorder')->name('record_or
 Route::get('/order_part/{id}', 'PartController@order')->name('order_part')->middleware('order');
 Route::get('/modify_order_part/{id}', 'PartController@modifyorder')->name('modify_order_part')->middleware('order');
 Route::post('/modify_order_part', 'PartController@updateorder')->name('update_order_part');
-Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delete_order_part')->middleware('order');;
+Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delete_order_part')->middleware('order');
+Route::post('/payiteminsert_part', 'PartController@payiteminsert')->name('payiteminsert_part');
+Route::post('/pay_part', 'PartController@pay')->name('pay_part');
 
 
 Route::get('/pro', 'ProController@index')->name('pro');
@@ -62,6 +64,10 @@ Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all'
 Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
 Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
 Route::post('/quote', 'ProController@downloadQuote')->name('quote');
+Route::post('/payiteminsert_pro', 'ProController@payiteminsert')->name('payiteminsert_pro');
+Route::post('/pay_pro', 'ProController@pay')->name('pay_pro');
+
+
 
 Route::post('/mailsend', 'HomeController@email')->middleware('auth');
 
