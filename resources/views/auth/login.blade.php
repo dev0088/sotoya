@@ -23,26 +23,26 @@
 
 @section('content')
 
-<main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
+<main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-20">
 
     <div>
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base text-dark fontbold">S’inscrire</span>
+            <span class="text-base text-dark fontbold leading-snug">S’inscrire</span>
         </div>
     </div>
     
-    <form class="w-full bg-white px-4 md:px-8 py-6 md:pb-10 mx-auto shadow-md maxwidth-508" style="padding-top:50px;" method="post" action="{{ route('login') }}">
+    <form class="w-full bg-white px-4 md:px-8 pt-10 pb-10 mx-auto shadow-md maxwidth-508" method="post" action="{{ route('login') }}">
         @csrf
-        <p class="text-4xl text-center pb-12 fontbold">Se connecter</p>
-        <p class="text-lg fontbold" style="padding-bottom:13px;">E-mail*</p>
+        <p class="text-4xl text-center pb-10 fontbold leading-snug">Se connecter</p>
+        <p class="text-lg pb-3 fontbold leading-snug">E-mail*</p>
         <input id="email" type="email" name="email" class="w-full px-4 focus:outline-none bg-input text-base h-input" style="padding-top:19px; padding-bottom:18px;" placeholder="E-mail" required/>
         @error('email')
             <div class="py-3">
@@ -51,8 +51,8 @@
                 </span>
             </div>
         @enderror
-        <p class="text-lg fontbold" style="padding-top:29px; padding-bottom:13px;">Mot de passe*</p>
-        <div class="input-group m-0 p-0">
+        <p class="text-lg fontbold pt-6 pb-3 leading-snug">Mot de passe*</p>
+        <div class="input-group">
             <input id="password" type="password" name="password" class="form-control bg-input h-input" style="padding-top:19px; padding-bottom:18px;" placeholder="Mot de passe" required/>
             <div class="form-control-after cursor-pointer">
                 <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
@@ -71,20 +71,20 @@
             </div>
         @enderror
         @if (Route::has('password.request'))
-            <div class="pt-9" style="padding-bottom:34px;">
-                <a href="{{ route('password.request') }}" class="text-base text-green cursor-pointer" href="{{ route('password.request') }}">
+            <div class="py-8">
+                <a href="{{ route('password.request') }}" class="text-base text-green cursor-pointer leading-snug" href="{{ route('password.request') }}">
                     Mot de passe oublié ?
                 </a>
             </div>
         @endif
         <div class="w-full text-center md:text-left">
-            <button id="submitbutton" type="button" class="px-15 py-4 text-white connection-submit-button fontbold">Se connecter</button> 
+            <button id="submitbutton" type="button" class="px-15 py-4 text-lg text-white connection-submit-button fontbold h-input">Se connecter</button> 
         </div>
     </form>
     
-    <div class="text-center" style="padding-top:37px;">
-        <span class="text-lg pr-3">Pas encore de compte ?</span>
-        <a href="{{ route('register') }}"><span class="text-lg fontbold cursor-pointer fontbold text-green border-b-2 border-green">S’inscrire</span></a>
+    <div class="text-center pt-8">
+        <span class="text-lg pr-2 leading-snug">Pas encore de compte ?</span>
+        <a href="{{ route('register') }}"><span class="text-lg fontbold cursor-pointer fontbold text-green border-b-2 border-green leading-snug pb-1">S’inscrire</span></a>
     </div>
 
 </main>

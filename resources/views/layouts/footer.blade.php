@@ -9,56 +9,47 @@
         </div>
         <div class="w-full md:w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-4 row-gap-10 px-10 lg:px-0">
             <div class="text-center md:text-left">
-                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">NOS PRODUITS</p>
+                <p class="pb-6 fontbold text-base text-black leading-snug">NOS PRODUITS</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    {{-- @if(isset($joinery_footer) && count($joinery_footer))
-                        @foreach($joinery_footer as $key => $joinery)
-                            <p style="font-size:15px;">{{$joinery["name"]}}</p>
-                        @endforeach
-                    @endif --}}
-                    <p style="font-size:15px;">Fenêtres</p>
-                    <p style="font-size:15px;">Baie coulissante</p>
-                    <p style="font-size:15px;">Porte fenêtre</p>
-                    <p style="font-size:15px;">Porte entrée</p>
-                    <p style="font-size:15px;">Porte de service</p>
-                    <p style="font-size:15px;">Volet roulant</p>
-                    <p style="font-size:15px;">Garde corps</p>
-                    <p style="font-size:15px;">Véranda</p>
-                    <p style="font-size:15px;">Pergola</p>
-                    <p style="font-size:15px;">Accessoires</p>
+                    <?php
+                        $joinery_footer = App\Model\Base\Join::orderBy('created_at', 'DESC')->take(10)->get();
+                        foreach($joinery_footer as $key => $joinery) {
+                            echo "<p class='text-base leading-snug'>".$joinery["name"]."</p>";
+                        }
+                    ?>
                 </div>
             </div>
             <div class="text-center md:text-left">
-                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">SOTOWEB</p>
+                <p class="pt-0 pb-6 fontbold text-base text-black leading-snug">SOTOWEB</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    <p style="font-size:15px;">Mon compte</p>
-                    <a href="/about" style="font-size:15px;">Qui sommes-nous ?</a>
-                    <p style="font-size:15px;">Partenaires</p>
-                    <p style="font-size:15px;">Label</p>
-                    <p style="font-size:15px;">Documentation</p>
-                    <a href="/faq" style="font-size:15px;">FAQ</a>
+                    <p class="text-base leading-snug">Mon compte</p>
+                    <a href="/about" class="text-base leading-snug">Qui sommes-nous ?</a>
+                    <p class="text-base leading-snug">Partenaires</p>
+                    <p class="text-base leading-snug">Label</p>
+                    <p class="text-base leading-snug">Documentation</p>
+                    <a href="/faq" class="text-base leading-snug">FAQ</a>
                 </div>
             </div>
             <div class="text-center md:text-left">
-                <p class="pt-0 pb-6 fontbold text-black" style="font-size:15px;">INFORMATIONS</p>
+                <p class="pt-0 pb-6 fontbold text-black text-base leading-snug">INFORMATIONS</p>
                 <div class="grid grid-cols-1 row-gap-4">
-                    <a href="/contact" style="font-size:15px;">Contact</a>
-                    <a href="/cgv" style="font-size:15px;">CGV</a>
-                    <a href="/mentions" style="font-size:15px;">Mentions légales</a>
+                    <a href="/contact" class="text-base leading-snug">Contact</a>
+                    <a href="/cgv" class="text-base leading-snug">CGV</a>
+                    <a href="/mentions" class="text-base leading-snug">Mentions légales</a>
                 </div>
             </div>
             <div class="text-center md:text-left md:col-start-1 md:col-span-2 md:grid-cols-2 lg:col-start-1 lg:col-span-2 xl:cols-start-4 xl:col-span-1 grid lg:grid-cols-2 xl:grid-cols-1 xl:col-gap-2 col-gap-4 row-gap-10">
                 <div>
-                    <p class="pb-6 fontbold text-black" style="font-size:15px;">ADRESSE</p>
-                    <p class="leading-normal" style="font-size:15px;">
+                    <p class="pb-6 fontbold text-black text-base leading-snug">ADRESSE</p>
+                    <p class="text-base leading-normal">
                         Centre d’Affaires ALTA ROCCA Bâtiment G — RDC<br/>
                         1120 Route départementale de Gémenos <br/>
                         13400 AUBAGNE
                     </p>
                 </div>
                 <div>
-                    <p class="pb-6 fontbold text-black"  style="font-size:15px;">POUR NOUS RENDRE VISITE</p>
-                    <p class="leading-normal" style="font-size:15px;">
+                    <p class="pb-6 fontbold text-black text-base leading-snug">POUR NOUS RENDRE VISITE</p>
+                    <p class="text-base leading-normal">
                         Du lundi au vendredi<br/>9h00 – 18h00
                     </p>
                 </div>

@@ -27,15 +27,15 @@
         
         <div id="nav-content" class="hidden md:flex" style="">
 
-            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-9 text-base text-dark fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-dark @endif">Professionnel</a>
-            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-14 text-base text-dark fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0) border-b-2 border-dark @endif">Particulier</a>
+            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-9 text-base text-dark fontbold leading-snug @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-dark @endif">Professionnel</a>
+            <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="py-1 mr-14 text-base text-dark fontbold leading-snug @if(isset(Auth::user()->mode) && Auth::user()->mode == 0) border-b-2 border-dark @endif">Particulier</a>
 
             <a class="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17.368" height="20" viewBox="0 0 17.368 20" style="margin-right:32px;">
                     <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
                 </svg>
             </a>
-            <a @if(!Auth::user()) id="modal-select-button" @endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif class="cursor-pointer">
+            <a @if(!Auth::user()) href="/login" @endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif class="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20" class="" style="">
                 <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
                 </svg>
@@ -45,83 +45,21 @@
     </div>
 
     <div id="nav-content-mobile" class="grid grid-cols-2 md:none col-gap-2 row-gap-8 px-2 py-4 md:hidden" style="display:none;">
-        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="text-black fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-black @endif  mx-auto px-2 py-2" style="font-size:15px;">Professionnel</a>
-        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="text-black mx-auto fontbold @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)  border-b-2 border-black @endif px-2 py-2" style="font-size:15px;">Particulier</a>
+        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/pro"@endif @if(!Auth::user())href="/home"@endif class="text-black fontbold leading-snug @if(isset(Auth::user()->mode) && Auth::user()->mode == 1) border-b-2 border-black @endif  mx-auto px-2 py-2" style="font-size:15px;">Professionnel</a>
+        <a @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/part"@endif @if(!Auth::user())href="/home"@endif class="text-black mx-auto fontbold leading-snug @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)  border-b-2 border-black @endif px-2 py-2" style="font-size:15px;">Particulier</a>
 
         <a class="mx-auto cursor-pointer" class="px-2 py-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="17.368" height="20" viewBox="0 0 17.368 20" style="">
                 <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
             </svg>
         </a>
-        <a @if(!Auth::user()) id="modal-select-button-mobile" @endif class="mx-auto px-2 py-2 cursor-pointer" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif>
+        <a @if(!Auth::user()) href="/login" @endif class="mx-auto px-2 py-2 cursor-pointer" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20" class="" style="">
             <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
             </svg>
         </a>
 
     </div>
-
-    {{-- <div id="select-modal" class="modal mx-auto z-50">
-    
-        <div class="modal-content relative px-8 py-8 md:px-15 md:pt-15 md:pb-10">
-    
-            <span id="close" class="absolute top-4 md:top-8 right-4 md:right-8 text-4xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="19.998" viewBox="0 0 20.001 19.998">
-                    <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
-                </svg>              
-            </span>
-    
-            <form class="w-full" method="post" action="{{ route('login') }}">
-                @csrf
-                <p class="text-4xl text-center text-black pb-10 fontbold">Se connecter</p>
-                <p class="text-lg fontbold pb-3">E-mail*</p>
-                <input id="email" type="email" name="email" class="w-full px-4 focus:outline-none bg-input text-base h-input" style="padding-top:19px; padding-bottom:18px;" placeholder="E-mail" required/>
-                @error('email')
-                    <div class="py-3">
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    </div>
-                @enderror
-                <p class="text-lg fontbold pt-6 pb-3">Mot de passe*</p>
-                <div class="input-group m-0 p-0">
-                    <input id="password" type="password" name="password" class="form-control bg-input h-input px-4" style="padding-top:19px; padding-bottom:18px;" placeholder="Mot de passe" required/>
-                    <div class="form-control-after cursor-pointer">
-                        <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
-                            <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
-                        </svg>
-                        <svg class="hidden" id="eye_slash_fill" xmlns="http://www.w3.org/2000/svg" width="25.52" height="16.939" viewBox="0 0 25.52 16.939">
-                            <path d="M20.028,27.346a.715.715,0,0,0,1.224-.5.724.724,0,0,0-.213-.51L5.52,10.824a.715.715,0,0,0-.51-.2.738.738,0,0,0-.714.7.685.685,0,0,0,.2.51Zm.872-2.625c2.913-1.883,4.62-4.332,4.62-5.418,0-1.883-5.148-7.885-12.755-7.885a14.059,14.059,0,0,0-4.406.714l2.421,2.412a5,5,0,0,1,1.985-.408A5.143,5.143,0,0,1,17.95,19.3a4.532,4.532,0,0,1-.436,1.976Zm-8.136,2.468a14.306,14.306,0,0,0,4.74-.807l-2.458-2.458a4.933,4.933,0,0,1-2.282.547A5.192,5.192,0,0,1,7.57,19.3a5.116,5.116,0,0,1,.547-2.319L4.889,13.737C1.828,15.62,0,18.19,0,19.3,0,21.177,5.241,27.188,12.765,27.188Zm2.95-8.08a2.938,2.938,0,0,0-2.95-2.941c-.121,0-.241.009-.352.019L15.7,19.47C15.705,19.359,15.715,19.229,15.715,19.108ZM9.805,19.09a2.967,2.967,0,0,0,2.969,2.95c.13,0,.25-.009.38-.019l-3.33-3.33C9.815,18.821,9.805,18.96,9.805,19.09Z" transform="translate(0 -10.62)" fill="#3b3b3a" opacity="0.596"/>
-                        </svg>               
-                    </div>
-                </div>
-                @error('password')
-                    <div class="py-3">
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    </div>
-                @enderror
-                @if (Route::has('password.request'))
-                    <div class="py-8">
-                        <a href="{{ route('password.request') }}" class="text-base text-green cursor-pointer" href="{{ route('password.request') }}">
-                            Mot de passe oublié ?
-                        </a>
-                    </div>
-                @endif
-                <div class="w-full text-center md:text-left">
-                    <button id="submitbutton" type="button" class="px-15 py-4 text-white connection-submit-button fontbold h-input">Se connecter</button> 
-                </div>
-            </form>
-
-            <div class="text-left pt-10 leading-loose">
-                <span class="text-lg pr-3">Pas encore de compte ?</span>
-                <a href="{{ route('register') }}"><span class="text-lg fontbold cursor-pointer fontbold text-green border-b-2 border-green">S’inscrire</span></a>
-            </div>
-    
-        </div>
-    
-    </div> --}}
-        
+      
 </nav>
 

@@ -107,7 +107,6 @@ class RegisterController extends Controller
                 'postcode' => $data['postcode'],
                 'city' => $data['city'],
                 'telephone' => $data['telephone'],
-                'profession_id' => $data['profession'],
             ]);
 
         }

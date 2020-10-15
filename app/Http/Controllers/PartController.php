@@ -182,7 +182,7 @@ class PartController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $updated = User::where('id', $request->id)->update($data);
+        $updated = User::where('id', Auth::user()->id)->update($data);
 
         return redirect("/account_part");
     }

@@ -53,7 +53,7 @@
         /* padding: 10px; */
         border: 1px solid #888;
         width: 80%;
-        max-width: 770px;
+        max-width: 676px;
 
     }
     .close {
@@ -113,14 +113,14 @@
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base text-dark fontbold">Configurateur professionnel</span>
+            <span class="text-base text-dark fontbold leading-snug">Configurateur professionnel</span>
         </div>
     </div>
 
@@ -128,9 +128,9 @@
     
             <div class="w-full lg:w-8/12 pr-0 lg:pr-5">
         
-                <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820 items-center">
+                <div class="grid grid-cols-1 xl:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820 items-center">
                     <a href="/">
-                        <button type="button" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
+                        <button type="button" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
                     </a>
                     <form method="post" action="@if(isset($id)){{ route('add_product_pro') }}@else{{ route('record_order_pro') }}@endif">
                         @csrf
@@ -155,7 +155,7 @@
 
                         <div id="enregister-modal" class="modal mx-auto z-50">
     
-                            <div class="modal-content relative p-8 md:p-15">
+                            <div class="modal-content relative p-8 md:p-10">
                         
                                 <span class="absolute top-4 md:top-8 right-4 md:right-8 text-4xl close">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="19.998" viewBox="0 0 20.001 19.998">
@@ -163,14 +163,14 @@
                                     </svg>              
                                 </span>
                         
-                                <p class="text-4xl text-black fontbold text-center" style="padding-top:10px;">Enregistrer mon projet</p>
+                                <p class="text-4xl text-black fontbold text-center leading-snug">Enregistrer mon projet</p>
                         
                                 <div>
-                                    <p class="text-lg fontbold pt-12 pb-3">Sélectionner le projet</p>
+                                    <p class="text-lg fontbold pt-10 pb-3">Sélectionner le projet</p>
                                     <div class="h-input">
-                                        <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left h-input">
+                                        <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left h-input">
                                             <span id="select-project">
-                                                {{-- projet --}}
+                                                Sélectionner un projet
                                             </span>
                                             
                                             <input id="select-project-submit" type="hidden" @if(!isset($id))name="select_project_submit"@endif/>
@@ -185,7 +185,7 @@
                                             </div>
                                         </button>
                                         <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
-                                            {{-- <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Projet</p> --}}
+                                            {{-- <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Sélectionner un projet</p> --}}
                                             @if(isset($projects) && count($projects) > 0)
                                                 @foreach($projects as $key => $item)  
                                                     <p id="{{$item['id']}}" class="project-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["name"]}}</p>
@@ -194,7 +194,7 @@
                                         </div>
                                     </div>
                             
-                                    <p class="text-lg fontbold pb-3" style="padding-top:37px;">Ou créer un nouveau projet</p>
+                                    <p class="text-lg fontbold pt-8 pb-3">Ou créer un nouveau projet</p>
                             
                                     <input id="new-project" type="text" class="w-full appearance-none p-4 bg-input text-base h-input" name="new_project_submit" placeholder="Nom du projet"/>    
                                     
@@ -207,9 +207,9 @@
                         
                         </div>
                         @if(isset($id))
-                            <button type="submit" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
+                            <button type="submit" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                         @else
-                            <button id="modal-trigger-button" class="@if(isset($id))hidden @endif w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
+                            <button id="modal-trigger-button" type="button" class="@if(isset($id))hidden @endif w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                         @endif
 
                     </form>
@@ -230,7 +230,7 @@
                         <input id="glazing_submit_pay" type="hidden" name="glazing_submit_pay"/>
                         <input id="color_submit_pay" type="hidden" name="color_submit_pay"/>
 
-                        <button type="submit" class="w-full py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</button>
+                        <button type="submit" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-darkgray text-white text-lg fontbold">Payer ma commande</button>
                     </form>
                 </div>
 
@@ -238,14 +238,14 @@
                     <div class="flex bg-white mx-auto relative items-center select-item">
                         <p class="text-2xl fontbold py-10 mx-auto">Type de menuiserie</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-55 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-55 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select maxwidth-210 @if(isset($selected_joinery)) @if($selected_joinery == $item['id']) active @endif @else @if($item['default'] == 1) active @endif @endif">
-                                    <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
-                                        <div class="w-full absolute bottom-0 rounded-b-md">
-                                            <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
+                                    <div id="{{$item['id']}}" class="relative rounded-lg mx-auto text-center type-select maxwidth-210 @if(isset($selected_joinery)) @if($selected_joinery == $item['id']) active @endif @else @if($item['default'] == 1) active @endif @endif">
+                                    <img class="w-full rounded-lg" src="{{ asset('images') }}/{{$item['image']}}">
+                                        <div class="w-full absolute bottom-0 rounded-b-lg">
+                                            <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-lg">{{$item["name"]}}</p>
                                         </div>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
@@ -264,11 +264,11 @@
                     <div class="flex bg-white mx-auto relative items-center select-item">
                         <p class="text-2xl fontbold py-10 mx-auto">Matériau</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($material) && count($material) > 0)
                                 @foreach($material as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size: 13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -288,11 +288,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Gamme</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($range) && count($range) > 0)
                                 @foreach($range as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -313,11 +313,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Type d’ouverture</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($opening) && count($opening) > 0)
                                 @foreach($opening as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -338,11 +338,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Nombre de vantaux</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($leave) && count($leave) > 0)
                                 @foreach($leave as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -362,11 +362,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Type de pose</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($installation) && count($installation) > 0)
                                 @foreach($installation as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto ax-width-120 type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto ax-width-120 type-select maxwidth-210 @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -388,12 +388,12 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Dimensions</p>
                     </div>
-                    <div class="bg-white px-r md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-r md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 px-4 pb-4 mb-4">
     
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Hauteur totale</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="height_size">
                                         @if(isset($height) && count($height) > 0)
                                             @foreach($height as $key => $item)
@@ -421,11 +421,11 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($height) && count($height) > 0)
                                         @foreach($height as $key => $item)
-                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -437,7 +437,7 @@
                             </div>
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Largeur totale</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="width_size">
                                         @if(isset($width) && count($width) > 0)
                                             @foreach($width as $key => $item)
@@ -465,11 +465,11 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($width) && count($width) > 0)
                                         @foreach($width as $key => $item)
-                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -488,12 +488,12 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Pour isolation de</p>
                     </div>
-                    <div class="bg-white pt-4 md:px-14 pb-4 md:pb-14 toggle-part">
-                        <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
+                    <div class="bg-white pt-4 md:px-14 pb-8 md:pb-14 toggle-part">
+                        <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 px-4 pb-4 mb-4">
     
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Pour isolation de</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="insulation_size">
                                         @if(isset($insulation) && count($insulation) > 0)
                                             @foreach($insulation as $key => $item)
@@ -521,11 +521,11 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
-                                    <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white" style="border: 1px solid #dedede">
+                                    <p class="hidden bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($insulation) && count($insulation) > 0)
                                         @foreach($insulation as $key => $item)  
-                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">{{$item["value"]}}</p>
+                                            <p id="{{$item['id']}}" class="sel-item bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">{{$item["value"]}}</p>
                                         @endforeach
                                     @endif
                                 </div>
@@ -545,11 +545,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Aération</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($aeration) && count($aeration) > 0)
                                 @foreach($aeration as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 maxwidth-210 mx-auto type-select @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 maxwidth-210 mx-auto type-select @if($item['default'] == 1) active @endif check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -569,11 +569,11 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Vitrage</p>
                     </div>
-                    <div class="bg-white px-4 md:px-8 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-8 pb-8 md:pb-14 toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)
                                 @foreach($glazing as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-335 @if($item['default'] == 1) active @endif check-item" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto type-select maxwidth-335 @if($item['default'] == 1) active @endif check-item" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -593,13 +593,13 @@
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
                         <p class="text-2xl fontbold py-10 mx-auto">Couleur menuiserie</p>
                     </div>
-                    <div class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-10 row-gap-10">
                             @if(isset($color) && count($color) > 0)
                                 @foreach($color as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item @if($item['default'] == 1) active @endif" style="background-color: {{$item['value']}};">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg  text-center mx-auto type-select color-item @if($item['default'] == 1) active @endif" style="background-color: {{$item['value']}};">
                                         <div class="w-full absolute bottom-0">
-                                            <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-sm">{{$item['name']}}</p>
+                                            <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-lg">{{$item['name']}}</p>
                                         </div>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
@@ -627,85 +627,85 @@
                         <div class="px-3 md:px-8">
                             <div id="joinery_result_wrapper">
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type de menuiserie :</p>
-                                    <p id="joinery_result" class="fontbold py-2 pl-3">Fenêtre</p>
+                                    <p class="text-base py-4 leading-snug">Type de menuiserie :</p>
+                                    <p id="joinery_result" class="fontbold py-2 pl-3 leading-snug">Fenêtre</p>
                                 </div>
                             </div>
                             <div id="material_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Matériau :</p>
-                                    <p id="material_result" class="fontbold py-2 pl-3">Aluminium</p>
+                                    <p class="text-base py-4 leading-snug">Matériau :</p>
+                                    <p id="material_result" class="fontbold py-2 pl-3 leading-snug">Aluminium</p>
                                 </div>
                             </div>
                             <div id="range_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Gamme :</p>
-                                    <p id="range_result" class="fontbold py-2 pl-3">Gamme 70</p>
+                                    <p class="text-base py-4 leading-snug">Gamme :</p>
+                                    <p id="range_result" class="fontbold py-2 pl-3 leading-snug">Gamme 70</p>
                                 </div>
                             </div>
                             <div id="opening_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type d’ouverture :</p>
-                                    <p id="opening_result" class="fontbold py-2 pl-3">Abattant</p>
+                                    <p class="text-base py-4 leading-snug">Type d’ouverture :</p>
+                                    <p id="opening_result" class="fontbold py-2 pl-3 leading-snug">Abattant</p>
                                 </div>
                             </div>
                             <div id="leave_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Nombre de vantaux :</p>
-                                    <p id="leave_result" class="fontbold py-2 pl-3">1 vantail</p>
+                                    <p class="text-base py-4 leading-snug">Nombre de vantaux :</p>
+                                    <p id="leave_result" class="fontbold py-2 pl-3 leading-snug">1 vantail</p>
                                 </div>
                             </div>
                             <div id="installation_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Type de pose :</p>
-                                    <p id="installation_result" class="fontbold py-2 pl-3">Applique</p>
+                                    <p class="text-base py-4 leading-snug">Type de pose :</p>
+                                    <p id="installation_result" class="fontbold py-2 pl-3 leading-snug">Applique</p>
                                 </div>
                             </div>
                             <div id="height_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Hauteur totale :</p>
-                                    <p id="height_size_result" class="fontbold py-2 pl-3">600</p>
+                                    <p class="text-base py-4 leading-snug">Hauteur totale :</p>
+                                    <p id="height_size_result" class="fontbold py-2 pl-3 leading-snug">600</p>
                                 </div>
                             </div>
                             <div id="width_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Largeur totale :</p>
-                                    <p id="width_size_result" class="fontbold py-2 pl-3">600</p>
+                                    <p class="text-base py-4 leading-snug">Largeur totale :</p>
+                                    <p id="width_size_result" class="fontbold py-2 pl-3 leading-snug">600</p>
                                 </div>
                             </div>
                             <div id="insulation_size_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Pour isolation de :</p>
-                                    <p id="insulation_size_result" class="fontbold py-2 pl-3">120</p>
+                                    <p class="text-base py-4 leading-snug">Pour isolation de :</p>
+                                    <p id="insulation_size_result" class="fontbold py-2 pl-3 leading-snug">120</p>
                                 </div>
                             </div>
                             <div id="aeration_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Aération :</p>
-                                    <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
+                                    <p class="text-base py-4 leading-snug">Aération :</p>
+                                    <p id="aeration_result" class="fontbold py-2 pl-3 leading-snug">15 M3/H</p>
                                 </div>
                             </div>
                             <div id="glazing_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Vitrage :</p>
-                                    <p id="glazing_result" class="fontbold py-2 pl-3">4/16/4 FE</p>
+                                    <p class="text-base py-4 leading-snug">Vitrage :</p>
+                                    <p id="glazing_result" class="fontbold py-2 pl-3 leading-snug">4/16/4 FE</p>
                                 </div>
                             </div>
                             <div id="color_result_wrapper">
                                 <hr class="bg-gray-400"/>
                                 <div class="flex flex-wrap items-center">
-                                    <p class="text-base" style="padding-top: 20px; padding-bottom: 18px;">Couleur menuiserie :</p>
-                                    <p id="color_result" class="fontbold py-2 pl-3">RAL 9016</p>
+                                    <p class="text-base py-4 leading-snug">Couleur menuiserie :</p>
+                                    <p id="color_result" class="fontbold py-2 pl-3 leading-snug">RAL 9016</p>
                                 </div>
                             </div>
                             
@@ -719,8 +719,6 @@
         
         </div>
         
-    {{-- </form> --}}
-    
 </main>
 
 @endsection
@@ -900,9 +898,13 @@
         validateForm();
     });
 
+    $("#new-project").change(function() {
+        validateForm();
+    });
+
     $("#new-project").focus(function() {
 
-        $("#select-project").html("");
+        $("#select-project").html("Sélectionner un projet");
         $("#select-project-submit").val("");
         selectProject = false;
 

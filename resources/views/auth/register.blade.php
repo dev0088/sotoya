@@ -126,29 +126,29 @@
 
 @section('content')
 
-<main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-30">
+<main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-20">
 
     <div>
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base text-dark fontbold">S’inscrire</span>
+            <span class="text-base text-dark fontbold leading-snug">S’inscrire</span>
         </div>
     </div>
     
-    <form class="w-full bg-white px-4 md:px-8 py-4 md:pb-8 mx-auto shadow-md maxwidth-976" style="padding-top:50px;" method="post" action="{{ route('register') }}">
+    <form class="w-full bg-white pt-10 px-4 md:px-8 py-4 md:pb-8 mx-auto shadow-md maxwidth-976" method="post" action="{{ route('register') }}">
         @csrf
-        <p class="text-4xl text-center pb-12 fontbold">S’inscrire</p>
+        <p class="text-4xl text-center pb-10 fontbold leading-tight">S’inscrire</p>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-0 row-gap-8">
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:22px;">Civilité*</p>
-                <div class="flex relative" style="padding-bottom:32px;">
+                <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Civilité*</p>
+                <div class="flex relative pb-8">
                     <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -184,8 +184,8 @@
                 </div>
             </div>
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:22px;">Je suis un*</p>
-                <div class="flex" style="padding-bottom:32px;">
+                <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Je suis un.e*</p>
+                <div class="flex relative pb-8">
                     <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
@@ -224,7 +224,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8">
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:13px;">Prénom*</p>
+                <p class="text-lg fontbold pb-3 leading-snug">Prénom*</p>
                 <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input h-input" value="{{ old('firstname') }}" placeholder="Prénom" required/>
                 @error('firstname')
                     <div class="py-3">
@@ -235,7 +235,7 @@
                 @enderror
             </div>
             <div>
-                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">Nom*</p>
+                <p class="text-lg pb-3 fontbold leading-snug">Nom*</p>
                 <input id="lastname" name="lastname" type="text" class="w-full p-4 bg-input h-input" value="{{ old('lastname') }}" placeholder="Nom" required/>
                 @error('lastname')
                     <div class="py-3">
@@ -248,7 +248,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
-                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">E-mail*</p>
+                <p class="text-lg pb-3 fontbold leading-snug">E-mail*</p>
                 <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" value="{{ old('email') }}" placeholder="E-mail" required/>
                 @error('email')
                     <div class="py-3">
@@ -259,7 +259,7 @@
                 @enderror
             </div>
             <div>
-                <p class="text-lg pb-3 fontbold" style="padding-bottom:13px;">Mot de passe*</p>
+                <p class="text-lg pb-3 fontbold leading-snug">Mot de passe*</p>
                 <div class="input-group">
                     <input id="password" name="password" type="password" class="form-control bg-input h-input" placeholder="Mot de passe" required/>
                     <div class="form-control-after cursor-pointer">
@@ -282,7 +282,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:13px;">Si professionnel, nom de la société</p>
+                <p class="text-lg fontbold pb-3 leading-snug">Si professionnel, nom de la société</p>
                 <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" value="{{ old('company') }}" placeholder="Nom de la société"/>
                 @error('company')
                     <div class="py-3">
@@ -293,11 +293,11 @@
                 @enderror
             </div>
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:13px;">Type de profession</p>
+                <p class="text-lg fontbold pb-3 leading-snug">Type de profession</p>
                 <div class="h-input">
-                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left h-input">
+                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
                         <span id="select-profession">
-                            Type de profession
+                            <span style="opacity: 0.4;">Type de profession</span>
                         </span>
                         
                         <input id="select-profession-submit" type="hidden" name="profession"/>
@@ -311,15 +311,14 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
-                        {{-- <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Projet</p> --}}
+                    <div class="hidden rounded-lg shadow-md border border-lightgray w-full mt-3 relative z-50 bg-white" style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
                         <?php 
-                        $professions = App\Model\Profession::all();
-                        if(isset($professions) && count($professions) > 0) {
-                            foreach($professions as $key => $item){
-                                echo '<p id="'.$item['id'].'" class="profession-item bg-white hover:bg-whitegreen rounded-md shadow-md cursor-default px-4 py-4">'.$item["name"].'</p>';
+                            $professions = App\Model\Profession::all();
+                            if(isset($professions) && count($professions) > 0) {
+                                foreach($professions as $key => $item){
+                                    echo '<p id="'.$item['id'].'" class="profession-item bg-white hover:bg-whitegreen rounded-lg cursor-default px-4 py-4">'.$item["name"].'</p>';
+                                }
                             }
-                        }
                         ?>
                     </div>
                 </div>
@@ -334,7 +333,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-6">
             <div>
-                <p class="text-lg pt-0 pb-3 fontbold">Adresse*</p>
+                <p class="text-lg pt-0 pb-3 fontbold leading-snug">Adresse*</p>
                 <input id="address" name="address" type="text" class="w-full p-4 bg-input h-input" value="{{ old('address') }}" placeholder="Adresse" required/>
                 @error('address')
                     <div class="py-3">
@@ -347,7 +346,7 @@
             <div>
                 <div class="w-full flex-none md:flex">
                     <div class="w-full md:w-5/12">
-                        <p class="text-lg fontbold" style="padding-bottom:13px;">Code Postal*</p>
+                        <p class="text-lg fontbold pb-3 leading-snug">Code Postal*</p>
                         <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-3 md:mb-0 bg-input h-input" value="{{ old('postcode') }}" placeholder="Code Postal" required/>
                     </div>
                     @error('postcode')
@@ -358,7 +357,7 @@
                         </div>
                     @enderror
                     <div class="w-full md:w-7/12 md:pl-6 mb-6 md:mb-0 pt-4 md:pt-0">
-                        <p class="text-lg fontbold" style="padding-bottom:13px;">Ville*</p>
+                        <p class="text-lg fontbold pb-3 leading-snug">Ville*</p>
                         <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input h-input" value="{{ old('city') }}" placeholder="Ville" required/>
                     </div>
                     @error('city')
@@ -373,7 +372,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-0 md:pt-6">
             <div>
-                <p class="text-lg fontbold" style="padding-bottom:13px;">Numéro de téléphone</p>
+                <p class="text-lg fontbold pb-3 leading-snug">Numéro de téléphone</p>
                 <input type="text" name="telephone" class="w-full p-4 bg-input mb-9 h-input" value="{{ old('telephone') }}" placeholder="Téléphone"/>
                 @error('telephone')
                     <div class="py-3">
@@ -385,10 +384,10 @@
             </div>
         </div>
     
-        <p class="text-base pb-8">*Champ obligatoire</p>
+        <p class="text-base text-darkgray pb-8 leading-snug">*Champ obligatoire</p>
 
         <label id="agreecheck-wrapper" class="flex items-center cursor-pointer">
-            <span class="w-6 h-6 mr-4 border-2 rounded flex items-center">
+            <span class="w-6 h-6 mr-4 border-2 rounded flex items-center" style="padding-left: 2px;">
                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 14.997 14">
                     <defs>
                         <style>.a{fill:#18a75a;}</style>
@@ -397,7 +396,7 @@
                 </svg>
             </span>
             <input id="agreecheck" type="checkbox" class="absolute left-0 opacity-0"/>
-            <span class="select-none">
+            <span class="select-none text-base leading-snug">
                 J’accepte les&nbsp;<u>conditions générales de vente</u>&nbsp;de Sotoya
             </span>
         </label>

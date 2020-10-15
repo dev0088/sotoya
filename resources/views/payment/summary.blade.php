@@ -96,14 +96,14 @@
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base text-dark fontbold">Commande reçu</span>
+            <span class="text-base text-dark fontbold leading-snug">Commande reçu</span>
         </div>
     </div>
     
@@ -113,7 +113,7 @@
             <div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 mb-4 mx-auto maxwidth-820">
                     <a href="/" class="py-4 mb-4 lg:mb-0 lg:mr-3 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <a @if(Auth::user()->mode == 1)href="/account_pro_his"@else href="/account_part_his"@endif class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-black text-white text-lg fontbold cursor-pointer">
+                    <a @if(Auth::user()->mode == 1)href="/account_pro_his"@else href="/account_part_his"@endif class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-darkgray text-white text-lg fontbold cursor-pointer">
                         <button type="submit" class="w-full h-full">Voir ma commande</button>
                     </a>
                 </div>
@@ -129,7 +129,7 @@
 
                     <p class="pt-8 pb-6 text-4xl fontbold text-center">Votre commande a bien été reçu !</p>
 
-                    <p class="text-lg leading-relaxed tracking-tight">
+                    <p class="text-lg text-darkgray leading-relaxed tracking-tight">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
         

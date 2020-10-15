@@ -59,14 +59,14 @@
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <span class="text-base text-dark fontbold">Configurateur particulier</span>
+            <span class="text-base text-dark fontbold leading-snug">Configurateur particulier</span>
         </div>
     </div>
     
@@ -78,7 +78,7 @@
     
                 <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div class="absolute left-6">
+                        <div class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -88,14 +88,14 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Type de menuiserie</p>
                     </div>
-                    <div style="" class="bg-white px-4 md:px-14 pb-4 md:pb-14 toggle-part hidden">
+                    <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part hidden">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($joinery) && count($joinery) > 0)
                                 @foreach($joinery as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['id'])) active @endif" style="max-width:210px;">
-                                        <img class="w-full rounded-md" src="{{ asset('images') }}/{{$item['image']}}">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg mx-auto text-center type-select @if(isset($selected_joinery) && $selected_joinery == $item['id'])) active @endif" style="max-width:210px;">
+                                        <img class="w-full rounded-lg" src="{{ asset('images') }}/{{$item['image']}}">
                                         <div class="w-full absolute bottom-0 rounded-b-md">
-                                            <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-md">{{$item["name"]}}</p>
+                                            <p class="bg-white mx-auto text-lg py-4 text-center fontbold rounded-b-lg">{{$item["name"]}}</p>
                                         </div>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
@@ -112,7 +112,7 @@
                
                 <div id="material" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="material_icons" class="absolute left-6 hidden">
+                        <div id="material_icons" class="absolute right-6 hidden">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -122,11 +122,11 @@
                         </div>
                         <p class="text-2xl fontbold py-4 mx-auto step-title">Matériau</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($material) && count($material) > 0)
                                 @foreach($material as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 mx-auto type-select maxwidth-210 check-item" style="padding-top:42px; padding-bottom:42px;">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 mx-auto type-select maxwidth-210 check-item" style="padding-top:42px; padding-bottom:42px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
@@ -144,7 +144,7 @@
         
                 <div id="range" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="range_icons" class="absolute left-6">
+                        <div id="range_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -154,11 +154,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Gamme</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($range) && count($range) > 0)
                                 @foreach($range as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -177,7 +177,7 @@
         
                 <div id="opening" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="opening_icons" class="absolute left-6">
+                        <div id="opening_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -187,11 +187,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Type d’ouverture</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($opening) && count($opening) > 0)
                                 @foreach($opening as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -210,7 +210,7 @@
         
                 <div id="leave" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="leave_icons" class="absolute left-6">
+                        <div id="leave_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -220,11 +220,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Nombre de vantaux</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($leave) && count($leave) > 0)
                                 @foreach($leave as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -242,7 +242,7 @@
         
                 <div id="installation" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <div id="installation_icons" class="absolute left-6">
+                        <div id="installation_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -252,11 +252,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Type de pose</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($installation) && count($installation) > 0)
                                 @foreach($installation as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -276,7 +276,7 @@
         
                 <div id="dimension" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <div id="dimension_icons" class="absolute left-6">
+                        <div id="dimension_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -286,11 +286,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Dimensions</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Hauteur totale</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="height_size">Hauteur totale</span>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                         <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -301,7 +301,7 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white" style="border: 1px solid #dedede">
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Hauteur totale</p>
                                     @if(isset($height) && count($height) > 0)
                                         @foreach($height as $key => $item)
@@ -317,7 +317,7 @@
                             </div>
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Largeur totale</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="width_size">Largeur totale</span>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                         <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -328,7 +328,7 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Largeur totale</p>
                                     @if(isset($width) && count($width) > 0)
                                         @foreach($width as $key => $item)
@@ -348,7 +348,7 @@
         
                 <div id="insulation" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="insulation_icons" class="absolute left-6">
+                        <div id="insulation_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -359,10 +359,10 @@
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Pour isolation de</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
-                        <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 px-4 pb-4 mb-4">
                             <div class="h-12">
                                 <p class="text-lg fontbold pb-3">Pour isolation de</p>
-                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-md w-full relative text-left">
+                                <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray rounded-lg w-full relative text-left">
                                     <span id="insulation_size">Isolation</span>
                                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                                         <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -373,7 +373,7 @@
                                         </svg>
                                     </div>
                                 </button>
-                                <div class="hidden rounded-md w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
+                                <div class="hidden rounded-lg w-full mt-3 relative z-50 bg-white " style="border: 1px solid #dedede">
                                     <p class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">Isolation</p>
                                     @if(isset($insulation) && count($insulation) > 0)
                                         @foreach($insulation as $key => $item)  
@@ -394,7 +394,7 @@
         
                 <div id="aeration" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="handleheight_icons" class="absolute left-6">
+                        <div id="handleheight_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -404,11 +404,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Aération</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($aeration) && count($aeration) > 0)
                                 @foreach($aeration as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 py-10 mx-auto type-select maxwidth-210 check-item">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 py-10 mx-auto type-select maxwidth-210 check-item">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tight leading-normal text-darkgray" style="font-size:13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
@@ -426,7 +426,7 @@
         
                 <div id="glazing" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
                     <div class="w-full flex bg-white mx-auto relative items-center select-item">
-                        <div id="glazing_icons" class="absolute left-6">
+                        <div id="glazing_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -436,11 +436,11 @@
                         </div>
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Vitrage</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-8 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-8 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
                             @if(isset($glazing) && count($glazing) > 0)
                                 @foreach($glazing as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md px-3 mx-auto type-select maxwidth-335" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg px-3 mx-auto type-select maxwidth-335" style="width:335px; height:147px; padding-top:20px; padding-bottom:20px;">
                                         <p class="text-lg fontbold text-center pb-2">{{$item["name"]}}</p>
                                         <p class="text-center tracking-tighter leading-normal text-darkgray" style="font-size: 13px;">{{$item["description"]}}</p>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon" style="background-color: #18A75A;">
@@ -459,7 +459,7 @@
                 <div id="color" class="w-full shadow-md mb-4 mx-auto hidden maxwidth-820">
         
                     <div class="w-full flex bg-white mx-auto relative items-center select-item maxwidth-820">
-                        <div id="glazing_icons" class="absolute left-6">
+                        <div id="glazing_icons" class="absolute right-6">
                             <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                 <path id="plus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20Zm-.029-5.118c-.549,0-.843-.4-.843-.971V14.956H10.005c-.578,0-.98-.3-.98-.843,0-.559.373-.873.98-.873h3.216V10c0-.569.294-.971.843-.971a.865.865,0,0,1,.882.971v3.245h3.225c.6,0,.971.314.971.873,0,.539-.392.843-.971.843H14.947v3.049A.865.865,0,0,1,14.064,18.976Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
@@ -470,13 +470,13 @@
                         <p class="text-2xl fontbold py-10 mx-auto step-title">Couleur menuiserie</p>
                     </div>
         
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-4 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-10 row-gap-10">
                             @if(isset($color) && count($color) > 0)
                                 @foreach($color as $key => $item)
-                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-md  text-center mx-auto type-select color-item" style="background-color: {{$item['value']}};">
+                                    <div id="{{$item['id']}}" class="relative border border-gray-200 rounded-lg text-center mx-auto type-select color-item" style="background-color: {{$item['value']}};">
                                         <div class="w-full absolute bottom-0">
-                                            <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-sm">{{$item['name']}}</p>
+                                            <p class="bg-white mx-auto  py-4 text-center fontbold rounded-b-lg">{{$item['name']}}</p>
                                         </div>
                                         <span class="absolute right-3 top-3 rounded-full items-center h-8 w-8 check-icon bg-green">
                                             <svg class="mx-auto" style="top:50%; transform: translate(0, 60%);" xmlns="http://www.w3.org/2000/svg" width="15.5" height="14.5" viewBox="0 0 14.997 14">
@@ -517,96 +517,96 @@
                     <div class="px-3 md:px-8">
                         <div id="joinery_result_wrapper" class="hidden">
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Type de menuiserie :</p>
-                                <p id="joinery_result" class="fontbold py-2 pl-3">Fenêtre</p>
+                                <p class="text-base py-4 leading-snug">Type de menuiserie :</p>
+                                <p id="joinery_result" class="fontbold py-2 pl-3 leading-snug">Fenêtre</p>
                                 <input id="joinery_submit" type="hidden" name="joinery_submit"/>
                             </div>
                         </div>
                         <div id="material_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Matériau :</p>
-                                <p id="material_result" class="fontbold py-2 pl-3">Aluminium</p>
+                                <p class="text-base py-4 leading-snug">Matériau :</p>
+                                <p id="material_result" class="fontbold py-2 pl-3 leading-snug">Aluminium</p>
                                 <input id="material_submit" type="hidden" name="material_submit"/>
                             </div>
                         </div>
                         <div id="range_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Gamme :</p>
-                                <p id="range_result" class="fontbold py-2 pl-3">Gamme 70</p>
+                                <p class="text-base py-4 leading-snug">Gamme :</p>
+                                <p id="range_result" class="fontbold py-2 pl-3 leading-snug">Gamme 70</p>
                                 <input id="range_submit" type="hidden" name="range_submit"/>
                             </div>
                         </div>
                         <div id="opening_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Type d’ouverture :</p>
-                                <p id="opening_result" class="fontbold py-2 pl-3">Abattant</p>
+                                <p class="text-base py-4 leading-snug">Type d’ouverture :</p>
+                                <p id="opening_result" class="fontbold py-2 pl-3 leading-snug">Abattant</p>
                                 <input id="opening_submit" type="hidden" name="opening_submit"/>
                             </div>
                         </div>
                         <div id="leave_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Nombre de vantaux :</p>
-                                <p id="leave_result" class="fontbold py-2 pl-3">1 vantail</p>
+                                <p class="text-base py-4 leading-snug">Nombre de vantaux :</p>
+                                <p id="leave_result" class="fontbold py-2 pl-3 leading-snug">1 vantail</p>
                                 <input id="leave_submit" type="hidden" name="leave_submit"/>
                             </div>
                         </div>
                         <div id="installation_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Type de pose :</p>
-                                <p id="installation_result" class="fontbold py-2 pl-3">Applique</p>
+                                <p class="text-base py-4 leading-snug">Type de pose :</p>
+                                <p id="installation_result" class="fontbold py-2 pl-3 leading-snug">Applique</p>
                                 <input id="installation_submit" type="hidden" name="installation_submit"/>
                             </div>
                         </div>
                         <div id="height_size_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Hauteur totale :</p>
-                                <p id="height_size_result" class="fontbold py-2 pl-3">600</p>
+                                <p class="text-base py-4 leading-snug">Hauteur totale :</p>
+                                <p id="height_size_result" class="fontbold py-2 pl-3 leading-snug">600</p>
                                 <input id="height_size_submit" type="hidden" name="height_size_submit"/>
                             </div>
                         </div>
                         <div id="width_size_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Largeur totale :</p>
-                                <p id="width_size_result" class="fontbold py-2 pl-3">600</p>
+                                <p class="text-base py-4 leading-snug">Largeur totale :</p>
+                                <p id="width_size_result" class="fontbold py-2 pl-3 leading-snug">600</p>
                                 <input id="width_size_submit" type="hidden" name="width_size_submit"/>
                             </div>
                         </div>
                         <div id="insulation_size_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Pour isolation de :</p>
-                                <p id="insulation_size_result" class="fontbold py-2 pl-3">120</p>
+                                <p class="text-base py-4 leading-snug">Pour isolation de :</p>
+                                <p id="insulation_size_result" class="fontbold py-2 pl-3 leading-snug">120</p>
                                 <input id="insulation_size_submit" type="hidden" name="insulation_size_submit"/>
                             </div>
                         </div>
                         <div id="aeration_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Aération :</p>
-                                <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
+                                <p class="text-base py-4 leading-snug">Aération :</p>
+                                <p id="aeration_result" class="fontbold py-2 pl-3 leading-snug">15 M3/H</p>
                                 <input id="aeration_submit" type="hidden" name="aeration_submit"/>
                             </div>
                         </div>
                         <div id="glazing_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Vitrage :</p>
-                                <p id="glazing_result" class="fontbold py-2 pl-3">4/16/4 FE</p>
+                                <p class="text-base py-4 leading-snug">Vitrage :</p>
+                                <p id="glazing_result" class="fontbold py-2 pl-3 leading-snug">4/16/4 FE</p>
                                 <input id="glazing_submit" type="hidden" name="glazing_submit"/>
                             </div>
                         </div>
                         <div id="color_result_wrapper" class="hidden">
                             <hr class="bg-gray-400"/>
                             <div class="flex flex-wrap items-center">
-                                <p class="text-base py-4">Couleur menuiserie :</p>
-                                <p id="color_result" class="fontbold py-2 pl-3">RAL 9016</p>
+                                <p class="text-base py-4 leading-snug">Couleur menuiserie :</p>
+                                <p id="color_result" class="fontbold py-2 pl-3 leading-snug">RAL 9016</p>
                                 <input id="color_submit" type="hidden" name="color_submit"/>
                             </div>
                         </div>

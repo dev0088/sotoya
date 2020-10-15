@@ -50,10 +50,13 @@
     .maxwidth-760 {
         max-width:760px;
     }
+    .maxwidth-824 {
+        max-width:824px;
+    }
     .maxwidth-260 {
         max-width:260px;
     }
-    .maxwidth-680 {
+    .maxwidth-608 {
         max-width:608px;
     }
     .maxwidth-1441 {
@@ -98,26 +101,26 @@
         </div>
     </div>
     
-    <div class="w-full px-8 md:px-20 relative" style="">
-        <div class="w-full relative bg-white py-8 md:pt-70 md:pb-15 shadow-md mx-auto maxwidth-1280 top-4 md:top-minus80" style="z-index: 20">
-            <p class="text-4xl pb-6 text-center fontbold">Le configurateur</p>
+    <div class="w-full px-8 md:px-20 relative">
+        <div class="w-full relative bg-white py-12 md:pt-15 md:pb-15 shadow-md mx-auto maxwidth-1280 top-4 md:top-minus92" style="z-index: 20;">
+            <p class="text-4xl pb-6 text-center fontbold leading-snug">Le configurateur</p>
         
             <p class="w-8/10 text-lg px-6 text-left md:text-center leading-relaxed mb-15 mx-auto text-darkgray">
-                Chez Sotoya Constructions, nous développons des partenariats avec de nombreuses entreprises 
-                <br class="hidden md:block"/>leaders sur leur marché. Ces collaborations renforcent notre expertise dans le domaine de la
-                <br class="hidden md:block"/> menuiserie. Le configurateur vous guidera dans vos recherches.
+                Chez Sotoya Constructions, nous développons des partenariats avec de nombreuses 
+                <br class="hidden md:block"/>entreprises leaders sur leur marché. Ces collaborations renforcent notre expertise dans le 
+                <br class="hidden md:block"/>domaine de la menuiserie. Le configurateur vous guidera dans vos recherches.
             </p>
         
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-12 row-gap-8 md:row-gap-15 col-gap-4 md:col-gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-15 row-gap-8 md:row-gap-15 col-gap-4 md:col-gap-10">
                 @if(isset($joinery) && count($joinery) > 0)
                     @foreach($joinery as $key => $item)
                         <div class="mx-auto">
                         <img class="w-full maxwidth-260" src="{{ asset('images') }}/{{$item['image']}}"/>
-                            <p class="text-lg pt-4 pb-2 fontbold">{{$item['name']}}</p>
+                            <p class="text-lg pt-4 pb-2 fontbold leading-tight">{{$item['name']}}</p>
                             @if(Auth::user())
-                                <a @if(Auth::user()->mode == 0)href="/part/{{$item['id']}}"@else href="/pro_joinery/{{$item['id']}}"@endif  class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                                <a @if(Auth::user()->mode == 0)href="/part/{{$item['id']}}"@else href="/pro_joinery/{{$item['id']}}"@endif class="fontbold text-green border-b-2 border-green">Configurateur</a>
                             @else
-                                <a href="/part/{{$item['id']}}" class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                                <a href="/part/{{$item['id']}}" class="fontbold text-green border-b-2 border-green leading-tight pb-1">Configurateur</a>
                             @endif
                         </div>
                     @endforeach
@@ -125,21 +128,21 @@
             
             </div>
         </div>
-        <div class="w-full absolute bottom-0 left-0 bg-whitegreen py-0 md:py-20" style="z-index: 10"></div>
+        <div class="w-full absolute bottom-0 left-0 bg-whitegreen py-0 md:py-87" style="z-index: 10"></div>
     </div>
     
-    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24" style="padding-top:23px;">
-        <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto" style="">
-            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-2 xl:pr-4" style="">
-                <p class="pt-4 pb-8 lg:pb-4 xl:pb-8 text-4xl fontbold">Qui sommes-nous ?</p>
-                <p class="text-lg tracking-tight leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-3 xl:pb-6 fontbold">
+    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24" style="padding-top:0px;">
+        <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-2 mx-auto" style="">
+            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-5 xl:pr-1" style="">
+                <p class="pt-16 md:pt-3 pb-8 lg:pb-4 xl:pb-6 text-4xl fontbold leading-snug">Qui sommes-nous ?</p>
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-3 xl:pb-6 fontbold">
                     Depuis 2016, Sotoya met son expérience et son savoir-faire unique au service des professionnels du bâtiment, promoteurs, artisans poseurs, et architectes. Spécialisée dans la menuiserie aluminium et PVC nous vous accompagnons de la conception de votre projet jusqu’à la pose. Notre bureau d’études est à votre disposition pour le conseil, la réalisation de votre projet.
                 </p>
-                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-2 xl:pb-6 text-darkgray" style="letter-spacing: -0.03em">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.<br/>
-                    Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.<br/><br/>
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-2 xl:pb-6 text-darkgray">Nous réalisons des produits sur mesure avec un choix de matières et de couleurs variés, et le meilleur rapport qualité/prix.<br/>
+                    Notre entreprise aubagnaise spécialisée dans la fabrication sur-mesure de portes, fenêtres, baies coulissantes, volets et grandes menuiseries, travaille en partenariat avec des installateurs reconnus.
                 </p>
-                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-8 lg:pb-4 xl:pb-8 text-darkgray" style="letter-spacing: -0.03em">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.<br/>
-                        Sotoya vous donne la possibilité de commander en ligne vos produits sur mesure d’origine française dans des délais de fabrication moindres.
+                <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-8 lg:pb-4 xl:pb-8 text-darkgray" style="letter-spacing: -0.01em">Sotoya assemble dans son atelier de fabrication situé à Aubagne, la gamme Aluminium SAPA du groupe. Cela est fait selon les règles de l’art, le respect des normes et la réglementation en vigueur.<br/>
+                    Sotoya vous donne la possibilité de commander en ligne vos produits sur mesure d’origine française dans des délais de fabrication moindres.
                 </p>
                 <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed text-right fontbold text-darkgray">
                     Fondateur de Sotoya
@@ -171,15 +174,15 @@
             </div>
 
             <div class="block lg:hidden bg-whitegreen">
-                <img class="w-full float-right maxwidth-608 pb-24" src="{{ asset('images/images about@2x.png') }}"/>
+                <img class="w-full maxwidth-608 mt-24 pb-16 mx-auto" src="{{ asset('images/images about@2x.png') }}"/>
             </div>
 
         </div>
     </div>
     
     <div class="bg-white" class="py-30">
-        <p class="text-4xl text-center pt-30 pb-6 fontbold">Nos partenaires</p>
-        <p class="w-full text-lg tracking-tight text-center leading-normal mx-auto maxwidth-760 text-darkgray">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
+        <p class="text-4xl text-center pt-15 md:pt-30 pb-6 fontbold leading-snug">Nos partenaires</p>
+        <p class="w-full text-lg tracking-tight text-center leading-normal mx-auto maxwidth-824 text-darkgray px-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id sapien pretium, auctor nulla nec, ornare eros. Vivamus quis dictum augue, vel lacinia eros. Mauris ultrices, mi eget.</p>
         <img class="mx-auto mt-8 md:mt-15" src="{{ asset('images/partenaire 2 sapa@2x.png') }}"/>
     </div>
     
@@ -262,6 +265,15 @@
     }
     span.onclick = function() {
         modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+            
+        var modal = document.getElementById("voir-modal");
+        
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
     $("#eye_fill").click(function() {

@@ -303,7 +303,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -327,7 +327,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (17,'2020_09_15_133556_create_faqs_table',1),
 (18,'2020_09_15_133704_create_cgvs_table',1),
 (19,'2020_09_15_133715_create_legalnotices_table',1),
-(20,'2020_09_15_170120_create_orders_table',1);
+(20,'2020_09_15_170120_create_orders_table',1),
+(21,'2020_10_09_053254_create_professions_table',1);
 
 /*Table structure for table `openings` */
 
@@ -408,9 +409,20 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_totalheight_id_foreign` FOREIGN KEY (`totalheight_id`) REFERENCES `totalheights` (`id`) ON DELETE CASCADE,
   CONSTRAINT `orders_totalwidth_id_foreign` FOREIGN KEY (`totalwidth_id`) REFERENCES `totalwidths` (`id`) ON DELETE CASCADE,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `orders` */
+
+insert  into `orders`(`id`,`user_id`,`join_id`,`material_id`,`range_id`,`opening_id`,`leave_id`,`installation_id`,`totalheight_id`,`totalwidth_id`,`insulation_id`,`aeration_id`,`glazing_id`,`color_id`,`price`,`state_order`,`state_deliver`,`mode`,`project_id`,`created_at`,`updated_at`) values 
+(1,1,6,1,1,1,1,1,1,1,1,3,12,12,'3960','0','0','1',1,'2020-10-13 19:16:55','2020-10-13 19:16:55'),
+(2,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',1,'2020-10-13 19:17:28','2020-10-13 19:17:28'),
+(3,1,3,1,1,1,1,1,1,1,1,1,1,1,'1260','1','0','1',1,'2020-10-13 19:17:33','2020-10-13 19:18:18'),
+(4,1,8,1,1,1,1,1,1,1,1,1,1,1,'1760','1','0','1',1,'2020-10-13 19:17:39','2020-10-13 19:18:16'),
+(5,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-13 19:18:03','2020-10-13 19:18:03'),
+(6,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',1,'2020-10-14 02:27:27','2020-10-14 02:27:27'),
+(7,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-14 02:49:21','2020-10-14 02:49:21'),
+(8,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-14 02:52:44','2020-10-14 02:52:44'),
+(9,1,1,1,2,5,1,3,3,2,4,1,9,11,'3800','0','0','0',NULL,'2020-10-14 02:54:27','2020-10-14 02:54:27');
 
 /*Table structure for table `password_resets` */
 
@@ -425,6 +437,27 @@ CREATE TABLE `password_resets` (
 
 /*Data for the table `password_resets` */
 
+/*Table structure for table `professions` */
+
+DROP TABLE IF EXISTS `professions`;
+
+CREATE TABLE `professions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `professions` */
+
+insert  into `professions`(`id`,`name`,`created_at`,`updated_at`) values 
+(1,'Architecte',NULL,NULL),
+(2,'Maitre d’œuvre',NULL,NULL),
+(3,'Bureau d’études',NULL,NULL),
+(4,'Gros œuvre',NULL,NULL),
+(5,'QSE',NULL,NULL);
+
 /*Table structure for table `projects` */
 
 DROP TABLE IF EXISTS `projects`;
@@ -438,9 +471,14 @@ CREATE TABLE `projects` (
   PRIMARY KEY (`id`),
   KEY `projects_user_id_foreign` (`user_id`),
   CONSTRAINT `projects_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `projects` */
+
+insert  into `projects`(`id`,`user_id`,`name`,`created_at`,`updated_at`) values 
+(1,1,'AAAAAAAAAA','2020-10-13 19:16:55','2020-10-13 19:16:55'),
+(2,1,'BBBBBB','2020-10-13 19:17:59','2020-10-13 19:17:59'),
+(3,1,'aa','2020-10-14 02:30:32','2020-10-14 02:30:32');
 
 /*Table structure for table `ranges` */
 
@@ -526,19 +564,19 @@ CREATE TABLE `users` (
   `postcode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profession_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`firstname`,`lastname`,`gender`,`email`,`password`,`mode`,`company`,`address`,`postcode`,`city`,`telephone`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values 
-(3,'AA','AA','1','test@gmail.com','$2y$10$slpaTTeTBHReDKVbpAjEguuZ335LGYcmDKnGGz/w9Z6kEE1wftKVS','1','sans nom','AA','aa','aa','aa',NULL,NULL,'2020-09-18 06:59:51','2020-09-18 17:59:03'),
-(4,'BB','BBs','0','test1@gmail.com','$2y$10$89DdxZG4Vm6he7jNkx5N/.b7LwKwfpf5xA9pWQ8dtUL3MNFa9F9.i','0',NULL,'BBdv','BBs','BBv','BBvd',NULL,NULL,'2020-09-18 07:00:45','2020-09-18 07:00:45');
+insert  into `users`(`id`,`firstname`,`lastname`,`gender`,`email`,`password`,`mode`,`company`,`address`,`postcode`,`city`,`telephone`,`profession_id`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values 
+(1,'Jean','Marc','1','jeanmarc@gmail.com','$2y$10$4xs6pxs6901tHOb3MZIiZ.BIYTR0kiMXITvlVocSiBGr0GbwjMhXq','1','Sotoweb','14 Avenue Saint-Médard','33000','Bordeaux','06 90 84 23 12','3',NULL,NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -212,13 +212,14 @@ class ProController extends Controller
             'postcode' => $request->postcode,
             'city' => $request->city,
             'telephone' => $request->telephone,
+            'profession_id' => $request->profession,
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $updated = User::where('id', $request->id)->update($data);
+        $updated = User::where('id', Auth::user()->id)->update($data);
 
         return redirect("/account_pro");
     }

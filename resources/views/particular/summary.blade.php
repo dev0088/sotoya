@@ -96,14 +96,14 @@
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-4">
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold">Accueil</a>
+                <a href="/" class="text-base text-darkgray fontbold leading-snug">Accueil</a>
             <span>
                 <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                     <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                 </svg>
             </span>
             </div>
-            <span class="text-base text-dark fontbold">Configurateur particulier</span>
+            <span class="text-base text-dark fontbold leading-snug">Configurateur particulier</span>
         </div>
     </div>
     
@@ -142,7 +142,7 @@
                             <input type="hidden" name="glazing" value="{{$glazing['id']}}"/>
                         @endif
                         @if(isset($leave))
-                            <input type="hidden" name="leave" value="{{$joinery['id']}}"/>
+                            <input type="hidden" name="leave" value="{{$leave['id']}}"/>
                         @endif
                         @if(isset($installation))
                             <input type="hidden" name="installation" value="{{$installation['id']}}"/>
@@ -199,7 +199,7 @@
                             <input type="hidden" name="width_size_pay" value="{{$width_size['id']}}"/>
                         @endif
 
-                        <button type="submit" class="w-full py-4 mb-4 lg:mb-0 shadow-md text-center bg-darkgray text-white text-lg fontbold">Payer ma commande</button>
+                        <button type="submit" class="w-full py-4 mb-4 lg:mb-0 shadow-lg text-center bg-darkgray text-white text-lg fontbold">Payer ma commande</button>
 
                     </form>
                 </div>

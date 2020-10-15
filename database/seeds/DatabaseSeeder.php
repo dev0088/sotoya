@@ -18,16 +18,18 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 1,
-            'firstname' => "firstname",
-            'lastname' => "lastname",
+            'firstname' => "Jean",
+            'lastname' => "Marc",
             'gender' => "1",
-            'email' => "test@gmail.com",
+            'email' => "jeanmarc@gmail.com",
             'password' => Hash::make('abc'),
             'mode' => "1",
-            'address' => "address",
-            'postcode' => "500-500000",
-            'city' => "city",
-            "profession_id" => "3"
+            'address' => "14 Avenue Saint-Médard",
+            'postcode' => "33000",
+            'city' => "Bordeaux",
+            'profession_id' => '3',
+            'telephone' => '06 90 84 23 12',
+            'company' => 'Sotoweb'
         ]);
 
         //Base Data
