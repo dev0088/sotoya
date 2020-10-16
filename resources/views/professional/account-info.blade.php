@@ -10,21 +10,26 @@
     .maxwidth-1032 {
         max-width: 1032px;
     }
+
     .check-item > label {
         cursor: pointer;
     }
     .check-item.item-mode > label {
         cursor: no-drop;
     }
+
     .check-item.active > label > div > svg.checked {
         display: block;
     }
+
     .check-item.active > label > div >svg.unchecked {
         display: none;
     }
+
     .check-item > label > div > svg.checked {
         display: none;
     }
+
     .check-item > label > div > svg.unchecked {
         display: block;
     }
@@ -47,7 +52,7 @@
 @section('content')
 
 <main id="main-content" class="bg-whitegreen px-8 pb-10 md:px-35 md:pb-20">
-    
+
     <div>
         <div class="flex-none md:flex items-center pt-35px pb-6">
             <div class="mb-4 md:mb-0 flex items-center">
@@ -59,7 +64,7 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_part" class="text-base text-darkgray fontbold leading-snug">Mon compte particulier</a>
+                <a href="{{ route('pro-account') }}" class="text-base text-darkgray fontbold leading-snug">Mon compte professionnel</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -70,7 +75,7 @@
         </div>
     </div>
     
-    <form class="w-full px-4 md:px-15 pt-4 pb-8 md:pt-10 md:pb-10 shadow-md bg-white mx-auto maxwidth-1032" method="post" action="{{ route('modifyinfo_part') }}">
+    <form class="w-full px-4 md:px-15 pt-4 pb-8 md:pt-10 md:pb-10 shadow-md bg-white mx-auto maxwidth-1032" method="post" action="{{ route('pro-info-save') }}">
         @csrf
 
         <p class="text-4xl fontbold text-center pb-10 leading-normal md:leading-snug">Mes informations personnelles</p>
@@ -176,7 +181,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
                 <p class="text-lg pb-3 fontbold leading-snug">E-mail*</p>
-                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required required/>
+                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required/>
                 @error('email')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -191,6 +196,64 @@
                     <input id="password" name="password" type="password" class="form-control bg-input h-input" value="" disabled/>
                 </div>
                 @error('password')
+                    <div class="py-3">
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    </div>
+                @enderror
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
+            <div>
+                <p class="text-lg fontbold pb-3 leading-snug">Si professionnel, nom de la société</p>
+                <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" placeholder="Nom de la société" value="@if(isset($user["company"])){{$user["company"]}}@endif"/>
+                @error('company')
+                    <div class="py-3">
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    </div>
+                @enderror
+            </div>
+            <div>
+                <p class="text-lg fontbold pb-3 leading-snug">Type de profession</p>
+                <div class="h-input">
+                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
+                        <span id="select-profession">
+                            @if(isset($user["profession_id"]))
+                                <?php
+                                    echo App\Model\Profession::find($user["profession_id"])->name;
+                                ?>
+                            @else
+                                <span style="opacity: 0.4;">Type de profession</span>
+                            @endif
+
+                        </span>
+                        
+                        <input id="select-profession-submit" type="hidden" name="profession" value="@if(isset($user['profession_id'])){{$user['profession_id']}}@endif"/>
+
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                            <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
+                                <path d="M16.518,26.539a.921.921,0,0,0,.685-.3l7.924-8.108a.912.912,0,0,0,.276-.654.926.926,0,0,0-.941-.941.99.99,0,0,0-.665.266l-7.28,7.444L9.238,16.8a.971.971,0,0,0-.665-.266.926.926,0,0,0-.941.941.954.954,0,0,0,.276.665l7.924,8.1A.937.937,0,0,0,16.518,26.539Z" transform="translate(-7.633 -16.539)" fill="#3b3b3a"/>
+                            </svg>
+                            <svg class="up-icon hidden" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
+                                <path d="M16.519,16.539a.921.921,0,0,1,.685.3l7.925,8.109a.912.912,0,0,1,.276.654.926.926,0,0,1-.941.941.991.991,0,0,1-.665-.266l-7.28-7.444-7.28,7.444a.971.971,0,0,1-.665.266.926.926,0,0,1-.941-.941.954.954,0,0,1,.276-.665l7.925-8.1A.937.937,0,0,1,16.519,16.539Z" transform="translate(-7.633 -16.539)" fill="#3b3b3a"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="hidden rounded-lg shadow-md border border-lightgray w-full mt-3 relative z-50 bg-white" style="@if(isset($projects) && count($projects) > 0) border: 1px solid #dedede @endif">
+                        <?php 
+                            $professions = App\Model\Profession::all();
+                            if(isset($professions) && count($professions) > 0) {
+                                foreach($professions as $key => $item){
+                                    echo '<p id="'.$item['id'].'" class="profession-item bg-white hover:bg-whitegreen rounded-lg cursor-default px-4 py-4">'.$item["name"].'</p>';
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                @error('profession')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -269,14 +332,6 @@
 
     $("input:radio").click(function() {
 
-        console.log($("#pro").is(":checked"));
-
-        if($("#pro").is(":checked")) {
-            $("#company").prop("disabled", false);
-        } else {
-            $("#company").prop("disabled", true);
-        }
-
         if(!$(this).parent().parent().hasClass("active")) {
 
             $(this).parent().parent().toggleClass("active");
@@ -308,6 +363,25 @@
         validateForm();
     });
 
+    $("#firstname").click(function() {
+        validateForm();
+    });
+    $("#lastname").click(function() {
+        validateForm();
+    });
+    $("#email").click(function() {
+        validateForm();
+    });
+    $("#address").click(function() {
+        validateForm();
+    });
+    $("#postcode").click(function() {
+        validateForm();
+    });
+    $("#city").click(function() {
+        validateForm();
+    });
+
     $("#firstname").change(function() {
         validateForm();
     });
@@ -327,23 +401,42 @@
         validateForm();
     });
 
-    $("#firstname").click(function() {
-        validateForm();
+    $(".select-button").click(function(event) {
+
+        event.stopPropagation();
+
+        $(this).next().toggle();
+        if($(this).next().css("display") == "none") {
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
+        } else {
+            $(this).find("svg.up-icon").show();
+            $(this).find("svg.down-icon").hide();
+        }
+
     });
-    $("#lastname").click(function() {
+
+    $(".profession-item").click(function() {
+
+        $(this).parent().hide();
+        $(this).parent().prev().find("svg.up-icon").hide();
+        $(this).parent().prev().find("svg.down-icon").show();
+        $(this).parent().prev().find("span").html($(this).html());
+
+        $("#select-profession-submit").val($(this).attr("id"));
+
         validateForm();
+
     });
-    $("#email").click(function() {
-        validateForm();
-    });
-    $("#address").click(function() {
-        validateForm();
-    });
-    $("#postcode").click(function() {
-        validateForm();
-    });
-    $("#city").click(function() {
-        validateForm();
+
+    $(window).click(function() {
+
+        $(".select-button").each(function() {
+            $(this).next().hide();
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
+        });
+
     });
 
     function validateForm() {

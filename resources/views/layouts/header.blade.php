@@ -35,7 +35,7 @@
                     <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
                 </svg>
             </a>
-            <a @if(!Auth::user()) href="/login" @endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif class="cursor-pointer">
+            <a @if(!Auth::user()) href="/login" @endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="{{ route('pro-account') }}"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="{{ route('part-account') }}"@endif class="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20">
                 <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
                 </svg>
@@ -53,7 +53,7 @@
                 <path id="bag_fill" d="M10.272,24.047H21.788c1.761,0,2.779-1.018,2.779-3.033V10.886c0-2.016-1.027-3.033-3.072-3.033H19.939a4.064,4.064,0,0,0-8.112,0H10.272C8.236,7.853,7.2,8.861,7.2,10.886V21.014C7.2,23.039,8.236,24.047,10.272,24.047ZM15.888,5.534a2.424,2.424,0,0,1,2.476,2.319H13.413A2.411,2.411,0,0,1,15.888,5.534Z" transform="translate(-7.199 -4.047)" fill="#3b3b3a"/>
             </svg>
         </a>
-        <a @if(!Auth::user()) href="/login" @endif class="mx-auto px-2 py-2 cursor-pointer" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="/account_pro"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="/account_part"@endif>
+        <a @if(!Auth::user()) href="/login" @endif class="mx-auto px-2 py-2 cursor-pointer" @if(isset(Auth::user()->mode) && Auth::user()->mode == 1)href="{{ route('pro-account') }}"@endif @if(isset(Auth::user()->mode) && Auth::user()->mode == 0)href="{{ route('part-account') }}"@endif>
             <svg xmlns="http://www.w3.org/2000/svg" width="18.721" height="20" viewBox="0 0 18.721 20">
             <path id="person_fill" d="M17.643,16.629a4.7,4.7,0,0,0,4.449-4.917A4.608,4.608,0,0,0,17.643,6.93a4.642,4.642,0,0,0-4.449,4.805A4.7,4.7,0,0,0,17.643,16.629Zm-6.986,10.3H24.629c1.746,0,2.369-.5,2.369-1.479,0-2.87-3.593-6.83-9.355-6.83s-9.366,3.96-9.366,6.83C8.277,26.429,8.9,26.93,10.658,26.93Z" transform="translate(-8.277 -6.93)" fill="#3b3b3a"/>
             </svg>

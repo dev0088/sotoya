@@ -112,11 +112,8 @@
     
                 <div class="grid grid-cols-1 lg:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                     <a href="/" class="py-4 mb-4 lg:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <form method="post" action="{{ route('record_order_part') }}">
+                    <form method="post" action="{{ route('part-order-add') }}">
                         @csrf
-                        @if(isset($price))
-                            <input type="hidden" name="price" value="{{$price}}"/>
-                        @endif
                         @if(isset($joinery))
                             <input type="hidden" name="joinery" value="{{$joinery['id']}}"/>
                         @endif
@@ -157,46 +154,43 @@
                         <button type="submit" class="w-full py-4 mb-4 lg:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
 
                     </form>
-                    <form method="POST" action="/payiteminsert_part">
+                    <form method="POST" action="{{ route('part-clicandpay') }}">
                         @csrf
-                        @if(isset($price))
-                            <input type="hidden" name="price_pay" value="{{$price}}"/>
-                        @endif
                         @if(isset($joinery))
-                            <input type="hidden" name="joinery_pay" value="{{$joinery['id']}}"/>
+                            <input type="hidden" name="joinery_submit_pay" value="{{$joinery['id']}}"/>
                         @endif
                         @if(isset($material))
-                            <input type="hidden" name="material_pay" value="{{$material['id']}}"/>
+                            <input type="hidden" name="material_submit_pay" value="{{$material['id']}}"/>
                         @endif
                         @if(isset($insulation_size))
-                            <input type="hidden" name="insulation_size_pay" value="{{$insulation_size['id']}}"/>
+                            <input type="hidden" name="insulation_size_submit_pay" value="{{$insulation_size['id']}}"/>
                         @endif
                         @if(isset($height_size))
-                            <input type="hidden" name="height_size_pay" value="{{$height_size['id']}}"/>
+                            <input type="hidden" name="height_size_submit_pay" value="{{$height_size['id']}}"/>
                         @endif
                         @if(isset($range))
-                            <input type="hidden" name="range_pay" value="{{$range['id']}}"/>
+                            <input type="hidden" name="range_submit_pay" value="{{$range['id']}}"/>
                         @endif
                         @if(isset($aeration))
-                            <input type="hidden" name="aeration_pay" value="{{$aeration['id']}}"/>
+                            <input type="hidden" name="aeration_submit_pay" value="{{$aeration['id']}}"/>
                         @endif
                         @if(isset($opening))
-                            <input type="hidden" name="opening_pay" value="{{$opening['id']}}"/>
+                            <input type="hidden" name="opening_submit_pay" value="{{$opening['id']}}"/>
                         @endif
                         @if(isset($glazing))
-                            <input type="hidden" name="glazing_pay" value="{{$glazing['id']}}"/>
+                            <input type="hidden" name="glazing_submit_pay" value="{{$glazing['id']}}"/>
                         @endif
                         @if(isset($leave))
-                            <input type="hidden" name="leave_pay" value="{{$leave['id']}}"/>
+                            <input type="hidden" name="leave_submit_pay" value="{{$leave['id']}}"/>
                         @endif
                         @if(isset($installation))
-                            <input type="hidden" name="installation_pay" value="{{$installation['id']}}"/>
+                            <input type="hidden" name="installation_submit_pay" value="{{$installation['id']}}"/>
                         @endif
                         @if(isset($color))
-                            <input type="hidden" name="color_pay" value="{{$color['id']}}"/>
+                            <input type="hidden" name="color_submit_pay" value="{{$color['id']}}"/>
                         @endif
                         @if(isset($width_size))
-                            <input type="hidden" name="width_size_pay" value="{{$width_size['id']}}"/>
+                            <input type="hidden" name="width_size_submit_pay" value="{{$width_size['id']}}"/>
                         @endif
 
                         <button type="submit" class="w-full py-4 mb-4 lg:mb-0 shadow-lg text-center bg-darkgray text-white text-lg fontbold">Payer ma commande</button>
@@ -210,7 +204,7 @@
                     <div class="flex justify-between items-center px-3 md:px-8 h-15 bg-whitepink">
                         @if(isset($price))
                             <p class="text-lg fontbold">Prix :</p>
-                            <p id="price_finish" class="text-4xl fontbold">{{$price}}</p>
+                            <p class="text-4xl fontbold">{{$price}}</p>
                         @endif
                     </div>
         
@@ -339,7 +333,7 @@
                 
             </div>
             <div class="w-full text-center md:text-left">
-                <a href="/account_pro_projects">
+                <a href="{{ route('pro-projects') }}">
                     <button class="px-16 py-4 mt-8 font-bold text-white enregister-button">Enregister</button>
                 </a>
             </div>

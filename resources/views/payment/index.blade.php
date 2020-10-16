@@ -162,8 +162,23 @@
         </div>
     </div>
 
-    <form method="post" action="@if(Auth::user()->mode == 1){{ route('pay_pro') }}@else{{ route('pay_part') }}@endif">
+    <form method="post" action="@if(Auth::user()->mode == 1){{ route('pro-clicandpay-summary') }}@else{{ route('part-clicandpay-summary') }}@endif">
         @csrf
+
+        <input type="hidden" name="project_id" value="@if(isset($project_id)){{$project_id}}@endif"/>
+        <input type="hidden" name="order_id" value="@if(isset($order_id)){{$order_id}}@endif"/>
+        <input type="hidden" name="joinery_id" value="@if(isset($joinery_id)){{$joinery_id}}@endif"/>
+        <input type="hidden" name="material_id" value="@if(isset($material_id)){{$material_id}}@endif"/>
+        <input type="hidden" name="range_id" value="@if(isset($range_id)){{$range_id}}@endif"/>
+        <input type="hidden" name="aeration_id" value="@if(isset($aeration_id)){{$aeration_id}}@endif"/>
+        <input type="hidden" name="opening_id" value="@if(isset($opening_id)){{$opening_id}}@endif"/>
+        <input type="hidden" name="leave_id" value="@if(isset($leave_id)){{$leave_id}}@endif"/>
+        <input type="hidden" name="glazing_id" value="@if(isset($glazing_id)){{$glazing_id}}@endif"/>
+        <input type="hidden" name="installation_id" value="@if(isset($installation_id)){{$installation_id}}@endif"/>
+        <input type="hidden" name="color_id" value="@if(isset($color_id)){{$color_id}}@endif"/>
+        <input type="hidden" name="height_size_id" value="@if(isset($height_size_id)){{$height_size_id}}@endif"/>
+        <input type="hidden" name="width_size_id" value="@if(isset($width_size_id)){{$width_size_id}}@endif"/>
+        <input type="hidden" name="insulation_size_id" value="@if(isset($insulation_size_id)){{$insulation_size_id}}@endif"/>
 
         <div class="flex-none lg:flex px-8 md:px-35 maxwidth-1441 mx-auto">
     

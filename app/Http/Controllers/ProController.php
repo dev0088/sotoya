@@ -86,7 +86,7 @@ class ProController extends Controller
 
     public function account() 
     {
-        return view('professional.account.index');
+        return view('professional.account-index');
     }
 
     public function projects($id = null)
@@ -116,14 +116,14 @@ class ProController extends Controller
 
                 $total_tva = $total_ht * 1.2;
 
-                return view('professional.account.projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
+                return view('professional.account-projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
 
             } else {
 
                 $total_ht = 0;
                 $total_tva = 0;
 
-                return view('professional.account.projects', compact('total_ht', 'total_tva'));
+                return view('professional.account-projects', compact('total_ht', 'total_tva'));
 
             }
 
@@ -144,7 +144,7 @@ class ProController extends Controller
 
             $total_tva = $total_ht * 1.2;
 
-            return view('professional.account.projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
+            return view('professional.account-projects', compact('projects', 'id', 'orders', 'total_ht', 'total_tva'));
 
         }
     }
@@ -178,36 +178,50 @@ class ProController extends Controller
                                 return ucfirst(utf8_encode(strftime('%B %Y', strtotime($val->created_at))));
                             });
   
-        return view('professional.account.history', compact('currenthistory', 'otherhistory'));
+        return view('professional.account-history', compact('currenthistory', 'otherhistory'));
     }
 
     public function info()
     {
         $user = User::find(Auth::id());
-        return view('professional.account.info', compact('user'));
+        return view('professional.account-info', compact('user'));
     }
 
     public function modifyinfo(Request $request)
     {
-        $validator = Validator::make($request->all(),
+        if(User::where('id', Auth::user()->id)->first()->email == $request->email) {
+
+            $validator = Validator::make($request->all(),
             [
                 'gender' => 'required|string',
                 'firstname' => 'required|string',
                 'lastname' => 'required|string',
                 'email' => 'required|string',
-                // 'company' => 'string',
                 'address' => 'required|string',
                 'postcode' => 'required|string',
                 'city' => 'required|string',
-                // 'telephone' => 'string',
             ]);
+
+        } else {
+
+            $validator = Validator::make($request->all(),
+            [
+                'gender' => 'required|string',
+                'firstname' => 'required|string',
+                'lastname' => 'required|string',
+                'email' => 'required|string|unique:users',
+                'address' => 'required|string',
+                'postcode' => 'required|string',
+                'city' => 'required|string',
+            ]);
+
+        }
 
         $data = ([
             'gender' => $request->gender,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            // 'company' => ($request->company) ? $request->company : "sans nom",
             'company' => $request->company,
             'address' => $request->address,
             'postcode' => $request->postcode,
@@ -222,7 +236,7 @@ class ProController extends Controller
 
         $updated = User::where('id', Auth::user()->id)->update($data);
 
-        return redirect("/account_pro");
+        return redirect()->route("pro-account");
     }
 
     public function recordorder(Request $request)
@@ -316,7 +330,7 @@ class ProController extends Controller
         $delete = Project::find($id)->delete();
 
         if($delete) {
-            return redirect("/account_pro_projects");
+            return redirect()->route("pro-projects");
         }
     }
     public function modifyorder($id) 
@@ -427,108 +441,10 @@ class ProController extends Controller
         return redirect()->route("account_pro_projects_id", $project->id);
     }
 
-    public function ordereverything($id)
-    {
-        $orders = Order::where('project_id', $id)->get();
-
-        foreach($orders as $key => $order) {
-
-            $data = ([
-                'state_order' => "1"
-            ]);
-    
-            $update = $order->update($data);
-
-        }
-
-        return redirect()->route("account_pro_projects_id", $id);
-    }
-
-    public function order($id)
-    {
-        $data = ([
-            'state_order' => "1"
-        ]);
-
-        $update = Order::where('id', $id)->update($data);
-
-        $project_id = Order::find($id)->project_id;
-
-        return redirect()->route('account_pro_projects_id', $project_id);
-    }
-
-    public function payiteminsert(Request $request)
+    public function clicandpay(Request $request)
     {
 
-        $joinery_id = $request->post("joinery_submit_pay");
-        $material_id = $request->post("material_submit_pay");
-        $range_id = $request->post("range_submit_pay");
-        $opening_id = $request->post("opening_submit_pay");
-        $leave_id = $request->post("leave_submit_pay");
-        $installation_id = $request->post("installation_submit_pay");
-        $aeration_id = $request->post("aeration_submit_pay");
-        $glazing_id = $request->post("glazing_submit_pay");
-        $color_id = $request->post("color_submit_pay");
-        $height_size_id = $request->post("height_size_submit_pay");
-        $width_size_id = $request->post("width_size_submit_pay");
-        $insulation_size_id = $request->post("insulation_size_submit_pay");
-
-        $joinery = Join::find($joinery_id);
-        $material = Material::find($material_id);
-        $range = Range::find($range_id);
-        $opening = Opening::find($opening_id);
-        $leave = Leave::find($leave_id);
-        $installation = Installation::find($installation_id);
-        $aeration = Aeration::find($aeration_id);
-        $glazing = Glazing::find($glazing_id);
-        $color = Color::find($color_id);
-        $height_size = TotalHeight::find($height_size_id);
-        $width_size = TotalWidth::find($width_size_id);
-        $insulation_size = Insulation::find($insulation_size_id);
-
-        $order = new Order();
-
-        $order->user_id = Auth::id();
-        $order->join_id = $joinery_id;
-        $order->totalheight_id = $height_size_id;
-        $order->material_id = $material_id;
-        $order->insulation_id = $insulation_size_id;
-        $order->range_id = $range_id;
-        $order->aeration_id = $aeration_id;
-        $order->opening_id = $opening_id;
-        $order->leave_id = $leave_id;
-        $order->glazing_id = $glazing_id;
-        $order->installation_id = $installation_id;
-        $order->color_id = $color_id;
-        $order->totalwidth_id = $width_size_id;
-        $order->mode = Auth::user()->mode;
-            
-
-        $price = 
-            $joinery["price"] + 
-            $material["price"] + 
-            $range["price"] + 
-            $opening["price"] + 
-            $leave["price"] + 
-            $installation["price"] +
-            $aeration["price"] +
-            $glazing["price"] + 
-            $color["price"] + 
-            $height_size["price"] + 
-            $width_size["price"] + 
-            $insulation_size["price"];
-
-        $order->price = $price;
-
-        $order->state_order = 1;
-
-        $order->save();
-
-        return view('payment.index');
-    }
-
-    public function payiteminsertWhenModify(Request $request)
-    {
+        $project_id = $request->post("project_id");
         $order_id = $request->post("order_id");
 
         $joinery_id = $request->post("joinery_submit_pay");
@@ -544,56 +460,147 @@ class ProController extends Controller
         $width_size_id = $request->post("width_size_submit_pay");
         $insulation_size_id = $request->post("insulation_size_submit_pay");
 
-        $joinery = Join::find($joinery_id);
-        $material = Material::find($material_id);
-        $range = Range::find($range_id);
-        $opening = Opening::find($opening_id);
-        $leave = Leave::find($leave_id);
-        $installation = Installation::find($installation_id);
-        $aeration = Aeration::find($aeration_id);
-        $glazing = Glazing::find($glazing_id);
-        $color = Color::find($color_id);
-        $height_size = TotalHeight::find($height_size_id);
-        $width_size = TotalWidth::find($width_size_id);
-        $insulation_size = Insulation::find($insulation_size_id);
+        if($project_id) {
 
-        $price = 
-            $joinery["price"] + 
-            $material["price"] + 
-            $range["price"] + 
-            $opening["price"] + 
-            $leave["price"] + 
-            $installation["price"] +
-            $aeration["price"] +
-            $glazing["price"] + 
-            $color["price"] + 
-            $height_size["price"] + 
-            $width_size["price"] + 
-            $insulation_size["price"];
+            return view('payment.index', compact('project_id'));
 
-        $data = ([
-            'join_id' => $joinery_id,
-            'material_id' => $material_id,
-            'range_id' => $range_id,
-            'opening_id' => $opening_id,
-            'leave_id' => $leave_id,
-            'installation_id' => $installation_id,
-            'totalheight_id' => $height_size_id,
-            'totalwidth_id' => $width_size_id,
-            'insulation_id' => $insulation_size_id,
-            'aeration_id' => $aeration_id,
-            'glazing_id' => $glazing_id,
-            'color_id' => $color_id,
-            'price'=>$price
-        ]);
+        } else {
 
-        $update = Order::where('id', $order_id)->update($data);
+            if($order_id) {
 
-        return view('payment.index');
+                if($joinery_id) {
+
+                    return view('payment.index', compact('order_id', 'joinery_id', 'material_id', 'range_id', 'aeration_id', 'opening_id', 'leave_id', 'glazing_id', 'installation_id', 'color_id', 'height_size_id', 'width_size_id', 'insulation_size_id'));
+
+                } else {
+                    
+                    return view('payment.index', compact('order_id'));
+
+                }
+                
+            } else {
+
+                return view('payment.index', compact('joinery_id', 'material_id', 'range_id', 'aeration_id', 'opening_id', 'leave_id', 'glazing_id', 'installation_id', 'color_id', 'height_size_id', 'width_size_id', 'insulation_size_id'));
+                
+            }
+        }
+        
     }
 
     public function pay(Request $request)
     {
+
+        $project_id = $request->post("project_id");
+        $order_id = $request->post("order_id");
+
+        $joinery_id = $request->post("joinery_id");
+        $material_id = $request->post("material_id");
+        $range_id = $request->post("range_id");
+        $opening_id = $request->post("opening_id");
+        $leave_id = $request->post("leave_id");
+        $installation_id = $request->post("installation_id");
+        $aeration_id = $request->post("aeration_id");
+        $glazing_id = $request->post("glazing_id");
+        $color_id = $request->post("color_id");
+        $height_size_id = $request->post("height_size_id");
+        $width_size_id = $request->post("width_size_id");
+        $insulation_size_id = $request->post("insulation_size_id");
+
+        $idArray = 
+            [
+                "join" => $joinery_id,
+                "material" => $material_id,
+                "range" => $range_id,
+                "opening" => $opening_id,
+                "leave" => $leave_id,
+                "installation" => $installation_id,
+                "aeration" => $aeration_id,
+                "glazing" => $glazing_id,
+                "color" => $color_id,
+                "height" => $height_size_id,
+                "width" => $width_size_id,
+                "insulation" => $insulation_size_id,
+            ];
+
+        if($project_id) {
+
+            $data = ([
+                'state_order' => "1"
+            ]);
+
+            Order::where('project_id', $project_id)->update($data);
+
+            $price = Order::where('project_id', $project_id)->sum('price');
+
+        } else {
+
+            if($order_id) {
+
+                if($joinery_id) {
+    
+                    $data = 
+                        [
+                            'join_id' => $joinery_id,
+                            'material_id' => $material_id,
+                            'range_id' => $range_id,
+                            'opening_id' => $opening_id,
+                            'leave_id' => $leave_id,
+                            'installation_id' => $installation_id,
+                            'totalheight_id' => $height_size_id,
+                            'totalwidth_id' => $width_size_id,
+                            'insulation_id' => $insulation_size_id,
+                            'aeration_id' => $aeration_id,
+                            'glazing_id' => $glazing_id,
+                            'color_id' => $color_id,
+                            'state_order' => 1,
+                            'price' => $this->calculatePrice($idArray)
+                        ];
+        
+                    $update = Order::where('id', $order_id)->update($data);
+
+                    
+        
+                } else {
+    
+                    $data = ([
+                        'state_order' => "1"
+                    ]);
+            
+                    $update = Order::where('id', $order_id)->update($data);
+                }
+
+                $price = Order::where('id', $order_id)->first()->price;
+                
+            } else {
+    
+                $order = new Order();
+    
+                $order->user_id = Auth::id();
+                $order->join_id = $joinery_id;
+                $order->totalheight_id = $height_size_id;
+                $order->material_id = $material_id;
+                $order->insulation_id = $insulation_size_id;
+                $order->range_id = $range_id;
+                $order->aeration_id = $aeration_id;
+                $order->opening_id = $opening_id;
+                $order->leave_id = $leave_id;
+                $order->glazing_id = $glazing_id;
+                $order->installation_id = $installation_id;
+                $order->color_id = $color_id;
+                $order->totalwidth_id = $width_size_id;
+                $order->mode = Auth::user()->mode;
+
+                $price = $this->calculatePrice($idArray);
+    
+                $order->price = $price;
+                
+                $order->state_order = 1;
+        
+                $order->save();
+
+            }
+        }
+
         $address_state = $request->address_state;
 
         $firstname_delivery = $request->firstname_delivery;
@@ -611,79 +618,112 @@ class ProController extends Controller
         return view('payment.summary');
     }
 
-    public function downloadQuote(Request $request)
+    public function calculatePrice($value)
     {
-        $id = $request->project_id;
 
-        set_time_limit(6000);
+       $joinery = Join::find($value["join"]);
+       $material = Material::find($value["material"]);
+       $range = Range::find($value["range"]);
+       $opening = Opening::find($value["opening"]);
+       $leave = Leave::find($value["leave"]);
+       $installation = Installation::find($value["installation"]);
+       $aeration = Aeration::find($value["aeration"]);
+       $glazing = Glazing::find($value["glazing"]);
+       $color = Color::find($value["color"]);
+       $height_size = TotalHeight::find($value["height"]);
+       $width_size = TotalWidth::find($value["width"]);
+       $insulation_size = Insulation::find($value["insulation"]);
 
-    	$name = Project::find($id)->name;
-    	$date = Project::find($id)->updated_at;
-    	$client = Auth::user()->company;
-    	$address = Auth::user()->address;
-        $orders_original = Project::where('user_id', Auth::id())
-                                ->where('id', $id)
-                                ->first()
-                                ->orders()
-                                ->where('state_order', "0")
-                                ->orderBy('created_at', 'DESC')
-                                ->get();
+       $price = 
+           $joinery["price"] + 
+           $material["price"] + 
+           $range["price"] + 
+           $opening["price"] + 
+           $leave["price"] + 
+           $installation["price"] +
+           $aeration["price"] +
+           $glazing["price"] + 
+           $color["price"] + 
+           $height_size["price"] + 
+           $width_size["price"] + 
+           $insulation_size["price"];
 
-        $total_ht = 0;
+       return $price;
+   }
 
-        foreach($orders_original as $key => $item) {
-            $item["quantity"] = 1;
-            $item["sum"] = $item["price"];
-        }
+   public function downloadQuote(Request $request)
+   {
+       $id = $request->project_id;
 
-        foreach($orders_original as $key => $item) {
-            $total_ht += $item["price"];
-        }
+       set_time_limit(6000);
 
-        $total_tva = $total_ht * 1.2;
+       $name = Project::find($id)->name;
+       $date = Project::find($id)->updated_at;
+       $client = Auth::user()->company;
+       $address = Auth::user()->address;
+       $orders_original = Project::where('user_id', Auth::id())
+                               ->where('id', $id)
+                               ->first()
+                               ->orders()
+                               ->where('state_order', "0")
+                               ->orderBy('created_at', 'DESC')
+                               ->get();
 
-        $tva = $total_tva - $total_ht;
+       $total_ht = 0;
 
-        for($x = 0 ; $x < count($orders_original) ; $x ++) {
-            for($y = $x + 1 ; $y < count($orders_original) ; $y ++) {
-                if($orders_original[$x]["price"] == $orders_original[$y]["price"]) {
-                    if( 
-                        $orders_original[$x]["join_id"] == $orders_original[$y]["join_id"] &&
-                        $orders_original[$x]["material_id"] == $orders_original[$y]["material_id"] &&
-                        $orders_original[$x]["range_id"] == $orders_original[$y]["range_id"] &&
-                        $orders_original[$x]["opening_id"] == $orders_original[$y]["opening_id"] &&
-                        $orders_original[$x]["leave_id"] == $orders_original[$y]["leave_id"] &&
-                        $orders_original[$x]["installation_id"] == $orders_original[$y]["installation_id"] &&
-                        $orders_original[$x]["totalheight_id"] == $orders_original[$y]["totalheight_id"] &&
-                        $orders_original[$x]["totalwidth_id"] == $orders_original[$y]["totalwidth_id"] &&
-                        $orders_original[$x]["insulation_id"] == $orders_original[$y]["insulation_id"] &&
-                        $orders_original[$x]["aeration_id"] == $orders_original[$y]["aeration_id"] &&
-                        $orders_original[$x]["color_id"] == $orders_original[$y]["color_id"]
-                        ) {
-                            $orders_original[$x]["quantity"] += 1;
-                            $orders_original[$x]["sum"] += $orders_original[$x]["price"];
-                            unset($orders_original[$y]);
-                        }
-                    
-                }
-            }
-        }
-    	
-    	$data = 
-    	[
-    		'name' => $name,
-    		'date' => $date,
-			'client' => $client,
-			'address' => $address,
-			'orders' => $orders_original,
-			'total_ht' => $total_ht,
-			'total_tva' => $total_tva,
-			'tva' => $tva,
-        ];
+       foreach($orders_original as $key => $item) {
+           $item["quantity"] = 1;
+           $item["sum"] = $item["price"];
+       }
 
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('report', $data);
-  
-        return $pdf->download('Report-'.$name.'.pdf');
-    }
+       foreach($orders_original as $key => $item) {
+           $total_ht += $item["price"];
+       }
+
+       $total_tva = $total_ht * 1.2;
+
+       $tva = $total_tva - $total_ht;
+
+       for($x = 0 ; $x < count($orders_original) ; $x ++) {
+           for($y = $x + 1 ; $y < count($orders_original) ; $y ++) {
+               if($orders_original[$x]["price"] == $orders_original[$y]["price"]) {
+                   if( 
+                       $orders_original[$x]["join_id"] == $orders_original[$y]["join_id"] &&
+                       $orders_original[$x]["material_id"] == $orders_original[$y]["material_id"] &&
+                       $orders_original[$x]["range_id"] == $orders_original[$y]["range_id"] &&
+                       $orders_original[$x]["opening_id"] == $orders_original[$y]["opening_id"] &&
+                       $orders_original[$x]["leave_id"] == $orders_original[$y]["leave_id"] &&
+                       $orders_original[$x]["installation_id"] == $orders_original[$y]["installation_id"] &&
+                       $orders_original[$x]["totalheight_id"] == $orders_original[$y]["totalheight_id"] &&
+                       $orders_original[$x]["totalwidth_id"] == $orders_original[$y]["totalwidth_id"] &&
+                       $orders_original[$x]["insulation_id"] == $orders_original[$y]["insulation_id"] &&
+                       $orders_original[$x]["aeration_id"] == $orders_original[$y]["aeration_id"] &&
+                       $orders_original[$x]["color_id"] == $orders_original[$y]["color_id"]
+                       ) {
+                           $orders_original[$x]["quantity"] += 1;
+                           $orders_original[$x]["sum"] += $orders_original[$x]["price"];
+                           unset($orders_original[$y]);
+                       }
+                   
+               }
+           }
+       }
+       
+       $data = 
+       [
+           'name' => $name,
+           'date' => $date,
+           'client' => $client,
+           'address' => $address,
+           'orders' => $orders_original,
+           'total_ht' => $total_ht,
+           'total_tva' => $total_tva,
+           'tva' => $tva,
+       ];
+
+       $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('report', $data);
+ 
+       return $pdf->download('Report-'.$name.'.pdf');
+   }
 
 }

@@ -5,17 +5,86 @@
 @endsection
 
 @section('styles')
+
 <style>
 
-    .maxwidth-1032 {
-        max-width: 1032px;
+    button.register-submit-button.active {
+        background-color: #18A75A;
+    }
+    button.register-submit-button {
+        background-color:#b0b0af;
     }
 
-    .check-item > label {
+    input {
+        font-size:16px;
+    }
+    .maxwidth-976 {
+        max-width: 976px;
+    }
+
+    /* The container */
+    /* .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    } */
+    /* Hide the browser's default checkbox */
+    /* .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    } */
+    /* Create a custom checkbox */
+    /* .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border:2px solid #737373;
+    border-radius:5px;
+    } */
+    /* When the checkbox is checked, add a blue background */
+    /* .container input:checked ~ .checkmark {
+    background-color: white;
+    border:2px solid #18A75A;
+    } */
+    /* Create the checkmark/indicator (hidden when not checked) */
+    /* .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    } */
+    /* Show the checkmark when checked */
+    /* .container input:checked ~ .checkmark:after {
+    display: block;
+    } */
+    /* Style the checkmark/indicator */
+    /* .container .checkmark:after {
+    left: 8px;
+    top: 2px;
+    width: 7px;
+    height: 14px;
+    border: solid #18A75A;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    } */
+
+    .check-item {
         cursor: pointer;
     }
-    .check-item.item-mode > label {
-        cursor: no-drop;
+    .check-item > label {
+        cursor: pointer;
     }
 
     .check-item.active > label > div > svg.checked {
@@ -34,16 +103,22 @@
         display: block;
     }
 
-    button.register-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.register-submit-button {
-        background-color:#b0b0af;
+    #agreecheck-wrapper.active > span > svg {
+        display: block;
     }
 
-    #password {
-        cursor:no-drop;
+    #agreecheck-wrapper.active > span {
+        border-color: #18A75A;
     }
+
+    #agreecheck-wrapper > span > svg {
+        display: none;
+    }
+
+    #agreecheck-wrapper > span {
+        border-color: #3B3B3A40;
+    }
+
 
 </style>
 
@@ -63,28 +138,18 @@
                     </svg>
                 </span>
             </div>
-            <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_pro" class="text-base text-darkgray fontbold leading-snug">Mon compte professionnel</a>
-                <span>
-                    <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
-                        <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
-                    </svg>
-                </span>
-            </div>
-            <span class="text-base text-dark fontbold leading-snug">Mes informations personnelles</span>
+            <span class="text-base text-dark fontbold leading-snug">S’inscrire</span>
         </div>
     </div>
     
-    <form class="w-full px-4 md:px-15 pt-4 pb-8 md:pt-10 md:pb-10 shadow-md bg-white mx-auto maxwidth-1032" method="post" action="{{ route('modifyinfo_pro') }}">
+    <form class="w-full bg-white pt-10 px-4 md:px-8 py-4 md:pb-8 mx-auto shadow-md maxwidth-976" method="post" action="{{ route('register') }}">
         @csrf
-
-        <p class="text-4xl fontbold text-center pb-10 leading-normal md:leading-snug">Mes informations personnelles</p>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8">
+        <p class="text-4xl text-center pb-10 fontbold leading-tight">S’inscrire</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-0 row-gap-8">
             <div>
-                <p class="text-lg fontbold leading-tight" style="padding-bottom:21px;">Civilité*</p>
-                <div class="flex pb-8">
-                    <div class="check-item mr-4 md:mr-8 @if(isset($user["gender"]) && $user["gender"] == 1) active @endif"">
+                <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Civilité*</p>
+                <div class="flex relative pb-8">
+                    <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
@@ -100,7 +165,7 @@
                             Monsieur
                         </label>
                     </div>
-                    <div class="check-item mr-4 md:mr-8 @if(isset($user["gender"]) && $user["gender"] == 0) active @endif">
+                    <div class="check-item mr-4 md:mr-9">
                         <label  class="text-base flex items-center">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
@@ -119,9 +184,9 @@
                 </div>
             </div>
             <div>
-                <p class="text-lg fontbold leading-tight" style="padding-bottom:21px;">Je suis un*</p>
-                <div class="flex pb-8">
-                    <div class="check-item item-mode mr-4 md:mr-8 @if(isset($user["mode"]) && $user["mode"] == 1) active @endif">
+                <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Je suis un.e*</p>
+                <div class="flex relative pb-8">
+                    <div class="check-item mr-4 md:mr-9 active">
                         <label class="text-base flex items-center">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
@@ -133,10 +198,11 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
+                            <input type="radio" class="absolute left-0 opacity-0" id="pro" name="mode" value="1" checked />
                             Professionnel
                         </label>
                     </div>
-                    <div class="check-item item-mode mr-4 md:mr-8 @if(isset($user["mode"]) && $user["mode"] == 0) active @endif">
+                    <div class="check-item mr-4 md:mr-9">
                         <label  class="text-base flex items-center">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
@@ -148,16 +214,18 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
+                            <input type="radio" class="absolute left-0 opacity-0" id="part" name="mode" value="0" />
                             Particulier
                         </label>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Prénom*</p>
-                <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input h-input" placeholder="Prénom" value="@if(isset($user["firstname"])){{$user["firstname"]}}@endif" required/>
+                <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input h-input" value="{{ old('firstname') }}" placeholder="Prénom" required/>
                 @error('firstname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -167,8 +235,8 @@
                 @enderror
             </div>
             <div>
-                <p class="text-lg fontbold pb-3 leading-snug">Nom*</p>
-                <input id="lastname" name="lastname" type="text" class="w-full p-4 bg-input h-input" placeholder="Nom" value="@if(isset($user["lastname"])){{$user["lastname"]}}@endif" required/>
+                <p class="text-lg pb-3 fontbold leading-snug">Nom*</p>
+                <input id="lastname" name="lastname" type="text" class="w-full p-4 bg-input h-input" value="{{ old('lastname') }}" placeholder="Nom" required/>
                 @error('lastname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -181,7 +249,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
                 <p class="text-lg pb-3 fontbold leading-snug">E-mail*</p>
-                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required/>
+                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" value="{{ old('email') }}" placeholder="E-mail" required/>
                 @error('email')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -193,7 +261,15 @@
             <div>
                 <p class="text-lg pb-3 fontbold leading-snug">Mot de passe*</p>
                 <div class="input-group">
-                    <input id="password" name="password" type="password" class="form-control bg-input h-input" value="" disabled/>
+                    <input id="password" name="password" type="password" class="form-control bg-input h-input" placeholder="Mot de passe" required/>
+                    <div class="form-control-after cursor-pointer">
+                        <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" width="25.515" height="16" viewBox="0 0 25.515 16">
+                            <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
+                        </svg>
+                        <svg class="hidden" id="eye_slash_fill" xmlns="http://www.w3.org/2000/svg" width="25.52" height="16.939" viewBox="0 0 25.52 16.939">
+                            <path d="M20.028,27.346a.715.715,0,0,0,1.224-.5.724.724,0,0,0-.213-.51L5.52,10.824a.715.715,0,0,0-.51-.2.738.738,0,0,0-.714.7.685.685,0,0,0,.2.51Zm.872-2.625c2.913-1.883,4.62-4.332,4.62-5.418,0-1.883-5.148-7.885-12.755-7.885a14.059,14.059,0,0,0-4.406.714l2.421,2.412a5,5,0,0,1,1.985-.408A5.143,5.143,0,0,1,17.95,19.3a4.532,4.532,0,0,1-.436,1.976Zm-8.136,2.468a14.306,14.306,0,0,0,4.74-.807l-2.458-2.458a4.933,4.933,0,0,1-2.282.547A5.192,5.192,0,0,1,7.57,19.3a5.116,5.116,0,0,1,.547-2.319L4.889,13.737C1.828,15.62,0,18.19,0,19.3,0,21.177,5.241,27.188,12.765,27.188Zm2.95-8.08a2.938,2.938,0,0,0-2.95-2.941c-.121,0-.241.009-.352.019L15.7,19.47C15.705,19.359,15.715,19.229,15.715,19.108ZM9.805,19.09a2.967,2.967,0,0,0,2.969,2.95c.13,0,.25-.009.38-.019l-3.33-3.33C9.815,18.821,9.805,18.96,9.805,19.09Z" transform="translate(0 -10.62)" fill="#3b3b3a" opacity="0.596"/>
+                        </svg>        
+                    </div>
                 </div>
                 @error('password')
                     <div class="py-3">
@@ -204,10 +280,10 @@
                 @enderror
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
+        <div id="pro-insert-panel" class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Si professionnel, nom de la société</p>
-                <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" placeholder="Nom de la société" value="@if(isset($user["company"])){{$user["company"]}}@endif"/>
+                <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" value="{{ old('company') }}" placeholder="Nom de la société"/>
                 @error('company')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -219,19 +295,12 @@
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Type de profession</p>
                 <div class="h-input">
-                    <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
+                    <button id="select-profession-button" type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
                         <span id="select-profession">
-                            @if(isset($user["profession_id"]))
-                                <?php
-                                    echo App\Model\Profession::find($user["profession_id"])->name;
-                                ?>
-                            @else
-                                <span style="opacity: 0.4;">Type de profession</span>
-                            @endif
-
+                            <span style="opacity: 0.4;">Type de profession</span>
                         </span>
                         
-                        <input id="select-profession-submit" type="hidden" name="profession" value="@if(isset($user['profession_id'])){{$user['profession_id']}}@endif"/>
+                        <input id="select-profession-submit" type="hidden" name="profession"/>
 
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                             <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -265,7 +334,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-6">
             <div>
                 <p class="text-lg pt-0 pb-3 fontbold leading-snug">Adresse*</p>
-                <input id="address" name="address" type="text" class="w-full p-4 bg-input h-input" placeholder="Adresse" value="@if(isset($user["address"])){{$user["address"]}}@endif" required/>
+                <input id="address" name="address" type="text" class="w-full p-4 bg-input h-input" value="{{ old('address') }}" placeholder="Adresse" required/>
                 @error('address')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -278,7 +347,7 @@
                 <div class="w-full flex-none md:flex">
                     <div class="w-full md:w-5/12">
                         <p class="text-lg fontbold pb-3 leading-snug">Code Postal*</p>
-                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-3 md:mb-0 bg-input h-input" placeholder="Code Postal" value="@if(isset($user["postcode"])){{$user["postcode"]}}@endif" required/>
+                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-3 md:mb-0 bg-input h-input" value="{{ old('postcode') }}" placeholder="Code Postal" required/>
                     </div>
                     @error('postcode')
                         <div class="py-3">
@@ -289,7 +358,7 @@
                     @enderror
                     <div class="w-full md:w-7/12 md:pl-6 mb-6 md:mb-0 pt-4 md:pt-0">
                         <p class="text-lg fontbold pb-3 leading-snug">Ville*</p>
-                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input h-input" placeholder="Ville" value="@if(isset($user["city"])){{$user["city"]}}@endif" required/>
+                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input h-input" value="{{ old('city') }}" placeholder="Ville" required/>
                     </div>
                     @error('city')
                         <div class="py-3">
@@ -304,7 +373,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-0 md:pt-6">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Numéro de téléphone</p>
-                <input type="text" name="telephone" class="w-full p-4 bg-input h-input" placeholder="Téléphone" value="@if(isset($user["telephone"])){{$user["telephone"]}}@endif"/>
+                <input type="text" name="telephone" class="w-full p-4 bg-input mb-9 h-input" value="{{ old('telephone') }}" placeholder="Téléphone"/>
                 @error('telephone')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -314,12 +383,28 @@
                 @enderror
             </div>
         </div>
-
-        <p class="text-base py-8">*Champ obligatoire</p>
     
-        <div class="w-full text-center lg:text-left">
-            <button id="submit" type="button" class="text-lg fontbold text-white px-16 register-submit-button h-input" style="padding-top:19px; padding-bottom:15px;">Enregister</button>
+        <p class="text-base text-darkgray pb-8 leading-snug">*Champ obligatoire</p>
+
+        <label id="agreecheck-wrapper" class="flex items-center cursor-pointer">
+            <span class="w-6 h-6 mr-4 border-2 rounded flex items-center" style="padding-left: 2px;">
+                <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 14.997 14">
+                    <defs>
+                        <style>.a{fill:#18a75a;}</style>
+                    </defs>
+                    <path class="a" d="M13.469,21.973a1.013,1.013,0,0,0,.879-.459l8.221-12.19a1.087,1.087,0,0,0,.226-.606.731.731,0,0,0-.8-.745.792.792,0,0,0-.748.418L13.434,20.113l-4.054-5a.851.851,0,0,0-.748-.4.774.774,0,0,0-.835.77.964.964,0,0,0,.252.6L12.564,21.5A1.111,1.111,0,0,0,13.469,21.973Z" transform="translate(-7.797 -7.973)"/>
+                </svg>
+            </span>
+            <input id="agreecheck" type="checkbox" class="absolute left-0 opacity-0"/>
+            <span class="select-none text-base leading-snug">
+                J’accepte les&nbsp;<u>conditions générales de vente</u>&nbsp;de Sotoya
+            </span>
+        </label>
+    
+        <div class="w-full text-center md:text-left pt-8">
+            <button id="submit" type="button" class="px-15 py-4 text-white register-submit-button fontbold">S’inscrire</button> 
         </div>
+        
     </form>
 
 </main>
@@ -330,26 +415,22 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
 
-    $("input:radio").click(function() {
+    var agreecheck;
 
-        console.log($("#pro").is(":checked"));
-
-        if($("#pro").is(":checked")) {
-            $("#company").prop("disabled", false);
-        } else {
-            $("#company").prop("disabled", true);
-        }
-
-        if(!$(this).parent().parent().hasClass("active")) {
-
-            $(this).parent().parent().toggleClass("active");
-            $(this).parent().parent().siblings().toggleClass("active");
-
-        }
-
+    $("#eye_fill").click(function() {
+        $(this).hide();
+        $("#eye_slash_fill").show();
+        $("#password").attr("type", "text");
+    });
+    $("#eye_slash_fill").click(function() {
+        $(this).hide();
+        $("#eye_fill").show();
+        $("#password").attr("type", "password");
     });
 
     $(function() {
+        $("#select-profession-submit").val("");
+        agreecheck = false;
         validateForm();
     })
     $("#firstname").keyup(function() {
@@ -361,6 +442,9 @@
     $("#email").keyup(function() {
         validateForm();
     });
+    $("#password").keyup(function() {
+        validateForm();
+    });
     $("#address").keyup(function() {
         validateForm();
     });
@@ -370,82 +454,10 @@
     $("#city").keyup(function() {
         validateForm();
     });
-
-    $("#firstname").click(function() {
+    $("input:checkbox").change(function() {
+        $(this).parent().toggleClass("active");
         validateForm();
-    });
-    $("#lastname").click(function() {
-        validateForm();
-    });
-    $("#email").click(function() {
-        validateForm();
-    });
-    $("#address").click(function() {
-        validateForm();
-    });
-    $("#postcode").click(function() {
-        validateForm();
-    });
-    $("#city").click(function() {
-        validateForm();
-    });
-
-    $("#firstname").change(function() {
-        validateForm();
-    });
-    $("#lastname").change(function() {
-        validateForm();
-    });
-    $("#email").change(function() {
-        validateForm();
-    });
-    $("#address").change(function() {
-        validateForm();
-    });
-    $("#postcode").change(function() {
-        validateForm();
-    });
-    $("#city").change(function() {
-        validateForm();
-    });
-
-    $(".select-button").click(function(event) {
-
-        event.stopPropagation();
-
-        $(this).next().toggle();
-        if($(this).next().css("display") == "none") {
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        } else {
-            $(this).find("svg.up-icon").show();
-            $(this).find("svg.down-icon").hide();
-        }
-
-    });
-
-    $(".profession-item").click(function() {
-
-        $(this).parent().hide();
-        $(this).parent().prev().find("svg.up-icon").hide();
-        $(this).parent().prev().find("svg.down-icon").show();
-        $(this).parent().prev().find("span").html($(this).html());
-
-        $("#select-profession-submit").val($(this).attr("id"));
-
-        validateForm();
-
-    });
-
-    $(window).click(function() {
-
-        $(".select-button").each(function() {
-            $(this).next().hide();
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        });
-
-    });
+    })
 
     function validateForm() {
 
@@ -472,7 +484,7 @@
 
         }
 
-        if(valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
+        if($("#agreecheck").is(":checked") && valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#password").val().length != 0 && $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
             console.log("Yes");
             if(!submit.hasClass("active")) {
                 submit.addClass("active");
@@ -488,6 +500,65 @@
         }
 
     }
+
+    $("input:radio").click(function() {
+
+        console.log($("#pro").is(":checked"));
+
+        if($("#pro").is(":checked")) {
+            $("#company").prop("disabled", false);
+            $("#select-profession-button").prop("disabled", false);
+            $("#pro-insert-panel").show(500);
+        } else {
+            $("#company").prop("disabled", true);
+            $("#select-profession-button").prop("disabled", true);
+            $("#pro-insert-panel").hide(500);
+        }
+
+        if(!$(this).parent().parent().hasClass("active")) {
+
+            $(this).parent().parent().toggleClass("active");
+            $(this).parent().parent().siblings().toggleClass("active");
+
+        }
+
+    });
+
+    $(".select-button").click(function(event) {
+
+        event.stopPropagation();
+
+        $(this).next().toggle();
+        if($(this).next().css("display") == "none") {
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
+        } else {
+            $(this).find("svg.up-icon").show();
+            $(this).find("svg.down-icon").hide();
+        }
+
+    });
+
+    $(".profession-item").click(function() {
+        $(this).parent().hide();
+        $(this).parent().prev().find("svg.up-icon").hide();
+        $(this).parent().prev().find("svg.down-icon").show();
+        $(this).parent().prev().find("span").html($(this).html());
+
+        $("#select-profession-submit").val($(this).attr("id"));
+
+        validateForm();
+        
+    });
+
+    $(window).click(function() {
+
+        $(".select-button").each(function() {
+            $(this).next().hide();
+            $(this).find("svg.up-icon").hide();
+            $(this).find("svg.down-icon").show();
+        });
+    });
 
 </script>
 @endsection

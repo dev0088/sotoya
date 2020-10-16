@@ -121,7 +121,7 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="@if(Auth::user()->mode == 1){{ route('account_pro_projects') }}@else{{ route('account_part_projects') }}@endif" class="text-base text-darkgray fontbold leading-snug">Mon compte @if(Auth::user()->mode == 1)professionnel @else particulier @endif </a>
+                <a href="@if(Auth::user()->mode == 1){{ route('pro-projects') }}@else{{ route('part-projects') }}@endif" class="text-base text-darkgray fontbold leading-snug">Mon compte @if(Auth::user()->mode == 1)professionnel @else particulier @endif </a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -138,7 +138,7 @@
     
             <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                 <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('update_order_pro') }}@else{{ route('update_order_part') }}@endif">
+                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('pro-order-save') }}@else{{ route('part-order-save') }}@endif">
                     @csrf
 
                     <input type="hidden" name="order_id" value="{{$order['id']}}"/>
@@ -160,12 +160,11 @@
                     <button type="submit" class="w-full py-4 mb-4 xl:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">Mise à jour</button>
 
                 </form>
-                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('payiteminsertwhenmodify_pro') }}@else{{ route('payiteminsertwhenmodify_part') }}@endif">
+                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('pro-clicandpay') }}@else{{ route('part-clicandpay') }}@endif">
                     @csrf
 
                     <input type="hidden" name="order_id" value="{{$order['id']}}"/>
 
-                    <input id="price_submit_pay" type="hidden" name="price_submit_pay"/>
                     <input id="joinery_submit_pay" type="hidden" name="joinery_submit_pay"/>
                     <input id="material_submit_pay" type="hidden" name="material_submit_pay"/>
                     <input id="range_submit_pay" type="hidden" name="range_submit_pay"/>

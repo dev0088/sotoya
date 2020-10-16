@@ -73,7 +73,7 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_pro" class="text-base text-darkgray fontbold leading-snug">Mon compte professionnel</a>
+                <a href="{{ route('pro-account') }}" class="text-base text-darkgray fontbold leading-snug">Mon compte professionnel</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <form method="post" action="{{ route('create_project_pro') }}" class="mb-6 md:h-input">
+            <form method="post" action="{{ route('pro-project-add') }}" class="mb-6 md:h-input">
                 @csrf
                 <p class="text-lg fontbold pb-3 leading-snug">Créer un nouveau projet</p>
                 <div class="flex-none md:flex relative text-center md:text-left items-center">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="border-b border-underline flex items-center py-6">
                     <p class="text-lg leading-none">Nom du client :</p>
-                    <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->company}}@endif</p>
+                    <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->firstname}}&nbsp;{{Auth::user()->lastname}}@endif</p>
                 </div>
             </div>
             <div>
@@ -175,11 +175,11 @@
             </div>
             
             <div class="mt-4 md:mt-10 w-full items-center grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-4 lg:col-gap-4 xxl:col-gap-0 lg:row-gap-4 col-gap-0 row-gap-4">
-                <div class="xxl:pr-3">
-                    <a href="/order_all/@if(isset($id)){{$id}}@endif">
-                        <button class="w-full text-lg fontbold text-white bg-green tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Tout commander</button>
-                    </a>
-                </div>
+                <form class="xxl:pr-3" method="POST" action="{{ route('pro-clicandpay') }}">
+                    @csrf
+                    <input type="hidden" name="project_id" value="{{$id}}" />
+                    <button type="submit" class="w-full text-lg fontbold text-white bg-green tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Tout commander</button>
+                </form>
                 <div class="xxl:pl-1 xxl:pr-2">
                     <a href="/pro/{{$id}}">
                         <button class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Ajouter un nouveau produit</button>
@@ -207,7 +207,7 @@
         @if(isset($orders) && count($orders) > 0)
             @foreach($orders as $key => $item)
                 <div class="relative bg-white shadow-md">
-                    <a href="/delete_order_pro/{{$item['id']}}" class="absolute right-6 top-6 cursor-pointer">
+                    <a href="{{ route('pro-order-delete', $item['id'])}}" class="absolute right-6 top-6 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
@@ -234,13 +234,15 @@
                         <hr class="w-full bg-border">
                         <p class="text-base py-4 leading-snug">Nombre de vantaux :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
 
-                        <a href="/modify_order_pro/{{$item['id']}}">
+                        <a href="{{ route('pro-order', $item['id']) }}">
                             <button class="w-full mt-5 text-lg text-white fontbold bg-darkgray h-input" style="padding-top:19px; padding-bottom:15px;">Modifier</button>
                         </a>
             
-                        <a href="/order_pro/{{$item['id']}}">
+                        <form method="POST" action="{{ route('pro-clicandpay')}} ">
+                            @csrf
+                            <input type="hidden" name="order_id" value="{{$item['id']}}"/>
                             <button class="w-full mt-4 text-lg text-white fontbold bg-green h-input" style="padding-top:19px; padding-bottom:15px;">Commander</button>
-                        </a>
+                        </form>
                         
                     </div>
                 </div>
@@ -266,7 +268,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 col-gap-4 pt-4 md:pt-10">
                 <button id="modal_close_button" class="w-full bg-darkgray text-lg text-white text-center fontbold h-input" style="padding-top:19px; padding-bottom:15px">Annuler</button>
-                <a href="/delete_project_pro/@if(isset($id)){{$id}}@endif" class="w-full bg-green text-lg text-white text-center fontbold h-input mt-8 md:mt-0" style="padding-top:19px; padding-bottom:15px">Supprimer</a>
+                <a @if(isset($id))href="{{ route('pro-project-delete', $id) }}"@endif class="w-full bg-green text-lg text-white text-center fontbold h-input mt-8 md:mt-0" style="padding-top:19px; padding-bottom:15px">Supprimer</a>
             </div>
     
         </div>

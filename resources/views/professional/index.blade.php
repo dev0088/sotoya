@@ -132,7 +132,7 @@
                     <a href="/">
                         <button type="button" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</button>
                     </a>
-                    <form method="post" action="@if(isset($id)){{ route('add_product_pro') }}@else{{ route('record_order_pro') }}@endif">
+                    <form method="post" action="{{ route('pro-order-add') }}">
                         @csrf
                 
                         @if(isset($id))
@@ -214,9 +214,8 @@
 
                     </form>
 
-                    <form method="POST" action="/payiteminsert_pro">
+                    <form method="POST" action="{{ route('pro-clicandpay') }}">
                         @csrf
-                        <input id="price_submit_pay" type="hidden" name="price_submit_pay"/>
                         <input id="joinery_submit_pay" type="hidden" name="joinery_submit_pay"/>
                         <input id="material_submit_pay" type="hidden" name="material_submit_pay"/>
                         <input id="range_submit_pay" type="hidden" name="range_submit_pay"/>
@@ -811,23 +810,6 @@
 
     }
 
-    /////Modal Trigger///////
-    var modal = document.getElementById("enregister-modal");
-    var btn = document.getElementById("modal-trigger-button");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
     function init() {
 
         for(var i = 0 ; i < options.length ; i ++) {
@@ -858,7 +840,7 @@
             
             $("#" + dimension_options[i] + "_result").html(changedName);
             $("#" + dimension_options[i] + "_submit").val(changedId);
-            $("#" + dimension_options[i] + "_submit_pay").val(changedId);
+            $("#" + dimension_options[i] + "_submit_pay").val(changedId.trim());
 
             if(i == 0) {
                 for(var j = 0 ; j < height_prices.length ; j ++) {
@@ -1032,8 +1014,24 @@
             next = true;
         }
 
-
     });
+
+      /////Modal Trigger///////
+    var modal = document.getElementById("enregister-modal");
+    var btn = document.getElementById("modal-trigger-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>
 @endsection

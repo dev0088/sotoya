@@ -113,8 +113,8 @@
             <div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 mb-4 mx-auto maxwidth-820">
                     <a href="/" class="py-4 mb-4 lg:mb-0 lg:mr-3 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <a @if(Auth::user()->mode == 1)href="/account_pro_his"@else href="/account_part_his"@endif class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-darkgray text-white text-lg fontbold cursor-pointer">
-                        <button type="submit" class="w-full h-full">Voir ma commande</button>
+                    <a @if(Auth::user()->mode == 1)href="{{ route('pro-history') }}"@else href="{{ route('part-history') }}"@endif class="py-4 mb-4 lg:mb-0 lg:mr-1 lg:ml-1 shadow-md text-center bg-darkgray text-white text-lg fontbold cursor-pointer">
+                        <button class="w-full h-full">Voir ma commande</button>
                     </a>
                 </div>
         

@@ -30,7 +30,7 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/account_part" class="text-base text-darkgray fontbold leading-snug">Mon compte particulier</a>
+                <a href="{{ route('part-account') }}" class="text-base text-darkgray fontbold leading-snug">Mon compte particulier</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
@@ -45,7 +45,7 @@
         @if(isset($projects) && count($projects) > 0)
             @foreach($projects as $key => $item)
                 <div class="relative bg-white shadow-md">
-                    <a href="/delete_order_part/{{$item['id']}}" class="absolute right-6 top-6 cursor-pointer">
+                    <a href="{{ route('part-order-delete', $item['id'])}}" class="absolute right-6 top-6 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.001 19.998">
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
@@ -72,14 +72,15 @@
                         <hr class="w-full bg-border">
                         <p class="text-base py-4 leading-snug">Nombre de vantaux :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
 
-                        <a href="/modify_order_part/{{$item['id']}}">
+                        <a href="{{ route('part-order', $item['id'])}}">
                             <button class="w-full mt-5 text-lg text-white fontbold bg-darkgray h-input" style="padding-top:19px; padding-bottom:15px;">Modifier</button>
                         </a>
-            
-                        <a href="/order_part/{{$item['id']}}">
-                            <button class="w-full mt-4 text-lg text-white fontbold bg-green h-input" style="padding-top:19px; padding-bottom:15px;">Commander</button>
-                        </a>
-                        
+
+                        <form method="POST" action="{{ route('part-clicandpay') }}">
+                            @csrf
+                            <input type="hidden" name="order_id" value="{{$item['id']}}"/>
+                            <button type="submit" class="w-full mt-4 text-lg text-white fontbold bg-green h-input" style="padding-top:19px; padding-bottom:15px;">Commander</button>
+                        </form>
                     </div>
                 </div>
             @endforeach

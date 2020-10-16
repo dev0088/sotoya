@@ -118,7 +118,7 @@
                         <img class="w-full maxwidth-260" src="{{ asset('images') }}/{{$item['image']}}"/>
                             <p class="text-lg pt-4 pb-2 fontbold leading-tight">{{$item['name']}}</p>
                             @if(Auth::user())
-                                <a @if(Auth::user()->mode == 0)href="/part/{{$item['id']}}"@else href="/pro_joinery/{{$item['id']}}"@endif class="fontbold text-green border-b-2 border-green">Configurateur</a>
+                                <a @if(Auth::user()->mode == 0)href="/part/{{$item['id']}}"@else href="{{ route('pro-with-joinery', $item['id'])}}"@endif class="fontbold text-green border-b-2 border-green leading-tight pb-1">Configurateur</a>
                             @else
                                 <a href="/part/{{$item['id']}}" class="fontbold text-green border-b-2 border-green leading-tight pb-1">Configurateur</a>
                             @endif

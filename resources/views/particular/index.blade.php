@@ -70,7 +70,7 @@
         </div>
     </div>
     
-    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="/part_summary">
+    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="{{ route('part-summary') }}">
         @csrf
         <div class="w-full lg:w-8/12 pr-0 lg:pr-5">
     
@@ -512,7 +512,6 @@
                     <div class="flex justify-between items-center px-3 md:px-8" style="height:60px; background-color:#f7f7f7;">
                         <p class="text-lg fontbold">Prix :</p>
                         <p id="price" class="text-4xl fontbold">0€</p>
-                        <input id="price_submit" type="hidden" name="price_submit"/>
                     </div>
                     <div class="px-3 md:px-8">
                         <div id="joinery_result_wrapper" class="hidden">

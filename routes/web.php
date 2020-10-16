@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('homepage')->middleware('auth');
 Route::get('/mentions', 'HomeController@mentions')->name('mentions');
@@ -28,46 +30,50 @@ Route::get('/contact', 'HomeController@contact')->name('contact')->middleware('a
 Route::get('/about', 'HomeController@about')->name('about');
 
 
+
 Route::get('/part', 'PartController@index')->name('part');
-Route::get('/part/{joinery}', 'PartController@joinery')->name('part_joinery');
-Route::post('/part_summary', 'PartController@summary')->name('part_summary');
-Route::get('/account_part', 'PartController@account')->name('account_part');
-Route::get('/account_part_info', 'PartController@info')->name('account_part_info');
-Route::get('/account_part_projects', 'PartController@projects')->name('account_part_projects');
-Route::get('/account_part_his', 'PartController@history')->name('account_part_his');
-Route::post('/modifyinfo_part', 'PartController@modifyinfo')->name('modifyinfo_part');
-Route::post('/record_order_part', 'PartController@recordorder')->name('record_order_part');
-Route::get('/order_part/{id}', 'PartController@order')->name('order_part')->middleware('order');
-Route::get('/modify_order_part/{id}', 'PartController@modifyorder')->name('modify_order_part')->middleware('order');
-Route::post('/modify_order_part', 'PartController@updateorder')->name('update_order_part');
-Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delete_order_part')->middleware('order');
-Route::post('/payiteminsert_part', 'PartController@payiteminsert')->name('payiteminsert_part');
-Route::post('/payiteminsertwhenmodify_part', 'PartController@payiteminsertWhenModify')->name('payiteminsertwhenmodify_part');
-Route::post('/pay_part', 'PartController@pay')->name('pay_part');
+Route::get('/part/{joinery}', 'PartController@joinery')->name('part-joinery');
+Route::post('/part-summary', 'PartController@summary')->name('part-summary');
+Route::post('/part-order-add', 'PartController@recordorder')->name('part-order-add');
+
+Route::get('/part-account', 'PartController@account')->name('part-account');
+Route::get('/part-projects', 'PartController@projects')->name('part-projects');
+Route::get('/part-history', 'PartController@history')->name('part-history');
+Route::get('/part-info', 'PartController@info')->name('part-info');
+Route::post('/part-info-save', 'PartController@modifyinfo')->name('part-info-save');
+
+Route::get('/part-order/{id}', 'PartController@modifyorder')->name('part-order')->middleware('order');
+Route::post('/part-order-save', 'PartController@updateorder')->name('part-order-save');
+Route::get('/part-order-delete/{id}', 'PartController@deleteorder')->name('part-order-delete')->middleware('order');
+
+Route::post('/part-clicandpay', 'PartController@clicandpay')->name('part-clicandpay');
+Route::post('/part-clicandpay-summary', 'PartController@pay')->name('part-clicandpay-summary');
+
 
 
 Route::get('/pro', 'ProController@index')->name('pro');
 Route::get('/pro/{id}', 'ProController@index')->name('pro')->middleware('project');
-Route::get('/pro_joinery/{id}', 'ProController@joinery')->name('pro_joinery');
-Route::get('/account_pro', 'ProController@account')->name('account_pro');
-Route::get('/account_pro_projects', 'ProController@projects')->name('account_pro_projects');
-Route::get('/account_pro_his', 'ProController@history')->name('account_pro_his');
-Route::get('/account_pro_info', 'ProController@info')->name('account_pro_info');
-Route::post('/modifyinfo_pro', 'ProController@modifyinfo')->name('modifyinfo_pro');
-Route::post('/record_order_pro', 'ProController@recordorder')->name('record_order_pro');
-Route::get('/account_pro_projects/{id}', 'ProController@projects')->name('account_pro_projects_id')->middleware('project');
-Route::get('/delete_project_pro/{id}', 'ProController@deleteproject')->name('delete_project_pro')->middleware('project');
-Route::get('/modify_order_pro/{id}', 'ProController@modifyorder')->name('modify_order_pro')->middleware('order');
-Route::post('/modify_order_pro', 'ProController@updateorder')->name('update_order_pro');
-Route::get('/delete_order_pro/{id}', 'ProController@deleteorder')->name('delete_order_pro')->middleware('order');
-Route::post('/create_project_pro', 'ProController@createproject')->name('create_project_pro');
-Route::get('/order_all/{id}', 'ProController@ordereverything')->name('order_all')->middleware('project');
-Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_pro');
-Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
+Route::get('/pro-with-joinery/{id}', 'ProController@joinery')->name('pro-with-joinery');
+Route::post('/pro-order-add', 'ProController@recordorder')->name('pro-order-add');
+
+Route::get('/pro-account', 'ProController@account')->name('pro-account');
+Route::get('/pro-projects', 'ProController@projects')->name('pro-projects');
+Route::get('/pro-history', 'ProController@history')->name('pro-history');
+Route::get('/pro-info', 'ProController@info')->name('pro-info');
+Route::post('/pro-info-save', 'ProController@modifyinfo')->name('pro-info-save');
+
+Route::get('/pro-projects/{id}', 'ProController@projects')->name('account_pro_projects_id')->middleware('project');
+Route::post('/pro-project-add', 'ProController@createproject')->name('pro-project-add');
+Route::get('/pro-project-delete/{id}', 'ProController@deleteproject')->name('pro-project-delete')->middleware('project');
+
+Route::get('/pro-order/{id}', 'ProController@modifyorder')->name('pro-order')->middleware('order');
+Route::post('/pro-order-save', 'ProController@updateorder')->name('pro-order-save');
+Route::get('/pro-order-delete/{id}', 'ProController@deleteorder')->name('pro-order-delete')->middleware('order');
+
+Route::post('/pro-clicandpay', 'ProController@clicandpay')->name('pro-clicandpay');
+Route::post('/pro-clicandpay-summary', 'ProController@pay')->name('pro-clicandpay-summary');
+
 Route::post('/quote', 'ProController@downloadQuote')->name('quote');
-Route::post('/payiteminsert_pro', 'ProController@payiteminsert')->name('payiteminsert_pro');
-Route::post('/payiteminsertwhenmodify_pro', 'ProController@payiteminsertWhenModify')->name('payiteminsertwhenmodify_pro');
-Route::post('/pay_pro', 'ProController@pay')->name('pay_pro');
 
 
 
