@@ -168,8 +168,8 @@
 	<link href="{{ asset('css/common.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
 </head>
-<body style="">
-	<div class="pl-8" style="">
+<body>
+	<div class="pl-8">
 		<div class="inline-block items-center">
 			<img class="inline-block" src="{{ url('/images/logo.jpg')}}" alt="logo" style="width:130px;"/>
 		</div>
@@ -185,16 +185,16 @@
 	</div>
 	<div class="w-full pl-8" style="padding-top:27px;">
 		<div class="inline-block">
-			<p><span class=""><b>Dossier : </b></span>{{$name}}</p>
-			<p class="" style="margin-top:-4px;"><span class="fontbold"><b>Réf. Client : </b></span>{{$client}}</p>
-			<p class="" style="margin-top:-4px;"><span class="fontbold"><b>Date : </b></span>{{$date}}</p>
+			<p><span><b>Dossier : </b></span>{{$name}}</p>
+			<p style="margin-top:-4px;"><span class="fontbold"><b>Réf. Client : </b></span>{{$client}}</p>
+			<p style="margin-top:-4px;"><span class="fontbold"><b>Date : </b></span>{{$date}}</p>
 		</div>
 		<div class="inline-block" style="padding-bottom:14px; padding-left:310px;">
 			<div class="inline-block" style="padding-bottom: 16px;">
 				<p class="fontbold"><b>Client : </b></p>
 			</div>
 			<div class="inline-block relative" style="width:150px; margin-top:-54px;">
-				<p class="" style="position: absolute; top-0; left-0 width:150px;">
+				<p style="position: absolute; top-0; left-0 width:150px;">
 					ART Société<br/>
 					10B avenue Charles de Gaulle<br/>
 					13860 Peyrolles en Provence
@@ -234,9 +234,9 @@
 							Vitrage : <span class="fontbold"><b>{{App\Model\Base\Glazing::find($order["glazing_id"])["name"] }}</b></span><br/>
 							Couleur menuiserie : <span class="fontbold"><b>{{App\Model\Base\Color::find($order["color_id"])["name"] }}</b></span><br/>
 						</td>
-						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span class=""><b>{{$order["quantity"]}}</b></span></div></td>
-						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span class=""><b>@if(isset($order["price"]))<?php echo number_format($order["price"], 0, '.', ',') ?>@endif €</b></span></div></td>
-						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span class=""><b>@if(isset($order["sum"]))<?php echo number_format($order["sum"], 0, '.', ',') ?>@endif €</b></span></div></td>
+						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span><b>{{$order["quantity"]}}</b></span></div></td>
+						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span><b>@if(isset($order["price"]))<?php echo number_format($order["price"], 0, '.', ',') ?>@endif €</b></span></div></td>
+						<td class="text-center relative" style="width:15%"><div class="w-full absolute top-0"><span><b>@if(isset($order["sum"]))<?php echo number_format($order["sum"], 0, '.', ',') ?>@endif €</b></span></div></td>
 					</tr>
 				@endforeach
 			@endif
@@ -273,9 +273,9 @@
 			<span class="fontbold pt-3"><b>Option(s) non incluse(s) dans le prix :</b></span><br/>
 		</div>
 	</div>
-	<div class="" style="background-color: #f3fbf6; padding-left:17px; padding-right:17px; padding-top:5px; padding-bottom:16px; margin-top:24px; margin-left:15px; margin-right:15px;">
+	<div style="background-color: #f3fbf6; padding-left:17px; padding-right:17px; padding-top:5px; padding-bottom:16px; margin-top:24px; margin-left:15px; margin-right:15px;">
 		<p class="fontbold"><b>Bon pour accord</b></p>
-		<p class="" style="padding-top:0px;">Ce devis est valable <b>15 jours</b> apres la date d’émission. <span class="fontbold"><b>Règlement : 30 % à la commande, le solde à la livraison</b></span></p>
+		<p style="padding-top:0px;">Ce devis est valable <b>15 jours</b> apres la date d’émission. <span class="fontbold"><b>Règlement : 30 % à la commande, le solde à la livraison</b></span></p>
 		<p style="padding-top:10px; padding-bottom:20px;">Fait à :<span style="padding-left:137px;">Le :</span><span style="padding-left:135px;">Signature client :</span></p>
 	</div>
 

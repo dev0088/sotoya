@@ -42,6 +42,7 @@ Route::get('/modify_order_part/{id}', 'PartController@modifyorder')->name('modif
 Route::post('/modify_order_part', 'PartController@updateorder')->name('update_order_part');
 Route::get('/delete_order_part/{id}', 'PartController@deleteorder')->name('delete_order_part')->middleware('order');
 Route::post('/payiteminsert_part', 'PartController@payiteminsert')->name('payiteminsert_part');
+Route::post('/payiteminsertwhenmodify_part', 'PartController@payiteminsertWhenModify')->name('payiteminsertwhenmodify_part');
 Route::post('/pay_part', 'PartController@pay')->name('pay_part');
 
 
@@ -65,6 +66,7 @@ Route::post('/add_product_pro', 'ProController@recordorder')->name('add_product_
 Route::get('/order_pro/{id}', 'ProController@order')->name('order_pro')->middleware('order');
 Route::post('/quote', 'ProController@downloadQuote')->name('quote');
 Route::post('/payiteminsert_pro', 'ProController@payiteminsert')->name('payiteminsert_pro');
+Route::post('/payiteminsertwhenmodify_pro', 'ProController@payiteminsertWhenModify')->name('payiteminsertwhenmodify_pro');
 Route::post('/pay_pro', 'ProController@pay')->name('pay_pro');
 
 

@@ -221,9 +221,14 @@
                 <div class="h-input">
                     <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
                         <span id="select-profession">
-                            <?php
-                                echo App\Model\Profession::find($user["profession_id"])->name;
-                            ?>
+                            @if(isset($user["profession_id"]))
+                                <?php
+                                    echo App\Model\Profession::find($user["profession_id"])->name;
+                                ?>
+                            @else
+                                <span style="opacity: 0.4;">Type de profession</span>
+                            @endif
+
                         </span>
                         
                         <input id="select-profession-submit" type="hidden" name="profession" value="@if(isset($user['profession_id'])){{$user['profession_id']}}@endif"/>

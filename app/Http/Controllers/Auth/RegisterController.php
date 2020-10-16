@@ -77,8 +77,6 @@ class RegisterController extends Controller
     {
         if($data["mode"] == 1) {
 
-            $company = ($data["company"]) ? $data["company"] : "sans nom";
-
             return User::create([
                 'firstname' => $data['firstname'],
                 'lastname' => $data['lastname'],
@@ -86,7 +84,7 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'mode' => $data['mode'],
-                'company' => $company,
+                'company' => $data['company'],
                 'address' => $data['address'],
                 'postcode' => $data['postcode'],
                 'city' => $data['city'],

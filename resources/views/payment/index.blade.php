@@ -172,18 +172,18 @@
                 <p class="text-2xl pb-4 fontbold text-center">Adresse de livraison</p>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-5 pt-6">
-                    <div class="">
+                    <div>
                         <p class="text-lg fontbold pb-3">Prénom</p>
                         <input type="text" class="w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_delivery"/>
                     </div>
-                    <div class="">
+                    <div>
                         <p class="text-lg fontbold pb-3">Nom</p>
                         <input type="text" class="w-full h-input bg-input p-4" placeholder="Nom" name="lastname_delivery"/>
                     </div>
                 </div>
 
                 <div class="pt-6">
-                    <div class="">
+                    <div>
                         <p class="text-lg fontbold pb-3">Adresse</p>
                         <input type="text" class="w-full h-input bg-input p-4" placeholder="Adresse" name="address_delivery"/>
                     </div>
@@ -242,18 +242,18 @@
 
                 <div id="panel_different" class="hidden">
                     <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-5 pt-6">
-                        <div class="">
+                        <div>
                             <p class="text-lg fontbold pb-3">Prénom</p>
                             <input type="text" class="w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_billing"/>
                         </div>
-                        <div class="">
+                        <div>
                             <p class="text-lg fontbold pb-3">Nom</p>
                             <input type="text" class="w-full h-input bg-input p-4" placeholder="Nom" name="lastname_billing"/>
                         </div>
                     </div>
     
                     <div class="pt-6">
-                        <div class="">
+                        <div>
                             <p class="text-lg fontbold pb-3">Adresse</p>
                             <input type="text" class="w-full h-input bg-input p-4" placeholder="Adresse" name="address_billing"/>
                         </div>
@@ -280,7 +280,7 @@
                     <div class="input-group">
                         <input type="text" class="w-full h-input bg-input form-control pay-item" id="cardnumber" name="cardnumber"/>
                         <div class="form-control-after">
-                            <svg class="" xmlns="http://www.w3.org/2000/svg" width="24" height="18.382" viewBox="0 0 24 18.382">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18.382" viewBox="0 0 24 18.382">
                                 <defs>
                                     <style>.a{fill:#3b3b3a;opacity:0.596;}</style>
                                 </defs>

@@ -112,7 +112,7 @@
     
                 <div class="grid grid-cols-1 lg:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                     <a href="/" class="py-4 mb-4 lg:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                    <form class="" method="post" action="{{ route('record_order_part') }}">
+                    <form method="post" action="{{ route('record_order_part') }}">
                         @csrf
                         @if(isset($price))
                             <input type="hidden" name="price" value="{{$price}}"/>
@@ -157,7 +157,7 @@
                         <button type="submit" class="w-full py-4 mb-4 lg:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
 
                     </form>
-                    <form class="" method="POST" action="/payiteminsert_part">
+                    <form method="POST" action="/payiteminsert_part">
                         @csrf
                         @if(isset($price))
                             <input type="hidden" name="price_pay" value="{{$price}}"/>

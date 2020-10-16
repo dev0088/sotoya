@@ -131,9 +131,9 @@
         <div class="w-full absolute bottom-0 left-0 bg-whitegreen py-0 md:py-87" style="z-index: 10"></div>
     </div>
     
-    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24" style="padding-top:0px;">
-        <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-2 mx-auto" style="">
-            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-5 xl:pr-1" style="">
+    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-24">
+        <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-2 mx-auto">
+            <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-5 xl:pr-1">
                 <p class="pt-16 md:pt-3 pb-8 lg:pb-4 xl:pb-6 text-4xl fontbold leading-snug">Qui sommes-nous ?</p>
                 <p class="text-lg leading-relaxed lg:leading-tight xl:leading-relaxed pb-6 lg:pb-3 xl:pb-6 fontbold">
                     Depuis 2016, Sotoya met son expérience et son savoir-faire unique au service des professionnels du bâtiment, promoteurs, artisans poseurs, et architectes. Spécialisée dans la menuiserie aluminium et PVC nous vous accompagnons de la conception de votre projet jusqu’à la pose. Notre bureau d’études est à votre disposition pour le conseil, la réalisation de votre projet.
@@ -148,7 +148,7 @@
                     Fondateur de Sotoya
                 </p>
             </div>
-            <div class="hidden lg:block relative lg:w-495 lg:py-15 lg:px-20px xl:w-608 xl:py-29 px-6 lg:h-690 xl:h-739" style="">
+            <div class="hidden lg:block relative lg:w-495 lg:py-15 lg:px-20px xl:w-608 xl:py-29 px-6 lg:h-690 xl:h-739">
 
                 <img class="absolute left-0 top-0" src="{{asset('images/homeimage-01.png')}}"/>
                 <img class="absolute right-0 bottom-0" src="{{asset('images/homeimage-02.png')}}"/>
@@ -212,7 +212,7 @@
                 <div class="input-group m-0 p-0">
                     <input id="password" type="password" name="password" class="form-control bg-input h-input px-4" style="padding-top:19px; padding-bottom:18px;" placeholder="Mot de passe" required/>
                     <div class="form-control-after cursor-pointer">
-                        <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" class="" width="25.515" height="16" viewBox="0 0 25.515 16">
+                        <svg id="eye_fill" xmlns="http://www.w3.org/2000/svg" width="25.515" height="16" viewBox="0 0 25.515 16">
                             <path d="M12.762,27.286c7.539,0,12.753-6.1,12.753-8s-5.224-8-12.753-8C5.28,11.286,0,17.376,0,19.286S5.318,27.286,12.762,27.286Zm0-2.758a5.274,5.274,0,0,1-5.271-5.242,5.266,5.266,0,0,1,10.532,0A5.266,5.266,0,0,1,12.762,24.529Zm0-3.351a1.9,1.9,0,1,0-1.92-1.892A1.914,1.914,0,0,0,12.762,21.178Z" transform="translate(0 -11.286)" fill="#3b3b3a" opacity="0.596"/>
                         </svg>
                         <svg class="hidden" id="eye_slash_fill" xmlns="http://www.w3.org/2000/svg" width="25.52" height="16.939" viewBox="0 0 25.52 16.939">

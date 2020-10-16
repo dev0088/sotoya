@@ -157,14 +157,14 @@
                     <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->company}}@endif</p>
                 </div>
             </div>
-            <div class="">
+            <div>
                 <div class="border-b border-underline flex items-center py-6">
                     <p class="text-lg leading-none">Adresse du client :</p>
                     <p class="fontbold pl-4">@if(isset($id)){{Auth::user()->address}}@endif</p>
                 </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-10 row-gap-0">
-                <div class="border-b border-underline flex justify-between py-6">
+                <div class="border-b border-underline flex justify-between" style="padding-top:28px; padding-bottom:25px;">
                     <p class="text-lg leading-none">Total du projet :</p>
                     <p class="text-lg fontbold">@if(isset($total_ht))<?php echo number_format($total_ht, 0, '.', ',') ?> € HT @endif</p>
                 </div>
@@ -208,7 +208,7 @@
             @foreach($orders as $key => $item)
                 <div class="relative bg-white shadow-md">
                     <a href="/delete_order_pro/{{$item['id']}}" class="absolute right-6 top-6 cursor-pointer">
-                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                             <path id="xmark" d="M9.743,27.5a1.131,1.131,0,0,0,0,1.589,1.158,1.158,0,0,0,1.6,0l8.072-8.072,8.072,8.072a1.128,1.128,0,0,0,1.6-1.589L21.007,19.42l8.085-8.072a1.128,1.128,0,0,0-1.6-1.589l-8.072,8.072L11.345,9.759a1.123,1.123,0,0,0-1.6,0,1.142,1.142,0,0,0,0,1.589l8.072,8.072Z" transform="translate(-9.417 -9.423)" fill="#020000"/>
                         </svg>
                     </a>
@@ -281,26 +281,6 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
 
-    var modal = document.getElementById("delete-modal");
-    var btn = document.getElementById("delete-trigger-button");
-    var span = document.getElementsByClassName("close")[0];
-    var closebutton = document.getElementById("modal_close_button");
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    closebutton.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
     $(".select-button").click(function(event) {
 
         event.stopPropagation();
@@ -346,7 +326,27 @@
             $(this).next().removeClass("active");
             $(this).next().attr("type", "button");
         }
-    })
+    });
+
+    var modal = document.getElementById("delete-modal");
+    var btn = document.getElementById("delete-trigger-button");
+    var span = document.getElementsByClassName("close")[0];
+    var closebutton = document.getElementById("modal_close_button");
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    closebutton.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>
 @endsection

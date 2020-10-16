@@ -44,20 +44,12 @@
 
         @font-face {
             font-family: 'ManRegular';
-            src: url("../fonts/manrope/manrope-regular.ttf");
+            src: url("/fonts/manrope/manrope-regular.ttf");
         }
         @font-face {
             font-family: 'ManBold';
-            src: url("../fonts/manrope/manrope-Bold.otf");
+            src: url("/fonts/manrope/Manrope-Bold.otf");
         }
-        /* @font-face {
-            font-family: 'ManRegular';
-            src: url("../fonts/latin-extended/manrope-regular.otf");
-        }
-        @font-face {
-            font-family: 'ManBold';
-            src: url("../fonts/latin-extended/manrope-extrabold.otf");
-        } */
         main {
             font-family: 'ManRegular';
             color:#020000;

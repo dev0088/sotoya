@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="bg-whitegreen px-8 md:px-15 lg:px-0 pb-10 md:pb-20">
+    <div class="bg-whitegreen px-8 md:px-15 lg:px-0">
         <div class="lg:w-1004 xl:w-1232 flex-none lg:flex pt-6 mx-auto">
             <div class="lg:w-474 lg:pl-19 lg:pr-13 xl:w-600 xl:pl-2 xl:pr-4">
                 <p class="pt-4 pb-8 lg:pb-4 xl:pb-8 text-4xl fontbold leading-snug">Qui sommes-nous ?</p>

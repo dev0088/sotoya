@@ -61,19 +61,19 @@
                             @endif
                 
                             <div class="flex relative justify-between items-center bg-whitepink h-15">
-                                <p class="text-lg fontbold absolute left-3 md:left-8">Prix TTC :</p>
+                                <p class="text-lg fontbold absolute left-3 md:left-8">Prix :</p>
                                 <p class="text-4xl fontbold absolute right-3 md:right-8">{{$item["price"]}}€</p>
                             </div>
                             <div class="px-3 md:px-8">
-                                <p class="text-base leading-snug py-4">Type de menuiserie :<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
+                                <p class="text-base leading-snug py-4">Type de menuiserie :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Join::find($item["join_id"])["name"] }}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base leading-snug py-4">Matériau :<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
+                                <p class="text-base leading-snug py-4">Matériau :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Material::find($item["material_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base leading-snug py-4">Gamme :<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
+                                <p class="text-base leading-snug py-4">Gamme :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Range::find($item["range_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base leading-snug py-4">Type d’ouverture :<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
+                                <p class="text-base leading-snug py-4">Type d’ouverture :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Opening::find($item["opening_id"])["name"]}}</span></p>
                                 <hr class="w-full bg-border">
-                                <p class="text-base leading-snug pt-4 pb-3">Nombre de vantaux :<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
+                                <p class="text-base leading-snug pt-4 pb-3">Nombre de vantaux :&nbsp;&nbsp;<span class="fontbold mr-4">{{App\Model\Base\Leave::find($item["leave_id"])["name"]}}</span></p>
                             </div>
                             <div class="w-full px-3 md:px-8 pt-6">
                                 <button class="w-full bg-darkgray text-white text-lg fontbold h-input items-center">Télécharger la facture</button>

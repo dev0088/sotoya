@@ -108,7 +108,7 @@
 
 @section('content')
 
-<main id="main-content" class="bg-whitegreen pb-10 md:pb-30 ">
+<main id="main-content" class="bg-whitegreen pb-10 md:pb-20">
 
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-6">
@@ -132,17 +132,56 @@
         </div>
     </div>
     
-    <form class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto" method="post" action="@if(Auth::user()->mode == 1){{ route('update_order_pro') }}@else{{ route('update_order_part') }}@endif">
-        @csrf
-
-        <input type="hidden" name="order_id" value="{{$order['id']}}"/>
+    <div class="flex-none lg:flex px-8 md:px-20 maxwidth-1441 mx-auto">
     
         <div class="w-full lg:w-8/12 pr-0 lg:pr-5">
     
             <div class="grid grid-cols-1 md:grid-cols-3 col-gap-4 mb-4 mx-auto maxwidth-820">
                 <a href="/" class="py-4 mb-4 md:mb-0 shadow-md text-center bg-white text-lg fontbold">Continuer mes achats</a>
-                <button type="submit" class="py-4 mb-4 md:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">Mise à jour</button>
-                <a class="py-4 mb-4 md:mb-0 shadow-md text-center bg-black text-white text-lg fontbold">Payer ma commande</a>
+                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('update_order_pro') }}@else{{ route('update_order_part') }}@endif">
+                    @csrf
+
+                    <input type="hidden" name="order_id" value="{{$order['id']}}"/>
+
+                    <input id="price_submit" type="hidden" name="price_submit"/>
+                    <input id="joinery_submit" type="hidden" name="joinery_submit"/>
+                    <input id="material_submit" type="hidden" name="material_submit"/>
+                    <input id="range_submit" type="hidden" name="range_submit"/>
+                    <input id="opening_submit" type="hidden" name="opening_submit"/>
+                    <input id="leave_submit" type="hidden" name="leave_submit"/>
+                    <input id="installation_submit" type="hidden" name="installation_submit"/>
+                    <input id="height_size_submit" type="hidden" name="height_size_submit"/>
+                    <input id="width_size_submit" type="hidden" name="width_size_submit"/>
+                    <input id="insulation_size_submit" type="hidden" name="insulation_size_submit"/>
+                    <input id="aeration_submit" type="hidden" name="aeration_submit"/>
+                    <input id="glazing_submit" type="hidden" name="glazing_submit"/>
+                    <input id="color_submit" type="hidden" name="color_submit"/>
+
+                    <button type="submit" class="w-full py-4 mb-4 xl:mb-0  shadow-md text-center bg-white text-lg fontbold cursor-pointer">Mise à jour</button>
+
+                </form>
+                <form method="POST" action="@if(Auth::user()->mode == 1){{ route('payiteminsertwhenmodify_pro') }}@else{{ route('payiteminsertwhenmodify_part') }}@endif">
+                    @csrf
+
+                    <input type="hidden" name="order_id" value="{{$order['id']}}"/>
+
+                    <input id="price_submit_pay" type="hidden" name="price_submit_pay"/>
+                    <input id="joinery_submit_pay" type="hidden" name="joinery_submit_pay"/>
+                    <input id="material_submit_pay" type="hidden" name="material_submit_pay"/>
+                    <input id="range_submit_pay" type="hidden" name="range_submit_pay"/>
+                    <input id="opening_submit_pay" type="hidden" name="opening_submit_pay"/>
+                    <input id="leave_submit_pay" type="hidden" name="leave_submit_pay"/>
+                    <input id="installation_submit_pay" type="hidden" name="installation_submit_pay"/>
+                    <input id="height_size_submit_pay" type="hidden" name="height_size_submit_pay"/>
+                    <input id="width_size_submit_pay" type="hidden" name="width_size_submit_pay"/>
+                    <input id="insulation_size_submit_pay" type="hidden" name="insulation_size_submit_pay"/>
+                    <input id="aeration_submit_pay" type="hidden" name="aeration_submit_pay"/>
+                    <input id="glazing_submit_pay" type="hidden" name="glazing_submit_pay"/>
+                    <input id="color_submit_pay" type="hidden" name="color_submit_pay"/>
+
+                    <button type="submit" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-darkgray text-white text-lg fontbold">Payer ma commande</button>
+
+                </form>
             </div>
     
             <div id="joinery" class="w-full shadow-md mb-4 mx-auto maxwidth-820">
@@ -516,7 +555,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type de menuiserie :</p>
                                 <p id="joinery_result" class="fontbold py-2 pl-3">Fenêtre</p>
-                                <input id="joinery_submit" type="hidden" name="joinery_submit"/>
                             </div>
                         </div>
                         <div id="material_result_wrapper">
@@ -524,7 +562,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Matériau :</p>
                                 <p id="material_result" class="fontbold py-2 pl-3">Aluminium</p>
-                                <input id="material_submit" type="hidden" name="material_submit"/>
                             </div>
                         </div>
                         <div id="range_result_wrapper">
@@ -532,7 +569,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Gamme :</p>
                                 <p id="range_result" class="fontbold py-2 pl-3">Gamme 70</p>
-                                <input id="range_submit" type="hidden" name="range_submit"/>
                             </div>
                         </div>
                         <div id="opening_result_wrapper">
@@ -540,7 +576,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type d’ouverture :</p>
                                 <p id="opening_result" class="fontbold py-2 pl-3">Abattant</p>
-                                <input id="opening_submit" type="hidden" name="opening_submit"/>
                             </div>
                         </div>
                         <div id="leave_result_wrapper">
@@ -548,7 +583,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Nombre de vantaux :</p>
                                 <p id="leave_result" class="fontbold py-2 pl-3">1 vantail</p>
-                                <input id="leave_submit" type="hidden" name="leave_submit"/>
                             </div>
                         </div>
                         <div id="installation_result_wrapper">
@@ -556,7 +590,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Type de pose :</p>
                                 <p id="installation_result" class="fontbold py-2 pl-3">Applique</p>
-                                <input id="installation_submit" type="hidden" name="installation_submit"/>
                             </div>
                         </div>
                         <div id="height_size_result_wrapper">
@@ -564,7 +597,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Hauteur totale :</p>
                                 <p id="height_size_result" class="fontbold py-2 pl-3">600</p>
-                                <input id="height_size_submit" type="hidden" name="height_size_submit"/>
                             </div>
                         </div>
                         <div id="width_size_result_wrapper">
@@ -572,7 +604,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Largeur totale :</p>
                                 <p id="width_size_result" class="fontbold py-2 pl-3">600</p>
-                                <input id="width_size_submit" type="hidden" name="width_size_submit"/>
                             </div>
                         </div>
                         <div id="insulation_size_result_wrapper">
@@ -580,7 +611,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Pour isolation de :</p>
                                 <p id="insulation_size_result" class="fontbold py-2 pl-3">120</p>
-                                <input id="insulation_size_submit" type="hidden" name="insulation_size_submit"/>
                             </div>
                         </div>
                         <div id="aeration_result_wrapper">
@@ -588,7 +618,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Aération :</p>
                                 <p id="aeration_result" class="fontbold py-2 pl-3">15 M3/H</p>
-                                <input id="aeration_submit" type="hidden" name="aeration_submit"/>
                             </div>
                         </div>
                         <div id="glazing_result_wrapper">
@@ -596,7 +625,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Vitrage :</p>
                                 <p id="glazing_result" class="fontbold py-2 pl-3">4/16/4 FE</p>
-                                <input id="glazing_submit" type="hidden" name="glazing_submit"/>
                             </div>
                         </div>
                         <div id="color_result_wrapper">
@@ -604,7 +632,6 @@
                             <div class="flex flex-wrap items-center">
                                 <p class="text-base py-4">Couleur menuiserie :</p>
                                 <p id="color_result" class="fontbold py-2 pl-3">RAL 9016</p>
-                                <input id="color_submit" type="hidden" name="color_submit"/>
                             </div>
                         </div>
                         
@@ -616,7 +643,7 @@
             
         </div>
     
-    </form>
+    </div>
 
 </main>
 
@@ -681,6 +708,7 @@
   
         $("#" + options[changedIndex] + "_result").html(changedName);
         $("#" + options[changedIndex] + "_submit").val($(this).attr("id"));
+        $("#" + options[changedIndex] + "_submit_pay").val($(this).attr("id"));
 
         totalPriceCalculate();
 
@@ -718,6 +746,7 @@
 
                 $("#" + options[i] + "_result").html(changedName);
                 $("#" + options[i] + "_submit").val(changedId);
+                $("#" + options[i] + "_submit_pay").val(changedId);
 
             }
 
@@ -730,6 +759,7 @@
             
             $("#" + dimension_options[i] + "_result").html(changedName);
             $("#" + dimension_options[i] + "_submit").val($("#" + dimension_options[i] + "_old").html());
+            $("#" + dimension_options[i] + "_submit_pay").val($("#" + dimension_options[i] + "_old").html());
 
             if(i === 0) {
             for(var j = 0 ; j < height_prices.length ; j ++) {
@@ -819,6 +849,7 @@
         $("#" + dimension_options[changedIndex] + "_result").html(changedName);
         $("#" + dimension_options[changedIndex] + "_result_finish").html(changedName);
         $("#" + dimension_options[changedIndex] + "_submit").val($(this).attr("id"));
+        $("#" + dimension_options[changedIndex] + "_submit_pay").val($(this).attr("id"));
 
         if(changedIndex === 0) {
             for(var i = 0 ; i < height_prices.length ; i ++) {

@@ -207,7 +207,8 @@ class ProController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            'company' => ($request->company) ? $request->company : "sans nom",
+            // 'company' => ($request->company) ? $request->company : "sans nom",
+            'company' => $request->company,
             'address' => $request->address,
             'postcode' => $request->postcode,
             'city' => $request->city,
@@ -522,6 +523,71 @@ class ProController extends Controller
         $order->state_order = 1;
 
         $order->save();
+
+        return view('payment.index');
+    }
+
+    public function payiteminsertWhenModify(Request $request)
+    {
+        $order_id = $request->post("order_id");
+
+        $joinery_id = $request->post("joinery_submit_pay");
+        $material_id = $request->post("material_submit_pay");
+        $range_id = $request->post("range_submit_pay");
+        $opening_id = $request->post("opening_submit_pay");
+        $leave_id = $request->post("leave_submit_pay");
+        $installation_id = $request->post("installation_submit_pay");
+        $aeration_id = $request->post("aeration_submit_pay");
+        $glazing_id = $request->post("glazing_submit_pay");
+        $color_id = $request->post("color_submit_pay");
+        $height_size_id = $request->post("height_size_submit_pay");
+        $width_size_id = $request->post("width_size_submit_pay");
+        $insulation_size_id = $request->post("insulation_size_submit_pay");
+
+        $joinery = Join::find($joinery_id);
+        $material = Material::find($material_id);
+        $range = Range::find($range_id);
+        $opening = Opening::find($opening_id);
+        $leave = Leave::find($leave_id);
+        $installation = Installation::find($installation_id);
+        $aeration = Aeration::find($aeration_id);
+        $glazing = Glazing::find($glazing_id);
+        $color = Color::find($color_id);
+        $height_size = TotalHeight::find($height_size_id);
+        $width_size = TotalWidth::find($width_size_id);
+        $insulation_size = Insulation::find($insulation_size_id);
+
+        $price = 
+            $joinery["price"] + 
+            $material["price"] + 
+            $range["price"] + 
+            $opening["price"] + 
+            $leave["price"] + 
+            $installation["price"] +
+            $aeration["price"] +
+            $glazing["price"] + 
+            $color["price"] + 
+            $height_size["price"] + 
+            $width_size["price"] + 
+            $insulation_size["price"];
+
+        $data = ([
+            'join_id' => $joinery_id,
+            'material_id' => $material_id,
+            'range_id' => $range_id,
+            'opening_id' => $opening_id,
+            'leave_id' => $leave_id,
+            'installation_id' => $installation_id,
+            'totalheight_id' => $height_size_id,
+            'totalwidth_id' => $width_size_id,
+            'insulation_id' => $insulation_size_id,
+            'aeration_id' => $aeration_id,
+            'glazing_id' => $glazing_id,
+            'color_id' => $color_id,
+            'price'=>$price
+        ]);
+
+        $update = Order::where('id', $order_id)->update($data);
 
         return view('payment.index');
     }

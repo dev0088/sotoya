@@ -209,7 +209,7 @@
                         @if(isset($id))
                             <button type="submit" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                         @else
-                            <button id="modal-trigger-button" type="button" class="@if(isset($id))hidden @endif w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
+                            <button id="modal-trigger-button" type="button" class="w-full py-4 mb-4 xl:mb-0 shadow-md text-center bg-white text-lg fontbold cursor-pointer">Enregistrer mon projet</button>
                         @endif
 
                     </form>
