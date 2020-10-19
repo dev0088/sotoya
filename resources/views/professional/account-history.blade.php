@@ -5,14 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-1280 {
-        max-width: 1280px;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -49,7 +41,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 col-gap-4 row-gap-4 pb-4">
                     @foreach($currenthistory as $key => $item)
                         <div class="border border-heavygray rounded-lg py-8">
-                            <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3" style="padding-left:12px; padding-right:12px;">Commandé le 
+                            <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3 px-3">Commandé le 
                                 <span class="capitalize">
                                     <?php echo ucfirst(utf8_encode(strftime('%d %b %Y', strtotime($item->updated_at))));?>
                                 </span>
@@ -82,11 +74,10 @@
                     @endforeach
                 </div>
             @else
-                <div class="flex items-center" style="height:533;">
+                <div class="flex items-center" style="height:533px;">
                     <p class="mx-auto  fontbold capitalize text-center text-2xl">Pas d'histoire</p>
                 </div>
             @endif
-            
         
         </div>
     
@@ -98,7 +89,7 @@
                     @if(isset($item) && count($item) > 0)
                         @foreach($item as $keyword => $element)
                             <div class="border border-heavygray rounded-lg pt-8 pb-8" style="width:376px;">
-                                <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3" style="padding-left:12px; padding-right:12px;">Commandé le 
+                                <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3 px-3">Commandé le 
                                     <span class="capitalize">
                                         <?php echo ucfirst(utf8_encode(strftime('%d %b %Y', strtotime($element->updated_at))));?>
                                     </span>

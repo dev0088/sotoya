@@ -5,20 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-676 {
-        max-width:676px;
-    }
-    .email-send {
-        background-color: #b0b0af
-    }
-    .email-send.active {
-        background-color: #18A75A;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -53,7 +39,7 @@
             <p id="beforetext" class="text-base leading-snug py-8">*Champ obligatoire</p>
 
             <div class="w-full text-center md:text-left">
-                <button type="submit" class="px-20 py-4 text-white text-lg fontbold bg-lightlightgray email-send h-input" style="padding-top:19px; padding-bottom:15px;">Envoyer</button>
+                <button type="submit" class="px-20 py-4 text-white text-lg fontbold bg-lightlightgray submit-button h-input" style="padding-top:19px; padding-bottom:15px;">Envoyer</button>
             </div>
         </div>
     </form>
@@ -63,76 +49,8 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $(function() {
-        validateForm();
-    })
-
-    $("#subject").keyup(function() {
-        validateForm();
-    });
-
-    $("#email").keyup(function() {
-        validateForm();
-    });
-    
-    $("#comment").keyup(function() {
-        validateForm();
-        
-    });
-
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("button.email-send");
-
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-            valid = false;
-        } else {
-            var parts = email.split('@');
-            var domain = parts[1];
-            if (domain.indexOf('.') == -1) {
-                valid = false;
-            } else {
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-                    valid = false;
-                }
-            }
-
-        }
-        console.log($("#comment").val());
-
-        if(valid && $("#subject").val().length != 0 && $("#comment").val() != "") {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-            }
-        }
-
-        if($("#comment").val() != "") {
-            $("#comment").addClass("border-b border-gray-400");
-        } else {
-            $("#comment").removeClass("border-b border-gray-400");
-        }
-    }
-
-</script>
-
+<script src="{{asset('js/pages/common/contact.js')}}"></script>
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

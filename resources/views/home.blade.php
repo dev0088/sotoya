@@ -5,73 +5,8 @@
 @endsection
 
 @section('styles')
-<style>
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        position: fixed;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        /* padding: 10px; */
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 564px;
-    }
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .maxwidth-1280 {
-        max-width:1280px;
-    }
-    .maxwidth-1310 {
-        max-width:1310px;
-    }
-    .maxwidth-760 {
-        max-width:760px;
-    }
-    .maxwidth-824 {
-        max-width:824px;
-    }
-    .maxwidth-260 {
-        max-width:260px;
-    }
-    .maxwidth-608 {
-        max-width:608px;
-    }
-    .maxwidth-1441 {
-        max-width:1441px;
-    }
-
-    button.connection-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.connection-submit-button {
-        background-color:#b0b0af;
-    }
-
-</style>
-
+<link rel="stylesheet" href="{{asset('css/components/modal/base.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/components/modal/home.css')}}"/>
 @endsection
 
 @section('content')
@@ -91,7 +26,7 @@
                 @if(Auth::user())
                     <a @if(Auth::user()->mode == 1)href="/pro"@else href="/part"@endif class="text-white text-lg fontbold px-10 bg-green h-input inline-block" style="padding-top:19px; padding-bottom:15px;">Voir le configurateur</a>
                 @else
-                <button id="modal-trigger-button" class="text-white text-lg fontbold px-10 bg-green h-input inline-block" style="padding-top:19px; padding-bottom:15px;">Voir le configurateur</button>
+                    <button id="modal-trigger-button" class="text-white text-lg fontbold px-10 bg-green h-input inline-block" style="padding-top:19px; padding-bottom:15px;">Voir le configurateur</button>
                 @endif
             </div>
     
@@ -186,7 +121,7 @@
         <img class="mx-auto mt-8 md:mt-15" src="{{ asset('images/partenaire 2 sapa@2x.png') }}"/>
     </div>
     
-    <div id="voir-modal" class="modal mx-auto z-50">
+    <div id="modal-wrapper" class="modal mx-auto z-50">
     
         <div class="modal-content relative px-8 py-8 md:px-15 md:pt-15 md:pb-10">
     
@@ -235,7 +170,7 @@
                     </div>
                 @endif
                 <div class="w-full text-center md:text-left">
-                    <button id="submitbutton" type="button" class="px-15 py-4 text-white connection-submit-button fontbold h-input">Se connecter</button> 
+                    <button id="submitbutton" type="button" class="px-15 py-4 text-white submit-button fontbold h-input">Se connecter</button> 
                 </div>
             </form>
 
@@ -253,118 +188,9 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    var modal = document.getElementById("voir-modal");
-    var btn = document.getElementById("modal-trigger-button");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-            
-        var modal = document.getElementById("voir-modal");
-        
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    $("#eye_fill").click(function() {
-        $(this).hide();
-        $("#eye_slash_fill").show();
-        $("#password").attr("type", "text");
-    });
-    $("#eye_slash_fill").click(function() {
-        $(this).hide();
-        $("#eye_fill").show();
-        $("#password").attr("type", "password");
-    });
-
-    $(function() {
-        validateForm();
-    })
-
-    $("#email").keyup(function() {
-        validateForm();
-    });
-
-    $("#email").change(function() {
-        validateForm();
-    });
-
-    $("#email").click(function() {
-        validateForm();
-    });
-    
-    $("#password").keyup(function() {
-        validateForm();
-    });
-
-    $("#password").change(function() {
-        validateForm();
-    });
-
-    $("#password").click(function() {
-        validateForm();
-    });
-
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("#submitbutton");
-
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-
-            valid = false;
-
-        } else {
-
-            var parts = email.split('@');
-            var domain = parts[1];
-
-            if (domain.indexOf('.') == -1) {
-
-                valid = false;
-
-            } else {
-
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-
-                    valid = false;
-                }
-            }
-
-        }
-
-        if(valid && $("#password").val().length != 0) {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-                submit.attr("type", "submit");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-                submit.attr("type", "button");
-            }
-        }
-    }
-
-</script>
+<script src="{{asset('js/components/password-switch.js')}}"></script>
+<script src="{{asset('js/pages/auth/login.js')}}"></script>
+<script src="{{asset('js/components/modal.js')}}"></script>
 @endsection
 
 

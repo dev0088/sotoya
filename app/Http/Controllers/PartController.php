@@ -15,6 +15,7 @@ use App\Model\Base\Range;
 use App\Model\Base\TotalHeight;
 use App\Model\Base\TotalWidth;
 use App\Model\Order;
+use App\Model\Payment;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -127,6 +128,7 @@ class PartController extends Controller
 
         $projects = Order::where('state_order', "0")
                         ->where('user_id', Auth::id())
+                        ->where('mode', 0)
                         ->orderBy('created_at', 'DESC')
                         ->get();
 
@@ -139,6 +141,7 @@ class PartController extends Controller
         
         $history = Order::where('state_order', "1")
                         ->where('user_id', Auth::id())
+                        ->where('mode', 0)
                         ->orderBy('updated_at', 'DESC')
                         ->get();
 
@@ -155,7 +158,7 @@ class PartController extends Controller
     public function modifyinfo(Request $request)
     {
 
-        if(User::where('id', Auth::user()->id)->first()->email == $request->email) {
+        if(User::find(Auth::id())->email == $request->email) {
 
             $validator = Validator::make($request->all(),
             [
@@ -198,7 +201,7 @@ class PartController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $updated = User::where('id', Auth::user()->id)->update($data);
+        $updated = User::where('id', Auth::id())->update($data);
 
         return redirect()->route("part-account");
     }
@@ -254,13 +257,6 @@ class PartController extends Controller
         $order->price = $this->calculatePrice($idArray);
 
         $order->save();
-
-        return redirect()->route("part-projects");
-    }
-
-    public function order($id)
-    {
-        
 
         return redirect()->route("part-projects");
     }
@@ -351,57 +347,20 @@ class PartController extends Controller
     public function clicandpay(Request $request)
     {
 
-        $order_id = $request->post("order_id");
+        $order_id = $request->order_id;
 
-        $joinery_id = $request->post("joinery_submit_pay");
-        $material_id = $request->post("material_submit_pay");
-        $range_id = $request->post("range_submit_pay");
-        $opening_id = $request->post("opening_submit_pay");
-        $leave_id = $request->post("leave_submit_pay");
-        $installation_id = $request->post("installation_submit_pay");
-        $aeration_id = $request->post("aeration_submit_pay");
-        $glazing_id = $request->post("glazing_submit_pay");
-        $color_id = $request->post("color_submit_pay");
-        $height_size_id = $request->post("height_size_submit_pay");
-        $width_size_id = $request->post("width_size_submit_pay");
-        $insulation_size_id = $request->post("insulation_size_submit_pay");
-
-        if($order_id) {
-
-            if($joinery_id) {
-
-                return view('payment.index', compact('order_id', 'joinery_id', 'material_id', 'range_id', 'aeration_id', 'opening_id', 'leave_id', 'glazing_id', 'installation_id', 'color_id', 'height_size_id', 'width_size_id', 'insulation_size_id'));
-
-            } else {
-                
-                return view('payment.index', compact('order_id'));
-
-            }
-            
-        } else {
-
-            return view('payment.index', compact('joinery_id', 'material_id', 'range_id', 'aeration_id', 'opening_id', 'leave_id', 'glazing_id', 'installation_id', 'color_id', 'height_size_id', 'width_size_id', 'insulation_size_id'));
-
-        }
-        
-    }
-    public function pay(Request $request)
-    {
-
-        $order_id = $request->post("order_id");
-
-        $joinery_id = $request->post("joinery_id");
-        $material_id = $request->post("material_id");
-        $range_id = $request->post("range_id");
-        $opening_id = $request->post("opening_id");
-        $leave_id = $request->post("leave_id");
-        $installation_id = $request->post("installation_id");
-        $aeration_id = $request->post("aeration_id");
-        $glazing_id = $request->post("glazing_id");
-        $color_id = $request->post("color_id");
-        $height_size_id = $request->post("height_size_id");
-        $width_size_id = $request->post("width_size_id");
-        $insulation_size_id = $request->post("insulation_size_id");
+        $joinery_id = $request->joinery_submit_pay;
+        $material_id = $request->material_submit_pay;
+        $range_id = $request->range_submit_pay;
+        $opening_id = $request->opening_submit_pay;
+        $leave_id = $request->leave_submit_pay;
+        $installation_id = $request->installation_submit_pay;
+        $aeration_id = $request->aeration_submit_pay;
+        $glazing_id = $request->glazing_submit_pay;
+        $color_id = $request->color_submit_pay;
+        $height_size_id = $request->height_size_submit_pay;
+        $width_size_id = $request->width_size_submit_pay;
+        $insulation_size_id = $request->insulation_size_submit_pay;
 
         $idArray = 
             [
@@ -437,22 +396,69 @@ class PartController extends Controller
                         'aeration_id' => $aeration_id,
                         'glazing_id' => $glazing_id,
                         'color_id' => $color_id,
-                        'state_order' => 1,
                         'price' => $this->calculatePrice($idArray)
                     ];
     
                 $update = Order::where('id', $order_id)->update($data);
-    
-            } else {
 
-                $data = ([
-                    'state_order' => "1"
-                ]);
-        
-                $update = Order::where('id', $order_id)->update($data);
             }
 
-            $price = Order::where('id', $order_id)->first()->price;
+            $price = Order::find($order_id)->price * 1.2;
+
+            return view('payment.index', compact('price', 'order_id'));
+            
+        } else {
+
+            $price = $this->calculatePrice($idArray) * 1.2;
+
+            return view('payment.index', compact('price', 'joinery_id', 'material_id', 'range_id', 'aeration_id', 'opening_id', 'leave_id', 'glazing_id', 'installation_id', 'color_id', 'height_size_id', 'width_size_id', 'insulation_size_id'));
+
+        }
+        
+    }
+    public function pay(Request $request)
+    {
+
+        $order_id = $request->order_id;
+
+        $joinery_id = $request->joinery_id;
+        $material_id = $request->material_id;
+        $range_id = $request->range_id;
+        $opening_id = $request->opening_id;
+        $leave_id = $request->leave_id;
+        $installation_id = $request->installation_id;
+        $aeration_id = $request->aeration_id;
+        $glazing_id = $request->glazing_id;
+        $color_id = $request->color_id;
+        $height_size_id = $request->height_size_id;
+        $width_size_id = $request->width_size_id;
+        $insulation_size_id = $request->insulation_size_id;
+
+        $idArray = 
+            [
+                "join" => $joinery_id,
+                "material" => $material_id,
+                "range" => $range_id,
+                "opening" => $opening_id,
+                "leave" => $leave_id,
+                "installation" => $installation_id,
+                "aeration" => $aeration_id,
+                "glazing" => $glazing_id,
+                "color" => $color_id,
+                "height" => $height_size_id,
+                "width" => $width_size_id,
+                "insulation" => $insulation_size_id,
+            ];
+
+        if($order_id) {
+
+            $data = ([
+                'state_order' => "1"
+            ]);
+    
+            Order::where('id', $order_id)->update($data);
+
+            $price = Order::find($order_id)->price;
             
         } else {
 
@@ -480,6 +486,8 @@ class PartController extends Controller
             $order->state_order = 1;
     
             $order->save();
+
+            $order_id = $order->id;
             
         }
 
@@ -491,11 +499,29 @@ class PartController extends Controller
         $postcode_delivery = $request->postcode_delivery;
         $city_delivery = $request->city_delivery;
 
-        $firstname_billing = $request->firstname_billing;
-        $lastname_billing = $request->lastname_billing;
-        $address_billing = $request->address_billing;
-        $postcode_billing = $request->postcode_billing;
-        $city_billing = $request->city_billing;
+        
+        $payment = new Payment();
+
+        $payment->user_id = Auth::id();
+        $payment->mode = Auth::user()->mode;
+        $payment->state_address = $request->address_state;
+        $payment->order_id = $order_id;
+        $payment->cardnumber = $request->cardnumber;
+        $payment->expirationdate = $request->expirationdate;
+        $payment->securitycode = $request->securitycode;
+        $payment->price = $price;
+
+        if($address_state == 0) {
+
+            $payment->firstname = $request->firstname_billing;
+            $payment->lastname = $request->lastname_billing;
+            $payment->address = $request->address_billing;
+            $payment->postcode = $request->postcode_billing;
+            $payment->city = $request->city_billing;
+            
+        }
+
+        $payment->save();
 
         return view('payment.summary');
     }

@@ -5,20 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    button.connection-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.connection-submit-button {
-        background-color:#b0b0af;
-    }
-    .maxwidth-508 {
-        max-width: 508px;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -53,7 +39,7 @@
         @enderror
         
         <div class="w-full text-center md:text-left mt-8">
-            <button id="submit" type="submit" class="px-15 py-4 text-white connection-submit-button fontbold">Se connecter</button> 
+            <button id="submit" type="submit" class="px-15 py-4 text-white submit-button fontbold">Se connecter</button> 
         </div>
     </form>
     
@@ -62,74 +48,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $(function() {
-        validateForm();
-    })
-
-    $("#email").keyup(function() {
-        validateForm();
-    });
-
-    $("#email").focus(function() {
-        validateForm();
-    });
-
-    $("#email").blur(function() {
-        validateForm();
-    });
-    
-   
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("button#submit");
-
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-
-            valid = false;
-
-        } else {
-
-            var parts = email.split('@');
-            var domain = parts[1];
-
-            if (domain.indexOf('.') == -1) {
-
-                valid = false;
-
-            } else {
-
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-
-                    valid = false;
-                }
-            }
-
-        }
-
-        if(valid) {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-            }
-        }
-    }
-
-</script>
+<script src="{{asset('js/auth/email.js')}}"></script>
 @endsection
 
 

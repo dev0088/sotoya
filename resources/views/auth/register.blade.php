@@ -5,123 +5,8 @@
 @endsection
 
 @section('styles')
-
-<style>
-
-    button.register-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.register-submit-button {
-        background-color:#b0b0af;
-    }
-
-    input {
-        font-size:16px;
-    }
-    .maxwidth-976 {
-        max-width: 976px;
-    }
-
-    /* The container */
-    /* .container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    } */
-    /* Hide the browser's default checkbox */
-    /* .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    } */
-    /* Create a custom checkbox */
-    /* .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: white;
-    border:2px solid #737373;
-    border-radius:5px;
-    } */
-    /* When the checkbox is checked, add a blue background */
-    /* .container input:checked ~ .checkmark {
-    background-color: white;
-    border:2px solid #18A75A;
-    } */
-    /* Create the checkmark/indicator (hidden when not checked) */
-    /* .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    } */
-    /* Show the checkmark when checked */
-    /* .container input:checked ~ .checkmark:after {
-    display: block;
-    } */
-    /* Style the checkmark/indicator */
-    /* .container .checkmark:after {
-    left: 8px;
-    top: 2px;
-    width: 7px;
-    height: 14px;
-    border: solid #18A75A;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    } */
-
-    .check-item {
-        cursor: pointer;
-    }
-    .check-item > label {
-        cursor: pointer;
-    }
-
-    .check-item.active > label > div > svg.checked {
-        display: block;
-    }
-
-    .check-item.active > label > div >svg.unchecked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.checked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.unchecked {
-        display: block;
-    }
-
-    #agreecheck-wrapper.active > span > svg {
-        display: block;
-    }
-
-    #agreecheck-wrapper.active > span {
-        border-color: #18A75A;
-    }
-
-    #agreecheck-wrapper > span > svg {
-        display: none;
-    }
-
-    #agreecheck-wrapper > span {
-        border-color: #3B3B3A40;
-    }
-
-
-</style>
-
+<link rel="stylesheet" href="{{asset('css/components/checkbox.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/pages/register.css')}}"/>
 @endsection
 
 @section('content')
@@ -149,8 +34,8 @@
             <div>
                 <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Civilité*</p>
                 <div class="flex relative pb-8">
-                    <div class="check-item mr-4 md:mr-9 active">
-                        <label class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-9 @if(old('gender') !== null)@if(old('gender') == 1) active @endif @else active @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -161,12 +46,12 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="male" name="gender" value="1" checked />
+                            <input type="radio" class="absolute left-0 opacity-0" id="male" name="gender" value="1" @if(old('gender') !== null)@if(old('gender') == 1) checked @endif @else checked @endif />
                             Monsieur
                         </label>
                     </div>
-                    <div class="check-item mr-4 md:mr-9">
-                        <label  class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-9 @if(old('gender') !== null)@if(old('gender') == 0) active @endif @else @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -177,7 +62,7 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="female" name="gender" value="0" />
+                            <input type="radio" class="absolute left-0 opacity-0" id="female" name="gender" value="0" @if(old('gender') !== null)@if(old('gender') == 0) checked @endif @else checked @endif />
                             Madame
                         </label>
                     </div>
@@ -186,8 +71,8 @@
             <div>
                 <p class="text-lg fontbold leading-snug" style="padding-bottom:21px;">Je suis un.e*</p>
                 <div class="flex relative pb-8">
-                    <div class="check-item mr-4 md:mr-9 active">
-                        <label class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-9 @if(old('mode') !== null)@if(old('mode') == 1) active @endif @else active @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -198,12 +83,12 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="pro" name="mode" value="1" checked />
+                            <input type="radio" class="absolute left-0 opacity-0" id="pro" name="mode" value="1" @if(old('mode') !== null)@if(old('mode') == 1) checked @endif @else checked @endif />
                             Professionnel
                         </label>
                     </div>
-                    <div class="check-item mr-4 md:mr-9">
-                        <label  class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-9 @if(old('mode') !== null)@if(old('mode') == 0) active @endif @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -214,7 +99,7 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="part" name="mode" value="0" />
+                            <input type="radio" class="absolute left-0 opacity-0" id="part" name="mode" value="0" @if(old('mode') !== null)@if(old('mode') == 0) checked @endif @else checked @endif />
                             Particulier
                         </label>
                     </div>
@@ -297,10 +182,14 @@
                 <div class="h-input">
                     <button id="select-profession-button" type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
                         <span id="select-profession">
-                            <span style="opacity: 0.4;">Type de profession</span>
+                            @if(old('profession') !== null)
+                                {{App\Model\Profession::find(old('profession'))->name}}
+                            @else
+                                <span style="opacity: 0.4;">Type de profession</span>
+                            @endif
                         </span>
                         
-                        <input id="select-profession-submit" type="hidden" name="profession"/>
+                        <input id="select-profession-submit" type="hidden" name="profession" value="{{old('profession')}}"/>
 
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                             <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -402,7 +291,7 @@
         </label>
     
         <div class="w-full text-center md:text-left pt-8">
-            <button id="submit" type="button" class="px-15 py-4 text-white register-submit-button fontbold">S’inscrire</button> 
+            <button id="submit" type="button" class="px-15 py-4 text-white submit-button fontbold">S’inscrire</button> 
         </div>
         
     </form>
@@ -412,155 +301,9 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    var agreecheck;
-
-    $("#eye_fill").click(function() {
-        $(this).hide();
-        $("#eye_slash_fill").show();
-        $("#password").attr("type", "text");
-    });
-    $("#eye_slash_fill").click(function() {
-        $(this).hide();
-        $("#eye_fill").show();
-        $("#password").attr("type", "password");
-    });
-
-    $(function() {
-        $("#select-profession-submit").val("");
-        agreecheck = false;
-        validateForm();
-    })
-    $("#firstname").keyup(function() {
-        validateForm();
-    });
-    $("#lastname").keyup(function() {
-        validateForm();
-    });
-    $("#email").keyup(function() {
-        validateForm();
-    });
-    $("#password").keyup(function() {
-        validateForm();
-    });
-    $("#address").keyup(function() {
-        validateForm();
-    });
-    $("#postcode").keyup(function() {
-        validateForm();
-    });
-    $("#city").keyup(function() {
-        validateForm();
-    });
-    $("input:checkbox").change(function() {
-        $(this).parent().toggleClass("active");
-        validateForm();
-    })
-
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("button#submit");
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-            valid = false;
-        } else {
-            var parts = email.split('@');
-            var domain = parts[1];
-
-            if (domain.indexOf('.') == -1) {
-                valid = false;
-            } else {
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-                    valid = false;
-                }
-            }
-
-        }
-
-        if($("#agreecheck").is(":checked") && valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#password").val().length != 0 && $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-                submit.attr("type", "submit");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-                submit.attr("type", "button");
-            }
-        }
-
-    }
-
-    $("input:radio").click(function() {
-
-        console.log($("#pro").is(":checked"));
-
-        if($("#pro").is(":checked")) {
-            $("#company").prop("disabled", false);
-            $("#select-profession-button").prop("disabled", false);
-            $("#pro-insert-panel").show(500);
-        } else {
-            $("#company").prop("disabled", true);
-            $("#select-profession-button").prop("disabled", true);
-            $("#pro-insert-panel").hide(500);
-        }
-
-        if(!$(this).parent().parent().hasClass("active")) {
-
-            $(this).parent().parent().toggleClass("active");
-            $(this).parent().parent().siblings().toggleClass("active");
-
-        }
-
-    });
-
-    $(".select-button").click(function(event) {
-
-        event.stopPropagation();
-
-        $(this).next().toggle();
-        if($(this).next().css("display") == "none") {
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        } else {
-            $(this).find("svg.up-icon").show();
-            $(this).find("svg.down-icon").hide();
-        }
-
-    });
-
-    $(".profession-item").click(function() {
-        $(this).parent().hide();
-        $(this).parent().prev().find("svg.up-icon").hide();
-        $(this).parent().prev().find("svg.down-icon").show();
-        $(this).parent().prev().find("span").html($(this).html());
-
-        $("#select-profession-submit").val($(this).attr("id"));
-
-        validateForm();
-        
-    });
-
-    $(window).click(function() {
-
-        $(".select-button").each(function() {
-            $(this).next().hide();
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        });
-    });
-
-</script>
+<script src="{{asset('js/components/password-switch.js')}}"></script>
+<script src="{{asset('js/components/custom-select.js')}}"></script>
+<script src="{{asset('js/pages/auth/register.js')}}"></script>
 @endsection
 
 

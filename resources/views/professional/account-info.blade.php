@@ -5,48 +5,8 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-1032 {
-        max-width: 1032px;
-    }
-
-    .check-item > label {
-        cursor: pointer;
-    }
-    .check-item.item-mode > label {
-        cursor: no-drop;
-    }
-
-    .check-item.active > label > div > svg.checked {
-        display: block;
-    }
-
-    .check-item.active > label > div >svg.unchecked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.checked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.unchecked {
-        display: block;
-    }
-
-    button.register-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.register-submit-button {
-        background-color:#b0b0af;
-    }
-
-    #password {
-        cursor:no-drop;
-    }
-
-</style>
-
+<link rel="stylesheet" href="{{asset('css/components/checkbox.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/pages/info.css')}}"/>
 @endsection
 
 @section('content')
@@ -84,8 +44,8 @@
             <div>
                 <p class="text-lg fontbold leading-tight" style="padding-bottom:21px;">Civilité*</p>
                 <div class="flex pb-8">
-                    <div class="check-item mr-4 md:mr-8 @if(isset($user["gender"]) && $user["gender"] == 1) active @endif"">
-                        <label class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-8 @if(old('gender') !== null)@if(old('gender') == 1) active @endif @elseif(isset($user["gender"]) && $user["gender"] == 1) active @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -96,12 +56,12 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="male" name="gender" value="1" checked />
+                            <input type="radio" class="absolute left-0 opacity-0" id="male" name="gender" value="1" @if(old('gender') !== null)@if(old('gender') == 1) checked @endif @elseif(isset($user["gender"]) && $user["gender"] == 1) checked @endif />
                             Monsieur
                         </label>
                     </div>
-                    <div class="check-item mr-4 md:mr-8 @if(isset($user["gender"]) && $user["gender"] == 0) active @endif">
-                        <label  class="text-base flex items-center">
+                    <div class="check-item mr-4 md:mr-8 @if(old('gender') !== null)@if(old('gender') == 0) active @endif @elseif(isset($user["gender"]) && $user["gender"] == 0) active @endif">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -112,7 +72,7 @@
                                     <path style="fill:#a3a3a3;" d="M255.832,48.032c114.859,0.096,207.896,93.277,207.8,208.137s-93.277,207.896-208.137,207.8	C140.7,463.872,47.695,370.795,47.695,256C47.871,141.149,140.981,48.112,255.832,48.032 M255.832,0 C114.443,0.096-0.096,114.779,0,256.168S114.779,512.096,256.168,512C397.485,511.904,512,397.317,512,256	C511.952,114.571,397.261-0.048,255.832,0z"/>
                                 </svg>
                             </div>
-                            <input type="radio" class="absolute left-0 opacity-0" id="female" name="gender" value="0" />
+                            <input type="radio" class="absolute left-0 opacity-0" id="female" name="gender" value="0" @if(old('gender') !== null)@if(old('gender') == 0) checked @endif @elseif(isset($user["gender"]) && $user["gender"] == 0) checked @endif />
                             Madame
                         </label>
                     </div>
@@ -122,7 +82,7 @@
                 <p class="text-lg fontbold leading-tight" style="padding-bottom:21px;">Je suis un*</p>
                 <div class="flex pb-8">
                     <div class="check-item item-mode mr-4 md:mr-8 @if(isset($user["mode"]) && $user["mode"] == 1) active @endif">
-                        <label class="text-base flex items-center">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -137,7 +97,7 @@
                         </label>
                     </div>
                     <div class="check-item item-mode mr-4 md:mr-8 @if(isset($user["mode"]) && $user["mode"] == 0) active @endif">
-                        <label  class="text-base flex items-center">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-4">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -157,7 +117,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Prénom*</p>
-                <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input h-input" placeholder="Prénom" value="@if(isset($user["firstname"])){{$user["firstname"]}}@endif" required/>
+            <input id="firstname" name="firstname" type="text" class="w-full p-4 bg-input h-input" placeholder="Prénom" value="@if(old('firstname') !== null){{ old('firstname') }}@elseif(isset($user["firstname"])){{$user["firstname"]}}@endif" required/>
                 @error('firstname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -168,7 +128,7 @@
             </div>
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Nom*</p>
-                <input id="lastname" name="lastname" type="text" class="w-full p-4 bg-input h-input" placeholder="Nom" value="@if(isset($user["lastname"])){{$user["lastname"]}}@endif" required/>
+                <input id="lastname" name="lastname" type="text" class="w-full p-4 bg-input h-input" placeholder="Nom" value="@if(old('lastname') !== null){{ old('lastname') }}@elseif(isset($user["lastname"])){{$user["lastname"]}}@endif" required/>
                 @error('lastname')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -181,7 +141,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
                 <p class="text-lg pb-3 fontbold leading-snug">E-mail*</p>
-                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" placeholder="E-mail" value="@if(isset($user["email"])){{$user["email"]}}@endif" required/>
+                <input id="email" name="email" type="text" class="w-full p-4 bg-input h-input" placeholder="E-mail" value="@if(old('email') !== null){{ old('email') }}@elseif(isset($user["email"])){{$user["email"]}}@endif" required/>
                 @error('email')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -207,7 +167,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-8 lg:pt-6">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Si professionnel, nom de la société</p>
-                <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" placeholder="Nom de la société" value="@if(isset($user["company"])){{$user["company"]}}@endif"/>
+                <input type="text" id="company" name="company" class="w-full form-control p-4 bg-input h-input" placeholder="Nom de la société" value="@if(old('company') !== null){{ old('company') }}@elseif(isset($user["company"])){{$user["company"]}}@endif"/>
                 @error('company')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -221,7 +181,9 @@
                 <div class="h-input">
                     <button type="button" class="select-button focus:border-green p-4 text-base border border-heavygray w-full relative text-left h-input">
                         <span id="select-profession">
-                            @if(isset($user["profession_id"]))
+                            @if(old('profession') !== null)
+                                {{App\Model\Profession::find(old('profession'))->name}}
+                            @elseif(isset($user["profession_id"]))
                                 <?php
                                     echo App\Model\Profession::find($user["profession_id"])->name;
                                 ?>
@@ -231,7 +193,7 @@
 
                         </span>
                         
-                        <input id="select-profession-submit" type="hidden" name="profession" value="@if(isset($user['profession_id'])){{$user['profession_id']}}@endif"/>
+                        <input id="select-profession-submit" type="hidden" name="profession" value="@if(old('profession') !== null){{old('profession')}}@elseif(isset($user['profession_id'])){{$user['profession_id']}}@endif"/>
 
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                             <svg class="down-icon" xmlns="http://www.w3.org/2000/svg" width="17.771" height="10" viewBox="0 0 17.771 10">
@@ -265,7 +227,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-6">
             <div>
                 <p class="text-lg pt-0 pb-3 fontbold leading-snug">Adresse*</p>
-                <input id="address" name="address" type="text" class="w-full p-4 bg-input h-input" placeholder="Adresse" value="@if(isset($user["address"])){{$user["address"]}}@endif" required/>
+                <input id="address" name="address" type="text" class="w-full p-4 bg-input h-input" placeholder="Adresse" value="@if(old('address') !== null){{ old('address') }}@elseif(isset($user["address"])){{$user["address"]}}@endif" required/>
                 @error('address')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -278,7 +240,7 @@
                 <div class="w-full flex-none md:flex">
                     <div class="w-full md:w-5/12">
                         <p class="text-lg fontbold pb-3 leading-snug">Code Postal*</p>
-                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-3 md:mb-0 bg-input h-input" placeholder="Code Postal" value="@if(isset($user["postcode"])){{$user["postcode"]}}@endif" required/>
+                        <input id="postcode" name="postcode" type="text" class="w-full p-4 mb-3 md:mb-0 bg-input h-input" placeholder="Code Postal" value="@if(old('postcode') !== null){{ old('postcode') }}@elseif(isset($user["postcode"])){{$user["postcode"]}}@endif" required/>
                     </div>
                     @error('postcode')
                         <div class="py-3">
@@ -289,7 +251,7 @@
                     @enderror
                     <div class="w-full md:w-7/12 md:pl-6 mb-6 md:mb-0 pt-4 md:pt-0">
                         <p class="text-lg fontbold pb-3 leading-snug">Ville*</p>
-                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input h-input" placeholder="Ville" value="@if(isset($user["city"])){{$user["city"]}}@endif" required/>
+                        <input id="city" name="city" type="text pb-9" class="w-full p-4 bg-input h-input" placeholder="Ville" value="@if(old('city') !== null){{ old('city') }}@elseif(isset($user["city"])){{$user["city"]}}@endif" required/>
                     </div>
                     @error('city')
                         <div class="py-3">
@@ -304,7 +266,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-8 pt-0 md:pt-6">
             <div>
                 <p class="text-lg fontbold pb-3 leading-snug">Numéro de téléphone</p>
-                <input type="text" name="telephone" class="w-full p-4 bg-input h-input" placeholder="Téléphone" value="@if(isset($user["telephone"])){{$user["telephone"]}}@endif"/>
+                <input type="text" name="telephone" class="w-full p-4 bg-input h-input" placeholder="Téléphone" value="@if(old('telephone') !== null){{ old('telephone') }}@elseif(isset($user["telephone"])){{$user["telephone"]}}@endif"/>
                 @error('telephone')
                     <div class="py-3">
                         <span class="invalid-feedback" role="alert">
@@ -318,7 +280,7 @@
         <p class="text-base py-8">*Champ obligatoire</p>
     
         <div class="w-full text-center lg:text-left">
-            <button id="submit" type="button" class="text-lg fontbold text-white px-16 register-submit-button h-input" style="padding-top:19px; padding-bottom:15px;">Enregister</button>
+            <button id="submit" type="button" class="text-lg fontbold text-white px-16 submit-button h-input" style="padding-top:19px; padding-bottom:15px;">Enregister</button>
         </div>
     </form>
 
@@ -327,161 +289,8 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $("input:radio").click(function() {
-
-        if(!$(this).parent().parent().hasClass("active")) {
-
-            $(this).parent().parent().toggleClass("active");
-            $(this).parent().parent().siblings().toggleClass("active");
-
-        }
-
-    });
-
-    $(function() {
-        validateForm();
-    })
-    $("#firstname").keyup(function() {
-        validateForm();
-    });
-    $("#lastname").keyup(function() {
-        validateForm();
-    });
-    $("#email").keyup(function() {
-        validateForm();
-    });
-    $("#address").keyup(function() {
-        validateForm();
-    });
-    $("#postcode").keyup(function() {
-        validateForm();
-    });
-    $("#city").keyup(function() {
-        validateForm();
-    });
-
-    $("#firstname").click(function() {
-        validateForm();
-    });
-    $("#lastname").click(function() {
-        validateForm();
-    });
-    $("#email").click(function() {
-        validateForm();
-    });
-    $("#address").click(function() {
-        validateForm();
-    });
-    $("#postcode").click(function() {
-        validateForm();
-    });
-    $("#city").click(function() {
-        validateForm();
-    });
-
-    $("#firstname").change(function() {
-        validateForm();
-    });
-    $("#lastname").change(function() {
-        validateForm();
-    });
-    $("#email").change(function() {
-        validateForm();
-    });
-    $("#address").change(function() {
-        validateForm();
-    });
-    $("#postcode").change(function() {
-        validateForm();
-    });
-    $("#city").change(function() {
-        validateForm();
-    });
-
-    $(".select-button").click(function(event) {
-
-        event.stopPropagation();
-
-        $(this).next().toggle();
-        if($(this).next().css("display") == "none") {
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        } else {
-            $(this).find("svg.up-icon").show();
-            $(this).find("svg.down-icon").hide();
-        }
-
-    });
-
-    $(".profession-item").click(function() {
-
-        $(this).parent().hide();
-        $(this).parent().prev().find("svg.up-icon").hide();
-        $(this).parent().prev().find("svg.down-icon").show();
-        $(this).parent().prev().find("span").html($(this).html());
-
-        $("#select-profession-submit").val($(this).attr("id"));
-
-        validateForm();
-
-    });
-
-    $(window).click(function() {
-
-        $(".select-button").each(function() {
-            $(this).next().hide();
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        });
-
-    });
-
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("button#submit");
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-            valid = false;
-        } else {
-            var parts = email.split('@');
-            var domain = parts[1];
-
-            if (domain.indexOf('.') == -1) {
-                valid = false;
-            } else {
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-                    valid = false;
-                }
-            }
-
-        }
-
-        if(valid && $("#firstname").val().length != 0 && $("#lastname").val().length != 0 && $("#address").val().length != 0&& $("#postcode").val().length != 0&& $("#city").val().length != 0) {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-                submit.attr("type", "submit");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-                submit.attr("type", "button");
-            }
-        }
-
-    }
-
-</script>
+<script src="{{asset('js/components/custom-select.js')}}"></script>
+<script src="{{asset('js/pages/info.js')}}"></script>
 @endsection
 
 

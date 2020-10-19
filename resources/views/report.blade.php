@@ -254,11 +254,6 @@
 				</div>
 				<hr style="position:absolute; left:0; top:75px; width:100%; color: #e5e7eb;"/>
 			</div>
-			{{-- <div style="width:100px; border-bottom: 1px solid #e5e7eb; padding-top:15px; padding-bottom:13px; padding-left:142px;">
-				<div class="py-1" style="padding-bottom:13px; width:100%; text-align:right;"><b>@if(isset($total_ht))@endif €</b></div>
-				<div class="py-1" style="padding-bottom:13px; width:100%; text-align:right;"><b>@if(isset($tva))@endif €</b></div>
-				<div class="py-1" style="text-align:right; width:100%;"><b>@if(isset($total_tva))@endif €</b></div>
-			</div> --}}
 		</div>
 	</div>
 

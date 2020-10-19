@@ -5,57 +5,8 @@
 @endsection
 
 @section('styles')
-
-<style>
-
-    .enregister-button {
-        background-color: #b0b0af;
-    }
-
-    .enregister-button.active {
-        background-color: #18A75A;
-    }
-    .maxwidth-1280 {
-        max-width: 1280px;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        position: fixed;
-        padding-top: 260px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        /* padding: 10px; */
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 692px;
-    }
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-
-</style>
-
+<link rel="stylesheet" href="{{asset('css/components/modal/base.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/components/modal/projects.css')}}"/>
 @endsection
 
 @section('content')
@@ -117,7 +68,7 @@
                         <p id="project-disabled" class="hidden bg-white hover:bg-gray-100 rounded-md cursor-default px-4 py-4">projet</p>
                         @if(isset($projects) && count($projects) > 0)
                             @foreach($projects as $key => $item)
-                                <a href="/account_pro_projects/{{$item['id']}}" class="w-full">
+                                <a href="{{ route('pro-projects-id', $item['id']) }}" class="w-full">
                                     <p id="{{$item['id']}}" class="project-item w-full bg-white hover:bg-gray-100 rounded-lg cursor-default px-4 py-4">{{$item["name"]}}</p>
                                 </a>
                             @endforeach
@@ -130,7 +81,7 @@
                 <p class="text-lg fontbold pb-3 leading-snug">Créer un nouveau projet</p>
                 <div class="flex-none md:flex relative text-center md:text-left items-center">
                     <input id="new_project_name" type="text" name="new_project_name" class="w-full appearance-none pl-4 py-4 mb-4 md:mb-0 text-base bg-input h-input" placeholder="Nom du projet"/>
-                    <button type="button" class="px-16 py-5 text-lg fontbold text-white enregister-button relative md:absolute right-0 h-input">Enregistrer</button>
+                    <button type="button" class="px-16 py-5 text-lg fontbold text-white submit-button relative md:absolute right-0 h-input">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -191,7 +142,7 @@
                     <button @if(isset($id))type="submit"@else type="button"@endif class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Télécharger un devis</button>
                 </form>
                 <div class="xxl:pl-3">
-                    <button id="delete-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
+                    <button id="modal-trigger-button" class="w-full text-lg fontbold text-white bg-darkgray tracking-tighter h-input" style="padding-top:19px; padding-bottom:15px;">Supprimer le dossier</button>
                 </div>
             </div>
         @else
@@ -252,7 +203,7 @@
     
     </div>
 
-    <div id="delete-modal" class="modal mx-auto z-50">
+    <div id="modal-wrapper" class="modal mx-auto z-50">
     
         <div class="modal-content relative p-8 md:p-10">
     
@@ -267,7 +218,7 @@
             <p class="text-lg text-darkgray text-center pt-6">Vous ne pourrez pas le récupérer.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 col-gap-4 pt-4 md:pt-10">
-                <button id="modal_close_button" class="w-full bg-darkgray text-lg text-white text-center fontbold h-input" style="padding-top:19px; padding-bottom:15px">Annuler</button>
+                <button class="close w-full bg-darkgray text-lg text-white text-center fontbold h-input" style="padding-top:19px; padding-bottom:15px">Annuler</button>
                 <a @if(isset($id))href="{{ route('pro-project-delete', $id) }}"@endif class="w-full bg-green text-lg text-white text-center fontbold h-input mt-8 md:mt-0" style="padding-top:19px; padding-bottom:15px">Supprimer</a>
             </div>
     
@@ -280,77 +231,9 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $(".select-button").click(function(event) {
-
-        event.stopPropagation();
-
-        $(this).next().toggle();
-        if($(this).next().css("display") == "none") {
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-        } else {
-            $(this).find("svg.up-icon").show();
-            $(this).find("svg.down-icon").hide();
-        }
-
-    });
-
-    $(".project-item").click(function() {
-
-        $(this).parent().hide();
-        $(this).parent().prev().find("svg.up-icon").hide();
-        $(this).parent().prev().find("svg.down-icon").show();
-        // $(this).parent().prev().find("span").html($(this).html());
-
-        $("#select-project").html($(this).html());
-        
-    });
-
-    $(window).click(function() {
-
-        $(".select-button").each(function() {
-
-            $(this).next().hide();
-            $(this).find("svg.up-icon").hide();
-            $(this).find("svg.down-icon").show();
-
-        });
-    });
-
-    $("#new_project_name").keyup(function() {
-        if($(this).val().length != 0) {
-            $(this).next().addClass("active");
-            $(this).next().attr("type", "submit");
-        } else {
-            $(this).next().removeClass("active");
-            $(this).next().attr("type", "button");
-        }
-    });
-
-    var modal = document.getElementById("delete-modal");
-    var btn = document.getElementById("delete-trigger-button");
-    var span = document.getElementsByClassName("close")[0];
-    var closebutton = document.getElementById("modal_close_button");
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    closebutton.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-</script>
+<script src="{{asset('js/components/custom-select.js')}}"></script>
+<script src="{{asset('js/pages/pro/projects.js')}}"></script>
+<script src="{{asset('js/components/modal.js')}}"></script>
 @endsection
 
 

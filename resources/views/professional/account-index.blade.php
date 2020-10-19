@@ -5,14 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-816 {
-        max-width: 816px;
-    }
- 
-</style>
-
 @endsection
 
 @section('content')
@@ -62,7 +54,6 @@
                 <p class="text-lg fontbold pl-4 leading-snug">Se déconnecter</p>
             </button>
         </form>
-        
     
     </div>
 
@@ -72,7 +63,6 @@
 
 @section('scripts')
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

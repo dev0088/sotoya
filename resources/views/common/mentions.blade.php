@@ -5,10 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-    
-</style>   
-
 @endsection
 
 @section('content')
@@ -80,9 +76,7 @@
 @endsection
 
 @section('scripts')
-
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

@@ -5,127 +5,8 @@
 @endsection
 
 @section('styles')
-<style>
-
-
-
-    .maxwidth-660 {
-        max-width: 660px;
-    }
-    .maxwidth-460 {
-        max-width:460px;
-    }
-    .maxwidth-225 {
-        max-width:335px;
-    }
-    .maxwidth-418 {
-        max-width:418px;
-    }
-
-    .color-item {
-        width:148px;
-        height:148px;
-    }
-
-    .maxwidth-1441 {
-        max-width:1441px;
-    }
-
-    .check-item {
-        cursor: pointer;
-    }
-    .check-item > label {
-        cursor: pointer;
-    }
-
-    .check-item.active > label > div > svg.checked {
-        display: block;
-    }
-
-    .check-item.active > label > div >svg.unchecked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.checked {
-        display: none;
-    }
-
-    .check-item > label > div > svg.unchecked {
-        display: block;
-    }
-
-    button.payment-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.payment-submit-button {
-        background-color:#b0b0af;
-    }
-
-    /* Popup container - can be anything you want */
-    .popup {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    /* The actual popup */
-    .popup .popuptext {
-        visibility: hidden;
-        width: 298px;
-        background-color: #555;
-        color: #F9FAFB;
-        text-align: center;
-        border-radius: 6px;
-        padding: 16px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-bottom: 13px;
-    }
-
-    /* Popup arrow */
-    .popup .popuptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left:50%;
-        margin-left: -13px;
-        border-width: 13px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-
-    @media all and (max-width: 768px) {
-        .popup .popuptext::after {
-            left:90%;
-        }
-    }
-
-    /* Toggle this class - hide and show the popup */
-    .popup .show {
-        visibility: visible;
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s;
-    }
-
-    /* Add animation (fade in the popup) */
-    @-webkit-keyframes fadeIn {
-        from {opacity: 0;} 
-        to {opacity: 1;}
-    }
-
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity:1 ;}
-    }
-
-</style>
-
+<link rel="stylesheet" href="{{asset('css/components/checkbox.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/components/popup.css')}}"/>
 @endsection
 
 @section('content')
@@ -143,21 +24,21 @@
                 </span>
             </div>
             <div class="mb-4 md:mb-0 flex items-center">
-                <a href="/" class="text-base text-darkgray fontbold leading-snug">Configurateur particulier</a>
+                <a href="@if(Auth::user()->mode == 1){{ route('pro') }}@else{{ route('part') }}@endif" class="text-base text-darkgray fontbold leading-snug">Configurateur @if(Auth::user()->mode == 1)professionnel @else particulier @endif</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
             </div>
-            <div class="mb-4 md:mb-0 flex items-center">
+            {{-- <div class="mb-4 md:mb-0 flex items-center">
                 <a href="/" class="text-base text-darkgray fontbold">Récapitulatif</a>
                 <span>
                     <svg class="ml-4 mr-3" xmlns="http://www.w3.org/2000/svg" width="7.253" height="12.5" viewBox="0 0 7.253 12.5">
                         <path id="chevron_right" d="M17.174,19.633a.644.644,0,0,0,.449-.186L23.091,14.1a.644.644,0,0,0,.2-.463.611.611,0,0,0-.2-.463L17.623,7.826a.611.611,0,0,0-.449-.193.625.625,0,0,0-.635.635.676.676,0,0,0,.186.449l5.02,4.916-5.02,4.916a.662.662,0,0,0-.186.449A.625.625,0,0,0,17.174,19.633Z" transform="translate(-16.289 -7.383)" fill="#3b3b3a" stroke="#3b3b3a" stroke-width="0.5"/>
                     </svg>
                 </span>
-            </div>
+            </div> --}}
             <span class="text-base text-dark fontbold">Paiement</span>
         </div>
     </div>
@@ -189,29 +70,29 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-5 pt-6">
                     <div>
                         <p class="text-lg fontbold pb-3">Prénom</p>
-                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_delivery"/>
+                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_delivery" value="{{ Auth::user()->firstname }}"/>
                     </div>
                     <div>
                         <p class="text-lg fontbold pb-3">Nom</p>
-                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Nom" name="lastname_delivery"/>
+                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Nom" name="lastname_delivery" value="{{ Auth::user()->lastname }}"/>
                     </div>
                 </div>
 
                 <div class="pt-6">
                     <div>
                         <p class="text-lg fontbold pb-3">Adresse</p>
-                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Adresse" name="address_delivery"/>
+                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Adresse" name="address_delivery" value="{{ Auth::user()->address }}"/>
                     </div>
                 </div>
 
                 <div class="pt-6 flex">
                     <div class="w-full" style="max-width:116px;">
                         <p class="text-lg fontbold pb-3">Code Postal</p>
-                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Code Postal" name="postcode_delivery"/>
+                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Code Postal" name="postcode_delivery" value="{{ Auth::user()->postcode }}"/>
                     </div>
                     <div class="w-full ml-6">
                         <p class="text-lg fontbold pb-3">Ville</p>
-                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Ville" name="city_delivery"/>
+                        <input type="text" class="w-full h-input bg-input p-4" placeholder="Ville" name="city_delivery" value="{{ Auth::user()->city }}"/>
                     </div>
                 </div>
 
@@ -219,7 +100,7 @@
                 
                 <div class="w-full h-input border-2 border-lightgray px-4 flex items-center">
                     <div class="check-item mr-4 md:mr-9 active my-auto w-full">
-                        <label class="text-base flex items-center">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-2">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -238,7 +119,7 @@
 
                 <div class="w-full h-input border-l-2 border-r-2 border-b-2 border-lightgray px-4 flex items-center">
                     <div class="check-item mr-4 md:mr-9">
-                        <label class="text-base flex items-center">
+                        <label class="text-base flex items-center select-none">
                             <div class="mr-2">
                                 <svg class="checked" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
      	                        <g id="radio-button-on">
@@ -259,29 +140,29 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 col-gap-6 row-gap-5 pt-6">
                         <div>
                             <p class="text-lg fontbold pb-3">Prénom</p>
-                            <input type="text" class="w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_billing"/>
+                            <input id="firstname" type="text" class="pay-item w-full h-input bg-input p-4" placeholder="Prénom" name="firstname_billing"/>
                         </div>
                         <div>
                             <p class="text-lg fontbold pb-3">Nom</p>
-                            <input type="text" class="w-full h-input bg-input p-4" placeholder="Nom" name="lastname_billing"/>
+                            <input id="lastname" type="text" class="pay-item w-full h-input bg-input p-4" placeholder="Nom" name="lastname_billing"/>
                         </div>
                     </div>
     
                     <div class="pt-6">
                         <div>
                             <p class="text-lg fontbold pb-3">Adresse</p>
-                            <input type="text" class="w-full h-input bg-input p-4" placeholder="Adresse" name="address_billing"/>
+                            <input id="address" type="text" class="pay-item w-full h-input bg-input p-4" placeholder="Adresse" name="address_billing"/>
                         </div>
                     </div>
     
                     <div class="pt-6 flex">
                         <div class="w-full" style="max-width: 116px;">
                             <p class="text-lg fontbold pb-3">Code Postal</p>
-                            <input type="text" class="w-full h-input bg-input p-4" placeholder="Code Postal" name="postcode_billing"/>
+                            <input id="postcode" type="text" class="pay-item w-full h-input bg-input p-4" placeholder="Code Postal" name="postcode_billing"/>
                         </div>
                         <div class="w-full ml-6">
                             <p class="text-lg fontbold pb-3">Ville</p>
-                            <input type="text" class="w-full h-input bg-input p-4" placeholder="Ville" name="city_billing"/>
+                            <input id="city" type="text" class="pay-item w-full h-input bg-input p-4" placeholder="Ville" name="city_billing"/>
                         </div>
                     </div>
                 </div>
@@ -330,7 +211,7 @@
                     </div>
                 </div>
 
-                <button id="paybutton" type="button" class="w-full h-input items-center payment-submit-button fontbold mt-8 text-lg text-white">Payer 160€</button>
+                <button id="paybutton" type="button" class="w-full h-input items-center submit-button fontbold mt-8 text-lg text-white">Payer&nbsp;@if(isset($price)){{$price}}€@endif</button>
 
             </div>
         
@@ -343,72 +224,9 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $("input:radio").click(function() {
-
-        console.log($("#same").is(":checked"));
-
-        if($("#same").is(":checked")) {
-            $("#panel_different").hide(500);
-        } else {
-            $("#panel_different").show(500);
-        }
-
-        if(!$(this).parent().parent().hasClass("active")) {
-
-            $(this).parent().parent().toggleClass("active");
-            $(this).parent().parent().parent().siblings().children().toggleClass("active");
-
-        }
-
-    });
-
-    $(".popup").click(function(event) {
-
-        event.stopPropagation();
-
-        $(this).find("span#pop").toggleClass("show");
-    })
-
-    $(window).click(function() {
-        if($("#pop").hasClass("show")) {
-            $("#pop").removeClass("show");
-        }
-    });
-
-    function validateForm() {
-
-        var cardNumber = $("#cardnumber").val();
-        var expirationDate = $("#expirationdate").val();
-        var securityCode = $("#securitycode").val();
-
-        var button = $("#paybutton");
-
-        if(cardNumber.length != 0 && expirationDate.length != 0 && securityCode.length != 0) {
-            
-            if(!button.hasClass("active")) {
-                button.addClass("active");
-                button.attr("type", "submit");
-            }
-
-        } else {
-            if(button.hasClass("active")) {
-                button.removeClass("active");
-                button.removeClass("type", "button");
-            }
-        }
-
-    }
-
-    $(".pay-item").keyup(function() {
-        validateForm();
-    })
-
-</script>
+<script src="{{asset('js/components/popup.js')}}"></script>
+<script src="{{asset('js/pages/payment/index.js')}}"></script>
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

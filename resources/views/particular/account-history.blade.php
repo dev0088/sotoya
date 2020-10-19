@@ -5,14 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-1280 {
-        max-width: 1280px;
-    }
-    
-</style>
-
 @endsection
 
 @section('content')
@@ -49,7 +41,7 @@
                 @if(isset($history) && count($history) > 0)
                     @foreach($history as $key => $item)
                         <div class="border border-heavygray rounded-lg py-8">
-                            <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3" style="padding-left:12px; padding-right:12px;">Commandé le 
+                            <p class="text-2xl fontbold text-center tracking-tight leading-snug pb-3 px-3">Commandé le 
                                 <span class="capitalize">
                                     <?php echo ucfirst(utf8_encode(strftime('%d %b %Y', strtotime($item->created_at))));?>
                                 </span>
@@ -98,7 +90,6 @@
 
 @section('scripts')
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

@@ -5,17 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    .maxwidth-1310 {
-        max-width: 1310px;
-    }
-    .maxwidth-608 {
-        max-width: 608px;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -91,7 +80,6 @@
 
 @section('scripts')
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

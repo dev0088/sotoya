@@ -52,7 +52,7 @@ Route::post('/part-clicandpay-summary', 'PartController@pay')->name('part-clican
 
 
 Route::get('/pro', 'ProController@index')->name('pro');
-Route::get('/pro/{id}', 'ProController@index')->name('pro')->middleware('project');
+Route::get('/pro/{id}', 'ProController@index')->name('pro-id')->middleware('project');
 Route::get('/pro-with-joinery/{id}', 'ProController@joinery')->name('pro-with-joinery');
 Route::post('/pro-order-add', 'ProController@recordorder')->name('pro-order-add');
 
@@ -62,7 +62,7 @@ Route::get('/pro-history', 'ProController@history')->name('pro-history');
 Route::get('/pro-info', 'ProController@info')->name('pro-info');
 Route::post('/pro-info-save', 'ProController@modifyinfo')->name('pro-info-save');
 
-Route::get('/pro-projects/{id}', 'ProController@projects')->name('account_pro_projects_id')->middleware('project');
+Route::get('/pro-projects/{id}', 'ProController@projects')->name('pro-projects-id')->middleware('project');
 Route::post('/pro-project-add', 'ProController@createproject')->name('pro-project-add');
 Route::get('/pro-project-delete/{id}', 'ProController@deleteproject')->name('pro-project-delete')->middleware('project');
 

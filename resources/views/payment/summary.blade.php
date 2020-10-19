@@ -5,88 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
- 
-    .type-select {
-        border:2px solid #e1e1e1;
-        cursor: pointer;
-    }
-    .type-select.active {
-        border:2px solid #18A75A;
-    }
-    .type-select span.check-icon {
-        display:none;
-    }
-    .type-select.active span.check-icon {
-        display:block;
-    }
-
-    .select-item {
-        cursor: pointer;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        position: fixed;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-     .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        /* padding: 10px; */
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 770px;
-
-    }
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .enregister-button {
-        background-color: #b0b0af;
-    }
-    .enregister-button.active {
-        background-color: #18A75A;
-    }
-
-    .maxwidth-820 {
-        max-width:820px;
-    }
-    .maxwidth-210 {
-        max-width:210px;
-    }
-    .maxwidth-335 {
-        max-width:335px;
-    }
-
-    .color-item {
-        width:148px; 
-        height:148px;
-    }
-    .maxwidth-1441 {
-        max-width:1441px;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -140,18 +58,12 @@
     
     </div>
 
-
 </main>
 
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-</script>
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')

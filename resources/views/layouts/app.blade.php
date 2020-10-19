@@ -5,6 +5,7 @@
     <meta charset="utf-8mb4">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="sotoya, shop, professional, particular, joinery, material, opening, range, glazing, installation, insulation, color, aeration, door, window"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,61 +17,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/accessory.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font.css') }}" rel="stylesheet">
     {{-- <link href="https://fonts.googleapis.com/css2?family=ManRegular:wght@200;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=ManBold:wght@800&display=swap" rel="stylesheet"> --}}
-
-    <style>
-
-        nav {
-            background-color: #FFFFFF;
-        }
-        
-        body {
-            margin: 0;
-            padding-top: 0px !important;
-            background-color: #18A75A;
-        }
-
-        footer {
-            background-color: #f9f9f9;
-        }
-
-        .app-container {
-            margin-left: auto;
-            margin-right: auto;
-            /* max-width: 1366px; */
-            overflow-x: hidden
-        }
-
-        @font-face {
-            font-family: 'ManRegular';
-            src: url("/fonts/manrope/manrope-regular.ttf");
-        }
-        @font-face {
-            font-family: 'ManBold';
-            src: url("/fonts/manrope/Manrope-Bold.otf");
-        }
-        main {
-            font-family: 'ManRegular';
-            color:#020000;
-        }
-        .fontbold {
-            font-family: 'ManBold';
-        }
-
-        .invalid-feedback {
-            color:red;
-            padding-top:16px;
-            margin-bottom:16px;
-        }
-
-        input::placeholder {
-            color:#020000;
-            opacity: 0.4;
-        }
-
-    </style>
-
 
     @yield('styles')
 
@@ -86,24 +35,12 @@
         @yield('footer')
     </div>
 
-    @yield('scripts')
     <script src="{{ asset('js/accessory.js') }}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script>
+    <script src="{{asset('js/layouts/header.js')}}"></script>
+    @yield('scripts')
 
-        onResize();
-        function onResize() {
-            document.getElementById("main-content").style.marginTop = (document.getElementsByTagName("nav")[0].clientHeight) + "px";
-        }
-        $("#nav-toggle").click(function() {
 
-            $("#nav-content-mobile").toggle();
-
-            $(this).find("svg").toggleClass("hidden");
-
-        });
-
-    </script>
 </body>
 
 </html>

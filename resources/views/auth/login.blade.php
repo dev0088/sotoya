@@ -5,20 +5,6 @@
 @endsection
 
 @section('styles')
-<style>
-
-    button.connection-submit-button.active {
-        background-color: #18A75A;
-    }
-    button.connection-submit-button {
-        background-color:#b0b0af;
-    }
-    .maxwidth-508 {
-        max-width: 508px;
-    }
-
-</style>
-
 @endsection
 
 @section('content')
@@ -78,7 +64,7 @@
             </div>
         @endif
         <div class="w-full text-center md:text-left">
-            <button id="submitbutton" type="button" class="px-15 py-4 text-lg text-white connection-submit-button fontbold h-input">Se connecter</button> 
+            <button id="submitbutton" type="button" class="px-15 py-4 text-lg text-white submit-button fontbold h-input">Se connecter</button> 
         </div>
     </form>
     
@@ -92,100 +78,9 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-
-    $("#eye_fill").click(function() {
-        $(this).hide();
-        $("#eye_slash_fill").show();
-        $("#password").attr("type", "text");
-    });
-    $("#eye_slash_fill").click(function() {
-        $(this).hide();
-        $("#eye_fill").show();
-        $("#password").attr("type", "password");
-    });
-
-    $(function() {
-        validateForm();
-    })
-
-    $("#email").keyup(function() {
-        validateForm();
-    });
-
-    $("#email").change(function() {
-        validateForm();
-    });
-
-    $("#email").click(function() {
-        validateForm();
-    });
-    
-    $("#password").keyup(function() {
-        validateForm();
-    });
-
-    $("#password").change(function() {
-        validateForm();
-    });
-
-    $("#password").click(function() {
-        validateForm();
-    });
-
-    function validateForm() {
-
-        var email = $("#email").val();
-        var submit = $("#submitbutton");
-
-        var valid = true;
-
-        if (email.indexOf('@') == -1) {
-
-            valid = false;
-
-        } else {
-
-            var parts = email.split('@');
-            var domain = parts[1];
-
-            if (domain.indexOf('.') == -1) {
-
-                valid = false;
-
-            } else {
-
-                var domainParts = domain.split('.');
-                var ext = domainParts[1];
-
-                if (ext.length > 4 || ext.length < 2) {
-
-                    valid = false;
-                }
-            }
-
-        }
-
-        if(valid && $("#password").val().length != 0) {
-            console.log("Yes");
-            if(!submit.hasClass("active")) {
-                submit.addClass("active");
-                submit.attr("type", "submit");
-            }
-
-        } else {
-            console.log("No");
-            if(submit.hasClass("active")) {
-                submit.removeClass("active");
-                submit.attr("type", "button");
-            }
-        }
-    }
-
-</script>
+<script src="{{asset('js/components/password-switch.js')}}"></script>
+<script src="{{asset('js/pages/auth/login.js')}}"></script>
 @endsection
-
 
 @section('footer')
 @include('layouts.footer')
