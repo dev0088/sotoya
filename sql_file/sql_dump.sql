@@ -303,7 +303,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `migrations` */
 
@@ -328,7 +328,8 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (18,'2020_09_15_133704_create_cgvs_table',1),
 (19,'2020_09_15_133715_create_legalnotices_table',1),
 (20,'2020_09_15_170120_create_orders_table',1),
-(21,'2020_10_09_053254_create_professions_table',1);
+(21,'2020_10_09_053254_create_professions_table',1),
+(22,'2020_10_19_010747_create_payments_table',2);
 
 /*Table structure for table `openings` */
 
@@ -409,20 +410,9 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_totalheight_id_foreign` FOREIGN KEY (`totalheight_id`) REFERENCES `totalheights` (`id`) ON DELETE CASCADE,
   CONSTRAINT `orders_totalwidth_id_foreign` FOREIGN KEY (`totalwidth_id`) REFERENCES `totalwidths` (`id`) ON DELETE CASCADE,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `orders` */
-
-insert  into `orders`(`id`,`user_id`,`join_id`,`material_id`,`range_id`,`opening_id`,`leave_id`,`installation_id`,`totalheight_id`,`totalwidth_id`,`insulation_id`,`aeration_id`,`glazing_id`,`color_id`,`price`,`state_order`,`state_deliver`,`mode`,`project_id`,`created_at`,`updated_at`) values 
-(1,1,6,1,1,1,1,1,1,1,1,3,12,12,'3960','0','0','1',1,'2020-10-13 19:16:55','2020-10-13 19:16:55'),
-(2,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',1,'2020-10-13 19:17:28','2020-10-13 19:17:28'),
-(3,1,3,1,1,1,1,1,1,1,1,1,1,1,'1260','1','0','1',1,'2020-10-13 19:17:33','2020-10-13 19:18:18'),
-(4,1,8,1,1,1,1,1,1,1,1,1,1,1,'1760','1','0','1',1,'2020-10-13 19:17:39','2020-10-13 19:18:16'),
-(5,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-13 19:18:03','2020-10-13 19:18:03'),
-(6,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',1,'2020-10-14 02:27:27','2020-10-14 02:27:27'),
-(7,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-14 02:49:21','2020-10-14 02:49:21'),
-(8,1,1,1,1,1,1,1,1,1,1,1,1,1,'1060','0','0','1',2,'2020-10-14 02:52:44','2020-10-14 02:52:44'),
-(9,1,1,1,2,5,1,3,3,2,4,1,9,11,'3800','0','0','0',NULL,'2020-10-14 02:54:27','2020-10-14 02:54:27');
 
 /*Table structure for table `password_resets` */
 
@@ -436,6 +426,39 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `password_resets` */
+
+/*Table structure for table `payments` */
+
+DROP TABLE IF EXISTS `payments`;
+
+CREATE TABLE `payments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `state_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postcode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `project_id` bigint(20) unsigned DEFAULT NULL,
+  `order_id` bigint(20) unsigned DEFAULT NULL,
+  `cardnumber` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expirationdate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `securitycode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `payments` */
+
+insert  into `payments`(`id`,`user_id`,`state_address`,`firstname`,`lastname`,`address`,`postcode`,`city`,`project_id`,`order_id`,`cardnumber`,`expirationdate`,`securitycode`,`mode`,`price`,`created_at`,`updated_at`) values 
+(29,1,'1',NULL,NULL,NULL,NULL,NULL,10,151,'aa','aa','aa','1','1260','2020-10-19 06:26:06','2020-10-19 06:26:06'),
+(30,1,'1',NULL,NULL,NULL,NULL,NULL,10,152,'aaa','aaa','aaa','1','1560','2020-10-19 06:26:28','2020-10-19 06:26:28'),
+(31,1,'1',NULL,NULL,NULL,NULL,NULL,NULL,153,'aaa','aaa','aaa','0','2680','2020-10-19 06:27:30','2020-10-19 06:27:30'),
+(32,1,'1',NULL,NULL,NULL,NULL,NULL,NULL,154,'aa','aaa','aaaa','0','3700','2020-10-19 06:28:26','2020-10-19 06:28:26');
 
 /*Table structure for table `professions` */
 
@@ -471,14 +494,9 @@ CREATE TABLE `projects` (
   PRIMARY KEY (`id`),
   KEY `projects_user_id_foreign` (`user_id`),
   CONSTRAINT `projects_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `projects` */
-
-insert  into `projects`(`id`,`user_id`,`name`,`created_at`,`updated_at`) values 
-(1,1,'AAAAAAAAAA','2020-10-13 19:16:55','2020-10-13 19:16:55'),
-(2,1,'BBBBBB','2020-10-13 19:17:59','2020-10-13 19:17:59'),
-(3,1,'aa','2020-10-14 02:30:32','2020-10-14 02:30:32');
 
 /*Table structure for table `ranges` */
 
@@ -571,12 +589,12 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`firstname`,`lastname`,`gender`,`email`,`password`,`mode`,`company`,`address`,`postcode`,`city`,`telephone`,`profession_id`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'Jean','Marc','1','jeanmarc@gmail.com','$2y$10$4xs6pxs6901tHOb3MZIiZ.BIYTR0kiMXITvlVocSiBGr0GbwjMhXq','1','Sotoweb','14 Avenue Saint-Médard','33000','Bordeaux','06 90 84 23 12','3',NULL,NULL,NULL,NULL);
+(1,'Jean','Marc','1','jeanmarc@gmail.com','$2y$10$4xs6pxs6901tHOb3MZIiZ.BIYTR0kiMXITvlVocSiBGr0GbwjMhXq','0',NULL,'14 Avenue Saint-Médard','33000','Paris','06 90 84 23 12','5',NULL,NULL,NULL,'2020-10-17 01:47:26');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
