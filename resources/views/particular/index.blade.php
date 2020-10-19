@@ -10,7 +10,7 @@
 
 @section('content')
 
-<main id="main-content" class="bg-whitegreen  pb-10 md:pb-20">
+<main id="main-content" class="bg-whitegreen pb-10 md:pb-20">
 
     <div class="px-8 md:px-35">
         <div class="flex-none md:flex items-center pt-35px pb-6">
@@ -42,7 +42,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type de menuiserie</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Type de menuiserie</p>
                     </div>
                     <div class="bg-white px-4 md:px-14 pb-8 md:pb-14 toggle-part hidden">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-10 row-gap-10">
@@ -108,9 +108,9 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Gamme</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Gamme</p>
                     </div>
-                    <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
+                    <div class="bg-white pt-2 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
                             @if(isset($range) && count($range) > 0)
                                 @foreach($range as $key => $item)
@@ -141,7 +141,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type d’ouverture</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Type d’ouverture</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -174,7 +174,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Nombre de vantaux</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Nombre de vantaux</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -206,7 +206,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Type de pose</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Type de pose</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -240,7 +240,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Dimensions</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Dimensions</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 pb-4 mb-4">
@@ -312,7 +312,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Pour isolation de</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Pour isolation de</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 col-gap-10 row-gap-10 px-4 pb-4 mb-4">
@@ -358,7 +358,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Aération</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Aération</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-gap-10 row-gap-10">
@@ -390,7 +390,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Vitrage</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Vitrage</p>
                     </div>
                     <div class="bg-white pt-4 px-4 md:px-8 pb-8 md:pb-14 hidden toggle-part">
                         <div class="grid md:grid-cols-1 xl:grid-cols-2 col-gap-10 row-gap-10">
@@ -423,7 +423,7 @@
                                 <path id="minus_circle_fill" d="M14.094,24.094a10.074,10.074,0,0,0,10-10,10.089,10.089,0,0,0-10.01-10,10,10,0,0,0,.01,20ZM9.947,14.966c-.578,0-.98-.3-.98-.853s.382-.873.98-.873h8.284c.6,0,.971.314.971.873s-.392.853-.971.853Z" transform="translate(-4.094 -4.094)" fill="#3b3b3a"/>
                             </svg>
                         </div>
-                        <p class="text-2xl fontbold py-10 mx-auto step-title">Couleur menuiserie</p>
+                        <p class="text-2xl fontbold py-8 mx-auto step-title">Couleur menuiserie</p>
                     </div>
         
                     <div class="bg-white pt-4 px-4 md:px-14 pb-8 md:pb-14 hidden toggle-part">
